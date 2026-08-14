@@ -20,7 +20,7 @@ sources:
     title: "Firecrawl (contrast)"
 ---
 
-# Hermes browser backend
+# Camofox — Hermes browser backend
 
 Camofox is wired as **Hermes's headed/anti-bot browser backend**. When Hermes needs to browse a site that blocks headless scrapers, it drives Camofox instead of a plain Playwright browser — gaining fingerprint spoofing and a watchable window.
 

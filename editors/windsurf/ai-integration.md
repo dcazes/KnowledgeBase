@@ -24,7 +24,7 @@ sources:
     title: "Hermes"
 ---
 
-# MCP with Devin Local (ex-Cascade)
+# Windsurf (now Devin Desktop) — MCP with Devin Local (ex-Cascade)
 
 Windsurf (now Devin Desktop) supports **MCP servers**, so its agent (Devin Local, ex-Cascade) can call external tools. Register your stack's servers (exact config location: docs.windsurf.com; typically a settings/MCP JSON):
 

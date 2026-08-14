@@ -27,7 +27,7 @@ sources:
     title: "Skills & Plugins"
 ---
 
-# Launch
+# Hermes — Launch
 
 ```bash
 hermes            # launch TUI/CLI

@@ -18,7 +18,7 @@ sources:
     title: "Local launcher"
 ---
 
-# Vault location
+# Obsidian — Vault location
 
 Your vault root is **`~/Desktop/vault/`**. Everything inside is a normal file/folder — portable and git-friendly.
 

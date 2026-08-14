@@ -15,7 +15,7 @@ sources:
     author: "site:github.com"
 ---
 
-# AI Integration
+# Space Agent — AI Integration
 
 Space Agent is unique among this vault's agents: it doesn't just call tools — **it builds them into the workspace live**.
 

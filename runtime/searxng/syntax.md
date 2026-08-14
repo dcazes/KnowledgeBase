@@ -19,7 +19,7 @@ sources:
     author: "site:docs.searxng.org"
 ---
 
-# Overview
+# SearXNG — Overview
 
 SearXNG supports a rich query language. Prefixes start with `!`; most operators work the same as on the upstream engines they forward to. This is the syntax you use in the UI search box *and* in the `q` parameter of the [API](api.md).
 

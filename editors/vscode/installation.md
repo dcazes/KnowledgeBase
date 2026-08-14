@@ -18,7 +18,7 @@ sources:
     title: "Local launcher"
 ---
 
-# This machine
+# VSCode — This machine
 
 VS Code is already installed:
 * Binary: `/usr/bin/code`

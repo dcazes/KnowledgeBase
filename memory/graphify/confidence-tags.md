@@ -19,7 +19,7 @@ sources:
     author: "site:pypi.org"
 ---
 
-# Why confidence tags exist
+# Graphify — Why confidence tags exist
 
 A knowledge graph built by an LLM mixes two very different kinds of fact:
 

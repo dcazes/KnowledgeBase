@@ -27,7 +27,7 @@ sources:
     author: "site:www.lancedb.com"
 ---
 
-# Modules
+# Weaviate — Modules
 
 Weaviate's capabilities come from **modules**:
 * `text2vec-*` — text embedding (OpenAI, Cohere, HuggingFace, local).

@@ -20,7 +20,7 @@ sources:
     title: "AI Integration"
 ---
 
-# Launch
+# Obsidian — Launch
 
 ```bash
 setsid obsidian          # via programs/Obsidian.desktop

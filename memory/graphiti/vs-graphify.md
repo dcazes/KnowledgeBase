@@ -21,7 +21,7 @@ sources:
     title: "Graphiti concepts"
 ---
 
-# Two different "graph from data" tools
+# Graphiti — Two different "graph from data" tools
 
 This KB covers **both** Graphiti and Graphify. They sound alike but solve different problems.
 

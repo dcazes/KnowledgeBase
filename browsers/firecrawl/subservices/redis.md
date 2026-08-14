@@ -14,7 +14,7 @@ sources:
     title: "Local compose (redis service)"
 ---
 
-# Role
+# Firecrawl — Role
 
 Redis backs two things in the Firecrawl stack:
 1. **General cache** (`REDIS_URL`) — short-term caching of scrape/search results.

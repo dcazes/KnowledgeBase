@@ -42,7 +42,7 @@ sources:
     title: "Blueprint"
 ---
 
-# Integration map
+# Agent Stack — Integration map
 
 ```text
                        ┌─────────────── Hermes (orchestrator) ───────────────┐

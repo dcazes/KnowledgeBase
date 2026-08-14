@@ -18,7 +18,7 @@ sources:
     title: "Architecture — api service"
 ---
 
-# Overview
+# Dify — Overview
 
 Every Dify capability is exposed as an API ("Backend-as-a-Service"), so you can embed apps into your own logic. The API base is the `api` service (behind nginx on :80), typically `http://localhost/v1`.
 

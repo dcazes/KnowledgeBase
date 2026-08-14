@@ -25,7 +25,7 @@ sources:
     title: "API contract - api.md"
 ---
 
-# Deploy / run (canonical = combined Firecrawl compose)
+# SearXNG — Deploy / run (canonical = combined Firecrawl compose)
 
 ```bash
 # Start just SearXNG (host :8088, on backend network)

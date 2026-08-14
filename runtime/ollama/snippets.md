@@ -15,7 +15,7 @@ sources:
     author: "site:docs.ollama.com"
 ---
 
-# Snippets
+# Ollama — Snippets
 
 ## CLI
 

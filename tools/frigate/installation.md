@@ -21,7 +21,7 @@ sources:
     title: "Configuration"
 ---
 
-# Deploy (this machine)
+# Frigate — Deploy (this machine)
 
 From `programs/frigate/`:
 ```bash

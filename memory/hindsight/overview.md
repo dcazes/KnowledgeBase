@@ -23,7 +23,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Overview
+# Hindsight — Overview
 
 Most agent memory systems **recall conversation history**; Hindsight makes agents that **learn** — distilling experience into lasting memory and improving behavior over time.
 

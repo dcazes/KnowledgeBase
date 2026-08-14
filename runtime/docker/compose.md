@@ -25,7 +25,7 @@ sources:
     title: "Local Frigate compose - programs/frigate/docker-compose.yml"
 ---
 
-# What Compose is
+# Docker — What Compose is
 
 Compose lets you define a **multi-container app** in a single `docker-compose.yml`. Instead of typing long `docker run` commands, you describe services, networks, and volumes declaratively and manage them as a group. Almost every program in this KB uses Compose (SearXNG, Frigate, Firecrawl, AnythingLLM, Dify).
 

@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Configuration
+# Hindsight — Configuration
 
 Configuration is split between the **control plane** (orchestration) and the **API** (service layer), per the repo layout.
 

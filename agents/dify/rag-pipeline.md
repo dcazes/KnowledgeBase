@@ -18,7 +18,7 @@ sources:
     title: "Architecture — vector stores"
 ---
 
-# Pipeline stages
+# Dify — Pipeline stages
 
 ```
 Document (PDF / PPT / DOCX / text / web)

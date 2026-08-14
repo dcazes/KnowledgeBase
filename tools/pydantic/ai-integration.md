@@ -19,7 +19,7 @@ sources:
     author: "site:ai.pydantic.dev"
 ---
 
-# AI Integration
+# Pydantic — AI Integration
 
 Pydantic's superpower in this stack: **schemas as contracts** for LLM/agent I/O.
 

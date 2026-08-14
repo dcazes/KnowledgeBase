@@ -22,7 +22,7 @@ sources:
     title: "Overview"
 ---
 
-# What "AI" means here
+# Frigate — What "AI" means here
 
 Frigate's AI is **computer-vision object detection** (people, cars, pets…) — not an LLM. It runs an ONNX model on your GPU (the TensorRT detector was removed in 0.16.0; NVIDIA GPUs use the ONNX detector with CUDA Graphs since 0.17). This is a different AI family than the LLM/agent tools in the rest of the stack.
 

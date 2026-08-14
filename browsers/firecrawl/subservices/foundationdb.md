@@ -14,7 +14,7 @@ sources:
     title: "Local compose (foundationdb services)"
 ---
 
-# Role
+# Firecrawl — Role
 
 FoundationDB is an **experimental alternative** job/state backend. By default Firecrawl uses NUQ-Postgres; setting `NUQ_BACKEND=fdb` switches the queue to FoundationDB. The api reads the shared cluster file from the `fdb-cluster-file` volume.
 

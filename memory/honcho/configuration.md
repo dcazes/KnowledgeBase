@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Configuration
+# Honcho — Configuration
 
 ## config.toml (server)
 

@@ -15,7 +15,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Overview
+# Space Agent — Overview
 
 Space Agent's premise: an agent shouldn't be trapped inside a fixed product surface — it should be able to **develop its own capabilities from within** the system and keep extending the workspace toward whatever the user wants.
 

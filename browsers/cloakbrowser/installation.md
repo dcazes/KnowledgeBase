@@ -17,7 +17,7 @@ sources:
     title: "CloakBrowser manager service (historical — was in the former combined SearXNG compose, now defunct)"
 ---
 
-# Option A — Node CLI (launcher)
+# CloakBrowser — Option A — Node CLI (launcher)
 
 The desktop launcher runs:
 ```bash

@@ -17,7 +17,7 @@ sources:
     title: "Usage (API + VNC)"
 ---
 
-# Launch
+# Camofox — Launch
 
 ```bash
 # via the desktop launcher's command:

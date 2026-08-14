@@ -22,7 +22,7 @@ sources:
     title: "Graphify MCP"
 ---
 
-# MCP server
+# Graphiti — MCP server
 
 The `mcp_server/` directory in the Graphiti repo contains a **Model Context Protocol (MCP) server** implementation. It lets AI assistants interact with Graphiti's context-graph capabilities over MCP — giving Claude, Cursor, and other MCP clients **temporal, provenance-aware memory**.
 

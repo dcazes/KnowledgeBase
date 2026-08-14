@@ -18,7 +18,7 @@ sources:
     title: "Overview"
 ---
 
-# Core features
+# Windsurf (now Devin Desktop) — Core features
 
 * **Cascade** (retired Jul 2026; now **Devin Local**) — the agentic assistant. Chat with it to plan and apply changes; it can read the codebase, run commands, and make coordinated multi-file edits. Operates in a "write" or "chat" mode and can take autonomous steps within guardrails.
 * **SWE-1 models** — Codeium's software-engineering models, tuned for coding reasoning and edits (vs. general chat models). Used by Cascade for agentic flows.

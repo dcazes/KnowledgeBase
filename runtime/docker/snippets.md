@@ -22,7 +22,7 @@ sources:
     title: "Local install / run script - programs/docker/"
 ---
 
-# Start / verify (your machine)
+# Docker — Start / verify (your machine)
 
 ```bash
 systemctl --user start docker-desktop     # from programs/docker/run

@@ -20,7 +20,7 @@ sources:
     title: "AI Integration"
 ---
 
-# Setup
+# OpenClaw — Setup
 
 ```bash
 openclaw onboard        # interactive: gateway → workspace → channels → skills

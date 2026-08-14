@@ -27,7 +27,7 @@ sources:
     author: "site:docs.firecrawl.dev"
 ---
 
-# Models via Ollama / OpenAI-compatible endpoint
+# OpenWebUI — Models via Ollama / OpenAI-compatible endpoint
 
 OpenWebUI connects to **Ollama** (`http://host.docker.internal:11434` or host bridge `172.17.0.1:11434`) and any **OpenAI-compatible** endpoint — e.g. your `:4000` proxy. The prebuilt image ships without bundled Ollama; both connection types are configured in the admin panel.
 

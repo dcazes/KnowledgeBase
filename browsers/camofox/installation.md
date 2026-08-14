@@ -21,7 +21,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Source location
+# Camofox — Source location
 
 The project lives locally (not under `programs/`):
 ```

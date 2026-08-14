@@ -15,7 +15,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Snippets
+# SurfSense — Snippets
 
 ## Status
 

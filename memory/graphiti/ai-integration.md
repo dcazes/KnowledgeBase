@@ -23,7 +23,7 @@ sources:
     title: "OpenCode"
 ---
 
-# Agent memory
+# Graphiti — Agent memory
 
 Graphiti's primary use is **agent memory**: ingest interactions/episodes, query what's true now or historically. In your stack:
 

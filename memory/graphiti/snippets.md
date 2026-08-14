@@ -20,7 +20,7 @@ sources:
     title: "MCP Server"
 ---
 
-# Install
+# Graphiti — Install
 
 ```bash
 pip install graphiti-core

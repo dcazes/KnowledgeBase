@@ -19,7 +19,7 @@ sources:
     author: "site:pypi.org"
 ---
 
-# Install / serve
+# MemOS — Install / serve
 
 > As of 2026-08-12 there is **no local checkout** at `programs/memos` — install from PyPI (`MemoryOS`, import `memos`). With a repo clone present, `make install`/`make serve` work identically from the checkout root.
 

@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Configuration
+# Mem0 — Configuration
 
 ## Environment keys (`.env`)
 

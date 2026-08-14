@@ -19,7 +19,7 @@ sources:
     author: "site:pydantic.dev"
 ---
 
-# Configuration
+# Pydantic AI — Configuration
 
 ## Model selection
 

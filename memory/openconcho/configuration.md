@@ -15,7 +15,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Configuration
+# OpenConcho — Configuration
 
 ## Honcho connections
 

@@ -20,7 +20,7 @@ sources:
     title: "Workflow"
 ---
 
-# Launch / open
+# VSCode — Launch / open
 
 ```bash
 code                              # editor only

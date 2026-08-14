@@ -20,7 +20,7 @@ sources:
     title: "AGENTS.md — async via Celery/Redis"
 ---
 
-# Service topology
+# Dify — Service topology
 
 From `docker/docker-compose.yaml`, Dify runs as a set of cooperating containers:
 

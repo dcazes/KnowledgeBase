@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Overview
+# Ollama — Overview
 
 Ollama is the easiest way to run open-weight LLMs locally: `ollama pull llama3.1` then `ollama run llama3.1`. It handles quantization, model files, GPU offload (CUDA/ROCm) with CPU fallback, and serves an OpenAI-compatible API on `:11434`.
 

@@ -25,7 +25,7 @@ sources:
     title: "Backend / :4000 proxy"
 ---
 
-# Install
+# Graphify — Install
 
 ```bash
 pip install graphifyy                 # package is graphifyy; command is graphify

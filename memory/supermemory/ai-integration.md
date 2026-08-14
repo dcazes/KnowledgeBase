@@ -19,7 +19,7 @@ sources:
     author: "site:supermemory.ai"
 ---
 
-# AI Integration
+# Supermemory — AI Integration
 
 Supermemory is an **end-user product** rather than a developer library — integration surface is the app + extension, not an SDK.
 

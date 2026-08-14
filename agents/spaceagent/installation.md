@@ -15,7 +15,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Installation
+# Space Agent — Installation
 
 ## Option A — Desktop app (no terminal)
 

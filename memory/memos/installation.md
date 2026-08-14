@@ -19,7 +19,7 @@ sources:
     author: "site:pypi.org"
 ---
 
-# Deployment model
+# MemOS — Deployment model
 
 MemOS runs two ways on this machine (as of 2026-08-12 there is **no local checkout** at `programs/memos` — install from PyPI `MemoryOS`, import name `memos`):
 

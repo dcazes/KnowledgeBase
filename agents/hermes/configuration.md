@@ -21,7 +21,7 @@ sources:
     title: "Installation & runtime"
 ---
 
-# Where configuration lives
+# Hermes — Where configuration lives
 
 Hermes reads two files from `~/.hermes/`:
 

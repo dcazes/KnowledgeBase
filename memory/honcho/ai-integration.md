@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# AI Integration
+# Honcho — AI Integration
 
 ## Python SDK flow (v3 API)
 

@@ -18,7 +18,7 @@ sources:
     title: "Installation / proxy fit"
 ---
 
-# The situation on this machine
+# OpenWebUI — The situation on this machine
 
 OpenWebUI's `:ollama` image *expects* an Ollama server. **There is no Ollama on this host.** Inference is provided by the local **`:4000` OpenAI-compatible proxy** (OpenRouter/NIM failover). So you connect OpenWebUI as an **OpenAI-compatible** provider, not Ollama.
 

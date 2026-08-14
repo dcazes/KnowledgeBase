@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Installation
+# Supermemory — Installation
 
 ## Desktop app
 

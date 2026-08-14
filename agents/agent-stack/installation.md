@@ -21,7 +21,7 @@ sources:
     title: "Frigate compose"
 ---
 
-# Deployment model
+# Agent Stack — Deployment model
 
 The Agent Stack is a **single master compose** that `include`s each program's existing compose and adds the new services (Weaviate, Ollama, LiteLLM, Graphiti/FalkorDB, parser). This keeps each program as its own source of truth — no duplicated configs or rebuilt images.
 

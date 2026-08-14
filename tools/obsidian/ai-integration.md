@@ -20,7 +20,7 @@ sources:
     title: "Hermes"
 ---
 
-# Hermes reads the vault
+# Obsidian — Hermes reads the vault
 
 Hermes (`~/.hermes/`) can read files in `~/Desktop/vault/` to ground answers in your notes (e.g. *Hermes Setup.md* informs this very KB). Treat the vault as a readable knowledge source for agents.
 

@@ -22,7 +22,7 @@ sources:
     title: "Local install notes - programs/docker/"
 ---
 
-# Your setup
+# Docker — Your setup
 
 This machine runs **Docker Desktop for Linux** (installed from `programs/docker/docker-desktop-amd64.deb`). Docker Desktop is launched as a **user-level systemd service**, not the system-wide engine:
 

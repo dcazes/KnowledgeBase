@@ -24,7 +24,7 @@ sources:
     title: "Skills notes (prior, grounding)"
 ---
 
-# Agent skills
+# AnythingLLM — Agent skills
 
 In agent mode, AnythingLLM can invoke **skills** (tools) during a conversation. Built-ins include:
 

@@ -18,7 +18,7 @@ sources:
     title: "Local compose - programs/firecrawl/firecrawl/docker-compose.yaml"
 ---
 
-# Role
+# Firecrawl — Role
 
 The `api` service is the **brain** of the stack: it serves the HTTP API, orchestrates scrape/crawl/search jobs, and runs the background workers that actually do the work. Built from `apps/api` (package `firecrawl-scraper-js`).
 

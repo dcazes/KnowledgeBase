@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# AI Integration
+# Cognee — AI Integration
 
 ## Python API
 

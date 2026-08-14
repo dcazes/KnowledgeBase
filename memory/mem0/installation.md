@@ -23,7 +23,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Installation
+# Mem0 — Installation
 
 Two deployment modes: the **Python library** (typical) and the **OpenMemory app** (FastAPI + web UI).
 

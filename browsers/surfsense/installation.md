@@ -19,7 +19,7 @@ sources:
     author: "site:docs.modsetter.com"
 ---
 
-# Installation
+# SurfSense — Installation
 
 ## 1. Compose up
 

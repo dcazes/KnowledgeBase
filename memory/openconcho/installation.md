@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Installation
+# OpenConcho — Installation
 
 There is **no npm package** (`openconcho` 404s on the npm registry — verified 2026-08-13). Distribution is via GitHub Releases (desktop binaries), building from source, or Docker/Helm.
 

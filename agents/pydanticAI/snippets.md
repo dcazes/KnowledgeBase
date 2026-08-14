@@ -15,7 +15,7 @@ sources:
     author: "site:pydantic.dev"
 ---
 
-# Snippets
+# Pydantic AI — Snippets
 
 ## Minimal agent
 

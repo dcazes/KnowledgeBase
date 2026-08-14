@@ -19,7 +19,7 @@ sources:
     author: "site:docs.modsetter.com"
 ---
 
-# Configuration
+# SurfSense — Configuration
 
 ## `.env`
 

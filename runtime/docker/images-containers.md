@@ -27,7 +27,7 @@ sources:
     author: "site:docs.docker.com"
 ---
 
-# Lifecycle commands
+# Docker — Lifecycle commands
 
 ```bash
 # Pull an image from a registry

@@ -19,7 +19,7 @@ sources:
     author: "site:docs.pydantic.dev"
 ---
 
-# Configuration
+# Pydantic — Configuration
 
 ## model_config
 

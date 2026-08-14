@@ -21,7 +21,7 @@ sources:
     title: "Deployment - installation.md"
 ---
 
-# Overview
+# SearXNG — Overview
 
 SearXNG exposes its results over HTTP. The web UI hits `/search` as a normal page; programs request the same endpoint with `format=json` (or `csv`/`rss`) to get machine-readable output. This is how Firecrawl, AnythingLLM, Hermes, OpenCode, and custom scripts consume it.
 

@@ -29,7 +29,7 @@ sources:
     title: "Detected GPU - nvidia-smi on host"
 ---
 
-# Overview
+# Docker — Overview
 
 This machine has an **NVIDIA GeForce GTX 1060 6GB** (`nvidia-smi` reports 6144 MiB). To let a container use the GPU you need the **NVIDIA Container Toolkit** installed on the host and a device reservation in the container config. Without it, containers only see the CPU.
 

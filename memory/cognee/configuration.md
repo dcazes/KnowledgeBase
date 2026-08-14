@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Configuration
+# Cognee — Configuration
 
 ## Provider config (Python or .env)
 

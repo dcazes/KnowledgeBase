@@ -19,7 +19,7 @@ sources:
     author: "site:pypi.org"
 ---
 
-# Two entry points
+# Graphify — Two entry points
 
 * **Slash command** (inside a supported agent like Hermes/Claude Code): `/graphify ./raw`
 * **CLI** (terminal, any agent): `graphify <subcommand> <args>`

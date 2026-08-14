@@ -24,7 +24,7 @@ sources:
     title: "Configuration"
 ---
 
-# Local agent-browser mode
+# Hermes — Local agent-browser mode
 
 Hermes runs the browser in **local** mode (`browser.cloud_provider: local` in `config.yaml`). All `browser_*` tools then operate inside a real desktop browser window you control.
 

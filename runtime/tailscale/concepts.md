@@ -35,7 +35,7 @@ sources:
     author: "site:tailscale.com"
 ---
 
-# Building blocks
+# Tailscale — Building blocks
 
 * **Tailnet** — your private network of enrolled devices, addressable by stable IPs (`100.x.y.z`) and DNS names.
 * **WireGuard** — the encrypted, point-to-point tunnel protocol under every connection. Each device has a WireGuard key pair; Tailscale manages keys via the coordination server.

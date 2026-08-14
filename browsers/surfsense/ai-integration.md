@@ -19,7 +19,7 @@ sources:
     author: "site:docs.modsetter.com"
 ---
 
-# AI Integration
+# SurfSense — AI Integration
 
 SurfSense exposes its personal knowledge graph two ways: an **AI chat** (frontend) and an **MCP server** (agent access).
 

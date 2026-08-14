@@ -20,7 +20,7 @@ sources:
     title: "RAG & Web Search"
 ---
 
-# Deploy / verify
+# OpenWebUI — Deploy / verify
 
 ```bash
 # if not already deployed:

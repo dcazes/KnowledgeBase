@@ -15,7 +15,7 @@ sources:
     author: "site:docs.pydantic.dev"
 ---
 
-# Snippets
+# Pydantic — Snippets
 
 ## Basic model
 

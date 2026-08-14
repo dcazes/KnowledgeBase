@@ -18,7 +18,7 @@ sources:
     title: "Configuration (model connection)"
 ---
 
-# OpenAI-compatible API
+# OpenWebUI — OpenAI-compatible API
 
 OpenWebUI exposes an **OpenAI-compatible** REST API (under `/api` and `/ollama` for Ollama-style calls), so existing OpenAI SDKs work by pointing the base URL at it.
 

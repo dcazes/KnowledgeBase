@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Configuration
+# Supermemory — Configuration
 
 Supermemory is **local-first by design** — configuration lives under `.supermemory/` and is largely opaque (encrypted/env-managed). What the layout tells us:
 

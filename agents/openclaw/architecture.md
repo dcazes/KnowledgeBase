@@ -18,7 +18,7 @@ sources:
     title: "Overview"
 ---
 
-# Building blocks
+# OpenClaw — Building blocks
 
 * **Gateway** — the core server that runs OpenClaw and bridges everything.
 * **Workspace** — the assistant's working directory (state, config, skills).

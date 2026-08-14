@@ -26,7 +26,7 @@ sources:
     title: "Local config"
 ---
 
-# config.yml anatomy (this machine)
+# Frigate — config.yml anatomy (this machine)
 
 ```yaml
 go2rtc:

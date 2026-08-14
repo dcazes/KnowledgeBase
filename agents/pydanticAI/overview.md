@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Overview
+# Pydantic AI — Overview
 
 PydanticAI is the **Python agent framework from the pydantic team** — designed around structured, validated output as the core primitive rather than free-form text.
 

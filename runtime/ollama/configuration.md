@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Configuration
+# Ollama — Configuration
 
 ## Key env vars
 

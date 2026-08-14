@@ -21,7 +21,7 @@ sources:
     author: "site:github.com"
 ---
 
-# The search backend: SearXNG
+# Firecrawl — The search backend: SearXNG
 
 Firecrawl's `/search` endpoint needs a search source. By default it uses Google directly, but in your stack it's wired to **your SearXNG instance** via:
 

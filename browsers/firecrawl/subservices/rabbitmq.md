@@ -14,7 +14,7 @@ sources:
     title: "Local compose (rabbitmq service)"
 ---
 
-# Role
+# Firecrawl — Role
 
 RabbitMQ is the **job queue** transport. The api publishes scrape/crawl/extract jobs; worker processes consume them. Wired via `NUQ_RABBITMQ_URL=amqp://rabbitmq:5672`.
 

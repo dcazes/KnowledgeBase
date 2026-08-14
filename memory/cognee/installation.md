@@ -19,7 +19,7 @@ sources:
     author: "site:pypi.org"
 ---
 
-# Installation
+# Cognee — Installation
 
 ## 1. Python library
 

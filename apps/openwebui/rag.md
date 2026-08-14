@@ -25,7 +25,7 @@ sources:
     title: "Firecrawl endpoint"
 ---
 
-# Built-in RAG
+# OpenWebUI — Built-in RAG
 
 OpenWebUI has a built-in RAG engine:
 * **9 vector databases** supported (chroma is common default).

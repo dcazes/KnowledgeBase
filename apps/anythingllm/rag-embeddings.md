@@ -22,7 +22,7 @@ sources:
     title: "RAG notes (prior, grounding)"
 ---
 
-# Ingestion pipeline
+# AnythingLLM — Ingestion pipeline
 
 ```
 Document (pdf/docx/md/url/code)

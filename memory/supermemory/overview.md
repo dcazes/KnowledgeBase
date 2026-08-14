@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Overview
+# Supermemory — Overview
 
 Supermemory positions itself as "your AI second brain": everything you read/save becomes searchable memory, and the assistant answers questions grounded in that memory.
 

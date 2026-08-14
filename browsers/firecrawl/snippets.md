@@ -20,7 +20,7 @@ sources:
     title: "CLI & Skills"
 ---
 
-# Deploy the stack
+# Firecrawl — Deploy the stack
 
 ```bash
 cd programs/firecrawl/firecrawl

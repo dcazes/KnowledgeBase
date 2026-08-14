@@ -15,7 +15,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Overview
+# OpenConcho — Overview
 
 OpenConcho is the **reference UI for Honcho** — you point it at your self-hosted Honcho server and get visual + conversational access to the user models Honcho maintains.
 

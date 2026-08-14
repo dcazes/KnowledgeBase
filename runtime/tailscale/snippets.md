@@ -20,7 +20,7 @@ sources:
     title: "AI Integration"
 ---
 
-# Install + auth
+# Tailscale — Install + auth
 
 ```bash
 curl -fsSL https://tailscale.com/install.sh | sh

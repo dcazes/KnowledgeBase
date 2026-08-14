@@ -22,7 +22,7 @@ sources:
     title: "Configuration"
 ---
 
-# Reolink camera (`reolink_camera`)
+# Frigate — Reolink camera (`reolink_camera`)
 
 The camera at `192.168.68.61` is pulled via **go2rtc** using Reolink's HTTP-FLV stream (more stable than raw RTSP), then Frigate consumes it as a local RTSP restream.
 

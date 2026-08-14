@@ -17,7 +17,7 @@ sources:
     title: "Usage (CDP)"
 ---
 
-# Launch (CLI)
+# CloakBrowser — Launch (CLI)
 
 ```bash
 npx cloakbrowser --remote-debugging-port=9222 --headless=false

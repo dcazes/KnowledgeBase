@@ -27,7 +27,7 @@ sources:
     title: "Graphiti"
 ---
 
-# Pipeline position
+# Vespa — Pipeline position
 
 ```
 Parsers (Docling/Marker) ─┐

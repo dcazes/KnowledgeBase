@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Snippets
+# Mem0 — Snippets
 
 ## Install
 

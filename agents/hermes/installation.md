@@ -17,7 +17,7 @@ sources:
     title: "Overview"
 ---
 
-# Runtime
+# Hermes — Runtime
 
 Hermes runs as a **desktop GUI** and/or **TUI**:
 

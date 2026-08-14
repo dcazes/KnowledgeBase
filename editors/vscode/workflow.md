@@ -21,7 +21,7 @@ sources:
     title: "Graphify skills"
 ---
 
-# Editing the programs/* repos
+# VSCode — Editing the programs/* repos
 
 Your stack's source lives under `/home/daniel/Desktop/programs/`. Open a repo directly:
 

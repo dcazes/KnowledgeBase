@@ -14,7 +14,7 @@ sources:
     title: "OKF specification"
 ---
 
-# Principles
+# Philosophy — Principles
 
 The decisions in this stack reduce to a handful of recurring principles.
 

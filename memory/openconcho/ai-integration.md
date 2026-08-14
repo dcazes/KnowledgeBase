@@ -19,7 +19,7 @@ sources:
     author: "site:docs.honcho.dev"
 ---
 
-# AI Integration
+# OpenConcho — AI Integration
 
 OpenConcho is the **human interface to Honcho memory** — it complements (not replaces) the [Honcho SDK](../honcho/ai-integration.md).
 

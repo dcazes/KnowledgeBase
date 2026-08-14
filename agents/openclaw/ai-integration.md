@@ -23,7 +23,7 @@ sources:
     title: "Graphify MCP"
 ---
 
-# Fronting your agents
+# OpenClaw — Fronting your agents
 
 OpenClaw can receive a chat message from any channel and delegate the work to a **coding agent**:
 * **Hermes** — background/autonomous agent runtime (`~/.hermes/`).

@@ -23,7 +23,7 @@ sources:
     author: "site:arxiv.org"
 ---
 
-# Overview
+# LightRAG — Overview
 
 LightRAG is **retrieval-augmented generation with an incremental knowledge graph**: it extracts entities and relations from documents into a graph at index time, then answers queries by combining graph traversal (high-level) with keyword/vector search (low-level). The result is answers that cite both specific passages and the overall themes of the corpus.
 

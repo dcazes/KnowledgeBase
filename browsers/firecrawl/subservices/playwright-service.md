@@ -18,7 +18,7 @@ sources:
     title: "Local compose"
 ---
 
-# Role
+# Firecrawl — Role
 
 `playwright-service` is a **separate browser-rendering microservice**. When the api needs to render or interact with a JavaScript-heavy page, it calls this service instead of embedding a browser in the api process. This isolates browser resource usage (and crashes) from the API.
 

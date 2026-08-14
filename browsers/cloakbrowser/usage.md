@@ -18,7 +18,7 @@ sources:
     author: "site:chromedevtools.github.io"
 ---
 
-# CDP endpoint (port 9222)
+# CloakBrowser — CDP endpoint (port 9222)
 
 With the CLI running (`--remote-debugging-port=9222`), the browser is controllable via the **Chrome DevTools Protocol**:
 

@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Base URL
+# Firecrawl — Base URL
 
 ```
 http://127.0.0.1:3002/v2      # your self-hosted api (host port 3002)

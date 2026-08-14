@@ -23,7 +23,7 @@ sources:
     author: "site:docs.openwebui.com"
 ---
 
-# This machine (deployment notes)
+# OpenWebUI — This machine (deployment notes)
 
 If deployed, the container exposes `:3001` (mapped from the image's `8080`):
 * Image: `ghcr.io/open-webui/open-webui:ollama`

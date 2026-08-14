@@ -19,7 +19,7 @@ sources:
     author: "site:pypi.org"
 ---
 
-# Installation
+# Honcho — Installation
 
 ## 1. SDK (Python)
 

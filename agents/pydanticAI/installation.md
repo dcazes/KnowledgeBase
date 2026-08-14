@@ -23,7 +23,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Installation
+# Pydantic AI — Installation
 
 ## Install
 

@@ -14,7 +14,7 @@ sources:
     title: "OKF specification"
 ---
 
-# Reading Guide
+# Philosophy — Reading Guide
 
 How the vault is organized and how to read it efficiently.
 

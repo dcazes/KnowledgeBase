@@ -20,7 +20,7 @@ sources:
     title: "AI Integration"
 ---
 
-# Install + launch
+# Windsurf (now Devin Desktop) — Install + launch
 
 ```bash
 # download from windsurf.com/download, then:

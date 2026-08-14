@@ -22,7 +22,7 @@ sources:
     title: "SearXNG → Graphify loop (SearXNG AI Integration)"
 ---
 
-# The role in your stack
+# Graphify — The role in your stack
 
 Graphify is the **structuring layer**: it turns ingested material (AnythingLLM/RAG, SearXNG web results, your own notes) into a confidence-tagged graph that agents query instead of re-reading raw files. The KB plan runs inference through a cloud failover proxy on `:4000` (no heavy local models on the GTX 1060).
 

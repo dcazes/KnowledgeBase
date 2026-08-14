@@ -21,7 +21,7 @@ sources:
     title: "API contract - api.md"
 ---
 
-# Integration overview
+# SearXNG — Integration overview
 
 SearXNG is the web-search substrate for this machine's agent stack. Every consumer hits the same HTTP endpoint — `http://127.0.0.1:8088/search?format=json` from the host, or `http://searxng:8080/search?format=json` from inside the Docker `backend` network. See [API](api.md) for the parameter/response contract.
 

@@ -20,7 +20,7 @@ sources:
     title: "Workspaces"
 ---
 
-# Deploy (Docker, :3001)
+# AnythingLLM — Deploy (Docker, :3001)
 
 ```bash
 mkdir -p ~/anythingllm-storage

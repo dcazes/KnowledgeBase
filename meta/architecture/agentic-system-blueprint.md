@@ -66,7 +66,7 @@ sources:
     title: "Memory"
 ---
 
-# Agentic System Blueprint — Your Ideal Stack
+# Architecture — Agentic System Blueprint — Your Ideal Stack
 
 A single reference for the **agentic system you want to build**, end-to-end customizable, centered on **Hermes**. Every architectural choice below is a decision point — pick, swap, or extend. Each section links to the deeper `architecture/` docs and the relevant program folders in this KB.
 

@@ -27,7 +27,7 @@ sources:
     author: "site:docs.searxng.org"
 ---
 
-# Models via the :4000 proxy
+# Dify — Models via the :4000 proxy
 
 Dify's **model providers** panel accepts any **OpenAI-compatible** endpoint. Point Dify at your `:4000` LiteLLM/OpenRouter proxy for chat, completion, and embedding models — see [Model Providers](model-providers.md).
 

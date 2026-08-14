@@ -27,7 +27,7 @@ sources:
     author: "site:docs.github.com"
 ---
 
-# Registries
+# Docker — Registries
 
 A **registry** stores and distributes images.
 

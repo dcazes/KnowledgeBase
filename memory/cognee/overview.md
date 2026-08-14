@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Overview
+# Cognee — Overview
 
 Cognee turns raw unstructured data into **grounded, queryable AI memory**: rather than vectorizing documents and hoping, it extracts a knowledge graph with semantic layers so queries can traverse relationships, not just match text.
 

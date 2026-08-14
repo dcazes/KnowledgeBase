@@ -19,7 +19,7 @@ sources:
     author: "site:pypi.org"
 ---
 
-# Why an MCP server
+# Graphify — Why an MCP server
 
 Graphify's graph is most useful when your agent can *query it live* rather than reading a static report. The MCP server exposes the graph as tools (e.g. `query_graph`) to any MCP-capable client — Hermes, Claude Code, OpenCode, Cursor, etc.
 

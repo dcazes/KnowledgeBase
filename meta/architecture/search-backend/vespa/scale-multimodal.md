@@ -26,7 +26,7 @@ sources:
     title: "Architecture overview"
 ---
 
-# Scale
+# Vespa — Scale
 
 Vespa is built for **billion-scale** corpora: distributed indexing, sharding, and low-latency ranking. This addresses the "when the KB gets massive" requirement directly — you don't outgrow it by adding chunks.
 

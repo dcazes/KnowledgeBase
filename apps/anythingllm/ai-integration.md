@@ -23,7 +23,7 @@ sources:
     title: "Graphify"
 ---
 
-# Models via the :4000 proxy
+# AnythingLLM — Models via the :4000 proxy
 
 Like OpenWebUI, AnythingLLM can use any **OpenAI-compatible** endpoint. Since no Ollama runs locally here, point it at your `:4000` proxy:
 ```

@@ -21,7 +21,7 @@ sources:
     title: "plugin_daemon (architecture)"
 ---
 
-# Workflows
+# Dify — Workflows
 
 Dify's visual canvas lets you compose AI apps from nodes:
 

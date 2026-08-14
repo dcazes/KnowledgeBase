@@ -19,7 +19,7 @@ sources:
     author: "site:docs.windsurf.com"
 ---
 
-# Install
+# Windsurf (now Devin Desktop) — Install
 
 Download the Windsurf app from **windsurf.com** (or your package manager / package for your OS). Codeium provides builds for Linux, macOS, and Windows.
 

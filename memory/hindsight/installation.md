@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Installation
+# Hindsight — Installation
 
 ## 1. CLI (Rust)
 

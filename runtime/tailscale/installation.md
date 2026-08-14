@@ -19,7 +19,7 @@ sources:
     author: "site:tailscale.com"
 ---
 
-# Install (Linux — Debian/Ubuntu)
+# Tailscale — Install (Linux — Debian/Ubuntu)
 
 ```bash
 curl -fsSL https://tailscale.com/install.sh | sh

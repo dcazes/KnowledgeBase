@@ -26,7 +26,7 @@ sources:
     title: "LiteLLM local proxy on this machine"
 ---
 
-# The small-model problem
+# MemOS — The small-model problem
 
 MemOS's published benchmarks (LoCoMo 88.83, LongMemEval 89.20 — OmniMemEval) were measured with large models. Memory quality is gated by the **LLM doing extraction / consolidation / retrieval-planning** — the step most likely to degrade on an 8B model. The mitigation is **model routing by role**, not a different system.
 

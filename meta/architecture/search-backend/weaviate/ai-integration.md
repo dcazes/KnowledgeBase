@@ -27,7 +27,7 @@ sources:
     title: "Graphiti"
 ---
 
-# Pipeline position
+# Weaviate — Pipeline position
 
 ```
 Parsers (Docling/Marker) ─┐

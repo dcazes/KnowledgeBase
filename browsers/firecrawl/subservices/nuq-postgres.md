@@ -18,7 +18,7 @@ sources:
     title: "Local compose"
 ---
 
-# Role
+# Firecrawl — Role
 
 `nuq-postgres` is the **default job/state store** for Firecrawl's queue ("NUQ" = the queue subsystem). It persists job definitions, statuses, and crawl state so work survives restarts. Wired via `POSTGRES_*` env vars (`POSTGRES_HOST=nuq-postgres`, port 5432).
 

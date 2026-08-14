@@ -23,7 +23,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Overview
+# Mem0 — Overview
 
 Mem0 is a **memory layer for LLM agents**: it turns raw conversation/context into structured, persistent, queryable memory that agents can reuse across sessions. It is "MemGPT-style" memory management made self-hostable — the PyPI package `mem0ai` (import `mem0`).
 

@@ -19,7 +19,7 @@ sources:
     author: "site:help.obsidian.md"
 ---
 
-# Core features
+# Obsidian — Core features
 
 * **Bidirectional links** — `[[Note]]` creates a link; the target shows **backlinks** automatically.
 * **Tags** — `#tag` for lightweight categorization (drives search/filters).

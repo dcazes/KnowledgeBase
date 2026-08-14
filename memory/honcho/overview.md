@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Overview
+# Honcho — Overview
 
 Honcho answers "what does this user need / want / believe?" — it maintains a **living model of each user** that agents can query, instead of bolting raw transcripts onto a vector store. It is a conversational memory platform for multi-party interactions.
 

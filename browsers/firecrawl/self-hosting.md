@@ -18,7 +18,7 @@ sources:
     title: "Local compose"
 ---
 
-# Prerequisites
+# Firecrawl — Prerequisites
 
 * Docker + Docker Compose.
 * (Optional) An AI backend for `/extract` and `/agent`: `OPENAI_API_KEY` or `OPENAI_BASE_URL` (e.g. your `:4000` proxy).

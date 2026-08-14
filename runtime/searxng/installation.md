@@ -25,7 +25,7 @@ sources:
     title: "Local settings - programs/firecrawl/firecrawl/searxng-config/settings.yml"
 ---
 
-# Deployment model
+# SearXNG — Deployment model
 
 SearXNG runs as a Docker container **on the shared `backend` network of the Firecrawl stack**. The canonical deployment is the combined compose at `programs/firecrawl/firecrawl/docker-compose.yaml`, which adds a `searxng` service alongside the working Firecrawl services (api, redis, rabbitmq, nuq-postgres, playwright-service, foundationdb). This is verified working: `http://127.0.0.1:8088/search?format=json` returns results.
 

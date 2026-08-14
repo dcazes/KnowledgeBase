@@ -24,7 +24,7 @@ sources:
     title: "SearXNG port"
 ---
 
-# Secure access to your AI stack
+# Tailscale — Secure access to your AI stack
 
 Tailscale's "Secure Access to AI" positions it as the connectivity layer for AI agents and users. Concretely, here it means: your AI services run on localhost and are reachable **only by tailnet members**, not the open internet.
 

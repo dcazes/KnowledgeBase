@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Overview
+# Pydantic — Overview
 
 Pydantic v2 (Rust core) validates your data at the edge: define a schema as a class, hand it untrusted input, and get a typed, validated object or a structured error.
 

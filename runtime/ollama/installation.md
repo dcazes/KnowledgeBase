@@ -19,7 +19,7 @@ sources:
     author: "site:hub.docker.com"
 ---
 
-# Installation
+# Ollama — Installation
 
 ## Option A — Docker (the local checkout's path)
 

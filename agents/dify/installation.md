@@ -21,7 +21,7 @@ sources:
     title: "README quick start"
 ---
 
-# Requirements
+# Dify — Requirements
 
 * Docker + Docker Compose.
 * CPU ≥ 2 cores, RAM ≥ 4 GiB (more for heavier workloads).

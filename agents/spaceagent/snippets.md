@@ -15,7 +15,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Snippets
+# Space Agent — Snippets
 
 ## Desktop
 

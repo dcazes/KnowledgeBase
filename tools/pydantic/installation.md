@@ -19,7 +19,7 @@ sources:
     author: "site:pypi.org"
 ---
 
-# Installation
+# Pydantic — Installation
 
 ## pip
 

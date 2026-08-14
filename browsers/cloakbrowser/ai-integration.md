@@ -23,7 +23,7 @@ sources:
     title: "Firecrawl (contrast)"
 ---
 
-# Agent browser backend (Chromium side)
+# CloakBrowser — Agent browser backend (Chromium side)
 
 CloakBrowser gives agents a **Brave/Chromium** browser they drive over CDP. When a task needs a Chromium engine (site compatibility, CDP tooling, persistent profiles), CloakBrowser is the pick — complementing **Camofox** (Firefox/Camoufox) and **Firecrawl** (Playwright-based bulk extraction).
 

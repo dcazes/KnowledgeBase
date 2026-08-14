@@ -23,7 +23,7 @@ sources:
     author: "site:zero.rocicorp.dev"
 ---
 
-# Overview
+# SurfSense — Overview
 
 SurfSense is a **self-hosted personal knowledge-graph assistant**: it continuously memorizes your web activity, stores it in a local graph database, and lets an AI assistant answer from that personal knowledge.
 

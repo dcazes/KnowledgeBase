@@ -23,7 +23,7 @@ sources:
     author: "site:www.getzep.com"
 ---
 
-# The context graph
+# Graphiti — The context graph
 
 A **context graph** is a temporal graph of entities, relationships, and facts — e.g. *"Kendra loves Adidas shoes (as of March 2026)."* Each fact has a **validity window**: when it became true, and when (if ever) it was superseded. Entities evolve over time with updated summaries. Everything traces back to **episodes** — the raw data that produced it.
 

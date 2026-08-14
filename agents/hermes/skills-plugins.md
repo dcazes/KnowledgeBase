@@ -21,7 +21,7 @@ sources:
     title: "Configuration"
 ---
 
-# Skills (procedural memory)
+# Hermes — Skills (procedural memory)
 
 Skills are Hermes's **procedural memory** — reusable, step-by-step procedures for recurring task types. They live in `~/.hermes/skills/` in `SKILL.md` format.
 

@@ -18,7 +18,7 @@ sources:
     title: "Local launcher"
 ---
 
-# Launch (this machine)
+# Obsidian — Launch (this machine)
 
 The launcher at `programs/Obsidian.desktop` runs:
 ```bash

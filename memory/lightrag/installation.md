@@ -19,7 +19,7 @@ sources:
     author: "site:pypi.org"
 ---
 
-# Installation
+# LightRAG — Installation
 
 ## 1. Python library
 

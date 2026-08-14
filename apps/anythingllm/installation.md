@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Option A — Docker (multi-user / server)
+# AnythingLLM — Option A — Docker (multi-user / server)
 
 ```bash
 # 1) storage dir MUST be owned by UID 1000 (container writes as 1000)

@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# AI Integration
+# Mem0 — AI Integration
 
 ## Python SDK (primary)
 

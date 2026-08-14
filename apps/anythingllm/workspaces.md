@@ -18,7 +18,7 @@ sources:
     title: "Overview"
 ---
 
-# What a workspace is
+# AnythingLLM — What a workspace is
 
 A **workspace** is an isolated knowledge domain. Each one keeps its own:
 * **Vector index** (default LanceDB) — documents uploaded there stay separate.

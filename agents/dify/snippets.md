@@ -20,7 +20,7 @@ sources:
     title: "Model providers"
 ---
 
-# Deploy
+# Dify — Deploy
 
 ```bash
 cd programs/archive/dify/docker

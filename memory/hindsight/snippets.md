@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Snippets
+# Hindsight — Snippets
 
 ## CLI
 

@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# AI Integration
+# Pydantic AI — AI Integration
 
 PydanticAI is the structured-output agent framework to pair with [Pydantic](../../tools/pydantic/index.md) in this stack.
 

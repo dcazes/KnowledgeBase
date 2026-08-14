@@ -15,7 +15,7 @@ sources:
     author: "site:github.com"
 ---
 
-# Configuration
+# Space Agent — Configuration
 
 ## Users & groups
 

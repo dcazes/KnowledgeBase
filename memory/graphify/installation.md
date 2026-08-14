@@ -23,7 +23,7 @@ sources:
     author: "site:pypi.org"
 ---
 
-# Requirements
+# Graphify — Requirements
 
 * **Python 3.10+**
 * A package manager: `pip`, `pipx`, or `uv` (uv recommended).

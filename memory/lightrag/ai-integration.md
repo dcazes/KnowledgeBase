@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# AI Integration
+# LightRAG — AI Integration
 
 ## Python API (library mode)
 

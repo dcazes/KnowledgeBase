@@ -19,7 +19,7 @@ sources:
     author: "site:github.com"
 ---
 
-# AI Integration
+# Hindsight — AI Integration
 
 Hindsight is designed for agent-embedding: **memory passes** that make agents learn between tasks.
 

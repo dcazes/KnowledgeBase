@@ -30,7 +30,7 @@ sources:
     title: "Local settings - programs/firecrawl/firecrawl/searxng-config/settings.yml"
 ---
 
-# Configuration model
+# SearXNG — Configuration model
 
 SearXNG is configured by a single `settings.yml`. By default it ships with **all defaults baked in**; your file only needs to override what you want to change. Two modes:
 

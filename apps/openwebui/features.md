@@ -21,7 +21,7 @@ sources:
     title: "Firecrawl MCP/integration"
 ---
 
-# Extension model
+# OpenWebUI — Extension model
 
 OpenWebUI is extensible through several building blocks:
 

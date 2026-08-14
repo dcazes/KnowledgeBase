@@ -18,7 +18,7 @@ sources:
     title: "Local launcher - programs/Camofox Launcher.desktop"
 ---
 
-# The problem Camoufox solves
+# Camofox — The problem Camoufox solves
 
 Automated browsers leak "bot-ness" through dozens of signals: a consistent UA string, missing/forged `navigator` properties, WebGL/Canvas fingerprints that never vary, automation flags (`navigator.webdriver`), and impossible timing. Sites (and their CAPTCHA providers) fingerprint these and block or challenge the client.
 

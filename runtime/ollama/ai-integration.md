@@ -19,7 +19,7 @@ sources:
     author: "site:docs.ollama.com"
 ---
 
-# AI Integration
+# Ollama — AI Integration
 
 Ollama is the **local inference hub** — anything that speaks OpenAI-compatible REST can use it via `/v1`.
 

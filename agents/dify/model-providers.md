@@ -22,7 +22,7 @@ sources:
     title: "Architecture / proxy fit"
 ---
 
-# Model support
+# Dify — Model support
 
 Dify integrates **hundreds** of proprietary/open LLMs from dozens of providers, plus **any OpenAI-API-compatible model** (GPT, Mistral, Llama3, local servers, proxies).
 
