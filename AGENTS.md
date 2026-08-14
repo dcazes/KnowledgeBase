@@ -15,15 +15,15 @@ timestamp: 2026-08-13T00:00:00Z
 
 ## Layout
 
-- **One top-level folder per program** (`docker/`, `firecrawl/`, `camofox/`, `memos/`, ...). Each has a standard doc set: `index.md`, `overview.md`, `installation.md`/`configuration.md`, `snippets.md`, `ai-integration.md`, `alternatives.md`, plus topic docs.
+- **One top-level folder per program** (`runtime/docker/`, `browsers/firecrawl/`, `browsers/camofox/`, `memory/memos/`, ...). Each has a standard doc set: `index.md`, `overview.md`, `installation.md`/`configuration.md`, `snippets.md`, `ai-integration.md`, `alternatives.md`, plus topic docs.
 - **`index.md` at root** is the master index with a build-status table. Update it when adding a program or changing doc counts.
-- **`architecture/`** holds meta/comparison docs (search backends, memory, blueprint). It may still contain **stale program copies** (e.g. `architecture/memos/`) left over from the 2026-07-16 flatten to top-level folders — **top-level folders are authoritative**.
-- **`agent-stack/` is a NOT-deployed compose prototype** (template with `CHANGE_ME`/placeholder secrets). Treat `docker-compose.yml` there as a design doc, not live config.
+- **`meta/architecture/`** holds meta/comparison docs (search backends, memory, blueprint). It may still contain **stale program copies** (e.g. `meta/architecture/memos/`) left over from the 2026-07-16 flatten to top-level folders — **top-level folders are authoritative**.
+- **`agents/agent-stack/` is a NOT-deployed compose prototype** (template with `CHANGE_ME`/placeholder secrets). Treat `docker-compose.yml` there as a design doc, not live config.
 
 ## Doc conventions (OKF v0.1)
 
 - Every concept doc carries YAML frontmatter: `type` (Software | Playbook | Reference | ...), `title`, `description`, `resource` (official URL), `tags`, `timestamp` (ISO-8601 UTC).
-- Every doc **ends with a `# Citations` block**: numbered `[1] [Name](url)` links to official/trusted sources. Keep numbering sequential.
+- Every doc **ends with a `# Citations` block**: numbered `[1] [Name](https://example.com)` links to official/trusted sources. Keep numbering sequential.
 - **Local source paths use `/../../programs/<name>/`** — these resolve to the actual checkouts at `/home/daniel/Desktop/programs/` (outside this repo). Read those checkouts to verify commands/versions before writing docs.
 - Facts must be **verified, not assumed**: docs distinguish live state ("currently running") from config-derived notes ("from config, not live state"). Use a `## Last verified` dated line in `index.md`; update it and the root build table when you change a program's docs.
 

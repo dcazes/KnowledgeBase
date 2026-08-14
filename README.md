@@ -12,9 +12,9 @@ The vault is an Obsidian-ready collection. **Start at [index.md](index.md)** —
 
 ## Quick index
 
-- **Web & search**: [Firecrawl](firecrawl/index.md), [SearXNG](searxng/index.md), [SurfSense](surfsense/index.md), [Camofox](camofox/index.md), [CloakBrowser](cloakbrowser/index.md)
-- **Memory & knowledge**: [MemOS](memos/index.md), [Mem0](mem0/index.md), [Graphiti](graphiti/index.md), [LightRAG](lightrag/index.md), [Cognee](cognee/index.md), [Honcho](honcho/index.md), [Supermemory](supermemory/index.md), [Hindsight](hindsight/index.md)
-- **AI agents & LLM apps**: [Dify](dify/index.md), [OpenWebUI](openwebui/index.md), [PydanticAI](pydanticAI/index.md), [Pydantic](pydantic/index.md), [Hermes](hermes/index.md), [OpenClaw](openclaw/index.md), [OpenConcho](openconcho/index.md), [Space Agent](spaceagent/index.md), [Ollama](ollama/index.md)
-- **Infrastructure**: [Docker](docker/index.md), [Tailscale](tailscale/index.md), [Frigate](frigate/index.md), [Graphify](graphify/index.md), [Agent Stack](agent-stack/index.md)
+- **Web & search**: [Firecrawl](browsers/firecrawl/index.md), [SearXNG](runtime/searxng/index.md), [SurfSense](browsers/surfsense/index.md), [Camofox](browsers/camofox/index.md), [CloakBrowser](browsers/cloakbrowser/index.md)
+- **Memory & knowledge**: [MemOS](memory/memos/index.md), [Mem0](memory/mem0/index.md), [Graphiti](memory/graphiti/index.md), [LightRAG](memory/lightrag/index.md), [Cognee](memory/cognee/index.md), [Honcho](memory/honcho/index.md), [Supermemory](memory/supermemory/index.md), [Hindsight](memory/hindsight/index.md)
+- **AI agents & LLM apps**: [Dify](agents/dify/index.md), [OpenWebUI](apps/openwebui/index.md), [PydanticAI](agents/pydanticAI/index.md), [Pydantic](tools/pydantic/index.md), [Hermes](agents/hermes/index.md), [OpenClaw](agents/openclaw/index.md), [OpenConcho](memory/openconcho/index.md), [Space Agent](agents/spaceagent/index.md), [Ollama](runtime/ollama/index.md)
+- **Infrastructure**: [Docker](runtime/docker/index.md), [Tailscale](runtime/tailscale/index.md), [Frigate](tools/frigate/index.md), [Graphify](memory/graphify/index.md), [Agent Stack](agents/agent-stack/index.md)
 
 See [index.md](index.md) for the complete list.

@@ -1,9 +1,9 @@
 # KBv2 gitignore
 # Ignore secrets files
-*/secrets.md
+**/secrets.md
 
 # Ignore tracker files
-*/README_TOCONTINUE.md
+**/README_TOCONTINUE.md
 
 # Ignore Obsidian client-local state
 .obsidian/

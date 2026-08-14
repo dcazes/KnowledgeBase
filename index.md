@@ -13,42 +13,42 @@ An Open Knowledge Format (OKF v0.1) bundle of structured notes on the software i
 
 ## Programs (all built)
 
-* [Docker](docker/index.md) - containerization platform; the runtime foundation for the rest of the stack
-* [SearXNG](searxng/index.md) - self-hosted metasearch engine, deployed as a service on the Firecrawl `backend` network (host `:8088` → container `8080`)
-* [Architecture](architecture/index.md) - meta-folder: search-backend (Vespa/Weaviate) + agent memory (Graphiti/Mem0) + agentic system blueprint
-* [Graphify](graphify/index.md) - turns any folder into a confidence-tagged, queryable knowledge graph (MCP-enabled; Hermes client)
-* [Graphiti](graphiti/index.md) - temporal context-graph engine (Zep/Neo4j, v0.29.3) for agent memory; distinct from Graphify
-* [MemOS](memos/index.md) - MemOS v2.0.27 (PyPI `MemoryOS`): hierarchical agent memory service with graph view, tags, insights
-* [Firecrawl](firecrawl/index.md) - self-hosted web context API (search/scrape/crawl/extract); multi-service Docker stack + per-subservice docs
-* [Dify](dify/index.md) - open-source LLM app platform (workflows, RAG, agents, model management); source archived at `programs/archive/dify`
-* [Camofox](camofox/index.md) - local browser server (Camoufox/Firefox) for anti-detection, headed browsing + VNC
-* [CloakBrowser](cloakbrowser/index.md) - Chromium-based Playwright/Puppeteer wrapper for agent browser automation (not a standalone CDP server)
-* [OpenWebUI](openwebui/index.md) - self-hosted AI chat platform (host `:3001` → container `8080`); RAG + web search
-* [PydanticAI](pydanticAI/index.md) - type-safe agent framework from Pydantic (v2.29.0); agent SDK for the stack
-* [Agent Stack](agent-stack/index.md) - all-in-one prototype wiring the whole agentic stack into one Docker Compose (`include`)
-* [VSCode](vscode/index.md) - open-source AI code editor; editor for `programs/*` repos and agent skills
-* [Tailscale](tailscale/index.md) - Zero Trust mesh VPN (WireGuard) for secure access to local services
-* [AnythingLLM](anythingllm/index.md) - all-in-one local-first RAG chat app with workspaces and agent skills
-* [Frigate](frigate/index.md) - open-source NVR with real-time AI object detection for IP cameras (ONNX/TensorRT, NVIDIA GPU)
-* [Obsidian](obsidian/index.md) - local-first Markdown PKM (this vault); Graph view, Dataview, plugins
-* [Antigravity](antigravity/index.md) - Anthropic's Antigravity (v2.8.0, cloud-hosted); local agent-stack docs are in [Agent Stack](agent-stack/index.md)
-* [Cursor](cursor/index.md) - Cursor AI code editor (SaaS/desktop); agent skills, workspace rules
-* [Hermes](hermes/index.md) - Hermes Agent terminal AI (v0.20.0); skills, tools, cron, delegation
-* [OpenClaw](openclaw/index.md) - OpenClaw local agent orchestration (v2026.7.1-2); skills, memory, delegation
-* [OpenCode](opencode/index.md) - OpenCode terminal AI agent (anomalyco, v1.18.18 upstream / 1.17.18 on this instance); skills, tools, delegation
-* [Windsurf](windsurf/index.md) - Devin Desktop by Cognition (formerly Codeium's Windsurf); Devin Local agent flows, workspace rules
-* [Mem0](mem0/index.md) - memory layer for AI agents (v2.0.12 local); short/memory/entity/graph memories, OpenMemory UI companion
-* [LightRAG](lightrag/index.md) - simple, fast RAG engine (v1.5.5 local, server `:9621`); hybrid graph+vector retrieval
-* [Ollama](ollama/index.md) - local LLM runner (compose-only, `ollama/ollama:latest`, `:11434`); offline models for agents
-* [Cognee](cognee/index.md) - ECL pipeline memory (v1.4.0 local): extract/cognify/load knowledge graph for agents
-* [Honcho](honcho/index.md) - agentic memory server (v3.0.11 local, SDK `honcho-ai`); conversational context for agents
-* [Supermemory](supermemory/index.md) - open-source memory layer (no repo here; `.supermemory/` data dir present, app ran 2026-07)
-* [SurfSense](surfsense/index.md) - personal knowledge base + scrapers (RUNNING: 9 containers: proxy `:3929`/`:4443`, backend 8000, frontend `:3000`, searxng `:8080`, zero-cache)
-* [Hindsight](hindsight/index.md) - agent memory system (v0.8.4, vectorize-io); SOTA LongMemEval, arXiv 2512.12818
-* [OpenConcho](openconcho/index.md) - Honcho UI (web/desktop, v0.16.0 local) for browsing/chatting agent memory
-* [Pydantic](pydantic/index.md) - data validation & settings for Python (system 2.9.0 / venv 2.13.4); foundation of PydanticAI
-* [Space Agent](spaceagent/index.md) - Agent Zero's browser-runtime agent (agent0ai/space-agent, no semver); empty local dir, doc-from-upstream
-* [Philosophy](philosophy/index.md) - design philosophy of this stack: principles + reading guide (seed)
+* [Docker](runtime/docker/index.md) - containerization platform; the runtime foundation for the rest of the stack
+* [SearXNG](runtime/searxng/index.md) - self-hosted metasearch engine, deployed as a service on the Firecrawl `backend` network (host `:8088` → container `8080`)
+* [Architecture](meta/architecture/index.md) - meta-folder: search-backend (Vespa/Weaviate) + agent memory (Graphiti/Mem0) + agentic system blueprint
+* [Graphify](memory/graphify/index.md) - turns any folder into a confidence-tagged, queryable knowledge graph (MCP-enabled; Hermes client)
+* [Graphiti](memory/graphiti/index.md) - temporal context-graph engine (Zep/Neo4j, v0.29.3) for agent memory; distinct from Graphify
+* [MemOS](memory/memos/index.md) - MemOS v2.0.27 (PyPI `MemoryOS`): hierarchical agent memory service with graph view, tags, insights
+* [Firecrawl](browsers/firecrawl/index.md) - self-hosted web context API (search/scrape/crawl/extract); multi-service Docker stack + per-subservice docs
+* [Dify](agents/dify/index.md) - open-source LLM app platform (workflows, RAG, agents, model management); source archived at `programs/archive/dify`
+* [Camofox](browsers/camofox/index.md) - local browser server (Camoufox/Firefox) for anti-detection, headed browsing + VNC
+* [CloakBrowser](browsers/cloakbrowser/index.md) - Chromium-based Playwright/Puppeteer wrapper for agent browser automation (not a standalone CDP server)
+* [OpenWebUI](apps/openwebui/index.md) - self-hosted AI chat platform (host `:3001` → container `8080`); RAG + web search
+* [PydanticAI](agents/pydanticAI/index.md) - type-safe agent framework from Pydantic (v2.29.0); agent SDK for the stack
+* [Agent Stack](agents/agent-stack/index.md) - all-in-one prototype wiring the whole agentic stack into one Docker Compose (`include`)
+* [VSCode](editors/vscode/index.md) - open-source AI code editor; editor for `programs/*` repos and agent skills
+* [Tailscale](runtime/tailscale/index.md) - Zero Trust mesh VPN (WireGuard) for secure access to local services
+* [AnythingLLM](apps/anythingllm/index.md) - all-in-one local-first RAG chat app with workspaces and agent skills
+* [Frigate](tools/frigate/index.md) - open-source NVR with real-time AI object detection for IP cameras (ONNX/TensorRT, NVIDIA GPU)
+* [Obsidian](tools/obsidian/index.md) - local-first Markdown PKM (this vault); Graph view, Dataview, plugins
+* [Antigravity](agents/antigravity/index.md) - Anthropic's Antigravity (v2.8.0, cloud-hosted); local agent-stack docs are in [Agent Stack](agents/agent-stack/index.md)
+* [Cursor](editors/cursor/index.md) - Cursor AI code editor (SaaS/desktop); agent skills, workspace rules
+* [Hermes](agents/hermes/index.md) - Hermes Agent terminal AI (v0.20.0); skills, tools, cron, delegation
+* [OpenClaw](agents/openclaw/index.md) - OpenClaw local agent orchestration (v2026.7.1-2); skills, memory, delegation
+* [OpenCode](agents/opencode/index.md) - OpenCode terminal AI agent (anomalyco, v1.18.18 upstream / 1.17.18 on this instance); skills, tools, delegation
+* [Windsurf](editors/windsurf/index.md) - Devin Desktop by Cognition (formerly Codeium's Windsurf); Devin Local agent flows, workspace rules
+* [Mem0](memory/mem0/index.md) - memory layer for AI agents (v2.0.12 local); short/memory/entity/graph memories, OpenMemory UI companion
+* [LightRAG](memory/lightrag/index.md) - simple, fast RAG engine (v1.5.5 local, server `:9621`); hybrid graph+vector retrieval
+* [Ollama](runtime/ollama/index.md) - local LLM runner (compose-only, `ollama/ollama:latest`, `:11434`); offline models for agents
+* [Cognee](memory/cognee/index.md) - ECL pipeline memory (v1.4.0 local): extract/cognify/load knowledge graph for agents
+* [Honcho](memory/honcho/index.md) - agentic memory server (v3.0.11 local, SDK `honcho-ai`); conversational context for agents
+* [Supermemory](memory/supermemory/index.md) - open-source memory layer (no repo here; `.supermemory/` data dir present, app ran 2026-07)
+* [SurfSense](browsers/surfsense/index.md) - personal knowledge base + scrapers (RUNNING: 9 containers: proxy `:3929`/`:4443`, backend 8000, frontend `:3000`, searxng `:8080`, zero-cache)
+* [Hindsight](memory/hindsight/index.md) - agent memory system (v0.8.4, vectorize-io); SOTA LongMemEval, arXiv 2512.12818
+* [OpenConcho](memory/openconcho/index.md) - Honcho UI (web/desktop, v0.16.0 local) for browsing/chatting agent memory
+* [Pydantic](tools/pydantic/index.md) - data validation & settings for Python (system 2.9.0 / venv 2.13.4); foundation of PydanticAI
+* [Space Agent](agents/spaceagent/index.md) - Agent Zero's browser-runtime agent (agent0ai/space-agent, no semver); empty local dir, doc-from-upstream
+* [Philosophy](meta/philosophy/index.md) - design philosophy of this stack: principles + reading guide (seed)
 
 ## Build status
 
