@@ -54,7 +54,7 @@ A **memory operating system** for LLM agents — unifies store / retrieve / mana
 ## Cross-references
 
 * **Graphiti** is the other memory layer in this stack — [Graphiti](../graphiti/index.md). MemOS = structured/textual/preference/skill memory; Graphiti = temporal context graph.
-* The agent stack wires both — [Agent Stack](../../agents/agent-stack/index.md).
+* The agent stack wires both — Agent Stack.
 * Local deploy path: `pip install MemoryOS`; no `programs/memos` checkout exists as of 2026-08-12.
 
 ## Last verified

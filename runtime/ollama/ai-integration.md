@@ -35,7 +35,7 @@ Same surface as `/v1/embeddings` for `nomic-embed-text`.
 
 ## Stack wiring
 
-* **[LiteLLM](../../agents/agent-stack/index.md)** — model entry `ollama/llama3.1` in the proxy config → unified `/v1` for the agent stack.
+* **LiteLLM** — model entry `ollama/llama3.1` in the proxy config → unified `/v1` for the agent stack.
 * **[AnythingLLM](../../apps/anythingllm/index.md)** — provider "Ollama", base URL `http://host.docker.internal:11434` (or `localhost` on host install).
 * **[OpenWebUI](../../apps/openwebui/index.md)** — Ollama connection on :11434 pulls/uses models natively.
 * **[Mem0](../../memory/mem0/index.md)** — `provider: "ollama"` for LLM + embedder.

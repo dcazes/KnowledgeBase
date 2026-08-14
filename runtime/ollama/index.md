@@ -40,7 +40,7 @@ On this machine: only `programs/ollama/docker-compose.yaml` exists (image `ollam
 
 ## Related
 
-* [LiteLLM](../../agents/agent-stack/index.md) — proxy in front of Ollama for unified API
+* LiteLLM — proxy in front of Ollama for unified API
 * [AnythingLLM](../../apps/anythingllm/index.md), [OpenWebUI](../../apps/openwebui/index.md) — chat UIs that use Ollama as provider
 * [Mem0](../../memory/mem0/index.md), [LightRAG](../../memory/lightrag/index.md) — can use Ollama as their local LLM/embedder
 

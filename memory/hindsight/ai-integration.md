@@ -51,4 +51,4 @@ The repo ships `skills/` — ready-made agent skills that wrap Hindsight memory 
 ## In this stack
 
 * Not deployed here (2026-08-13). Complements [Mem0](../mem0/index.md) (facts) and [Graphiti](../graphiti/index.md) (temporal provenance) — Hindsight's differentiator is the **learning pass** (behavior improvement) rather than storage/recall.
-* See the [memory comparison](../../meta/architecture/memory/memory-comparison.md) for the full landscape.
+* See the [memory comparison](../alternatives.md) for the full landscape.

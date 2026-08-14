@@ -58,4 +58,4 @@ curl "http://localhost:3000/api/memories/search?query=coffee&user_id=alice" \
 
 * No active Mem0 deployment on this machine (local checkout only, 2026-08-13).
 * If wired up, the natural pattern is Ollama LLM + embedded Qdrant + scoped `user_id` per agent — no cloud keys.
-* Competes with [MemOS](../memos/index.md) (the deployed-via-pip option) and [Graphiti](../graphiti/index.md) (temporal graph MCP). Mem0 = pragmatic per-user memory; MemOS = full memory-OS with scheduling; Graphiti = temporal facts with provenance. See the [memory comparison](../../meta/architecture/memory/memory-comparison.md).
+* Competes with [MemOS](../memos/index.md) (the deployed-via-pip option) and [Graphiti](../graphiti/index.md) (temporal graph MCP). Mem0 = pragmatic per-user memory; MemOS = full memory-OS with scheduling; Graphiti = temporal facts with provenance. See the [memory comparison](../alternatives.md).

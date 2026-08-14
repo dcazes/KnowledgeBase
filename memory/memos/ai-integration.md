@@ -20,9 +20,6 @@ sources:
   - id: graphiti
     resource: "../graphiti/index.md"
     title: "Graphiti"
-  - id: agent-stack
-    resource: "../../agents/agent-stack/index.md"
-    title: "Agent Stack"
 ---
 
 # MemOS as agent memory
@@ -59,7 +56,7 @@ Hermes / OpenCode / Cursor / Windsurf / OpenClaw
 
 * **MemOS** = general / structured memory (textual, tree, preference, skill, parametric) — the "operating system" for memory.
 * **Graphiti** = temporal context graph (time-aware episodes, provenance).
-* They are complementary: MemOS for durable structured memory, Graphiti for evolving relational/episodic memory. Both can be wired into the same agent via MCP (see [Agent Stack](../../agents/agent-stack/index.md)).
+* They are complementary: MemOS for durable structured memory, Graphiti for evolving relational/episodic memory. Both can be wired into the same agent via MCP (see Agent Stack).
 
 ## Notes
 

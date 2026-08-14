@@ -42,7 +42,7 @@ A Python library for **AI-oriented agent development** from the pydantic team. T
 ## Role here (this stack)
 
 * **Agent framework** for building structured-output agents; model-agnostic — OpenAI, Anthropic, Gemini, and local models via Ollama (`ollama:gemma3:12b`, etc.).
-* Complements the rest of the stack: [Agent Stack](../agent-stack/index.md) (LiteLLM proxy :4000), [Hermes](../hermes/index.md) / [OpenCode](../opencode/index.md) as the CLI agent front-ends, [MemOS](../../memory/memos/index.md) for agent memory.
+* Complements the rest of the stack: Agent Stack (LiteLLM proxy :4000), [Hermes](../hermes/index.md) / [OpenCode](../opencode/index.md) as the CLI agent front-ends, [MemOS](../../memory/memos/index.md) for agent memory.
 * Not yet wired into a running service here — document from upstream; no dedicated checkout in `programs/` (uses the `pydantic` checkout context for dependency).
 
 ## Last verified

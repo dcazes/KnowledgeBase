@@ -21,9 +21,6 @@ sources:
     resource: "https://mem0.ai/blog/memory-poisoning-how-bad-inputs-corrupt-your-ai-agent-s-memory"
     title: "Memory poisoning writeup (Mem0)"
     author: "site:mem0.ai"
-  - id: litellm-local-proxy-on-this-machine
-    resource: "../../agents/agent-stack/index.md"
-    title: "LiteLLM local proxy on this machine"
 ---
 
 # MemOS — The small-model problem

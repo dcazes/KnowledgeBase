@@ -27,7 +27,7 @@ The decisions in this stack reduce to a handful of recurring principles.
 ## 2. Agent-centric memory
 
 * Memory is a first-class citizen, not an afterthought: [MemOS](../../memory/memos/index.md), [mem0](../../memory/mem0/index.md), [honcho](../../memory/honcho/index.md), [LightRAG](../../memory/lightrag/index.md), [cognee](../../memory/cognee/index.md), [supermemory](../../memory/supermemory/index.md).
-* Different memory shapes for different jobs (graph, vector, key-value, agentic memory) — see [Architecture → Memory](../architecture/memory/memory-comparison.md).
+* Different memory shapes for different jobs (graph, vector, key-value, agentic memory) — see [Memory comparison](../../memory/alternatives.md).
 
 ## 3. Standards & verification over vibes
 
@@ -38,7 +38,7 @@ The decisions in this stack reduce to a handful of recurring principles.
 ## 4. Layered tooling, not monoliths
 
 * Each tool does one job well; compose them (LiteLLM routes models, SearXNG searches, Firecrawl scrapes, Hermes delegates).
-* The [Agent Stack](../../agents/agent-stack/index.md) is the (not-deployed) composition prototype of this idea.
+* The Agent Stack is the (not-deployed) composition prototype of this idea.
 
 ## 5. Document reality, flag gaps
 

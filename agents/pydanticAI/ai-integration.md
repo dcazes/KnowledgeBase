@@ -48,7 +48,7 @@ Same pattern as the local `pydantic_ai_template.py` (see [Pydantic → AI Integr
 
 ## Local models (offline)
 
-Use `ollama:` providers for a fully-local agent (see [Ollama](../../runtime/ollama/index.md)) — e.g. `Agent("ollama:gemma3:12b")`. Complements the [Agent Stack](../agent-stack/index.md) (LiteLLM :4000) and [MemOS](../../memory/memos/index.md) for memory.
+Use `ollama:` providers for a fully-local agent (see [Ollama](../../runtime/ollama/index.md)) — e.g. `Agent("ollama:gemma3:12b")`. Complements the Agent Stack (LiteLLM :4000) and [MemOS](../../memory/memos/index.md) for memory.
 
 ## Fit here
 

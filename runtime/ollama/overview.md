@@ -39,4 +39,4 @@ Ollama is the easiest way to run open-weight LLMs locally: `ollama pull llama3.1
 
 ## Why it fits this stack
 
-Single local inference point for [Mem0](../../memory/mem0/index.md), [LightRAG](../../memory/lightrag/index.md), [AnythingLLM](../../apps/anythingllm/index.md), [OpenWebUI](../../apps/openwebui/index.md), and the [agent stack](../../agents/agent-stack/index.md) (via LiteLLM proxy) — no cloud keys, `:11434` shared.
+Single local inference point for [Mem0](../../memory/mem0/index.md), [LightRAG](../../memory/lightrag/index.md), [AnythingLLM](../../apps/anythingllm/index.md), [OpenWebUI](../../apps/openwebui/index.md), and the agent stack (via LiteLLM proxy) — no cloud keys, `:11434` shared.

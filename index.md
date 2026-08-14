@@ -1,7 +1,7 @@
 ---
 type: Hub
 title: Software Knowledge Base
-description: OKF v0.2 bundle of 272 structured notes across 36 programs — the local `programs/` stack, editors, memory/graph engines, agent frameworks, and architecture meta-docs. Cross-linked index of every concept group.
+description: OKF v0.2 bundle of 250 structured notes across 34 programs — the local `programs/` stack, editors, memory/graph engines, and agent frameworks. Cross-linked index of every concept group.
 resource: file:///home/daniel/Desktop/kbv2
 tags: [knowledge-base, okf, programs, index, hub]
 generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
@@ -22,7 +22,6 @@ An Open Knowledge Format (OKF v0.2) bundle of structured notes on the software i
 
 * [Docker](runtime/docker/index.md) - containerization platform; the runtime foundation for the rest of the stack
 * [SearXNG](runtime/searxng/index.md) - self-hosted metasearch engine, deployed as a service on the Firecrawl `backend` network (host `:8088` → container `8080`)
-* [Architecture](meta/architecture/index.md) - meta-folder: search-backend (Vespa/Weaviate) + agent memory (Graphiti/Mem0) + agentic system blueprint
 * [Graphify](memory/graphify/index.md) - turns any folder into a confidence-tagged, queryable knowledge graph (MCP-enabled; Hermes client)
 * [Graphiti](memory/graphiti/index.md) - temporal context-graph engine (Zep/Neo4j, v0.29.3) for agent memory; distinct from Graphify
 * [MemOS](memory/memos/index.md) - MemOS v2.0.27 (PyPI `MemoryOS`): hierarchical agent memory service with graph view, tags, insights
@@ -32,13 +31,13 @@ An Open Knowledge Format (OKF v0.2) bundle of structured notes on the software i
 * [CloakBrowser](browsers/cloakbrowser/index.md) - Chromium-based Playwright/Puppeteer wrapper for agent browser automation (not a standalone CDP server)
 * [OpenWebUI](apps/openwebui/index.md) - self-hosted AI chat platform (host `:3001` → container `8080`); RAG + web search
 * [PydanticAI](agents/pydanticAI/index.md) - type-safe agent framework from Pydantic (v2.29.0); agent SDK for the stack
-* [Agent Stack](agents/agent-stack/index.md) - all-in-one prototype wiring the whole agentic stack into one Docker Compose (`include`)
+* Agent Stack - all-in-one prototype wiring the whole agentic stack into one Docker Compose (`include`)
 * [VSCode](editors/vscode/index.md) - open-source AI code editor; editor for `programs/*` repos and agent skills
 * [Tailscale](runtime/tailscale/index.md) - Zero Trust mesh VPN (WireGuard) for secure access to local services
 * [AnythingLLM](apps/anythingllm/index.md) - all-in-one local-first RAG chat app with workspaces and agent skills
 * [Frigate](tools/frigate/index.md) - open-source NVR with real-time AI object detection for IP cameras (ONNX/TensorRT, NVIDIA GPU)
 * [Obsidian](tools/obsidian/index.md) - local-first Markdown PKM (this vault); Graph view, Dataview, plugins
-* [Antigravity](agents/antigravity/index.md) - Anthropic's Antigravity (v2.8.0, cloud-hosted); local agent-stack docs are in [Agent Stack](agents/agent-stack/index.md)
+* [Antigravity](agents/antigravity/index.md) - Anthropic's Antigravity (v2.8.0, cloud-hosted); local agent-stack docs are in Agent Stack
 * [Cursor](editors/cursor/index.md) - Cursor AI code editor (SaaS/desktop); agent skills, workspace rules
 * [Hermes](agents/hermes/index.md) - Hermes Agent terminal AI (v0.20.0); skills, tools, cron, delegation
 * [OpenClaw](agents/openclaw/index.md) - OpenClaw local agent orchestration (v2026.7.1-2); skills, memory, delegation
@@ -63,7 +62,6 @@ An Open Knowledge Format (OKF v0.2) bundle of structured notes on the software i
 |---------|------|--------|
 | Docker | 9 | ✅ |
 | SearXNG | 9 | ✅ |
-| Architecture | 15 | ✅ |
 | Graphify | 8 | ✅ |
 | Graphiti | 9 | ✅ |
 | MemOS | 7 | ✅ (NEW) |
@@ -73,7 +71,6 @@ An Open Knowledge Format (OKF v0.2) bundle of structured notes on the software i
 | CloakBrowser | 6 | ✅ |
 | OpenWebUI | 9 | ✅ |
 | PydanticAI | 7 | ✅ (NEW) |
-| Agent Stack | 7 | ✅ (NEW) |
 | VSCode | 6 | ✅ |
 | Tailscale | 6 | ✅ |
 | AnythingLLM | 8 | ✅ |
@@ -98,7 +95,7 @@ An Open Knowledge Format (OKF v0.2) bundle of structured notes on the software i
 | Space Agent | 6 | ✅ (NEW, P3) |
 | Philosophy | 3 | ✅ (NEW, P3 seed) |
 
-**Total: 261 program docs across 36 programs** (272 md files in the vault — the +11 are 7 category-level `alternatives.md` comparison docs, the root `index.md`, `IDEA.md`, `AGENTS.md`, and the `.slim/` refresh tracker, none of which are program docs). Every concept doc carries OKF `type` frontmatter; every doc lists official/trusted sources in a `sources:` frontmatter block. Backlink audit (2026-08-13, post-alternatives-consolidation): 0 broken links.
+**Total: 239 program docs across 34 programs** (250 md files in the vault — the +11 are 7 category-level `alternatives.md` comparison docs, the root `index.md`, `IDEA.md`, `AGENTS.md`, and the `.slim/` refresh tracker, none of which are program docs). Every concept doc carries OKF `type` frontmatter; every doc lists official/trusted sources in a `sources:` frontmatter block. Backlink audit (2026-08-13, post-alternatives-consolidation): 0 broken links.
 
 
 ## Category alternatives
@@ -117,3 +114,5 @@ Cross-program comparison docs — each consolidates the former per-program `alte
 **2026-08-13** — Root index rebuilt after the 2026-08-12 deep refresh (P1–P2) and Oracle gate-2 review: counts corrected, ports/ownership facts aligned (SearXNG 8088, OpenWebUI 3001, Antigravity cloud, Windsurf→Devin), MemOS/PydanticAI/Agent Stack rows added. **P3 (2026-08-13)**: 12 program folders added (Mem0, LightRAG, Ollama, Cognee, Honcho, Supermemory, SurfSense, Hindsight, OpenConcho, Pydantic, Space Agent, Philosophy), PydanticAI expanded 2→8; total 293 program docs across 36 programs. **Gate-3 fixes (2026-08-13)**: Honcho/OpenConcho/Hindsight install facts corrected to verified SDK/distribution reality; PydanticAI advisory + Python req + version corrected; Mem0 pinned to PyPI 2.0.18; SurfSense ports marked internal-vs-published.
 
 **Consolidation + graph pass (2026-08-13)**: 32 per-program `alternatives.md` merged into 7 category-level editorial comparison docs; 163 standard-doc H1 titles prefixed with program name for distinct Obsidian graph nodes; root build table + totals updated (261 program docs / 272 vault md).
+
+**Removed Architecture + Agent Stack (2026-08-13)**: user deleted `meta/architecture/` and `agents/agent-stack/` as not useful; index build table + Programs list updated (34 programs / 239 program docs / 250 vault md); incoming links repointed (memory comparison -> `memory/alternatives.md`) or de-linked.

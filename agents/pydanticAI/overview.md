@@ -46,4 +46,4 @@ Supported providers include OpenAI, Anthropic, Gemini, and local models — e.g.
 
 ## In this stack
 
-The natural framework for structured-output agents alongside [Pydantic](../../tools/pydantic/index.md) (its foundation, >=2.12 required). Complements the [Agent Stack](../agent-stack/index.md) and CLI agents ([Hermes](../hermes/index.md), [OpenCode](../opencode/index.md)). Not yet deployed as a running service here — documented from upstream.
+The natural framework for structured-output agents alongside [Pydantic](../../tools/pydantic/index.md) (its foundation, >=2.12 required). Complements the Agent Stack and CLI agents ([Hermes](../hermes/index.md), [OpenCode](../opencode/index.md)). Not yet deployed as a running service here — documented from upstream.

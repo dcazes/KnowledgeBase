@@ -1,7 +1,0 @@
-# Parser Service — MinerU image (TEMPLATE)
-FROM python:3.11-slim
-WORKDIR /app
-RUN pip install --no-cache-dir mineru fastapi uvicorn
-COPY wrapper.py /app/wrapper.py
-EXPOSE 8000
-CMD ["uvicorn", "wrapper:app", "--host", "0.0.0.0", "--port", "8000"]

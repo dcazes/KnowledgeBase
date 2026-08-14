@@ -46,7 +46,7 @@ Local checkout: `programs/mem0` (git, mem0ai, main, commit 2026-07-20) at **v2.0
 
 * [MemOS](../memos/index.md) — the other local memory platform (deployed-via-pip, different architecture)
 * [Graphiti](../graphiti/index.md) — temporal context graphs for the same agent-memory job
-* [Architecture → Memory comparison](../../meta/architecture/memory/memory-comparison.md)
+* [Architecture → Memory comparison](../alternatives.md)
 
 ## Last verified
 

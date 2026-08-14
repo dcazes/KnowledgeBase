@@ -41,7 +41,7 @@ Local checkout: `programs/hindsight` (git, vectorize-io, main, commit 2026-07-17
 ## Related
 
 * [Graphiti](../graphiti/index.md), [Mem0](../mem0/index.md), [MemOS](../memos/index.md) — the other agent-memory systems in this vault
-* [Architecture → Memory comparison](../../meta/architecture/memory/memory-comparison.md)
+* [Architecture → Memory comparison](../alternatives.md)
 
 ## Last verified
 
