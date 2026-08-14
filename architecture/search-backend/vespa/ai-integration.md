@@ -1,0 +1,46 @@
+---
+type: Reference
+title: Vespa — AI Integration
+description: How Vespa fits the KB pipeline — ingestion from parsers, serving agents (Hermes/OpenCode), and sitting under the graph layers.
+resource: https://docs.vespa.ai/
+tags: [vespa, integration, ingestion, agents, hermes, opencode, graphify, graphiti]
+timestamp: 2026-07-09T06:03:00Z
+---
+
+# Pipeline position
+
+```
+Parsers (Docling/Marker) ─┐
+Code AST splitter ─────────┼─► embed ─► Vespa (search core)
+Image (ColPali/VLM) ──────┘
+                              │
+                              ▼
+        Graph layers: Graphiti (memory) / Graphify (map)  — auxiliary
+                              │
+                              ▼
+                  Agents: Hermes (~/.hermes/) / OpenCode (.opencode.json)
+```
+
+# Ingestion
+
+* Feed Vespa documents with: `content` (text/BM25), `vector` (embedding), `doc_type`, `program`, `tags`, `timestamp`.
+* Embeddings can come from your `:4000` proxy (OpenAI-compatible) or local models.
+* Code chunks carry source + AST metadata so BM25 + vector both work.
+
+# Serving agents
+
+* **Hermes** — a skill/tools calling Vespa's query API (HTTP) returns ranked chunks.
+* **OpenCode** — MCP server or custom tool hitting Vespa.
+* Graph layers query Vespa too, then layer relationships on top.
+
+# Why under the graphs
+
+Graphiti/Graphify answer "what relates to X"; Vespa answers "what's relevant to this query." For a massive KB, relevance comes from Vespa; relationships from the graphs.
+
+# Citations
+
+[1] [Vespa docs](https://docs.vespa.ai/)
+[2] [Hybrid search](hybrid-search.md)
+[3] [Hermes](/../../../hermes/index.md)
+[4] [OpenCode](/../../../opencode/index.md)
+[5] [Graphiti](/../../../graphiti/index.md)

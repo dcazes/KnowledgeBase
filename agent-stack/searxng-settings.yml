@@ -1,0 +1,16 @@
+# SearXNG settings (minimal, mounted into searxng service)
+# Based on SearXNG-docker defaults. Keep use_default_settings true for a clean start.
+use_default_settings: true
+
+search:
+  formats:
+    - html
+    - json
+
+# NOTE: SearXNG secret_key must be set at runtime (auto-generated if omitted in some setups).
+# Generate one:  openssl rand -hex 32
+# secret_key: CHANGE_ME
+
+server:
+  port: 8080
+  bind_address: "0.0.0.0"

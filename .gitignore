@@ -1,0 +1,23 @@
+# KBv2 gitignore
+# Ignore secrets files
+*/secrets.md
+
+# Ignore tracker files
+*/README_TOCONTINUE.md
+
+# Ignore Obsidian client-local state
+.obsidian/
+
+# Ignore IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Deepwork state
+.slim/deepwork/
