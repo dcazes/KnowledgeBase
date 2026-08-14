@@ -4,7 +4,15 @@ title: Ollama Alternatives
 description: Ollama vs llama.cpp, LM Studio, vLLM, GPT4All, LocalAI, Jan — local LLM runtimes compared for this stack.
 resource: https://docs.ollama.com
 tags: [ollama, alternatives, llama-cpp, vllm, comparison]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: ollama-docs
+    resource: "https://docs.ollama.com"
+    title: "Ollama docs"
+    author: "site:docs.ollama.com"
 ---
 
 # Alternatives
@@ -25,7 +33,3 @@ timestamp: 2026-08-13T00:00:00Z
 * **High concurrency / many users** → vLLM (but needs a beefy GPU).
 * **Minimal footprint** → llama.cpp directly.
 * **GUI preference** → LM Studio / GPT4All / Jan.
-
-# Citations
-
-[1] [Ollama docs](https://docs.ollama.com)

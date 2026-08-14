@@ -4,7 +4,23 @@ title: Hindsight Overview
 description: How Hindsight works — agents that learn (compiled memory/learning passes) vs RAG/knowledge-graph recall; LongMemEval SOTA; architecture.
 resource: https://hindsight.vectorize.io
 tags: [hindsight, overview, memory, learning]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: hindsight-docs
+    resource: "https://hindsight.vectorize.io"
+    title: "Hindsight docs"
+    author: "site:hindsight.vectorize.io"
+  - id: paper-arxiv-2512-12818
+    resource: "https://arxiv.org/abs/2512.12818"
+    title: "Paper (arXiv 2512.12818)"
+    author: "site:arxiv.org"
+  - id: hindsight-github
+    resource: "https://github.com/vectorize-io/hindsight"
+    title: "Hindsight GitHub"
+    author: "site:github.com"
 ---
 
 # Overview
@@ -40,9 +56,3 @@ Deno-first (TypeScript) with Python parts under `uv.lock`/`pyproject.toml`.
 ## Deployment model
 
 CLI for local use; API + control plane for server deployments (Docker/Helm provided). **Not deployed** on this machine (2026-08-13).
-
-# Citations
-
-[1] [Hindsight docs](https://hindsight.vectorize.io)
-[2] [Paper (arXiv 2512.12818)](https://arxiv.org/abs/2512.12818)
-[3] [Hindsight GitHub](https://github.com/vectorize-io/hindsight)

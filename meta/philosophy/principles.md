@@ -4,7 +4,14 @@ title: Philosophy — Principles
 description: The operating principles of this self-hosted AI stack — local-first, agent-centric memory, standards adherence, documented reality, layered tooling.
 resource: ../../index.md
 tags: [philosophy, principles]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: okf-specification
+    resource: "../../AGENTS.md"
+    title: "OKF specification"
 ---
 
 # Principles
@@ -24,7 +31,7 @@ The decisions in this stack reduce to a handful of recurring principles.
 
 ## 3. Standards & verification over vibes
 
-* Docs follow the OKF v0.1 format with dated `## Last verified` lines.
+* Docs follow the OKF v0.2 (trust-signals subset) format with `verified`/`stale_after` frontmatter.
 * Facts distinguish **live state** ("currently running") from **config-derived** ("from config, not live state") — no assumptions.
 * Ports/versions are verified against actual checkouts in `programs/`, not remembered.
 
@@ -37,7 +44,3 @@ The decisions in this stack reduce to a handful of recurring principles.
 
 * Undocumented tools get docs **from upstream** when local data is absent (e.g. [Space Agent](../../agents/spaceagent/index.md), [PydanticAI](../../agents/pydanticAI/index.md)).
 * Empty/placeholder state is stated honestly, never papered over.
-
-# Citations
-
-[1] [OKF specification](../../AGENTS.md) — Open Knowledge Format v0.1

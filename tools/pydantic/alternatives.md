@@ -4,7 +4,15 @@ title: Pydantic Alternatives
 description: Pydantic vs dataclasses, attrs/cattrs, marshmallow, TypedDict — data validation options for Python; when Pydantic wins.
 resource: https://docs.pydantic.dev
 tags: [pydantic, alternatives, dataclasses, comparison]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: pydantic-docs
+    resource: "https://docs.pydantic.dev"
+    title: "Pydantic docs"
+    author: "site:docs.pydantic.dev"
 ---
 
 # Alternatives
@@ -24,7 +32,3 @@ timestamp: 2026-08-13T00:00:00Z
 * **Zero-dependency simple containers** → dataclasses.
 * **Max performance** → msgspec.
 * **No runtime validation wanted** → TypedDict.
-
-# Citations
-
-[1] [Pydantic docs](https://docs.pydantic.dev)

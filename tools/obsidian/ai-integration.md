@@ -4,7 +4,20 @@ title: Obsidian — AI Integration
 description: How Obsidian's vault connects to the stack — Hermes reads notes, Graphify ingests the vault into a graph, and how it compares to code editors.
 resource: https://help.obsidian.md/
 tags: [obsidian, integration, hermes, graphify, vault, knowledge-graph]
-timestamp: 2026-07-09T04:09:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:09:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:09:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: vault-structure
+    resource: "vault-structure.md"
+    title: "Vault structure"
+  - id: graphify
+    resource: "/../../graphify/index.md"
+    title: "Graphify"
+  - id: hermes
+    resource: "/../../hermes/index.md"
+    title: "Hermes"
 ---
 
 # Hermes reads the vault
@@ -32,9 +45,3 @@ Community AI plugins can chat over your vault. Alternatively, copy vault context
 | VSCode / OpenCode / Windsurf / Cursor | Code editing |
 
 Obsidian is for *knowledge*, the editors are for *code* — though all read `.md`.
-
-# Citations
-
-[1] [Vault structure](vault-structure.md)
-[2] [Graphify](/../../graphify/index.md)
-[3] [Hermes](/../../hermes/index.md)

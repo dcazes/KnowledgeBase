@@ -1,10 +1,26 @@
 ---
 type: Concept
 title: SurfSense Overview
-description: What SurfSense is — personal knowledge-graph assistant: scrapers (Reddit, YouTube, docs), Zero graph DB storage, AI Q&A from personal memory, MCP server.
+description: "What SurfSense is — personal knowledge-graph assistant: scrapers (Reddit, YouTube, docs), Zero graph DB storage, AI Q&A from personal memory, MCP server."
 resource: https://github.com/modsetter/surfsense
 tags: [surfsense, overview, knowledge-graph, zero]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: surfsense-github
+    resource: "https://github.com/modsetter/surfsense"
+    title: "SurfSense GitHub"
+    author: "site:github.com"
+  - id: surfsense-docs
+    resource: "https://docs.modsetter.com/surfsense"
+    title: "SurfSense docs"
+    author: "site:docs.modsetter.com"
+  - id: zero
+    resource: "https://zero.rocicorp.dev"
+    title: "Zero"
+    author: "site:zero.rocicorp.dev"
 ---
 
 # Overview
@@ -37,9 +53,3 @@ SurfSense is a **self-hosted personal knowledge-graph assistant**: it continuous
 ## Positioning
 
 End-user personal knowledge (like Supermemory) but **self-hosted + graph-based + agent-accessible (MCP)** — closer to the developer memory stack than a consumer app.
-
-# Citations
-
-[1] [SurfSense GitHub](https://github.com/modsetter/surfsense)
-[2] [SurfSense docs](https://docs.modsetter.com/surfsense)
-[3] [Zero](https://zero.rocicorp.dev)

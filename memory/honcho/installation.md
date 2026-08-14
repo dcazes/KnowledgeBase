@@ -4,7 +4,19 @@ title: Honcho Installation
 description: Install Honcho — pip install honcho-ai (v2.3.0 SDK) or local checkout v3.0.11; run the server (Docker / fastapi run src/main.py); verify with a peer/session call.
 resource: https://docs.honcho.dev
 tags: [honcho, installation, pip, server]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: honcho-docs-quickstart
+    resource: "https://docs.honcho.dev"
+    title: "Honcho docs — quickstart"
+    author: "site:docs.honcho.dev"
+  - id: honcho-ai-on-pypi
+    resource: "https://pypi.org/project/honcho-ai/"
+    title: "honcho-ai on PyPI"
+    author: "site:pypi.org"
 ---
 
 # Installation
@@ -46,8 +58,3 @@ print(session)                  # session echoed back
 ## Status on this machine
 
 * `programs/honcho` checkout present (v3.0.11) — **not deployed**, no containers (recon 2026-08-12).
-
-# Citations
-
-[1] [Honcho docs — quickstart](https://docs.honcho.dev)
-[2] [honcho-ai on PyPI](https://pypi.org/project/honcho-ai/)

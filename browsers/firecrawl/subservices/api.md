@@ -4,7 +4,18 @@ title: Firecrawl Subservice — API
 description: The firecrawl api container — Node/TS orchestrator and workers that expose the /v0 /v1 /v2 HTTP API on port 3002.
 resource: https://github.com/firecrawl/firecrawl/tree/main/apps/api
 tags: [firecrawl, api, subservice, node, typescript, workers]
-timestamp: 2026-07-09T00:32:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:32:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:32:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: apps-api-github
+    resource: "https://github.com/firecrawl/firecrawl/tree/main/apps/api"
+    title: "apps/api (GitHub)"
+    author: "site:github.com"
+  - id: local-compose-programs-firecrawl-firecrawl-docker-compose-yaml
+    resource: "/../../programs/firecrawl/firecrawl/docker-compose.yaml"
+    title: "Local compose - programs/firecrawl/firecrawl/docker-compose.yaml"
 ---
 
 # Role
@@ -68,8 +79,3 @@ depends_on:
 | 503 / queue errors | Redis/Postgres down | check those services |
 | AI features 403 | no `OPENAI_API_KEY` | set key or `OPENAI_BASE_URL` |
 | Search empty | SearXNG down / wrong endpoint | verify `SEARXNG_ENDPOINT` + SearXNG up |
-
-# Citations
-
-[1] [apps/api (GitHub)](https://github.com/firecrawl/firecrawl/tree/main/apps/api)
-[2] [Local compose - programs/firecrawl/firecrawl/docker-compose.yaml](/../../programs/firecrawl/firecrawl/docker-compose.yaml)

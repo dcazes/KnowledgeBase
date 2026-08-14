@@ -4,7 +4,25 @@ title: Graphify — Snippets & Cheat Sheet
 description: Copy-paste commands for install, extract, query, MCP serve, Obsidian output, and the :4000 OpenRouter backend — the majority of daily Graphify use cases.
 resource: https://github.com/Graphify-Labs/graphify
 tags: [graphify, snippets, cheat-sheet, cli, mcp, obsidian]
-timestamp: 2026-07-09T00:24:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:24:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:24:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: graphify-github
+    resource: "https://github.com/Graphify-Labs/graphify"
+    title: "Graphify GitHub"
+    author: "site:github.com"
+  - id: graphifyy-pypi
+    resource: "https://pypi.org/project/graphifyy/"
+    title: "graphifyy PyPI"
+    author: "site:pypi.org"
+  - id: mcp-server-details
+    resource: "mcp-server.md"
+    title: "MCP server details"
+  - id: backend-4000-proxy
+    resource: "ai-integration.md"
+    title: "Backend / :4000 proxy"
 ---
 
 # Install
@@ -121,10 +139,3 @@ graphify global add graphify-out/graph.json --as myrepo
 | No API key error | backend needs creds | set `OPENAI_BASE_URL=:4000/v1` + key |
 | Lost nodes after refactor | stale nodes | `graphify extract . --force` |
 | Output truncated | output-token limit | `GRAPHIFY_MAX_OUTPUT_TOKENS=32768` |
-
-# Citations
-
-[1] [Graphify GitHub](https://github.com/Graphify-Labs/graphify)
-[2] [graphifyy PyPI](https://pypi.org/project/graphifyy/)
-[3] [MCP server details](mcp-server.md)
-[4] [Backend / :4000 proxy](ai-integration.md)

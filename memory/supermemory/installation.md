@@ -4,7 +4,19 @@ title: Supermemory Installation
 description: Install Supermemory — desktop app from supermemory.ai; what the local .supermemory/ layout tells us; no source checkout on this machine.
 resource: https://supermemory.ai
 tags: [supermemory, installation, desktop]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: supermemory
+    resource: "https://supermemory.ai"
+    title: "Supermemory"
+    author: "site:supermemory.ai"
+  - id: supermemory-github
+    resource: "https://github.com/supermemoryai/supermemory"
+    title: "Supermemory GitHub"
+    author: "site:github.com"
 ---
 
 # Installation
@@ -31,8 +43,3 @@ Download the app for your OS from [supermemory.ai](https://supermemory.ai) (Wind
 ## Status on this machine
 
 * Installed + run 2026-07-19/20; **no source checkout** (unlike the git-checkout programs), **not currently running** (no process/container observed in recon 2026-08-12).
-
-# Citations
-
-[1] [Supermemory](https://supermemory.ai)
-[2] [Supermemory GitHub](https://github.com/supermemoryai/supermemory)

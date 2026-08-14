@@ -4,7 +4,21 @@ title: Dify — Workflows & Agents
 description: The visual workflow canvas, agent definitions (Function Calling / ReAct), and Dify's 50+ built-in tools.
 resource: https://docs.dify.ai/guides/workflow
 tags: [dify, workflow, agents, react, function-calling, tools]
-timestamp: 2026-07-09T00:54:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:54:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:54:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: workflow-guide-docs
+    resource: "https://docs.dify.ai/guides/workflow"
+    title: "Workflow guide (docs)"
+    author: "site:docs.dify.ai"
+  - id: agents-tools-readme
+    resource: "/../../programs/archive/dify/README.md"
+    title: "Agents / tools (README)"
+  - id: plugin-daemon-architecture
+    resource: "architecture.md"
+    title: "plugin_daemon (architecture)"
 ---
 
 # Workflows
@@ -43,9 +57,3 @@ You add **pre-built or custom tools**. Dify ships **50+ built-in tools**, includ
 # Why it matters here
 
 Dify is where you *compose* agent behaviors — e.g. a workflow that searches (SearXNG/Firecrawl) → retrieves from a KB → generates → posts via a tool. It's the most flexible of your three chat/app layers (vs AnythingLLM's turnkey RAG and OpenWebUI's chat UI).
-
-# Citations
-
-[1] [Workflow guide (docs)](https://docs.dify.ai/guides/workflow)
-[2] [Agents / tools (README)](/../../programs/archive/dify/README.md)
-[3] [plugin_daemon (architecture)](architecture.md)

@@ -4,7 +4,18 @@ title: Dify — API (Backend-as-a-Service)
 description: Dify's HTTP API for apps, conversations, completions, knowledge bases, and datasets — with key auth and example calls.
 resource: https://docs.dify.ai/api-reference
 tags: [dify, api, bas, rest, integration, authentication]
-timestamp: 2026-07-09T00:56:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:56:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:56:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: api-reference-docs
+    resource: "https://docs.dify.ai/api-reference"
+    title: "API reference (docs)"
+    author: "site:docs.dify.ai"
+  - id: architecture-api-service
+    resource: "architecture.md"
+    title: "Architecture — api service"
 ---
 
 # Overview
@@ -60,8 +71,3 @@ curl -X POST http://localhost/v1/workflows/run \
 * The console (UI) and the API share the same backend.
 * API keys are per-app; rotate in the UI.
 * For server-to-server, point at `http://localhost/v1` (or the api container internally).
-
-# Citations
-
-[1] [API reference (docs)](https://docs.dify.ai/api-reference)
-[2] [Architecture — api service](architecture.md)

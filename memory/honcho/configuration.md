@@ -4,7 +4,19 @@ title: Honcho Configuration
 description: Configure Honcho — config.toml sections (app/db/auth/llm/embedding), API keys, base_url for SDK, workspace/peer/session scoping metadata.
 resource: https://docs.honcho.dev
 tags: [honcho, configuration, config.toml, workspace]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: honcho-docs-configuration
+    resource: "https://docs.honcho.dev"
+    title: "Honcho docs — configuration"
+    author: "site:docs.honcho.dev"
+  - id: honcho-github
+    resource: "https://github.com/plastic-labs/honcho"
+    title: "Honcho GitHub"
+    author: "site:github.com"
 ---
 
 # Configuration
@@ -56,8 +68,3 @@ client = Honcho(
 ## Conclusion configuration
 
 Derived conclusions are queryable via `honcho conclusion list` / `search` (CLI) or the SDK; the deriver queue state via `honcho workspace queue-status`.
-
-# Citations
-
-[1] [Honcho docs — configuration](https://docs.honcho.dev)
-[2] [Honcho GitHub](https://github.com/plastic-labs/honcho)

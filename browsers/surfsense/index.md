@@ -4,7 +4,23 @@ title: SurfSense
 description: Self-hosted personal knowledge-graph assistant (modsetter) — scrapes and memorizes your web activity (Reddit, YouTube, docs) into a ZeroSync graph DB with an AI Q&A layer. RUNNING on this machine (9 containers).
 resource: https://github.com/modsetter/surfsense
 tags: [surfsense, knowledge-graph, scraping, zero, mcp, personal-ai]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: surfsense-github
+    resource: "https://github.com/modsetter/surfsense"
+    title: "SurfSense GitHub"
+    author: "site:github.com"
+  - id: surfsense-docs
+    resource: "https://docs.modsetter.com/surfsense"
+    title: "SurfSense docs"
+    author: "site:docs.modsetter.com"
+  - id: zero-rocicorp
+    resource: "https://zero.rocicorp.dev"
+    title: "Zero (Rocicorp)"
+    author: "site:zero.rocicorp.dev"
 ---
 
 # SurfSense
@@ -41,12 +57,6 @@ Compose at `programs/surfsense/docker-compose.yml` (+ `docker-compose.gpu.yml`, 
 * [SearXNG](../../runtime/searxng/index.md) — bundled metasearch service inside this stack
 * [Zero](https://zero.rocicorp.dev) — the sync/graph engine behind the cache service
 * [Camofox](../camofox/index.md) — browser automation; SurfSense scrapers cover Reddit/YouTube instead
-
-# Citations
-
-[1] [SurfSense GitHub](https://github.com/modsetter/surfsense)
-[2] [SurfSense docs](https://docs.modsetter.com/surfsense)
-[3] [Zero (Rocicorp)](https://zero.rocicorp.dev)
 
 ## Last verified
 

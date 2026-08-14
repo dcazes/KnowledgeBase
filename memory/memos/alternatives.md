@@ -4,7 +4,21 @@ title: MemOS — Alternatives
 description: How MemOS compares to other agent-memory systems — Graphiti, Mem0, Zep, LangMem.
 resource: https://memos-docs.openmem.net/home/overview/
 tags: [memos, alternatives, memory, graphiti, mem0, zep, langmem, comparison]
-timestamp: 2026-07-16T00:00:00Z
+generated: { by: "human:daniel", at: "2026-07-16T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-16T00:00:00Z" } ]
+status: stable
+stale_after: 2027-01-12
+sources:
+  - id: memos-repo
+    resource: "https://github.com/MemTensor/MemOS"
+    title: "MemOS repo"
+    author: "site:github.com"
+  - id: graphiti
+    resource: "../graphiti/index.md"
+    title: "Graphiti"
+  - id: mem0
+    resource: "../mem0/index.md"
+    title: "Mem0"
 ---
 
 # Alternatives to MemOS
@@ -29,9 +43,3 @@ timestamp: 2026-07-16T00:00:00Z
 * Need only a quick semantic store → a raw vector DB or Mem0 is lighter.
 * Need time-aware relational reasoning above all → Graphiti (use both: MemOS for structured memory, Graphiti for episodes — see [Agent Stack](../../agents/agent-stack/index.md)).
 * Need per-user modeling + derived conclusions → Honcho ([index](../honcho/index.md)); lightweight RAG-style agent memory → [Mem0](../mem0/index.md) or [Supermemory](../supermemory/index.md); graph+vector temporal provenance → [Graphiti](../graphiti/index.md); schema-native incremental graphs → [LightRAG](../lightrag/index.md) / [Cognee](../cognee/index.md).
-
-# Citations
-
-[1] [MemOS repo](https://github.com/MemTensor/MemOS)
-[2] [Graphiti](../graphiti/index.md)
-[3] [Mem0](../mem0/index.md)

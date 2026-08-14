@@ -4,7 +4,19 @@ title: Ollama Installation
 description: Install Ollama — Docker compose (programs/ollama/docker-compose.yaml, :11434) or native binary; pull a model; verify with /api/tags.
 resource: https://docs.ollama.com
 tags: [ollama, installation, docker, binary]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: ollama-docs-install
+    resource: "https://docs.ollama.com"
+    title: "Ollama docs — install"
+    author: "site:docs.ollama.com"
+  - id: docker-hub-ollama-ollama
+    resource: "https://hub.docker.com/r/ollama/ollama"
+    title: "Docker Hub — ollama/ollama"
+    author: "site:hub.docker.com"
 ---
 
 # Installation
@@ -47,8 +59,3 @@ ollama run llama3.1                               # interactive chat
 ## Status on this machine
 
 * Only the compose file exists; **no container running, no binary** (recon 2026-08-12). Deploy on demand with option A.
-
-# Citations
-
-[1] [Ollama docs — install](https://docs.ollama.com)
-[2] [Docker Hub — ollama/ollama](https://hub.docker.com/r/ollama/ollama)

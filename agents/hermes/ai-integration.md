@@ -4,7 +4,30 @@ title: Hermes — AI Integration
 description: How Hermes relates to OpenCode (interactive) and OpenClaw (front-end), and how it extends its stack via skills/MCP tools (SearXNG, Firecrawl, Graphify).
 resource: https://hermes-agent.nousresearch.com
 tags: [hermes, opencode, openclaw, searxng, firecrawl, graphify, mcp, integration]
-timestamp: 2026-07-09T03:25:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:25:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:25:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: hermes-integration-setup-note-vault
+    resource: "/../../vault/03%20-%20Reference/Hermes%20Setup.md"
+    title: "Hermes integration — setup note (vault)"
+  - id: hermes-nous-research
+    resource: "https://hermes-agent.nousresearch.com"
+    title: "Hermes (Nous Research)"
+    author: "site:hermes-agent.nousresearch.com"
+  - id: opencode
+    resource: "/../../opencode/index.md"
+    title: "OpenCode"
+  - id: searxng
+    resource: "/../../searxng/index.md"
+    title: "SearXNG"
+  - id: firecrawl
+    resource: "/../../firecrawl/index.md"
+    title: "Firecrawl"
+  - id: graphify
+    resource: "/../../graphify/index.md"
+    title: "Graphify"
 ---
 
 # Hermes in your AI stack
@@ -51,12 +74,3 @@ Hermes also drives **Camofox** (anti-detect browser) and the Linux desktop via `
 ls ~/.hermes/skills/        # confirm stack-tool skills are installed
 hermes setup tools          # confirm relevant toolsets enabled
 ```
-
-# Citations
-
-[1] [Hermes integration — setup note (vault)](/../../vault/03%20-%20Reference/Hermes%20Setup.md)
-[2] [Hermes (Nous Research)](https://hermes-agent.nousresearch.com)
-[3] [OpenCode](/../../opencode/index.md)
-[4] [SearXNG](/../../searxng/index.md)
-[5] [Firecrawl](/../../firecrawl/index.md)
-[6] [Graphify](/../../graphify/index.md)

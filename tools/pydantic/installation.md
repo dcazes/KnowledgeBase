@@ -4,7 +4,19 @@ title: Pydantic Installation
 description: Install Pydantic — pip install pydantic (+ pydantic-settings), versions on this machine (2.9.0 / 2.13.4), verify.
 resource: https://docs.pydantic.dev
 tags: [pydantic, installation, pip]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: pydantic-docs-install
+    resource: "https://docs.pydantic.dev"
+    title: "Pydantic docs — install"
+    author: "site:docs.pydantic.dev"
+  - id: pydantic-on-pypi
+    resource: "https://pypi.org/project/pydantic/"
+    title: "Pydantic on PyPI"
+    author: "site:pypi.org"
 ---
 
 # Installation
@@ -40,8 +52,3 @@ m = M(x="42")          # coerces to int
 assert m.x == 42
 print(m.model_dump())  # {'x': 42}
 ```
-
-# Citations
-
-[1] [Pydantic docs — install](https://docs.pydantic.dev)
-[2] [Pydantic on PyPI](https://pypi.org/project/pydantic/)

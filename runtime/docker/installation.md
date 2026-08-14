@@ -4,7 +4,22 @@ title: Docker — Installation & Setup
 description: Install Docker on this Linux machine, start it as a user service, fix permissions, and verify the install.
 resource: https://docs.docker.com/desktop/setup/install/linux/
 tags: [docker, install, setup, linux]
-timestamp: 2026-07-08T22:35:00Z
+generated: { by: "human:daniel", at: "2026-07-08T22:35:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-08T22:35:00Z" } ]
+status: stable
+stale_after: 2027-01-04
+sources:
+  - id: install-docker-desktop-on-linux
+    resource: "https://docs.docker.com/desktop/setup/install/linux/"
+    title: "Install Docker Desktop on Linux"
+    author: "site:docs.docker.com"
+  - id: docker-desktop-post-install
+    resource: "https://docs.docker.com/desktop/setup/install/linux/"
+    title: "Docker Desktop post-install"
+    author: "site:docs.docker.com"
+  - id: local-install-notes-programs-docker
+    resource: "/../../programs/docker/"
+    title: "Local install notes - programs/docker/"
 ---
 
 # Your setup
@@ -66,9 +81,3 @@ systemctl --user status docker-desktop
 | Daemon doesn't start after reboot | `systemctl --user enable docker-desktop` |
 | Permission denied on socket | Use Docker Desktop (user socket) or join the `docker` group (engine) |
 | Port already in use | Change the host port mapping, e.g. `"8082:8080"` (see [Compose](compose.md)) |
-
-# Citations
-
-[1] [Install Docker Desktop on Linux](https://docs.docker.com/desktop/setup/install/linux/)
-[2] [Docker Desktop post-install](https://docs.docker.com/desktop/setup/install/linux/)
-[3] [Local install notes - programs/docker/](/../../programs/docker/)

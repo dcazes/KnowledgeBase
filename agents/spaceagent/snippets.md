@@ -4,7 +4,15 @@ title: Space Agent Snippets
 description: Space Agent cheat sheet — desktop release, server install, user create, serve, supervise, dev mode.
 resource: https://github.com/agent0ai/space-agent
 tags: [space-agent, snippets, cheat-sheet]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: space-agent-github
+    resource: "https://github.com/agent0ai/space-agent"
+    title: "Space Agent GitHub"
+    author: "site:github.com"
 ---
 
 # Snippets
@@ -45,7 +53,3 @@ npm run dev
 - Git-backed history for rollback
 - admin mode = stable control plane
 ```
-
-# Citations
-
-[1] [Space Agent GitHub](https://github.com/agent0ai/space-agent)

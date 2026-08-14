@@ -4,7 +4,15 @@ title: Space Agent Alternatives
 description: Space Agent vs OpenClaw, OpenCode, Hermes, HeyAgent — browser-runtime workspace reshaping vs terminal/server agents; fit here.
 resource: https://github.com/agent0ai/space-agent
 tags: [space-agent, alternatives, comparison, agents]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: space-agent-github
+    resource: "https://github.com/agent0ai/space-agent"
+    title: "Space Agent GitHub"
+    author: "site:github.com"
 ---
 
 # Alternatives
@@ -23,7 +31,3 @@ timestamp: 2026-08-13T00:00:00Z
 * **Code/dev work in the terminal** → OpenCode / Hermes (deployed in this stack).
 * **General local orchestration** → OpenClaw.
 * **Desktop computer control** → HeyAgent.
-
-# Citations
-
-[1] [Space Agent GitHub](https://github.com/agent0ai/space-agent)

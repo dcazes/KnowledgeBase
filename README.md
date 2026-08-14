@@ -1,14 +1,14 @@
 # KnowledgeBase
 
-A human-browsable knowledge base for the software in my homelab stack — structured notes in Open Knowledge Format (OKF v0.1). Each program has a dedicated folder: what it does, how it works under the hood, installation/configuration, snippets, AI-integration, and alternatives — cross-linked, with numbered citations to official sources.
+A human-browsable knowledge base for the software in my homelab stack — structured notes in Open Knowledge Format v0.2 (trust-signals subset). Each program has a dedicated folder: what it does, how it works under the hood, installation/configuration, snippets, AI-integration, and alternatives — cross-linked, with numbered citations to official sources.
 
 The vault is an Obsidian-ready collection. **Start at [index.md](index.md)** — the master index with the full build-status table (36 programs, ~293 program docs).
 
 ## Layout
 
 - One top-level folder per program (`docker/`, `firecrawl/`, `memos/`, ...), each with a standard doc set: `index.md`, `overview.md`, `installation.md`/`configuration.md`, `snippets.md`, `ai-integration.md`, `alternatives.md`, plus topic docs.
-- `architecture/` — meta-docs: search-backend comparison, agent-memory comparison, agentic-system blueprint.
-- Every concept doc carries OKF `type` frontmatter and ends with a `# Citations` block linking official/trusted sources.
+- `meta/architecture/` — meta-docs: search-backend comparison, agent-memory comparison, agentic-system blueprint.
+- Every concept doc carries OKF `type` frontmatter and lists official/trusted sources in a `sources:` block (see AGENTS.md).
 
 ## Quick index
 

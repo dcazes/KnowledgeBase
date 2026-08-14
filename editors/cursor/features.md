@@ -4,7 +4,19 @@ title: Cursor Features
 description: Core Cursor capabilities — Tab completion, Cmd-K, Chat, Agent mode, Background Agents, Bugbot, model support, and Privacy Mode.
 resource: https://docs.cursor.com/
 tags: [cursor, features, agent, tab, cmd-k, bugbot, privacy]
-timestamp: 2026-07-09T04:00:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:00:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: cursor-docs
+    resource: "https://docs.cursor.com/"
+    title: "Cursor Docs"
+    author: "site:docs.cursor.com"
+  - id: cursor
+    resource: "https://cursor.com/"
+    title: "Cursor"
+    author: "site:cursor.com"
 ---
 
 # Cursor Features
@@ -50,8 +62,3 @@ Model choice is configurable per-feature in settings.
 A privacy setting that prevents Cursor from training on your code. Recommended when working with proprietary or sensitive repositories.
 
 > **Note:** Feature specifics come from established knowledge of Cursor; exact menu labels and model names should be re-verified against current docs.
-
-# Citations
-
-[1] [Cursor Docs](https://docs.cursor.com/)
-[2] [Cursor](https://cursor.com/)

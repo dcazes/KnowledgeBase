@@ -4,7 +4,23 @@ title: Firecrawl — Overview
 description: Open-source web context API (search/scrape/crawl/extract/agent) that turns web pages into LLM-ready Markdown/JSON; self-hosted here as a 6-service Docker stack.
 resource: https://github.com/firecrawl/firecrawl
 tags: [firecrawl, web-scraping, scraping, extraction, rag, agents, self-hosted]
-timestamp: 2026-07-09T00:30:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:30:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:30:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: firecrawl-github
+    resource: "https://github.com/firecrawl/firecrawl"
+    title: "Firecrawl GitHub"
+    author: "site:github.com"
+  - id: feature-overview-readme
+    resource: "https://github.com/firecrawl/firecrawl#feature-overview"
+    title: "Feature overview (README)"
+    author: "site:github.com"
+  - id: self-hosting-limitations
+    resource: "https://github.com/firecrawl/firecrawl/blob/main/SELF_HOST.md"
+    title: "Self-hosting limitations"
+    author: "site:github.com"
 ---
 
 # What Firecrawl is
@@ -64,9 +80,3 @@ In your stack, Firecrawl is the **extraction engine**: agents call its API (or M
 
 - Firecrawl is open source (Mendable product). Self-hosted instances lack Fire-engine (advanced anti-bot) — see [Self-Hosting](self-hosting.md).
 - Hosted cloud also available at firecrawl.dev.
-
-# Citations
-
-[1] [Firecrawl GitHub](https://github.com/firecrawl/firecrawl)
-[2] [Feature overview (README)](https://github.com/firecrawl/firecrawl#feature-overview)
-[3] [Self-hosting limitations](https://github.com/firecrawl/firecrawl/blob/main/SELF_HOST.md)

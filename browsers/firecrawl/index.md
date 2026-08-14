@@ -4,7 +4,22 @@ title: Firecrawl
 description: Open-source web context API to search, scrape, crawl, and extract the web into clean Markdown/JSON for AI agents — self-hosted on this machine.
 resource: https://github.com/firecrawl/firecrawl
 tags: [firecrawl, web-scraping, crawling, self-hosted, search]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: firecrawl-github
+    resource: "https://github.com/firecrawl/firecrawl"
+    title: "Firecrawl GitHub"
+    author: "site:github.com"
+  - id: self-hosting-docs-self-host-md
+    resource: "https://github.com/firecrawl/firecrawl/blob/main/SELF_HOST.md"
+    title: "Self-hosting docs (SELF_HOST.md)"
+    author: "site:github.com"
+  - id: local-stack-programs-firecrawl-firecrawl-docker-compose-yaml
+    resource: "/../../programs/firecrawl/firecrawl/docker-compose.yaml"
+    title: "Local stack - programs/firecrawl/firecrawl/docker-compose.yaml"
 ---
 
 # Firecrawl
@@ -41,9 +56,3 @@ Open-source **web context API** to search, scrape, crawl, and extract the web in
 ## Last verified
 
 **2026-08-12** — **v2.11.192** (2026-08-07); stack and env verified against local `programs/firecrawl/firecrawl/docker-compose.yaml` and running containers (api :3002, agent_searxng :8088).
-
-# Citations
-
-[1] [Firecrawl GitHub](https://github.com/firecrawl/firecrawl)
-[2] [Self-hosting docs (SELF_HOST.md)](https://github.com/firecrawl/firecrawl/blob/main/SELF_HOST.md)
-[3] [Local stack - programs/firecrawl/firecrawl/docker-compose.yaml](/../../programs/firecrawl/firecrawl/docker-compose.yaml)

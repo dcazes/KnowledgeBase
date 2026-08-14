@@ -4,7 +4,25 @@ title: SearXNG — Snippets & Cheat Sheet
 description: Copy-paste commands covering the majority of SearXNG use cases — deploy, query the API, edit config, integrate with the AI stack, troubleshoot.
 resource: https://docs.searxng.org/
 tags: [searxng, snippets, cheat-sheet, deploy, api, troubleshoot]
-timestamp: 2026-07-09T00:02:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:02:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:02:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: searxng-docs
+    resource: "https://docs.searxng.org/"
+    title: "SearXNG docs"
+    author: "site:docs.searxng.org"
+  - id: search-api
+    resource: "https://docs.searxng.org/dev/search_api.html"
+    title: "Search API"
+    author: "site:docs.searxng.org"
+  - id: deployment-installation-md
+    resource: "installation.md"
+    title: "Deployment - installation.md"
+  - id: api-contract-api-md
+    resource: "api.md"
+    title: "API contract - api.md"
 ---
 
 # Deploy / run (canonical = combined Firecrawl compose)
@@ -139,10 +157,3 @@ for u in $urls; do graphify add "$u"; done
 | Empty results | engines disabled / no egress | check `/preferences`; test outbound |
 | Slow (>5s) | too many engines | narrow `categories` |
 | Google CAPTCHA | over-querying | disable Google in config |
-
-# Citations
-
-[1] [SearXNG docs](https://docs.searxng.org/)
-[2] [Search API](https://docs.searxng.org/dev/search_api.html)
-[3] [Deployment - installation.md](installation.md)
-[4] [API contract - api.md](api.md)

@@ -4,7 +4,19 @@ title: SurfSense AI Integration
 description: Use SurfSense — chat Q&A from personal knowledge, MCP server for agents (Hermes/OpenCode), API, vs other personal/agent memory.
 resource: https://github.com/modsetter/surfsense
 tags: [surfsense, integration, mcp, chat, agents]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: surfsense-github-mcp
+    resource: "https://github.com/modsetter/surfsense/tree/main/mcp"
+    title: "SurfSense GitHub — mcp"
+    author: "site:github.com"
+  - id: surfsense-docs
+    resource: "https://docs.modsetter.com/surfsense"
+    title: "SurfSense docs"
+    author: "site:docs.modsetter.com"
 ---
 
 # AI Integration
@@ -34,8 +46,3 @@ Backend (FastAPI, 8000-8001) exposes REST endpoints for search/capture; the UI a
 * SurfSense is the **personal knowledge layer** (browsing/scraped content).
 * Agent-stack memory ([Mem0](../../memory/mem0/index.md), [MemOS](../../memory/memos/index.md), [Graphiti](../../memory/graphiti/index.md)) covers **agent/user memory** — complementary.
 * MCP integration means Hermes/OpenCode can answer from personal web history via SurfSense tools, mirroring how [Graphify](../../memory/graphify/index.md) MCP exposes folder graphs.
-
-# Citations
-
-[1] [SurfSense GitHub — mcp](https://github.com/modsetter/surfsense/tree/main/mcp)
-[2] [SurfSense docs](https://docs.modsetter.com/surfsense)

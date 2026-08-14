@@ -4,7 +4,19 @@ title: Cognee Overview
 description: How Cognee works — ECL pipeline (Extract, Cognify, Load), knowledge graph + semantic layers, retrieval/query modes, storage backends.
 resource: https://docs.cognee.ai
 tags: [cognee, overview, ecl, knowledge-graph]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: cognee-docs
+    resource: "https://docs.cognee.ai"
+    title: "Cognee docs"
+    author: "site:docs.cognee.ai"
+  - id: cognee-github
+    resource: "https://github.com/topoteretes/cognee"
+    title: "Cognee GitHub"
+    author: "site:github.com"
 ---
 
 # Overview
@@ -39,8 +51,3 @@ Cognee turns raw unstructured data into **grounded, queryable AI memory**: rathe
 | Embeddings | OpenAI, Ollama, HuggingFace |
 
 The local checkout's `docker-compose.yml` wires Postgres + vector DB + the cognee API; `cognee-frontend` provides a UI.
-
-# Citations
-
-[1] [Cognee docs](https://docs.cognee.ai)
-[2] [Cognee GitHub](https://github.com/topoteretes/cognee)

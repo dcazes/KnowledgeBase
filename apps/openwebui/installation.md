@@ -4,7 +4,23 @@ title: OpenWebUI — Installation
 description: Deploy OpenWebUI via Docker (ports, data volume, first-run access) — documented as available-to-deploy; not currently running on this machine.
 resource: https://docs.openwebui.com/getting-started/
 tags: [openwebui, install, docker, deployment, self-hosted]
-timestamp: 2026-07-09T02:01:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:01:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:01:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: getting-started-docs
+    resource: "https://docs.openwebui.com/getting-started/"
+    title: "Getting started (docs)"
+    author: "site:docs.openwebui.com"
+  - id: docker-quick-start-readme
+    resource: "https://github.com/open-webui/open-webui#quick-start-with-docker-"
+    title: "Docker quick start (README)"
+    author: "site:github.com"
+  - id: troubleshooting
+    resource: "https://docs.openwebui.com/troubleshooting/"
+    title: "Troubleshooting"
+    author: "site:docs.openwebui.com"
 ---
 
 # This machine (deployment notes)
@@ -56,9 +72,3 @@ curl -s -o /dev/null -w "%{http_code}\n" http://localhost:3001
 | "Server connection error" | can't reach model backend | set OpenAI-compatible URL to the :4000 proxy; or use `--network=host` |
 | Models missing | no connection configured | see Configuration |
 | Data lost on recreate | volume missing | ensure `-v open-webui:/app/backend/data` |
-
-# Citations
-
-[1] [Getting started (docs)](https://docs.openwebui.com/getting-started/)
-[2] [Docker quick start (README)](https://github.com/open-webui/open-webui#quick-start-with-docker-)
-[3] [Troubleshooting](https://docs.openwebui.com/troubleshooting/)

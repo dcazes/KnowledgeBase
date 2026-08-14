@@ -4,7 +4,19 @@ title: Space Agent
 description: AI agent framework by Agent Zero (agent0ai/space-agent) — runs in the browser/frontend runtime and reshapes the workspace by building pages, tools, widgets, workflows live. Empty local dir; doc-from-upstream.
 resource: https://github.com/agent0ai/space-agent
 tags: [space-agent, agent0, agents, browser-runtime, skills]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: space-agent-github
+    resource: "https://github.com/agent0ai/space-agent"
+    title: "Space Agent GitHub"
+    author: "site:github.com"
+  - id: agent-zero
+    resource: "https://github.com/frdel/agent-zero"
+    title: "Agent Zero"
+    author: "site:github.com"
 ---
 
 # Space Agent
@@ -25,11 +37,6 @@ On this machine: `programs/spaceagent/` is **EMPTY** (no files, no checkout — 
 ## Related
 
 * [OpenClaw](../openclaw/index.md), [OpenCode](../opencode/index.md), [Hermes](../hermes/index.md) — the other agents documented in this vault (terminal/server-side; Space Agent is browser-runtime)
-
-# Citations
-
-[1] [Space Agent GitHub](https://github.com/agent0ai/space-agent)
-[2] [Agent Zero](https://github.com/frdel/agent-zero)
 
 ## Last verified
 

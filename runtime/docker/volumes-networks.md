@@ -4,7 +4,26 @@ title: Docker — Volumes & Networks
 description: Persistent storage (named volumes vs bind mounts) and container networking (bridge/host/overlay, port publishing).
 resource: https://docs.docker.com/engine/storage/volumes/
 tags: [docker, volumes, networks, storage, networking]
-timestamp: 2026-07-08T22:35:00Z
+generated: { by: "human:daniel", at: "2026-07-08T22:35:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-08T22:35:00Z" } ]
+status: stable
+stale_after: 2027-01-04
+sources:
+  - id: volumes
+    resource: "https://docs.docker.com/engine/storage/volumes/"
+    title: "Volumes"
+    author: "site:docs.docker.com"
+  - id: bind-mounts
+    resource: "https://docs.docker.com/engine/storage/bind-mounts/"
+    title: "Bind mounts"
+    author: "site:docs.docker.com"
+  - id: networking-overview
+    resource: "https://docs.docker.com/engine/network/"
+    title: "Networking overview"
+    author: "site:docs.docker.com"
+  - id: local-compose-examples-programs-firecrawl-programs-frigate
+    resource: "/../../programs/"
+    title: "Local compose examples - programs/firecrawl & programs/frigate"
 ---
 
 # Volumes — persistent storage
@@ -70,10 +89,3 @@ docker volume prune          # remove unnamed/unused volumes (DESTRUCTIVE)
 docker network prune         # remove unused networks
 docker system prune -a       # containers, images, networks, build cache
 ```
-
-# Citations
-
-[1] [Volumes](https://docs.docker.com/engine/storage/volumes/)
-[2] [Bind mounts](https://docs.docker.com/engine/storage/bind-mounts/)
-[3] [Networking overview](https://docs.docker.com/engine/network/)
-[4] [Local compose examples - programs/firecrawl & programs/frigate](/../../programs/)

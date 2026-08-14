@@ -4,7 +4,20 @@ title: Camofox — AI Integration
 description: Camofox as Hermes's headed/anti-bot browser backend, and how it complements Firecrawl and CloakBrowser.
 resource: https://github.com/daijro/camoufox
 tags: [camofox, hermes, integration, browser, automation, agent]
-timestamp: 2026-07-09T01:04:00Z
+generated: { by: "human:daniel", at: "2026-07-09T01:04:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T01:04:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: camofox-overview
+    resource: "overview.md"
+    title: "Camofox overview"
+  - id: usage-api-vnc
+    resource: "usage.md"
+    title: "Usage (API + VNC)"
+  - id: firecrawl-contrast
+    resource: "/../../firecrawl/index.md"
+    title: "Firecrawl (contrast)"
 ---
 
 # Hermes browser backend
@@ -35,9 +48,3 @@ They're complementary: Firecrawl for scale/extract, Camofox for fragile/anti-bot
 2. Hermes opens a Camofox session via `:9377`, navigates, interacts.
 3. On a login/CAPTCHA, you open `:6080` and complete it.
 4. Hermes reads the result and continues.
-
-# Citations
-
-[1] [Camofox overview](overview.md)
-[2] [Usage (API + VNC)](usage.md)
-[3] [Firecrawl (contrast)](/../../firecrawl/index.md)

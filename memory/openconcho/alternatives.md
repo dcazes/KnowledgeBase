@@ -4,7 +4,19 @@ title: OpenConcho Alternatives
 description: OpenConcho vs Honcho UI-less SDK, OpenMemory (Mem0), custom dashboards — how to see/chat with agent memory; fit here.
 resource: https://github.com/offendingcommit/openconcho
 tags: [openconcho, alternatives, comparison]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: openconcho-github
+    resource: "https://github.com/offendingcommit/openconcho"
+    title: "OpenConcho GitHub"
+    author: "site:github.com"
+  - id: honcho-github
+    resource: "https://github.com/plastic-labs/honcho"
+    title: "Honcho GitHub"
+    author: "site:github.com"
 ---
 
 # Alternatives
@@ -23,8 +35,3 @@ timestamp: 2026-08-13T00:00:00Z
 * **Mem0 backend** → OpenMemory.
 * **No human UI needed** → SDK only.
 * **Full memory OS** → MemOS (which ships its own UI/MCP).
-
-# Citations
-
-[1] [OpenConcho GitHub](https://github.com/offendingcommit/openconcho)
-[2] [Honcho GitHub](https://github.com/plastic-labs/honcho)

@@ -4,7 +4,19 @@ title: LightRAG Installation
 description: Install LightRAG — pip install lightrag-hku (v1.5.6) or local v1.5.5; optional FastAPI server via Docker (compose-full); verify with a first insert+query.
 resource: https://lightrag.readthedocs.io/en/latest/
 tags: [lightrag, installation, pip, docker, server]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: lightrag-docs-installation
+    resource: "https://lightrag.readthedocs.io/en/latest/"
+    title: "LightRAG docs — installation"
+    author: "site:lightrag.readthedocs.io"
+  - id: lightrag-on-pypi
+    resource: "https://pypi.org/project/lightrag-hku/"
+    title: "LightRAG on PyPI"
+    author: "site:pypi.org"
 ---
 
 # Installation
@@ -39,8 +51,3 @@ docker compose -f docker-compose-full.yml up -d
 ## Status on this machine
 
 * `programs/LightRAG` checkout present (v1.5.5) — **not deployed**, no running containers (recon 2026-08-12).
-
-# Citations
-
-[1] [LightRAG docs — installation](https://lightrag.readthedocs.io/en/latest/)
-[2] [LightRAG on PyPI](https://pypi.org/project/lightrag-hku/)

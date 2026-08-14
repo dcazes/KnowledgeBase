@@ -4,7 +4,24 @@ title: AnythingLLM — Agent Skills
 description: AnythingLLM's agent tools (web search, browser, code, files, API, MCP) and how they connect to your stack (SearXNG, Graphify).
 resource: https://docs.anythingllm.com/agent-skills
 tags: [anythingllm, agents, skills, tools, mcp, web-search, playwright]
-timestamp: 2026-07-09T02:34:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:34:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:34:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: agent-skills-docs
+    resource: "https://docs.anythingllm.com/agent-skills"
+    title: "Agent skills docs"
+    author: "site:docs.anythingllm.com"
+  - id: searxng-integration
+    resource: "ai-integration.md"
+    title: "SearXNG integration"
+  - id: graphify-mcp
+    resource: "/../../graphify/mcp-server.md"
+    title: "Graphify MCP"
+  - id: skills-notes-prior-grounding
+    resource: "/../../kb/anythingllm/agent-skills.md"
+    title: "Skills notes (prior, grounding)"
 ---
 
 # Agent skills
@@ -45,10 +62,3 @@ Playwright-based; can scrape pages the agent needs. (Same engine Firecrawl uses 
 # Custom skills
 
 You can add your own tools (API/code) for domain tasks. Scope them per workspace.
-
-# Citations
-
-[1] [Agent skills docs](https://docs.anythingllm.com/agent-skills)
-[2] [SearXNG integration](ai-integration.md)
-[3] [Graphify MCP](/../../graphify/mcp-server.md)
-[4] [Skills notes (prior, grounding)](/../../kb/anythingllm/agent-skills.md)

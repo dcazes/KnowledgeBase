@@ -4,7 +4,22 @@ title: Firecrawl — CLI & Skills
 description: The firecrawl-cli (terminal search/scrape/crawl/map/agent) and firecrawl-skills (agent skill packs) that wrap the API.
 resource: https://github.com/firecrawl/cli
 tags: [firecrawl, cli, skills, terminal, sdk]
-timestamp: 2026-07-09T00:39:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:39:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:39:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: firecrawl-cli
+    resource: "https://github.com/firecrawl/cli"
+    title: "firecrawl-cli"
+    author: "site:github.com"
+  - id: firecrawl-skills
+    resource: "https://github.com/firecrawl/skills"
+    title: "firecrawl-skills"
+    author: "site:github.com"
+  - id: local-cli-skills-dirs
+    resource: "/../../programs/firecrawl/firecrawl/firecrawl-cli/"
+    title: "Local CLI/skills dirs"
 ---
 
 # firecrawl-cli
@@ -40,9 +55,3 @@ print(data["markdown"])
 * **CLI** — quick terminal scraping/search without writing code.
 * **SDK** — embed Firecrawl in a Python/JS app or agent.
 * **Skills** — give a coding agent native Firecrawl tooling.
-
-# Citations
-
-[1] [firecrawl-cli](https://github.com/firecrawl/cli)
-[2] [firecrawl-skills](https://github.com/firecrawl/skills)
-[3] [Local CLI/skills dirs](/../../programs/firecrawl/firecrawl/firecrawl-cli/)

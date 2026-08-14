@@ -4,7 +4,19 @@ title: Cognee Alternatives
 description: Cognee vs LightRAG, GraphRAG, Graphiti, Mem0, LlamaIndex — knowledge-graph memory pipelines compared for this stack.
 resource: https://docs.cognee.ai
 tags: [cognee, alternatives, lightrag, graphrag, graphiti, comparison]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: cognee-docs
+    resource: "https://docs.cognee.ai"
+    title: "Cognee docs"
+    author: "site:docs.cognee.ai"
+  - id: cognee-github
+    resource: "https://github.com/topoteretes/cognee"
+    title: "Cognee GitHub"
+    author: "site:github.com"
 ---
 
 # Alternatives
@@ -24,8 +36,3 @@ timestamp: 2026-08-13T00:00:00Z
 * **Lightweight incremental graph RAG** → LightRAG.
 * **Corpus-level global synthesis** → GraphRAG.
 * **Agent session/fact memory** → Graphiti / Mem0 / MemOS.
-
-# Citations
-
-[1] [Cognee docs](https://docs.cognee.ai)
-[2] [Cognee GitHub](https://github.com/topoteretes/cognee)

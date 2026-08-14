@@ -4,7 +4,19 @@ title: Pydantic Overview
 description: What Pydantic is — typed data validation, model_dump/model_validate serialization, JSON Schema export, Settings; v2 API surface.
 resource: https://docs.pydantic.dev
 tags: [pydantic, overview, validation, v2]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: pydantic-docs
+    resource: "https://docs.pydantic.dev"
+    title: "Pydantic docs"
+    author: "site:docs.pydantic.dev"
+  - id: pydantic-github
+    resource: "https://github.com/pydantic/pydantic"
+    title: "Pydantic GitHub"
+    author: "site:github.com"
 ---
 
 # Overview
@@ -31,8 +43,3 @@ Pydantic v2 (Rust core) validates your data at the edge: define a schema as a cl
 
 - v2 is current (this machine: 2.9.0 system / 2.13.4 venv); v1 API differs (`parse_obj`, `.dict()`).
 - **Security**: see [PydanticAI → CVEs](../../agents/pydanticAI/index.md) — pydantic >= 2.12 required for the 2026-07 fixes.
-
-# Citations
-
-[1] [Pydantic docs](https://docs.pydantic.dev)
-[2] [Pydantic GitHub](https://github.com/pydantic/pydantic)

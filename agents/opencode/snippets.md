@@ -4,7 +4,19 @@ title: OpenCode Snippets
 description: Copy-paste playbook for OpenCode — install, init, @ syntax, .opencode.json examples, MCP config, SearXNG tool, and a cheat sheet.
 resource: https://opencode.ai/docs
 tags: [opencode, snippets, cheat-sheet, config, mcp, examples]
-timestamp: 2026-07-09T03:25:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:25:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:25:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: opencode-documentation
+    resource: "https://opencode.ai/docs"
+    title: "OpenCode Documentation"
+    author: "site:opencode.ai"
+  - id: opencode-github-repository-anomalyco
+    resource: "https://github.com/anomalyco/opencode"
+    title: "OpenCode GitHub repository (anomalyco)"
+    author: "site:github.com"
 ---
 
 # OpenCode Snippets
@@ -107,7 +119,3 @@ opencode "@kb/graphify/graph.json find orphaned nodes"
 | Graphify MCP | `http://127.0.0.1:8000` |
 | SearXNG | `http://localhost:8080` |
 | Failover proxy | `http://localhost:4000/v1` |
-
-# Citations
-[1] [OpenCode Documentation](https://opencode.ai/docs)
-[2] [OpenCode GitHub repository (anomalyco)](https://github.com/anomalyco/opencode)

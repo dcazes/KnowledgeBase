@@ -4,7 +4,18 @@ title: OpenWebUI — Configuration (Models & Proxy)
 description: Connecting OpenWebUI to an OpenAI-compatible endpoint — here, the local :4000 proxy — since no Ollama runs on this host.
 resource: https://docs.openwebui.com/getting-started/openai-api/
 tags: [openwebui, configuration, models, openai-compatible, proxy, openrouter]
-timestamp: 2026-07-09T02:02:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:02:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:02:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: openai-api-connection-docs
+    resource: "https://docs.openwebui.com/getting-started/openai-api/"
+    title: "OpenAI API connection (docs)"
+    author: "site:docs.openwebui.com"
+  - id: installation-proxy-fit
+    resource: "installation.md"
+    title: "Installation / proxy fit"
 ---
 
 # The situation on this machine
@@ -39,8 +50,3 @@ OpenWebUI can hold several connections at once (OpenRouter via proxy, plus an op
 * Use a proxy API key that the `:4000` service accepts (it may accept any non-empty string).
 * Set a default model in Admin Settings so new chats work immediately.
 * For embeddings/RAG, configure an embedding model endpoint too (if your proxy exposes one).
-
-# Citations
-
-[1] [OpenAI API connection (docs)](https://docs.openwebui.com/getting-started/openai-api/)
-[2] [Installation / proxy fit](installation.md)

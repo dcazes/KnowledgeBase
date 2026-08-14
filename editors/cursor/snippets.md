@@ -4,7 +4,23 @@ title: Cursor Snippets & Cheat Sheet
 description: Practical Cursor snippets — quick-start, Agent mode usage, MCP JSON config, and a keyboard cheat sheet.
 resource: https://docs.cursor.com/
 tags: [cursor, snippets, mcp, cheat-sheet, agent, config]
-timestamp: 2026-07-09T04:00:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:00:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: cursor-docs
+    resource: "https://docs.cursor.com/"
+    title: "Cursor Docs"
+    author: "site:docs.cursor.com"
+  - id: cursor-mcp-docs
+    resource: "https://docs.cursor.com/context/mcp"
+    title: "Cursor MCP Docs"
+    author: "site:docs.cursor.com"
+  - id: cursor
+    resource: "https://cursor.com/"
+    title: "Cursor"
+    author: "site:cursor.com"
 ---
 
 # Cursor Snippets & Cheat Sheet
@@ -65,9 +81,3 @@ Cursor reads MCP servers from its settings (JSON). Example wiring Graphify, Fire
 - [AI Integration](ai-integration.md) — how MCP servers connect.
 - [Graphify MCP server](../../memory/graphify/mcp-server.md)
 - [OpenCode](../../agents/opencode/index.md) — terminal alternative.
-
-# Citations
-
-[1] [Cursor Docs](https://docs.cursor.com/)
-[2] [Cursor MCP Docs](https://docs.cursor.com/context/mcp)
-[3] [Cursor](https://cursor.com/)

@@ -4,7 +4,23 @@ title: OpenCode Overview
 description: What OpenCode is — a terminal-native AI coding agent — its benefits, how it differs from Hermes, the @ context-file syntax, and supported models.
 resource: https://opencode.ai/docs
 tags: [opencode, ai-agent, terminal, coding]
-timestamp: 2026-07-09T03:25:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:25:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:25:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: opencode-documentation
+    resource: "https://opencode.ai/docs"
+    title: "OpenCode Documentation"
+    author: "site:opencode.ai"
+  - id: opencode-github-repository-anomalyco
+    resource: "https://github.com/anomalyco/opencode"
+    title: "OpenCode GitHub repository (anomalyco)"
+    author: "site:github.com"
+  - id: opencode-official-site
+    resource: "https://opencode.ai"
+    title: "OpenCode official site"
+    author: "site:opencode.ai"
 ---
 
 # OpenCode Overview
@@ -63,8 +79,3 @@ opencode --version
 # Launch the interactive TUI
 opencode
 ```
-
-# Citations
-[1] [OpenCode Documentation](https://opencode.ai/docs)
-[2] [OpenCode GitHub repository (anomalyco)](https://github.com/anomalyco/opencode)
-[3] [OpenCode official site](https://opencode.ai)

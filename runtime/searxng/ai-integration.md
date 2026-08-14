@@ -4,7 +4,21 @@ title: SearXNG — AI Integration
 description: How the AI stack consumes SearXNG — Firecrawl via SEARXNG_ENDPOINT, AnythingLLM web-search skill, Hermes/OpenCode/Graphify, and custom Python scripts.
 resource: https://docs.searxng.org/dev/search_api.html
 tags: [searxng, integration, firecrawl, anythingllm, hermes, opencode, graphify, ai]
-timestamp: 2026-07-08T23:58:00Z
+generated: { by: "human:daniel", at: "2026-07-08T23:58:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-08T23:58:00Z" } ]
+status: stable
+stale_after: 2027-01-04
+sources:
+  - id: search-api
+    resource: "https://docs.searxng.org/dev/search_api.html"
+    title: "Search API"
+    author: "site:docs.searxng.org"
+  - id: deployment-installation-md
+    resource: "installation.md"
+    title: "Deployment - installation.md"
+  - id: api-contract-api-md
+    resource: "api.md"
+    title: "API contract - api.md"
 ---
 
 # Integration overview
@@ -160,9 +174,3 @@ Host loopback / Docker backend network
 | 403 from API | `format` not enabled | Enable `json` in `search.formats` (already on) |
 | Host tool gets connection refused | instance down | `docker compose up -d searxng` (see [installation](installation.md)) |
 | Empty results | engines disabled | check `/preferences` |
-
-# Citations
-
-[1] [Search API](https://docs.searxng.org/dev/search_api.html)
-[2] [Deployment - installation.md](installation.md)
-[3] [API contract - api.md](api.md)

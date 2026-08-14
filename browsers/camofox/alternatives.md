@@ -4,7 +4,27 @@ title: Camofox — Alternatives
 description: How Camofox compares to raw Camoufox, Playwright, Puppeteer, Undetected-Chromedriver, and CloakBrowser.
 resource: https://github.com/daijro/camoufox
 tags: [camofox, alternatives, camoufox, playwright, puppeteer, undetectable, comparison]
-timestamp: 2026-07-09T01:05:00Z
+generated: { by: "human:daniel", at: "2026-07-09T01:05:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T01:05:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: camoufox
+    resource: "https://github.com/daijro/camoufox"
+    title: "Camoufox"
+    author: "site:github.com"
+  - id: playwright
+    resource: "https://playwright.dev/"
+    title: "Playwright"
+    author: "site:playwright.dev"
+  - id: puppeteer
+    resource: "https://pptr.dev/"
+    title: "Puppeteer"
+    author: "site:pptr.dev"
+  - id: undetected-chromedriver
+    resource: "https://github.com/ultrafunkamsterdam/undetected-chromedriver"
+    title: "Undetected-Chromedriver"
+    author: "site:github.com"
 ---
 
 # Why consider alternatives?
@@ -69,10 +89,3 @@ A separate stealth browser server already in your stack (its own KB page).
 * **Playwright/Puppeteer** — non-stealth automation.
 * **Undetected-Chromedriver** — stealth *Chrome* specifically.
 * **CloakBrowser** — alternative stealth service in your stack.
-
-# Citations
-
-[1] [Camoufox](https://github.com/daijro/camoufox)
-[2] [Playwright](https://playwright.dev/)
-[3] [Puppeteer](https://pptr.dev/)
-[4] [Undetected-Chromedriver](https://github.com/ultrafunkamsterdam/undetected-chromedriver)

@@ -4,7 +4,15 @@ title: Ollama Snippets
 description: Ollama cheat sheet — pull/run/list/ps, Modelfile, /api calls, OpenAI-compatible curl, python client, embeddings.
 resource: https://docs.ollama.com
 tags: [ollama, snippets, cheat-sheet]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: ollama-docs
+    resource: "https://docs.ollama.com"
+    title: "Ollama docs"
+    author: "site:docs.ollama.com"
 ---
 
 # Snippets
@@ -63,7 +71,3 @@ PARAMETER num_ctx 8192
 ```bash
 ollama create mymodel -f Modelfile
 ```
-
-# Citations
-
-[1] [Ollama docs](https://docs.ollama.com)

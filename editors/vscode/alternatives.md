@@ -4,7 +4,31 @@ title: VSCode — Alternatives
 description: How VS Code compares to Cursor, Neovim, JetBrains IDEs, and Zed for AI-assisted editing.
 resource: https://code.visualstudio.com/
 tags: [vscode, alternatives, cursor, neovim, jetbrains, zed, comparison]
-timestamp: 2026-07-09T02:14:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:14:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:14:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: vs-code
+    resource: "https://code.visualstudio.com/"
+    title: "VS Code"
+    author: "site:code.visualstudio.com"
+  - id: cursor
+    resource: "https://cursor.com/"
+    title: "Cursor"
+    author: "site:cursor.com"
+  - id: zed
+    resource: "https://zed.dev/"
+    title: "Zed"
+    author: "site:zed.dev"
+  - id: neovim
+    resource: "https://neovim.io/"
+    title: "Neovim"
+    author: "site:neovim.io"
+  - id: jetbrains
+    resource: "https://www.jetbrains.com/"
+    title: "JetBrains"
+    author: "site:www.jetbrains.com"
 ---
 
 # Why consider alternatives?
@@ -60,11 +84,3 @@ Language-deep IDEs.
 * **Zed** — if you want speed.
 * **Neovim** — terminal/modal preference.
 * **JetBrains** — deep per-language IDE work.
-
-# Citations
-
-[1] [VS Code](https://code.visualstudio.com/)
-[2] [Cursor](https://cursor.com/)
-[3] [Zed](https://zed.dev/)
-[4] [Neovim](https://neovim.io/)
-[5] [JetBrains](https://www.jetbrains.com/)

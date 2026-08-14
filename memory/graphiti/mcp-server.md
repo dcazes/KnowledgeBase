@@ -4,7 +4,22 @@ title: Graphiti — MCP Server
 description: Graphiti's Model Context Protocol (MCP) server — deploy with Docker + Neo4j to give Claude/Cursor/MCP clients temporal context-graph memory.
 resource: https://github.com/getzep/graphiti/tree/main/mcp_server
 tags: [graphiti, mcp, mcp-server, claude, cursor, agent-memory, docker]
-timestamp: 2026-07-09T05:04:00Z
+generated: { by: "human:daniel", at: "2026-07-09T05:04:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T05:04:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: mcp-server-repo
+    resource: "https://github.com/getzep/graphiti/tree/main/mcp_server"
+    title: "MCP server (repo)"
+    author: "site:github.com"
+  - id: graphiti-readme-mcp
+    resource: "https://github.com/getzep/graphiti#mcp-server"
+    title: "Graphiti README — MCP"
+    author: "site:github.com"
+  - id: graphify-mcp
+    resource: "/../../graphify/mcp-server.md"
+    title: "Graphify MCP"
 ---
 
 # MCP server
@@ -33,9 +48,3 @@ This complements **Graphify's MCP** (static graph) with a *live, time-aware* lay
 |--------|-----------|-----|
 | **Graphify MCP** | static, confidence-tagged | compiled from a folder |
 | **Graphiti MCP** | temporal, episode-backed | evolving agent memory |
-
-# Citations
-
-[1] [MCP server (repo)](https://github.com/getzep/graphiti/tree/main/mcp_server)
-[2] [Graphiti README — MCP](https://github.com/getzep/graphiti#mcp-server)
-[3] [Graphify MCP](/../../graphify/mcp-server.md)

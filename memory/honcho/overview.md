@@ -4,7 +4,19 @@ title: Honcho Overview
 description: How Honcho works — peers, sessions, messages and derived conclusions; workspace/peer/session scoping, semantic user memory.
 resource: https://docs.honcho.dev
 tags: [honcho, overview, peers, sessions, user-modeling]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: honcho-docs-concepts
+    resource: "https://docs.honcho.dev"
+    title: "Honcho docs — concepts"
+    author: "site:docs.honcho.dev"
+  - id: honcho-github
+    resource: "https://github.com/plastic-labs/honcho"
+    title: "Honcho GitHub"
+    author: "site:github.com"
 ---
 
 # Overview
@@ -37,8 +49,3 @@ Async equivalents via `client.aio.*`.
 
 * SDKs (Python `honcho-ai`, TypeScript `@honcho-ai/sdk`) wrap the Honcho server API; the server does the LLM-derived modeling (OpenAI/Anthropic/Gemini key configured in `config.toml`, server-side).
 * Differentiation: Honcho models the **user** (via peers/conclusions), not just stores the conversation.
-
-# Citations
-
-[1] [Honcho docs — concepts](https://docs.honcho.dev)
-[2] [Honcho GitHub](https://github.com/plastic-labs/honcho)

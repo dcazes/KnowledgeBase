@@ -4,7 +4,23 @@ title: Antigravity 2.0 AI Integration
 description: How Antigravity 2.0 integrates AI — Gemini models (default Gemini 3.5 Flash), the Managed Agents API — and how it relates to the user's existing local-first coding-agent stack (OpenCode, Hermes, Cursor, Windsurf).
 resource: Antigravity 2.0
 tags: [google, antigravity, gemini, managed-agents, integration, opencode, hermes]
-timestamp: 2026-07-09T03:28:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:28:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:28:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: antigravity-2-0-product-page
+    resource: "https://antigravity.google/product/antigravity-2"
+    title: "Antigravity 2.0 product page"
+    author: "site:antigravity.google"
+  - id: google-i-o-2026-developer-highlights
+    resource: "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/"
+    title: "Google I/O 2026 developer highlights"
+    author: "site:blog.google"
+  - id: antigravity-official-site
+    resource: "https://antigravity.google/"
+    title: "Antigravity — official site"
+    author: "site:antigravity.google"
 ---
 
 # Antigravity 2.0 AI Integration
@@ -50,8 +66,3 @@ The user's existing coding-agent stack is largely **local-first**, which is the 
 - [Agents](agents.md)
 - [Alternatives](alternatives.md)
 - Cross-program: [OpenCode](/../../opencode/index.md), [Hermes](/../../hermes/index.md)
-
-# Citations
-[1] [Antigravity 2.0 product page](https://antigravity.google/product/antigravity-2)
-[2] [Google I/O 2026 developer highlights](https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/)
-[3] [Antigravity — official site](https://antigravity.google/)

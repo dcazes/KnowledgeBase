@@ -4,7 +4,22 @@ title: Dify — Model Providers
 description: Connecting LLMs to Dify, including OpenAI-API-compatible endpoints like your local :4000 OpenRouter/NIM failover proxy.
 resource: https://docs.dify.ai/guides/model-configuration
 tags: [dify, models, openai-compatible, openrouter, providers, configuration]
-timestamp: 2026-07-09T00:55:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:55:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:55:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: model-configuration-docs
+    resource: "https://docs.dify.ai/guides/model-configuration"
+    title: "Model configuration (docs)"
+    author: "site:docs.dify.ai"
+  - id: supported-providers
+    resource: "https://docs.dify.ai/getting-started/readme/model-providers"
+    title: "Supported providers"
+    author: "site:docs.dify.ai"
+  - id: architecture-proxy-fit
+    resource: "model-providers.md"
+    title: "Architecture / proxy fit"
 ---
 
 # Model support
@@ -44,9 +59,3 @@ Set the same in `docker/.env` if you want it as a default, or configure per-app 
 * Match embedding model dimensions to your vector store.
 * For heavy local use, prefer cloud endpoints via the proxy (your GTX 1060 can't run big models well).
 * System models (OpenAI-compatible) are the simplest to wire to the proxy.
-
-# Citations
-
-[1] [Model configuration (docs)](https://docs.dify.ai/guides/model-configuration)
-[2] [Supported providers](https://docs.dify.ai/getting-started/readme/model-providers)
-[3] [Architecture / proxy fit](model-providers.md)

@@ -4,7 +4,18 @@ title: OpenClaw — Architecture
 description: OpenClaw's building blocks — gateway, workspace, channel plugins, skills, and connected coding agents.
 resource: https://docs.openclaw.ai/
 tags: [openclaw, architecture, gateway, channels, skills, agents, mcp]
-timestamp: 2026-07-09T03:12:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:12:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:12:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: docs-architecture-what-is-openclaw
+    resource: "https://docs.openclaw.ai/"
+    title: "Docs — architecture/what is OpenClaw"
+    author: "site:docs.openclaw.ai"
+  - id: overview
+    resource: "overview.md"
+    title: "Overview"
 ---
 
 # Building blocks
@@ -37,8 +48,3 @@ A single assistant fronts many chat surfaces; you configure channels + skills on
 # MCP
 
 OpenClaw supports **local MCP mode** (notably in the Windows Hub) so it can expose/consume MCP tools — letting it call your stack's services (Firecrawl, Graphify, SearXNG) as tools.
-
-# Citations
-
-[1] [Docs — architecture/what is OpenClaw](https://docs.openclaw.ai/)
-[2] [Overview](overview.md)

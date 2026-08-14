@@ -4,7 +4,19 @@ title: LightRAG Alternatives
 description: LightRAG vs GraphRAG (Microsoft), LlamaIndex, RAGFlow, and graph-memory tools — incremental vs batch graphs, cost, fit for this stack.
 resource: https://lightrag.readthedocs.io/en/latest/
 tags: [lightrag, alternatives, graphrag, llama-index, rag, comparison]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: lightrag-docs
+    resource: "https://lightrag.readthedocs.io/en/latest/"
+    title: "LightRAG docs"
+    author: "site:lightrag.readthedocs.io"
+  - id: graphrag-microsoft
+    resource: "https://github.com/microsoft/graphrag"
+    title: "GraphRAG (Microsoft)"
+    author: "site:github.com"
 ---
 
 # Alternatives
@@ -24,8 +36,3 @@ timestamp: 2026-08-13T00:00:00Z
 * **Big corpus, global synthesis** → GraphRAG.
 * **Already on LlamaIndex** → use its graph stores instead of adding LightRAG.
 * **Agent memory (what user said)** → MemOS/Mem0/Graphiti, not LightRAG.
-
-# Citations
-
-[1] [LightRAG docs](https://lightrag.readthedocs.io/en/latest/)
-[2] [GraphRAG (Microsoft)](https://github.com/microsoft/graphrag)

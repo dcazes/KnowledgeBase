@@ -4,7 +4,31 @@ title: Graphify — Alternatives
 description: How Graphify compares to vanilla Obsidian, Mem0, LangChain graph retrievers, code2flow, and repo visualizers — and why its confidence-tagged graph is different.
 resource: https://github.com/Graphify-Labs/graphify
 tags: [graphify, alternatives, obsidian, mem0, langchain, knowledge-graph, comparison]
-timestamp: 2026-07-09T00:22:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:22:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:22:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: graphify-github
+    resource: "https://github.com/Graphify-Labs/graphify"
+    title: "Graphify GitHub"
+    author: "site:github.com"
+  - id: obsidian
+    resource: "https://obsidian.md/"
+    title: "Obsidian"
+    author: "site:obsidian.md"
+  - id: mem0
+    resource: "https://mem0.ai/"
+    title: "Mem0"
+    author: "site:mem0.ai"
+  - id: langchain
+    resource: "https://python.langchain.com/"
+    title: "LangChain"
+    author: "site:python.langchain.com"
+  - id: code2flow
+    resource: "https://code2flow.com/"
+    title: "code2flow"
+    author: "site:code2flow.com"
 ---
 
 # Why consider alternatives?
@@ -69,11 +93,3 @@ Generate call/flow diagrams from code.
 * **Mem0** — agent memory, not codebase mapping.
 * **LangChain graphs** — only if building a custom RAG app.
 * **code2flow** — throwaway diagrams.
-
-# Citations
-
-[1] [Graphify GitHub](https://github.com/Graphify-Labs/graphify)
-[2] [Obsidian](https://obsidian.md/)
-[3] [Mem0](https://mem0.ai/)
-[4] [LangChain](https://python.langchain.com/)
-[5] [code2flow](https://code2flow.com/)

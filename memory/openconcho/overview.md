@@ -1,10 +1,18 @@
 ---
 type: Concept
 title: OpenConcho Overview
-description: What OpenConcho is — Honcho UI features: dashboard, fleet dashboard, workspaces, peers/representations, sessions, chat with memory context.
+description: "What OpenConcho is — Honcho UI features: dashboard, fleet dashboard, workspaces, peers/representations, sessions, chat with memory context."
 resource: https://github.com/offendingcommit/openconcho
 tags: [openconcho, overview, honcho, ui]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: openconcho-github-readme
+    resource: "https://github.com/offendingcommit/openconcho"
+    title: "OpenConcho GitHub — README"
+    author: "site:github.com"
 ---
 
 # Overview
@@ -30,7 +38,3 @@ Connection details (URLs/keys) stay **in the browser** — nothing is sent anywh
 ## Position
 
 OpenConcho = Honcho's visibility layer; Honcho = the memory engine. If [Honcho](../honcho/index.md) is the memory backend, OpenConcho is how you watch/chat with it.
-
-# Citations
-
-[1] [OpenConcho GitHub — README](https://github.com/offendingcommit/openconcho)

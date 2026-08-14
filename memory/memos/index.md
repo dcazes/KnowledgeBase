@@ -4,7 +4,27 @@ title: MemOS
 description: Memory operating system for LLM agents — unifies store/retrieve/manage for long-term memory with vector + graph storage, runs as Python library, FastAPI service, and MCP server.
 resource: https://github.com/MemTensor/MemOS
 tags: [memos, memory, agents, mcp, llm]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: memos-repo
+    resource: "https://github.com/MemTensor/MemOS"
+    title: "MemOS repo"
+    author: "site:github.com"
+  - id: memos-docs
+    resource: "https://memos-docs.openmem.net/home/overview/"
+    title: "MemOS docs"
+    author: "site:memos-docs.openmem.net"
+  - id: pypi-memoryos
+    resource: "https://pypi.org/project/MemoryOS/"
+    title: "PyPI — MemoryOS"
+    author: "site:pypi.org"
+  - id: omnimemeval-evermem-benchmarks
+    resource: "https://github.com/MemTensor/MemOS"
+    title: "OmniMemEval / EverMem benchmarks"
+    author: "site:github.com"
 ---
 
 # MemOS
@@ -40,10 +60,3 @@ A **memory operating system** for LLM agents — unifies store / retrieve / mana
 ## Last verified
 
 **2026-08-12** — Version bumped to **v2.0.27**; corrected stale claim that a local checkout exists at `programs/memos` (verified absent 2026-08-12 — deploy via pip `MemoryOS`). Prior verification 2026-07-16 against upstream docs/repo.
-
-# Citations
-
-[1] [MemOS repo](https://github.com/MemTensor/MemOS)
-[2] [MemOS docs](https://memos-docs.openmem.net/home/overview/)
-[3] [PyPI — MemoryOS](https://pypi.org/project/MemoryOS/)
-[4] [OmniMemEval / EverMem benchmarks](https://github.com/MemTensor/MemOS)

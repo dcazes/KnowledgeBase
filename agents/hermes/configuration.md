@@ -4,7 +4,21 @@ title: Hermes — Configuration
 description: Anatomy of ~/.hermes/config.yaml (model, agent, terminal, browser, memory sections), the .env secrets rule, and profile scoping.
 resource: https://hermes-agent.nousresearch.com
 tags: [hermes, config, config.yaml, env, model, agent, browser, memory, profiles]
-timestamp: 2026-07-09T03:22:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:22:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:22:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: hermes-config-setup-note-vault
+    resource: "/../../vault/03%20-%20Reference/Hermes%20Setup.md"
+    title: "Hermes config — setup note (vault)"
+  - id: hermes-nous-research
+    resource: "https://hermes-agent.nousresearch.com"
+    title: "Hermes (Nous Research)"
+    author: "site:hermes-agent.nousresearch.com"
+  - id: installation-runtime
+    resource: "installation.md"
+    title: "Installation & runtime"
 ---
 
 # Where configuration lives
@@ -112,9 +126,3 @@ cat ~/.hermes/config.yaml        # inspect behavioral settings
 test -f ~/.hermes/.env && echo ".env present"
 ls ~/.hermes/profiles/          # list non-default profiles, if any
 ```
-
-# Citations
-
-[1] [Hermes config — setup note (vault)](/../../vault/03%20-%20Reference/Hermes%20Setup.md)
-[2] [Hermes (Nous Research)](https://hermes-agent.nousresearch.com)
-[3] [Installation & runtime](installation.md)

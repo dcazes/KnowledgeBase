@@ -4,7 +4,27 @@ title: Vespa — AI Integration
 description: How Vespa fits the KB pipeline — ingestion from parsers, serving agents (Hermes/OpenCode), and sitting under the graph layers.
 resource: https://docs.vespa.ai/
 tags: [vespa, integration, ingestion, agents, hermes, opencode, graphify, graphiti]
-timestamp: 2026-07-09T06:03:00Z
+generated: { by: "human:daniel", at: "2026-07-09T06:03:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T06:03:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: vespa-docs
+    resource: "https://docs.vespa.ai/"
+    title: "Vespa docs"
+    author: "site:docs.vespa.ai"
+  - id: hybrid-search
+    resource: "hybrid-search.md"
+    title: "Hybrid search"
+  - id: hermes
+    resource: "/../../../hermes/index.md"
+    title: "Hermes"
+  - id: opencode
+    resource: "/../../../opencode/index.md"
+    title: "OpenCode"
+  - id: graphiti
+    resource: "/../../../graphiti/index.md"
+    title: "Graphiti"
 ---
 
 # Pipeline position
@@ -36,11 +56,3 @@ Image (ColPali/VLM) ──────┘
 # Why under the graphs
 
 Graphiti/Graphify answer "what relates to X"; Vespa answers "what's relevant to this query." For a massive KB, relevance comes from Vespa; relationships from the graphs.
-
-# Citations
-
-[1] [Vespa docs](https://docs.vespa.ai/)
-[2] [Hybrid search](hybrid-search.md)
-[3] [Hermes](/../../../hermes/index.md)
-[4] [OpenCode](/../../../opencode/index.md)
-[5] [Graphiti](/../../../graphiti/index.md)

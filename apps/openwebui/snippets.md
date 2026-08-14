@@ -4,7 +4,20 @@ title: OpenWebUI — Snippets & Cheat Sheet
 description: Copy-paste commands to deploy, verify, connect the :4000 proxy, and wire SearXNG/Firecrawl search.
 resource: https://docs.openwebui.com
 tags: [openwebui, snippets, cheat-sheet, deploy, proxy, rag, search]
-timestamp: 2026-07-09T02:07:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:07:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:07:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: installation
+    resource: "installation.md"
+    title: "Installation"
+  - id: configuration
+    resource: "configuration.md"
+    title: "Configuration"
+  - id: rag-web-search
+    resource: "rag.md"
+    title: "RAG & Web Search"
 ---
 
 # Deploy / verify
@@ -66,9 +79,3 @@ docker run -d --network=host -v open-webui:/app/backend/data \
 | No models | no connection | set :4000 OpenAI-compatible URL |
 | Search off | provider not set | configure SearXNG/Firecrawl in Web Search |
 | Can't reach services | network | use `http://localhost:...` from host or `--network=host` |
-
-# Citations
-
-[1] [Installation](installation.md)
-[2] [Configuration](configuration.md)
-[3] [RAG & Web Search](rag.md)

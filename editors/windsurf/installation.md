@@ -4,7 +4,19 @@ title: Windsurf — Installation
 description: Downloading Windsurf, signing in with Codeium, and verifying the install.
 resource: https://docs.windsurf.com/
 tags: [windsurf, install, codeium, login, setup]
-timestamp: 2026-07-09T03:31:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:31:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:31:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: download
+    resource: "https://windsurf.com/download"
+    title: "Download"
+    author: "site:windsurf.com"
+  - id: docs
+    resource: "https://docs.windsurf.com/"
+    title: "Docs"
+    author: "site:docs.windsurf.com"
 ---
 
 # Install
@@ -40,8 +52,3 @@ windsurf --version      # if a CLI is available
 | Won't launch | not installed | download from windsurf.com |
 | Devin Local offline | not signed in | sign in with Codeium |
 | Model errors | plan/quota | check Codeium account tier |
-
-# Citations
-
-[1] [Download](https://windsurf.com/download)
-[2] [Docs](https://docs.windsurf.com/)

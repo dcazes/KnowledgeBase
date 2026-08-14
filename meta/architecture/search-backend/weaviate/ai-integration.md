@@ -4,7 +4,27 @@ title: Weaviate — AI Integration
 description: Weaviate's place in the KB pipeline — ingestion from parsers, serving agents, and complementing the graph layers.
 resource: https://weaviate.io/developers/weaviate
 tags: [weaviate, integration, ingestion, agents, hermes, opencode, graphify, graphiti]
-timestamp: 2026-07-09T06:07:00Z
+generated: { by: "human:daniel", at: "2026-07-09T06:07:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T06:07:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: weaviate-docs
+    resource: "https://weaviate.io/developers/weaviate"
+    title: "Weaviate docs"
+    author: "site:weaviate.io"
+  - id: hybrid-search
+    resource: "hybrid-search.md"
+    title: "Hybrid search"
+  - id: hermes
+    resource: "/../../../hermes/index.md"
+    title: "Hermes"
+  - id: opencode
+    resource: "/../../../opencode/index.md"
+    title: "OpenCode"
+  - id: graphiti
+    resource: "/../../../graphiti/index.md"
+    title: "Graphiti"
 ---
 
 # Pipeline position
@@ -36,11 +56,3 @@ Image (ColPali/VLM) ──────┘
 # Why under the graphs
 
 Graphiti/Graphify = relationships; Weaviate = relevance/retrieval. For a massive KB, retrieval is Weaviate's job; graphs are auxiliary.
-
-# Citations
-
-[1] [Weaviate docs](https://weaviate.io/developers/weaviate)
-[2] [Hybrid search](hybrid-search.md)
-[3] [Hermes](/../../../hermes/index.md)
-[4] [OpenCode](/../../../opencode/index.md)
-[5] [Graphiti](/../../../graphiti/index.md)

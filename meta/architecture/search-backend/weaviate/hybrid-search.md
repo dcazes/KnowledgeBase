@@ -4,7 +4,22 @@ title: Weaviate — Hybrid Search
 description: Weaviate's combination of dense vector, sparse/BM25 keyword, and reranker modules in a single query.
 resource: https://weaviate.io/developers/weaviate/search/hybrid
 tags: [weaviate, hybrid-search, dense, sparse, bm25, reranker, modules]
-timestamp: 2026-07-09T06:05:00Z
+generated: { by: "human:daniel", at: "2026-07-09T06:05:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T06:05:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: hybrid-search-docs
+    resource: "https://weaviate.io/developers/weaviate/search/hybrid"
+    title: "Hybrid search docs"
+    author: "site:weaviate.io"
+  - id: weaviate-modules
+    resource: "https://weaviate.io/developers/weaviate/modules"
+    title: "Weaviate modules"
+    author: "site:weaviate.io"
+  - id: search-comparison
+    resource: "/../../search-backend/vespa-vs-weaviate.md"
+    title: "Search comparison"
 ---
 
 # Hybrid retrieval in Weaviate
@@ -29,9 +44,3 @@ results = collection.query.hybrid(
 # Rerankers
 
 `reranker-*` modules (Cohere, etc.) improve precision post-retrieval. If strict local, prefer a local reranker or skip and rely on hybrid alpha tuning.
-
-# Citations
-
-[1] [Hybrid search docs](https://weaviate.io/developers/weaviate/search/hybrid)
-[2] [Weaviate modules](https://weaviate.io/developers/weaviate/modules)
-[3] [Search comparison](/../../search-backend/vespa-vs-weaviate.md)

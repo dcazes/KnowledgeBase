@@ -4,7 +4,22 @@ title: Frigate — Cameras
 description: The Reolink camera setup — go2rtc HTTP-FLV ingest, RTSP restream, detect vs record input roles, detection settings.
 resource: https://docs.frigate.video/configuration/cameras/
 tags: [frigate, camera, reolink, go2rtc, detect, record, rtsp]
-timestamp: 2026-07-09T04:18:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:18:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:18:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: camera-config
+    resource: "https://docs.frigate.video/configuration/cameras/"
+    title: "Camera config"
+    author: "site:docs.frigate.video"
+  - id: go2rtc
+    resource: "https://docs.frigate.video/configuration/go2rtc/"
+    title: "go2rtc"
+    author: "site:docs.frigate.video"
+  - id: configuration
+    resource: "configuration.md"
+    title: "Configuration"
 ---
 
 # Reolink camera (`reolink_camera`)
@@ -49,9 +64,3 @@ Reolink cameras are notorious for dropping raw RTSP. go2rtc's HTTP-FLV pull + RT
 # ⚠️ Secrets
 
 The go2rtc URLs embed the camera password. Keep it `<REDACTED>` outside the real config.
-
-# Citations
-
-[1] [Camera config](https://docs.frigate.video/configuration/cameras/)
-[2] [go2rtc](https://docs.frigate.video/configuration/go2rtc/)
-[3] [Configuration](configuration.md)

@@ -4,7 +4,21 @@ title: Graphiti vs Graphify
 description: Explicit distinction between Graphiti (temporal context-graph agent memory, Neo4j) and Graphify (static confidence-tagged compiled graph) — both in this KB.
 resource: https://github.com/getzep/graphiti
 tags: [graphiti, graphify, comparison, temporal, static, knowledge-graph, distinction]
-timestamp: 2026-07-09T05:05:00Z
+generated: { by: "human:daniel", at: "2026-07-09T05:05:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T05:05:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: graphiti
+    resource: "https://github.com/getzep/graphiti"
+    title: "Graphiti"
+    author: "site:github.com"
+  - id: graphify
+    resource: "/../../graphify/index.md"
+    title: "Graphify"
+  - id: graphiti-concepts
+    resource: "concepts.md"
+    title: "Graphiti concepts"
 ---
 
 # Two different "graph from data" tools
@@ -32,9 +46,3 @@ This KB covers **both** Graphiti and Graphify. They sound alike but solve differ
 # They can coexist
 
 Use **Graphify** to compile a static map of `programs/*` for quick lookup, and **Graphiti** to hold the *evolving* memory of agent interactions. Different layers, same "graph" idea.
-
-# Citations
-
-[1] [Graphiti](https://github.com/getzep/graphiti)
-[2] [Graphify](/../../graphify/index.md)
-[3] [Graphiti concepts](concepts.md)

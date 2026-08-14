@@ -4,7 +4,35 @@ title: Dify — Alternatives
 description: How Dify compares to Flowise, n8n, LangChain, AnythingLLM, and OpenWebUI for building LLM apps.
 resource: https://github.com/langgenius/dify
 tags: [dify, alternatives, flowise, n8n, langchain, anythingllm, openwebui, comparison]
-timestamp: 2026-07-09T00:57:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:57:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:57:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: dify
+    resource: "https://github.com/langgenius/dify"
+    title: "Dify"
+    author: "site:github.com"
+  - id: flowise
+    resource: "https://github.com/FlowiseAI/Flowise"
+    title: "Flowise"
+    author: "site:github.com"
+  - id: n8n
+    resource: "https://github.com/n8n-io/n8n"
+    title: "n8n"
+    author: "site:github.com"
+  - id: langchain
+    resource: "https://github.com/langchain-ai/langchain"
+    title: "LangChain"
+    author: "site:github.com"
+  - id: anythingllm
+    resource: "https://github.com/Mintplex-Labs/anything-llm"
+    title: "AnythingLLM"
+    author: "site:github.com"
+  - id: openwebui
+    resource: "https://github.com/open-webui/open-webui"
+    title: "OpenWebUI"
+    author: "site:github.com"
 ---
 
 # Why consider alternatives?
@@ -69,12 +97,3 @@ Chat UI for OpenAI-compatible models.
 * **Flowise** — if you want Dify-like visuals but simpler.
 * **n8n** — broad automation beyond LLM.
 * **LangChain** — code-first custom builds.
-
-# Citations
-
-[1] [Dify](https://github.com/langgenius/dify)
-[2] [Flowise](https://github.com/FlowiseAI/Flowise)
-[3] [n8n](https://github.com/n8n-io/n8n)
-[4] [LangChain](https://github.com/langchain-ai/langchain)
-[5] [AnythingLLM](https://github.com/Mintplex-Labs/anything-llm)
-[6] [OpenWebUI](https://github.com/open-webui/open-webui)

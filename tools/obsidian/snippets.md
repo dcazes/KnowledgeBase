@@ -4,7 +4,20 @@ title: Obsidian — Snippets & Cheat Sheet
 description: Launch, vault location, link/graph syntax, and Graphify ingest for Obsidian.
 resource: https://help.obsidian.md/
 tags: [obsidian, snippets, cheat-sheet, wikilinks, graph, graphify]
-timestamp: 2026-07-09T04:11:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:11:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:11:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: installation
+    resource: "installation.md"
+    title: "Installation"
+  - id: vault-structure
+    resource: "vault-structure.md"
+    title: "Vault Structure"
+  - id: ai-integration
+    resource: "ai-integration.md"
+    title: "AI Integration"
 ---
 
 # Launch
@@ -43,9 +56,3 @@ python -m graphify.serve
 |---------|-------|-----|
 | Launcher dead | binary missing | install obsidian; run `obsidian` |
 | Wrong vault | folder not opened | Open Folder as Vault → `~/Desktop/vault` |
-
-# Citations
-
-[1] [Installation](installation.md)
-[2] [Vault Structure](vault-structure.md)
-[3] [AI Integration](ai-integration.md)

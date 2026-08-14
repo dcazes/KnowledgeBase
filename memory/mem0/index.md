@@ -4,7 +4,27 @@ title: Mem0
 description: Production memory layer for AI agents — self-hostable memory service with vector storage, graph memory, and per-user/per-agent scoping; OpenMemory app, API, and SDKs.
 resource: https://github.com/mem0ai/mem0
 tags: [mem0, memory, agents, vector, graph, llm]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: mem0-github
+    resource: "https://github.com/mem0ai/mem0"
+    title: "Mem0 GitHub"
+    author: "site:github.com"
+  - id: mem0-docs
+    resource: "https://docs.mem0.ai"
+    title: "Mem0 docs"
+    author: "site:docs.mem0.ai"
+  - id: mem0-on-pypi
+    resource: "https://pypi.org/project/mem0ai/"
+    title: "Mem0 on PyPI"
+    author: "site:pypi.org"
+  - id: openmemory-self-hosted-app
+    resource: "https://github.com/mem0ai/OpenMemory"
+    title: "OpenMemory (self-hosted app)"
+    author: "site:github.com"
 ---
 
 # Mem0
@@ -27,13 +47,6 @@ Local checkout: `programs/mem0` (git, mem0ai, main, commit 2026-07-20) at **v2.0
 * [MemOS](../memos/index.md) — the other local memory platform (deployed-via-pip, different architecture)
 * [Graphiti](../graphiti/index.md) — temporal context graphs for the same agent-memory job
 * [Architecture → Memory comparison](../../meta/architecture/memory/memory-comparison.md)
-
-# Citations
-
-[1] [Mem0 GitHub](https://github.com/mem0ai/mem0)
-[2] [Mem0 docs](https://docs.mem0.ai)
-[3] [Mem0 on PyPI](https://pypi.org/project/mem0ai/)
-[4] [OpenMemory (self-hosted app)](https://github.com/mem0ai/OpenMemory)
 
 ## Last verified
 

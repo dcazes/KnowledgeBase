@@ -4,7 +4,22 @@ title: Docker
 description: Containerization platform — the runtime foundation for most other programs in this knowledge base.
 resource: https://www.docker.com
 tags: [docker, containers, runtime]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: docker-documentation
+    resource: "https://docs.docker.com/"
+    title: "Docker documentation"
+    author: "site:docs.docker.com"
+  - id: docker-desktop-for-linux
+    resource: "https://docs.docker.com/desktop/setup/install/linux/"
+    title: "Docker Desktop for Linux"
+    author: "site:docs.docker.com"
+  - id: local-install-notes-programs-docker
+    resource: "/../../programs/docker/"
+    title: "Local install notes - programs/docker/"
 ---
 
 # Docker
@@ -45,9 +60,3 @@ docker run hello-world
 ## Last verified
 
 **2026-08-12** — All configs, compose examples, and GPU settings verified against local `programs/docker/` and running containers. Engine 29.7.2, Compose v5.4.0.
-
-# Citations
-
-[1] [Docker documentation](https://docs.docker.com/)
-[2] [Docker Desktop for Linux](https://docs.docker.com/desktop/setup/install/linux/)
-[3] [Local install notes - programs/docker/](/../../programs/docker/)

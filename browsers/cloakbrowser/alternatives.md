@@ -4,7 +4,31 @@ title: CloakBrowser — Alternatives
 description: How CloakBrowser compares to Camofox, Playwright, Puppeteer, and Undetected-Chromedriver.
 resource: https://github.com/cloakhq/cloakbrowser
 tags: [cloakbrowser, alternatives, camofox, playwright, puppeteer, undetected, comparison]
-timestamp: 2026-07-09T01:14:00Z
+generated: { by: "human:daniel", at: "2026-07-09T01:14:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T01:14:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: cloakbrowser
+    resource: "https://github.com/cloakhq/cloakbrowser"
+    title: "CloakBrowser"
+    author: "site:github.com"
+  - id: camofox
+    resource: "https://github.com/daijro/camoufox"
+    title: "Camofox"
+    author: "site:github.com"
+  - id: playwright
+    resource: "https://playwright.dev/"
+    title: "Playwright"
+    author: "site:playwright.dev"
+  - id: puppeteer
+    resource: "https://pptr.dev/"
+    title: "Puppeteer"
+    author: "site:pptr.dev"
+  - id: undetected-chromedriver
+    resource: "https://github.com/ultrafunkamsterdam/undetected-chromedriver"
+    title: "Undetected-Chromedriver"
+    author: "site:github.com"
 ---
 
 # Why consider alternatives?
@@ -43,11 +67,3 @@ Patches ChromeDriver to dodge bot detection. Chromium-only stealth; more cat-and
 * **Camofox** — Firefox anti-detection.
 * **Playwright/Puppeteer** — general automation.
 * **Undetected-Chromedriver** — stealth Chrome specifically.
-
-# Citations
-
-[1] [CloakBrowser](https://github.com/cloakhq/cloakbrowser)
-[2] [Camofox](https://github.com/daijro/camoufox)
-[3] [Playwright](https://playwright.dev/)
-[4] [Puppeteer](https://pptr.dev/)
-[5] [Undetected-Chromedriver](https://github.com/ultrafunkamsterdam/undetected-chromedriver)

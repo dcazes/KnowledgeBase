@@ -4,7 +4,66 @@ title: Agentic System Blueprint (Your Ideal Stack)
 description: One-stop-shop plan for a fully customizable end-to-end agentic system centered on Hermes — browser, search, memory, search backend, free-tier LLM + GTX 1060 local models.
 resource: https://hermes-agent.nousresearch.com/
 tags: [agentic, blueprint, hermes, firecrawl, searxng, camofox, memory, search-backend, ollama, free-tier]
-timestamp: 2026-07-09T07:00:00Z
+generated: { by: "human:daniel", at: "2026-07-09T07:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T07:00:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: hermes
+    resource: "https://hermes-agent.nousresearch.com/"
+    title: "Hermes"
+    author: "site:hermes-agent.nousresearch.com"
+  - id: hermes-browser-docs
+    resource: "https://hermes-agent.nousresearch.com/docs/user-guide/features/browser"
+    title: "Hermes browser docs"
+    author: "site:hermes-agent.nousresearch.com"
+  - id: searxng
+    resource: "https://github.com/searxng/searxng"
+    title: "SearXNG"
+    author: "site:github.com"
+  - id: firecrawl
+    resource: "https://www.firecrawl.dev/"
+    title: "Firecrawl"
+    author: "site:www.firecrawl.dev"
+  - id: camofox
+    resource: "/../../camofox/index.md"
+    title: "Camofox"
+  - id: cloakbrowser
+    resource: "/../../cloakbrowser/index.md"
+    title: "CloakBrowser"
+  - id: free-llm-apis-openrouter
+    resource: "https://openrouter.ai/blog/tutorials/free-llm-apis-compared/"
+    title: "Free LLM APIs (OpenRouter)"
+    author: "site:openrouter.ai"
+  - id: ollama
+    resource: "https://ollama.com/"
+    title: "Ollama"
+    author: "site:ollama.com"
+  - id: graphiti
+    resource: "https://github.com/getzep/graphiti"
+    title: "Graphiti"
+    author: "site:github.com"
+  - id: mem0
+    resource: "https://mem0.ai/"
+    title: "Mem0"
+    author: "site:mem0.ai"
+  - id: vespa
+    resource: "https://vespa.ai/"
+    title: "Vespa"
+    author: "site:vespa.ai"
+  - id: weaviate
+    resource: "https://weaviate.io/"
+    title: "Weaviate"
+    author: "site:weaviate.io"
+  - id: architecture-index
+    resource: "index.md"
+    title: "Architecture index"
+  - id: search-backend
+    resource: "search-backend/index.md"
+    title: "Search backend"
+  - id: memory
+    resource: "memory/memory-comparison.md"
+    title: "Memory"
 ---
 
 # Agentic System Blueprint — Your Ideal Stack
@@ -157,16 +216,3 @@ LLM via :4000 (free tier: OpenRouter/Groq/...) ; tiny local LLM on 1060 for offl
 1. **Memory: Graphiti (Neo4j) or Mem0?** → Recommended Graphiti; say if you'd rather avoid Neo4j.
 2. **Search backend: Weaviate or Vespa to start?** → Recommended Weaviate; say if you want Vespa now.
 3. **Build it?** The `agent-stack/` implementation folder now exists at the top level of the KB (flattened from `architecture/agent-stack/` on 2026-07-16) — it wires all of the above into one Docker Compose via `include`. Next step could be a `docparser/` folder (Docling/Marker/MinerU) if you want the parser as a standalone program.
-
-# Citations
-
-[1] [Hermes](https://hermes-agent.nousresearch.com/)
-[2] [Hermes browser docs](https://hermes-agent.nousresearch.com/docs/user-guide/features/browser)
-[3] [SearXNG](https://github.com/searxng/searxng)
-[4] [Firecrawl](https://www.firecrawl.dev/)
-[5] [Camofox](/../../camofox/index.md) · [CloakBrowser](/../../cloakbrowser/index.md)
-[6] [Free LLM APIs (OpenRouter)](https://openrouter.ai/blog/tutorials/free-llm-apis-compared/)
-[7] [Ollama](https://ollama.com/)
-[8] [Graphiti](https://github.com/getzep/graphiti) · [Mem0](https://mem0.ai/)
-[9] [Vespa](https://vespa.ai/) · [Weaviate](https://weaviate.io/)
-[10] [Architecture index](index.md) · [Search backend](search-backend/index.md) · [Memory](memory/memory-comparison.md)

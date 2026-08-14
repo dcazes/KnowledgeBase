@@ -4,7 +4,35 @@ title: Tailscale — Alternatives
 description: How Tailscale compares to plain WireGuard, Headscale, ZeroTier, OpenVPN, and Cloudflare Tunnel.
 resource: https://tailscale.com/
 tags: [tailscale, alternatives, wireguard, headscale, zerotier, openvpn, cloudflare-tunnel, comparison]
-timestamp: 2026-07-09T02:24:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:24:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:24:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: tailscale
+    resource: "https://tailscale.com/"
+    title: "Tailscale"
+    author: "site:tailscale.com"
+  - id: headscale
+    resource: "https://headscale.net/"
+    title: "Headscale"
+    author: "site:headscale.net"
+  - id: wireguard
+    resource: "https://www.wireguard.com/"
+    title: "WireGuard"
+    author: "site:www.wireguard.com"
+  - id: zerotier
+    resource: "https://www.zerotier.com/"
+    title: "ZeroTier"
+    author: "site:www.zerotier.com"
+  - id: openvpn
+    resource: "https://openvpn.net/"
+    title: "OpenVPN"
+    author: "site:openvpn.net"
+  - id: cloudflare-tunnel
+    resource: "https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/"
+    title: "Cloudflare Tunnel"
+    author: "site:developers.cloudflare.com"
 ---
 
 # Why consider alternatives?
@@ -70,12 +98,3 @@ Exposes local services through Cloudflare, no open ports — but it's public ing
 * **ZeroTier** — alternative mesh with L2.
 * **OpenVPN** — legacy central VPN.
 * **Cloudflare Tunnel** — public exposure only.
-
-# Citations
-
-[1] [Tailscale](https://tailscale.com/)
-[2] [Headscale](https://headscale.net/)
-[3] [WireGuard](https://www.wireguard.com/)
-[4] [ZeroTier](https://www.zerotier.com/)
-[5] [OpenVPN](https://openvpn.net/)
-[6] [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/)

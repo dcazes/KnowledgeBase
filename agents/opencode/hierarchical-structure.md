@@ -4,7 +4,19 @@ title: OpenCode Hierarchical Knowledge Structure
 description: The AGENTS.md/SOUL.md/TOOLS.md/USER.md/MEMORY.md pattern and IDENTITY/OPERATIONS/MEMORY folder layout for context scoping and token efficiency.
 resource: https://opencode.ai/docs/context
 tags: [opencode, context, knowledge-base, agenth, structure, tokens]
-timestamp: 2026-07-09T03:25:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:25:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:25:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: opencode-context-docs
+    resource: "https://opencode.ai/docs/context"
+    title: "OpenCode Context Docs"
+    author: "site:opencode.ai"
+  - id: opencode-github-repository-anomalyco
+    resource: "https://github.com/anomalyco/opencode"
+    title: "OpenCode GitHub repository (anomalyco)"
+    author: "site:github.com"
 ---
 
 # OpenCode Hierarchical Knowledge Structure
@@ -67,7 +79,3 @@ ls AGENTS.md SOUL.md TOOLS.md USER.md MEMORY.md
 # Check nested context files
 find . -name AGENTS.md -o -name TOOLS.md
 ```
-
-# Citations
-[1] [OpenCode Context Docs](https://opencode.ai/docs/context)
-[2] [OpenCode GitHub repository (anomalyco)](https://github.com/anomalyco/opencode)

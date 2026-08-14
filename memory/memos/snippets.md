@@ -4,7 +4,19 @@ title: MemOS — Snippets & Cheat Sheet
 description: Copy-paste commands for MemOS — install (pip install MemoryOS), serve (uvicorn :8000), Docker stack, REST API calls, and Python MOS usage.
 resource: https://memos-docs.openmem.net/home/overview/
 tags: [memos, snippets, cheat-sheet, api, deploy, python]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: memos-repo
+    resource: "https://github.com/MemTensor/MemOS"
+    title: "MemOS repo"
+    author: "site:github.com"
+  - id: pypi-memoryos
+    resource: "https://pypi.org/project/MemoryOS/"
+    title: "PyPI — MemoryOS"
+    author: "site:pypi.org"
 ---
 
 # Install / serve
@@ -74,8 +86,3 @@ make test               # full test suite
 make format             # ruff lint + format
 poetry run pytest tests/<module>/ -q   # single module
 ```
-
-# Citations
-
-[1] [MemOS repo](https://github.com/MemTensor/MemOS)
-[2] [PyPI — MemoryOS](https://pypi.org/project/MemoryOS/)

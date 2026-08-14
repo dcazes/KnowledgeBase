@@ -4,7 +4,23 @@ title: Hindsight
 description: Agent memory system (vectorize-io) — agents that learn, not just remember; SOTA on LongMemEval; Deno/TypeScript monorepo with CLI, API, control plane, integrations.
 resource: https://github.com/vectorize-io/hindsight
 tags: [hindsight, memory, agents, longmemeval, vectorize]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: hindsight-github
+    resource: "https://github.com/vectorize-io/hindsight"
+    title: "Hindsight GitHub"
+    author: "site:github.com"
+  - id: hindsight-docs
+    resource: "https://hindsight.vectorize.io"
+    title: "Hindsight docs"
+    author: "site:hindsight.vectorize.io"
+  - id: paper-arxiv-2512-12818
+    resource: "https://arxiv.org/abs/2512.12818"
+    title: "Paper (arXiv 2512.12818)"
+    author: "site:arxiv.org"
 ---
 
 # Hindsight
@@ -26,12 +42,6 @@ Local checkout: `programs/hindsight` (git, vectorize-io, main, commit 2026-07-17
 
 * [Graphiti](../graphiti/index.md), [Mem0](../mem0/index.md), [MemOS](../memos/index.md) — the other agent-memory systems in this vault
 * [Architecture → Memory comparison](../../meta/architecture/memory/memory-comparison.md)
-
-# Citations
-
-[1] [Hindsight GitHub](https://github.com/vectorize-io/hindsight)
-[2] [Hindsight docs](https://hindsight.vectorize.io)
-[3] [Paper (arXiv 2512.12818)](https://arxiv.org/abs/2512.12818)
 
 ## Last verified
 

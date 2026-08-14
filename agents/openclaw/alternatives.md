@@ -4,7 +4,31 @@ title: OpenClaw — Alternatives
 description: How OpenClaw compares to n8n, LangChain, Hermes, and Dify for multi-channel agent orchestration.
 resource: https://openclaw.ai/
 tags: [openclaw, alternatives, n8n, langchain, hermes, dify, comparison]
-timestamp: 2026-07-09T03:14:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:14:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:14:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: openclaw
+    resource: "https://openclaw.ai/"
+    title: "OpenClaw"
+    author: "site:openclaw.ai"
+  - id: n8n
+    resource: "https://n8n.io/"
+    title: "n8n"
+    author: "site:n8n.io"
+  - id: langchain
+    resource: "https://langchain.ai/"
+    title: "LangChain"
+    author: "site:langchain.ai"
+  - id: hermes
+    resource: "https://hermes-agent.nousresearch.com"
+    title: "Hermes"
+    author: "site:hermes-agent.nousresearch.com"
+  - id: dify
+    resource: "https://dify.ai/"
+    title: "Dify"
+    author: "site:dify.ai"
 ---
 
 # Why consider alternatives?
@@ -60,11 +84,3 @@ Visual app builder.
 * **LangChain** — code-first agents.
 * **Hermes** — agent runtime (often behind OpenClaw).
 * **Dify** — app builder.
-
-# Citations
-
-[1] [OpenClaw](https://openclaw.ai/)
-[2] [n8n](https://n8n.io/)
-[3] [LangChain](https://langchain.ai/)
-[4] [Hermes](https://hermes-agent.nousresearch.com)
-[5] [Dify](https://dify.ai/)

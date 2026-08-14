@@ -4,7 +4,25 @@ title: Docker — Compose
 description: Multi-container apps defined in docker-compose.yml; the primary way the AI stack on this machine is run.
 resource: https://docs.docker.com/compose/
 tags: [docker, compose, multi-container, services]
-timestamp: 2026-07-08T22:35:00Z
+generated: { by: "human:daniel", at: "2026-07-08T22:35:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-08T22:35:00Z" } ]
+status: stable
+stale_after: 2027-01-04
+sources:
+  - id: docker-compose-overview
+    resource: "https://docs.docker.com/compose/"
+    title: "Docker Compose overview"
+    author: "site:docs.docker.com"
+  - id: compose-file-reference
+    resource: "https://docs.docker.com/compose/compose-file/"
+    title: "Compose file reference"
+    author: "site:docs.docker.com"
+  - id: local-searxng-config-programs-firecrawl-firecrawl-searxng-config
+    resource: "/../../programs/firecrawl/firecrawl/searxng-config/"
+    title: "Local SearXNG config - programs/firecrawl/firecrawl/searxng-config/"
+  - id: local-frigate-compose-programs-frigate-docker-compose-yml
+    resource: "/../../programs/frigate/docker-compose.yml"
+    title: "Local Frigate compose - programs/frigate/docker-compose.yml"
 ---
 
 # What Compose is
@@ -147,10 +165,3 @@ services:
 * Give services a `container_name` so logs/`docker exec` are easy to target.
 * Prefer `restart: unless-stopped` over `always` for services you may want to keep down during maintenance.
 * Internal service-to-service traffic uses the **service name** as the hostname (e.g. `http://searxng:8080`), never the host port.
-
-# Citations
-
-[1] [Docker Compose overview](https://docs.docker.com/compose/)
-[2] [Compose file reference](https://docs.docker.com/compose/compose-file/)
-[3] [Local SearXNG config - programs/firecrawl/firecrawl/searxng-config/](/../../programs/firecrawl/firecrawl/searxng-config/)
-[4] [Local Frigate compose - programs/frigate/docker-compose.yml](/../../programs/frigate/docker-compose.yml)

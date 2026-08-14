@@ -4,7 +4,19 @@ title: Mem0 AI Integration
 description: Use Mem0 as agent memory — Python/JS SDKs, OpenMemory REST API, wiring into Hermes/OpenCode, and how it compares to MemOS for this stack.
 resource: https://docs.mem0.ai
 tags: [mem0, integration, sdk, api, agents, hermes]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: mem0-docs-quickstart
+    resource: "https://docs.mem0.ai/quickstart"
+    title: "Mem0 docs — quickstart"
+    author: "site:docs.mem0.ai"
+  - id: mem0-github
+    resource: "https://github.com/mem0ai/mem0"
+    title: "Mem0 GitHub"
+    author: "site:github.com"
 ---
 
 # AI Integration
@@ -47,8 +59,3 @@ curl "http://localhost:3000/api/memories/search?query=coffee&user_id=alice" \
 * No active Mem0 deployment on this machine (local checkout only, 2026-08-13).
 * If wired up, the natural pattern is Ollama LLM + embedded Qdrant + scoped `user_id` per agent — no cloud keys.
 * Competes with [MemOS](../memos/index.md) (the deployed-via-pip option) and [Graphiti](../graphiti/index.md) (temporal graph MCP). Mem0 = pragmatic per-user memory; MemOS = full memory-OS with scheduling; Graphiti = temporal facts with provenance. See the [memory comparison](../../meta/architecture/memory/memory-comparison.md).
-
-# Citations
-
-[1] [Mem0 docs — quickstart](https://docs.mem0.ai/quickstart)
-[2] [Mem0 GitHub](https://github.com/mem0ai/mem0)

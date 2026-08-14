@@ -4,7 +4,22 @@ title: Vespa — Overview
 description: Self-hosted unified serving engine combining vector search, BM25, filtering, and ML ranking at billion-scale in one system.
 resource: https://vespa.ai/
 tags: [vespa, search, vector-db, hybrid, ranking, scale, self-hosted]
-timestamp: 2026-07-09T06:00:00Z
+generated: { by: "human:daniel", at: "2026-07-09T06:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T06:00:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: vespa
+    resource: "https://vespa.ai/"
+    title: "Vespa"
+    author: "site:vespa.ai"
+  - id: vespa-vs-weaviate
+    resource: "https://zilliz.com/comparison/vespa-vs-weaviate"
+    title: "Vespa vs Weaviate"
+    author: "site:zilliz.com"
+  - id: architecture-overview
+    resource: "/../../index.md"
+    title: "Architecture overview"
 ---
 
 # What Vespa is
@@ -37,9 +52,3 @@ Vespa is the **retrieval core**; graphs sit on top for relationships/memory.
 * **Weaviate** — easier start, module-based; Vespa is heavier but more unified at scale.
 * **Qdrant/Milvus** — purer vector DBs; Vespa adds BM25 + ranking natively.
 * **Graphify/Graphiti** — graphs, not search engines; complementary, not replacements.
-
-# Citations
-
-[1] [Vespa](https://vespa.ai/)
-[2] [Vespa vs Weaviate](https://zilliz.com/comparison/vespa-vs-weaviate)
-[3] [Architecture overview](/../../index.md)

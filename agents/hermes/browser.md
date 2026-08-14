@@ -4,7 +4,24 @@ title: Hermes — Browser
 description: Local agent-browser mode, the /browser connect workflow (desktop Chromium at :9222), Camofox anti-detect backend, and computer_use.
 resource: https://hermes-agent.nousresearch.com
 tags: [hermes, browser, agent-browser, chromium, remote-debugging, camofox, computer-use]
-timestamp: 2026-07-09T03:24:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:24:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:24:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: hermes-browser-setup-note-vault
+    resource: "/../../vault/03%20-%20Reference/Hermes%20Setup.md"
+    title: "Hermes browser — setup note (vault)"
+  - id: hermes-nous-research
+    resource: "https://hermes-agent.nousresearch.com"
+    title: "Hermes (Nous Research)"
+    author: "site:hermes-agent.nousresearch.com"
+  - id: camofox
+    resource: "/../../camofox/index.md"
+    title: "Camofox"
+  - id: configuration
+    resource: "configuration.md"
+    title: "Configuration"
 ---
 
 # Local agent-browser mode
@@ -58,10 +75,3 @@ Beyond the browser, Hermes's **computer_use** toolset drives the whole Linux des
 curl -s http://127.0.0.1:9222/json/version   # Chromium debugger reachable
 /browser status                               # from inside Hermes CLI
 ```
-
-# Citations
-
-[1] [Hermes browser — setup note (vault)](/../../vault/03%20-%20Reference/Hermes%20Setup.md)
-[2] [Hermes (Nous Research)](https://hermes-agent.nousresearch.com)
-[3] [Camofox](/../../camofox/index.md)
-[4] [Configuration](configuration.md)

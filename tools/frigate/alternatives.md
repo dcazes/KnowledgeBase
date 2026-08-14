@@ -4,7 +4,31 @@ title: Frigate — Alternatives
 description: How Frigate compares to ZoneMinder, Shinobi, Blue Iris, and MotionEye for self-hosted NVR.
 resource: https://frigate.video/
 tags: [frigate, alternatives, zoneminder, shinobi, blue-iris, motioneye, nvr, comparison]
-timestamp: 2026-07-09T04:20:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:20:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:20:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: frigate
+    resource: "https://frigate.video/"
+    title: "Frigate"
+    author: "site:frigate.video"
+  - id: zoneminder
+    resource: "https://zoneminder.com/"
+    title: "ZoneMinder"
+    author: "site:zoneminder.com"
+  - id: shinobi
+    resource: "https://shinobi.video/"
+    title: "Shinobi"
+    author: "site:shinobi.video"
+  - id: blue-iris
+    resource: "https://blueirissoftware.com/"
+    title: "Blue Iris"
+    author: "site:blueirissoftware.com"
+  - id: motioneye
+    resource: "https://motioneye.readthedocs.io/"
+    title: "MotionEye"
+    author: "site:motioneye.readthedocs.io"
 ---
 
 # Why consider alternatives?
@@ -60,11 +84,3 @@ Lightweight motion detection.
 * **Shinobi** — feature-rich UI.
 * **Blue Iris** — Windows.
 * **MotionEye** — minimal.
-
-# Citations
-
-[1] [Frigate](https://frigate.video/)
-[2] [ZoneMinder](https://zoneminder.com/)
-[3] [Shinobi](https://shinobi.video/)
-[4] [Blue Iris](https://blueirissoftware.com/)
-[5] [MotionEye](https://motioneye.readthedocs.io/)

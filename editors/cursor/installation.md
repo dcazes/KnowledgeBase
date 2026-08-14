@@ -4,7 +4,19 @@ title: Installing Cursor
 description: How to download, sign in to, and verify Cursor on your machine.
 resource: https://cursor.com/download
 tags: [cursor, install, setup, anysphere]
-timestamp: 2026-07-09T04:00:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:00:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: cursor-download
+    resource: "https://cursor.com/download"
+    title: "Cursor Download"
+    author: "site:cursor.com"
+  - id: cursor-docs
+    resource: "https://docs.cursor.com/"
+    title: "Cursor Docs"
+    author: "site:docs.cursor.com"
 ---
 
 # Installing Cursor
@@ -35,8 +47,3 @@ On this machine, **no local launcher for Cursor was found** in the programs list
 
 - `cursor: command not found` — the CLI symlink is created on first launch; restart the terminal or add Cursor's bin directory to `PATH`.
 - Sign-in fails — confirm network access to `cursor.com`; cloud models require an active account.
-
-# Citations
-
-[1] [Cursor Download](https://cursor.com/download)
-[2] [Cursor Docs](https://docs.cursor.com/)

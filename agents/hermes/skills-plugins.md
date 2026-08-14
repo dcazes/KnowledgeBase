@@ -4,7 +4,21 @@ title: Hermes — Skills, Plugins, Cron, Memory
 description: How Hermes extends itself via skills (~/.hermes/skills, SKILL.md), plugins, scheduled cron jobs, and persistent memory (MEMORY.md / USER.md).
 resource: https://hermes-agent.nousresearch.com
 tags: [hermes, skills, plugins, cron, memory, procedural-memory]
-timestamp: 2026-07-09T03:23:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:23:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:23:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: hermes-skills-memory-setup-note-vault
+    resource: "/../../vault/03%20-%20Reference/Hermes%20Setup.md"
+    title: "Hermes skills/memory — setup note (vault)"
+  - id: hermes-nous-research
+    resource: "https://hermes-agent.nousresearch.com"
+    title: "Hermes (Nous Research)"
+    author: "site:hermes-agent.nousresearch.com"
+  - id: configuration
+    resource: "configuration.md"
+    title: "Configuration"
 ---
 
 # Skills (procedural memory)
@@ -67,9 +81,3 @@ Controlled by `memory.memory_enabled` and `memory.user_profile_enabled` in `conf
 ```bash
 ls ~/.hermes/skills/ ~/.hermes/plugins/ ~/.hermes/cron/ ~/.hermes/memories/
 ```
-
-# Citations
-
-[1] [Hermes skills/memory — setup note (vault)](/../../vault/03%20-%20Reference/Hermes%20Setup.md)
-[2] [Hermes (Nous Research)](https://hermes-agent.nousresearch.com)
-[3] [Configuration](configuration.md)

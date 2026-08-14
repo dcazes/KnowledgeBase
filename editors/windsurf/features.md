@@ -4,7 +4,18 @@ title: Windsurf — Features
 description: Windsurf (now Devin Desktop) agentic coding features — Cascade assistant (retired Jul 2026 → Devin Local), SWE-1 models, flows, command mode, and multi-file edits.
 resource: https://docs.windsurf.com/
 tags: [windsurf, cascade, swe-1, flows, agentic, features]
-timestamp: 2026-07-09T03:32:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:32:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:32:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: windsurf-features-docs
+    resource: "https://docs.windsurf.com/"
+    title: "Windsurf features/docs"
+    author: "site:docs.windsurf.com"
+  - id: overview
+    resource: "overview.md"
+    title: "Overview"
 ---
 
 # Core features
@@ -26,8 +37,3 @@ timestamp: 2026-07-09T03:32:00Z
 # Notes
 
 Verify current Cascade/SWE-1 capabilities against docs.windsurf.com — model names and feature specifics evolve quickly.
-
-# Citations
-
-[1] [Windsurf features/docs](https://docs.windsurf.com/)
-[2] [Overview](overview.md)

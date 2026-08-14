@@ -4,7 +4,21 @@ title: Agent Stack — Installation & Deployment
 description: Run the whole agentic stack from one Docker Compose using the include pattern; set up env, pull images, bring it up.
 resource: https://docs.docker.com/compose/how-tos/multiple-compose-files/merge/
 tags: [agent-stack, install, docker, compose, include, deployment]
-timestamp: 2026-07-09T00:00:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:00:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: compose-include-merge-spec
+    resource: "https://docs.docker.com/compose/how-tos/multiple-compose-files/merge/"
+    title: "Compose include / merge spec"
+    author: "site:docs.docker.com"
+  - id: firecrawl-master-compose
+    resource: "/../../programs/firecrawl/firecrawl/docker-compose.yaml"
+    title: "Firecrawl master compose"
+  - id: frigate-compose
+    resource: "/../../programs/frigate/docker-compose.yml"
+    title: "Frigate compose"
 ---
 
 # Deployment model
@@ -77,9 +91,3 @@ curl -s -o /dev/null -w "%{http_code}\n" http://localhost:4000/health  # LiteLLM
 | Auth/secret errors | `.env` still has `CHANGE_ME` | fill every placeholder before `up` |
 | Cross-service name fails | wrong network | ensure all fragments join `agent-net` (`external: true`) |
 | GPU not used by Ollama | nvidia runtime absent | install nvidia-container-toolkit |
-
-# Citations
-
-[1] [Compose include / merge spec](https://docs.docker.com/compose/how-tos/multiple-compose-files/merge/)
-[2] [Firecrawl master compose](/../../programs/firecrawl/firecrawl/docker-compose.yaml)
-[3] [Frigate compose](/../../programs/frigate/docker-compose.yml)

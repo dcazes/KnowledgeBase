@@ -4,7 +4,23 @@ title: OpenClaw — Overview
 description: Open-source personal AI assistant and self-hosted gateway connecting chat channels to models, coding agents, and skills.
 resource: https://openclaw.ai/
 tags: [openclaw, ai-assistant, gateway, agents, skills, automation, self-hosted]
-timestamp: 2026-07-09T03:10:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:10:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:10:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: openclaw-official
+    resource: "https://openclaw.ai/"
+    title: "OpenClaw official"
+    author: "site:openclaw.ai"
+  - id: github
+    resource: "https://github.com/openclaw/openclaw"
+    title: "GitHub"
+    author: "site:github.com"
+  - id: docs-what-is-openclaw
+    resource: "https://docs.openclaw.ai/"
+    title: "Docs — what is OpenClaw"
+    author: "site:docs.openclaw.ai"
 ---
 
 # What OpenClaw is
@@ -30,9 +46,3 @@ OpenClaw is the **conversational front-end / orchestrator** layer:
 
 * **Gateway** — the core, set up via `openclaw onboard`.
 * **Windows Hub** — native Windows companion app for setup, tray status, chat, node mode, and local MCP mode.
-
-# Citations
-
-[1] [OpenClaw official](https://openclaw.ai/)
-[2] [GitHub](https://github.com/openclaw/openclaw)
-[3] [Docs — what is OpenClaw](https://docs.openclaw.ai/)

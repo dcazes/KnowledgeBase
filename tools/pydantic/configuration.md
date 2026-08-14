@@ -4,7 +4,19 @@ title: Pydantic Configuration
 description: Configure Pydantic models — model_config options, Field constraints, validators, aliases, BaseSettings env loading.
 resource: https://docs.pydantic.dev
 tags: [pydantic, configuration, settings, validators]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: pydantic-docs-model-config
+    resource: "https://docs.pydantic.dev"
+    title: "Pydantic docs — model_config"
+    author: "site:docs.pydantic.dev"
+  - id: pydantic-docs-settings
+    resource: "https://docs.pydantic.dev/concepts/settings/"
+    title: "Pydantic docs — settings"
+    author: "site:docs.pydantic.dev"
 ---
 
 # Configuration
@@ -64,8 +76,3 @@ class Settings(BaseSettings):
 
     model_config = {"env_prefix": "AGENT_"}   # reads AGENT_OPENAI_API_KEY etc.
 ```
-
-# Citations
-
-[1] [Pydantic docs — model_config](https://docs.pydantic.dev)
-[2] [Pydantic docs — settings](https://docs.pydantic.dev/concepts/settings/)

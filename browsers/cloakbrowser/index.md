@@ -4,7 +4,17 @@ title: CloakBrowser
 description: A Chromium-based Playwright/Puppeteer drop-in wrapper (Python + JS) for agent browser automation — not a standalone CDP server.
 resource: https://github.com/cloakhq/cloakbrowser
 tags: [cloakbrowser, browser, automation, chromium, playwright, puppeteer, stealth, anti-detection]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: local-launcher-programs-cloakbrowser-desktop
+    resource: "/../../programs/CloakBrowser.desktop"
+    title: "Local launcher - programs/CloakBrowser.desktop"
+  - id: cloakbrowser-manager-service-historical-former-combined-searxng-compose-now-defunct
+    resource: "/../../programs/searxng/docker-compose.yml"
+    title: "CloakBrowser manager service (historical — former combined SearXNG compose, now defunct)"
 ---
 
 # CloakBrowser
@@ -38,8 +48,3 @@ A **stealth / automation browser tool** built on **Chromium** (not Brave). It is
 ## Last verified
 
 **2026-08-12** — CLI command, Docker service, ports, and Chromium base verified against local launcher. v0.5.7 (Chromium 150); Playwright/Puppeteer drop-in wrapper (not a standalone CDP server).
-
-# Citations
-
-[1] [Local launcher - programs/CloakBrowser.desktop](/../../programs/CloakBrowser.desktop)
-[2] [CloakBrowser manager service (historical — former combined SearXNG compose, now defunct)](/../../programs/searxng/docker-compose.yml)

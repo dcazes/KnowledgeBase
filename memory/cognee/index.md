@@ -4,7 +4,23 @@ title: Cognee
 description: Memory-engineering layer for AI — ECL pipeline (Extract/Cognify/Load) turning unstructured data into queryable knowledge graphs with semantic layers; Python library + API + frontend.
 resource: https://github.com/topoteretes/cognee
 tags: [cognee, memory, knowledge-graph, rag, pipeline]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: cognee-github
+    resource: "https://github.com/topoteretes/cognee"
+    title: "Cognee GitHub"
+    author: "site:github.com"
+  - id: cognee-docs
+    resource: "https://docs.cognee.ai"
+    title: "Cognee docs"
+    author: "site:docs.cognee.ai"
+  - id: cognee-on-pypi
+    resource: "https://pypi.org/project/cognee/"
+    title: "Cognee on PyPI"
+    author: "site:pypi.org"
 ---
 
 # Cognee
@@ -27,12 +43,6 @@ Local checkout: `programs/cognee` (git, topoteretes, main, commit 2026-07-17) at
 * [LightRAG](../lightrag/index.md) — graph RAG; Cognee = full memory pipeline (extract→cognify→load)
 * [Graphiti](../graphiti/index.md) — temporal agent memory; Cognee = corpus knowledge engineering
 * [Mem0](../mem0/index.md) / [MemOS](../memos/index.md) — user memory vs corpus knowledge
-
-# Citations
-
-[1] [Cognee GitHub](https://github.com/topoteretes/cognee)
-[2] [Cognee docs](https://docs.cognee.ai)
-[3] [Cognee on PyPI](https://pypi.org/project/cognee/)
 
 ## Last verified
 

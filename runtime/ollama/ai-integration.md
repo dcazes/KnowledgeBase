@@ -4,7 +4,19 @@ title: Ollama AI Integration
 description: Wire Ollama into the stack — OpenAI-compatible :11434 endpoint for LiteLLM/OpenWebUI/AnythingLLM, local embeddings for Mem0/LightRAG, python SDK.
 resource: https://docs.ollama.com
 tags: [ollama, integration, openai-compatible, embeddings]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: ollama-docs-openai-compatibility
+    resource: "https://docs.ollama.com/api/openai-compatibility"
+    title: "Ollama docs — OpenAI compatibility"
+    author: "site:docs.ollama.com"
+  - id: ollama-docs-embeddings
+    resource: "https://docs.ollama.com/api/embed"
+    title: "Ollama docs — embeddings"
+    author: "site:docs.ollama.com"
 ---
 
 # AI Integration
@@ -36,8 +48,3 @@ from openai import OpenAI
 client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
 r = client.chat.completions.create(model="llama3.1", messages=[{"role":"user","content":"hi"}])
 ```
-
-# Citations
-
-[1] [Ollama docs — OpenAI compatibility](https://docs.ollama.com/api/openai-compatibility)
-[2] [Ollama docs — embeddings](https://docs.ollama.com/api/embed)

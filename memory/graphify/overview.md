@@ -4,7 +4,23 @@ title: Graphify — Overview
 description: AI coding-assistant skill that builds a queryable, confidence-tagged knowledge graph from any folder of code, docs, papers, images, or videos.
 resource: https://github.com/Graphify-Labs/graphify
 tags: [graphify, knowledge-graph, ai, code-assistant, rag, hermes, obsidian]
-timestamp: 2026-07-09T00:10:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:10:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:10:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: graphify-github
+    resource: "https://github.com/Graphify-Labs/graphify"
+    title: "Graphify GitHub"
+    author: "site:github.com"
+  - id: graphifyy-pypi
+    resource: "https://pypi.org/project/graphifyy/"
+    title: "graphifyy PyPI"
+    author: "site:pypi.org"
+  - id: architecture-md-upstream
+    resource: "https://github.com/Graphify-Labs/graphify/blob/main/ARCHITECTURE.md"
+    title: "ARCHITECTURE.md (upstream)"
+    author: "site:github.com"
 ---
 
 # What Graphify is
@@ -69,9 +85,3 @@ For this machine's "no heavy local models" plan, the natural choice is `--backen
 # Why it matters here
 
 Your KB plan already positions Graphify as the **structuring layer** that turns ingested material (via AnythingLLM/RAG and web results from SearXNG) into a navigable graph. It pairs with Obsidian (it can emit an Obsidian vault) and with Hermes directly (first-class client).
-
-# Citations
-
-[1] [Graphify GitHub](https://github.com/Graphify-Labs/graphify)
-[2] [graphifyy PyPI](https://pypi.org/project/graphifyy/)
-[3] [ARCHITECTURE.md (upstream)](https://github.com/Graphify-Labs/graphify/blob/main/ARCHITECTURE.md)

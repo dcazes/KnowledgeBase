@@ -4,7 +4,27 @@ title: OpenWebUI — Alternatives
 description: How OpenWebUI compares to AnythingLLM, Dify, and LibreChat for self-hosted LLM chat/RAG.
 resource: https://github.com/open-webui/open-webui
 tags: [openwebui, alternatives, anythingllm, dify, librechat, comparison]
-timestamp: 2026-07-09T02:06:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:06:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:06:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: openwebui
+    resource: "https://github.com/open-webui/open-webui"
+    title: "OpenWebUI"
+    author: "site:github.com"
+  - id: anythingllm
+    resource: "https://github.com/Mintplex-Labs/anything-llm"
+    title: "AnythingLLM"
+    author: "site:github.com"
+  - id: dify
+    resource: "https://github.com/langgenius/dify"
+    title: "Dify"
+    author: "site:github.com"
+  - id: librechat
+    resource: "https://github.com/danny-avila/LibreChat"
+    title: "LibreChat"
+    author: "site:github.com"
 ---
 
 # Why consider alternatives?
@@ -50,10 +70,3 @@ Open-source ChatGPT replacement.
 * **AnythingLLM** — alternate turnkey RAG chat.
 * **Dify** — build custom apps/workflows.
 * **LibreChat** — lighter chat-only alternative.
-
-# Citations
-
-[1] [OpenWebUI](https://github.com/open-webui/open-webui)
-[2] [AnythingLLM](https://github.com/Mintplex-Labs/anything-llm)
-[3] [Dify](https://github.com/langgenius/dify)
-[4] [LibreChat](https://github.com/danny-avila/LibreChat)

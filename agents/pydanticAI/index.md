@@ -4,7 +4,23 @@ title: Pydantic AI
 description: Python agent framework from the pydantic team — structured-output-first agent loop, capability-first v2 architecture, model-agnostic (OpenAI, Anthropic, Ollama, Gemini, local).
 resource: https://pydantic.dev/articles/pydantic-ai-v2
 tags: [pydantic, ai, agents, python, library]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: pydantic-ai-v2-overview
+    resource: "https://pydantic.dev/articles/pydantic-ai-v2"
+    title: "Pydantic AI v2 overview"
+    author: "site:pydantic.dev"
+  - id: pydantic-ai-docs
+    resource: "https://pydantic.dev/docs/ai/"
+    title: "Pydantic AI docs"
+    author: "site:pydantic.dev"
+  - id: pydantic-ai-release-notes
+    resource: "https://github.com/pydantic/pydantic-ai/releases"
+    title: "Pydantic AI release notes"
+    author: "site:github.com"
 ---
 
 # Pydantic AI
@@ -32,9 +48,3 @@ A Python library for **AI-oriented agent development** from the pydantic team. T
 ## Last verified
 
 **2026-08-13** — version pinned to v2.29.0 (released 2026-08-13, requires Python 3.10+, `pydantic>=2.12`); security note corrected to the real advisory GHSA-h4xc-3qfq-jf93 (High — web chat UI CSRF, no CVE assigned, patched in 2.28.0). Prior doc content (v2 architecture) verified 2026-07-11 against upstream release notes / overview article.
-
-# Citations
-
-[1] [Pydantic AI v2 overview](https://pydantic.dev/articles/pydantic-ai-v2)
-[2] [Pydantic AI docs](https://pydantic.dev/docs/ai/)
-[3] [Pydantic AI release notes](https://github.com/pydantic/pydantic-ai/releases)

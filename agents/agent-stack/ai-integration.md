@@ -4,7 +4,42 @@ title: Agent Stack — AI Integration
 description: How each component of the agent stack connects — Weaviate (retrieval), Graphiti (memory), Docling/MinerU (parsers), Ollama (local models), LiteLLM (LLM gateway), browsers.
 resource: https://weaviate.io/blog/coding-assistant-weaviate-mcp
 tags: [agent-stack, integration, weaviate, graphiti, docling, ollama, litellm, mcp]
-timestamp: 2026-07-09T00:00:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:00:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: weaviate-mcp
+    resource: "https://weaviate.io/blog/coding-assistant-weaviate-mcp"
+    title: "Weaviate MCP"
+    author: "site:weaviate.io"
+  - id: weaviate-client
+    resource: "https://weaviate.io/developers/weaviate"
+    title: "Weaviate client"
+    author: "site:weaviate.io"
+  - id: graphiti-mcp
+    resource: "https://github.com/getzep/graphiti/blob/main/mcp_server/README.md"
+    title: "Graphiti MCP"
+    author: "site:github.com"
+  - id: docling-skill
+    resource: "https://docling-project.github.io/docling/examples/agent_skill/docling-document-intelligence/SKILL/"
+    title: "Docling skill"
+    author: "site:docling-project.github.io"
+  - id: mineru
+    resource: "https://github.com/opendatalab/mineru"
+    title: "MinerU"
+    author: "site:github.com"
+  - id: ollama
+    resource: "https://github.com/ollama/ollama"
+    title: "Ollama"
+    author: "site:github.com"
+  - id: litellm
+    resource: "https://github.com/BerriAI/litellm"
+    title: "LiteLLM"
+    author: "site:github.com"
+  - id: blueprint
+    resource: "../../meta/architecture/agentic-system-blueprint.md"
+    title: "Blueprint"
 ---
 
 # Integration map
@@ -62,14 +97,3 @@ timestamp: 2026-07-09T00:00:00Z
 
 ## 7. Camofox
 * Headed stealth browser `:9377`/`:6080`. Hermes browser tool / Firecrawl can drive it for anti-detect browsing. Pairs with Firecrawl per Hermes docs.
-
-# Citations
-
-[1] [Weaviate MCP](https://weaviate.io/blog/coding-assistant-weaviate-mcp)
-[2] [Weaviate client](https://weaviate.io/developers/weaviate)
-[3] [Graphiti MCP](https://github.com/getzep/graphiti/blob/main/mcp_server/README.md)
-[4] [Docling skill](https://docling-project.github.io/docling/examples/agent_skill/docling-document-intelligence/SKILL/)
-[5] [MinerU](https://github.com/opendatalab/mineru)
-[6] [Ollama](https://github.com/ollama/ollama)
-[7] [LiteLLM](https://github.com/BerriAI/litellm)
-[8] [Blueprint](../../meta/architecture/agentic-system-blueprint.md)

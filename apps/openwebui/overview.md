@@ -4,7 +4,23 @@ title: OpenWebUI — Overview
 description: Self-hosted AI chat platform supporting Ollama and OpenAI-compatible APIs, with built-in RAG, agents, plugins, and web search for RAG.
 resource: https://github.com/open-webui/open-webui
 tags: [openwebui, llm, chat, rag, self-hosted, ollama, openai-compatible]
-timestamp: 2026-07-09T02:00:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:00:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: openwebui-github
+    resource: "https://github.com/open-webui/open-webui"
+    title: "OpenWebUI GitHub"
+    author: "site:github.com"
+  - id: key-features-readme
+    resource: "https://github.com/open-webui/open-webui#key-features-of-open-webui-"
+    title: "Key features (README)"
+    author: "site:github.com"
+  - id: docs
+    resource: "https://docs.openwebui.com"
+    title: "Docs"
+    author: "site:docs.openwebui.com"
 ---
 
 # What OpenWebUI is
@@ -43,9 +59,3 @@ OpenWebUI is the **chat front-end** layer. It complements:
 # License note
 
 Open WebUI uses a custom **Open WebUI License** (branding must be preserved) with some prior contributions under their original licenses. Check `LICENSE`/`LICENSE_HISTORY` upstream before redistribution.
-
-# Citations
-
-[1] [OpenWebUI GitHub](https://github.com/open-webui/open-webui)
-[2] [Key features (README)](https://github.com/open-webui/open-webui#key-features-of-open-webui-)
-[3] [Docs](https://docs.openwebui.com)

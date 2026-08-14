@@ -4,7 +4,23 @@ title: Mem0 Installation
 description: Install Mem0 — pip install mem0ai (v2.0.18) or local checkout v2.0.12; optional OpenMemory app via Docker on :3000; verify with a first add/search.
 resource: https://docs.mem0.ai
 tags: [mem0, installation, pip, openmemory, docker]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: mem0-docs-quickstart
+    resource: "https://docs.mem0.ai/quickstart"
+    title: "Mem0 docs — quickstart"
+    author: "site:docs.mem0.ai"
+  - id: mem0-on-pypi
+    resource: "https://pypi.org/project/mem0ai/"
+    title: "Mem0 on PyPI"
+    author: "site:pypi.org"
+  - id: openmemory-repo
+    resource: "https://github.com/mem0ai/OpenMemory"
+    title: "OpenMemory repo"
+    author: "site:github.com"
 ---
 
 # Installation
@@ -38,9 +54,3 @@ docker compose up -d        # web UI on :3000, API + embedded Qdrant
 
 * `programs/mem0` checkout present (v2.0.12) — **not deployed**, no containers, no venv (recon 2026-08-12).
 * No `mem0` MCP/server config in the agent stack (unlike [Graphiti MCP](../graphiti/index.md)).
-
-# Citations
-
-[1] [Mem0 docs — quickstart](https://docs.mem0.ai/quickstart)
-[2] [Mem0 on PyPI](https://pypi.org/project/mem0ai/)
-[3] [OpenMemory repo](https://github.com/mem0ai/OpenMemory)

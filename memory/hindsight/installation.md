@@ -4,7 +4,19 @@ title: Hindsight Installation
 description: Install Hindsight — Rust CLI (hindsight), Python API (uv), npm @vectorize-io/hindsight-all, or control-plane deploy (Docker/Helm) from the v0.8.4 checkout; verify with version/status.
 resource: https://hindsight.vectorize.io
 tags: [hindsight, installation, cli, docker, helm]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: hindsight-docs-installation
+    resource: "https://hindsight.vectorize.io"
+    title: "Hindsight docs — installation"
+    author: "site:hindsight.vectorize.io"
+  - id: hindsight-github
+    resource: "https://github.com/vectorize-io/hindsight"
+    title: "Hindsight GitHub"
+    author: "site:github.com"
 ---
 
 # Installation
@@ -40,8 +52,3 @@ curl -s http://localhost:PORT/health   # per service docs
 ## Status on this machine
 
 * `programs/hindsight` checkout present (v0.8.4) — **not deployed**, no running services (recon 2026-08-12).
-
-# Citations
-
-[1] [Hindsight docs — installation](https://hindsight.vectorize.io)
-[2] [Hindsight GitHub](https://github.com/vectorize-io/hindsight)

@@ -4,7 +4,18 @@ title: Obsidian — Installation & Launch
 description: Launching Obsidian on this machine via the desktop launcher and the vault location.
 resource: https://help.obsidian.md/Getting+started/Install+Obsidian
 tags: [obsidian, install, launch, setsid, vault, desktop]
-timestamp: 2026-07-09T04:06:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:06:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:06:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: install-obsidian
+    resource: "https://help.obsidian.md/Getting+started/Install+Obsidian"
+    title: "Install Obsidian"
+    author: "site:help.obsidian.md"
+  - id: local-launcher
+    resource: "/../../programs/Obsidian.desktop"
+    title: "Local launcher"
 ---
 
 # Launch (this machine)
@@ -39,8 +50,3 @@ ls ~/Desktop/vault/.obsidian/   # config dir exists
 | Launcher does nothing | `obsidian` not on PATH | run `obsidian` from menu; check install |
 | Vault empty | wrong folder opened | Open Folder as Vault → `~/Desktop/vault` |
 | Config lost | `.obsidian` deleted | restore from backup; it's regenerated minimally |
-
-# Citations
-
-[1] [Install Obsidian](https://help.obsidian.md/Getting+started/Install+Obsidian)
-[2] [Local launcher](/../../programs/Obsidian.desktop)

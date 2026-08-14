@@ -4,7 +4,27 @@ title: MemOS — Benchmarks
 description: MemOS scores on OmniMemEval (LoCoMo 88.83, LongMemEval 89.20, BEAM-10M 56.75) vs Mem0/Graphiti/EverOS; small-model behavior unverified; model-routing is the mitigation.
 resource: https://github.com/MemTensor/MemOS
 tags: [memos, benchmarks, locomo, longmemeval, omnmemeval, small-models, comparison]
-timestamp: 2026-07-15T14:34:00Z
+generated: { by: "human:daniel", at: "2026-07-15T14:34:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-15T14:34:00Z" } ]
+status: stable
+stale_after: 2027-01-11
+sources:
+  - id: memos-github-benchmark-table
+    resource: "https://github.com/MemTensor/MemOS"
+    title: "MemOS GitHub (benchmark table)"
+    author: "site:github.com"
+  - id: omnimemeval
+    resource: "https://github.com/MemTensor/OmniMemEval"
+    title: "OmniMemEval"
+    author: "site:github.com"
+  - id: hypermem-acl-2026
+    resource: "https://github.com/EverMind-AI/HyperMem"
+    title: "HyperMem (ACL 2026)"
+    author: "site:github.com"
+  - id: everos
+    resource: "https://github.com/EverMind-AI/EverOS"
+    title: "EverOS"
+    author: "site:github.com"
 ---
 
 # Published scores (OmniMemEval, per MemOS README)
@@ -41,10 +61,3 @@ These numbers were measured with **large** models. No published small-model (8B�
 | **HyperMem** | hypergraph (topic→episode→fact) | ✅ hyperedges | ✅ (BM25+dense) | ✅ (Qwen3-Embedding-4B / Reranker-4B) | ✅ |
 
 Note: HyperMem (ACL 2026) reports **LoCoMo 92.73%**, beating MemOS's 88.83 and Mem0's 75.80 — and does so on 4B embed/rerank models. Relevant if small-model retrieval quality becomes the binding constraint.
-
-# Citations
-
-[1] [MemOS GitHub (benchmark table)](https://github.com/MemTensor/MemOS)
-[2] [OmniMemEval](https://github.com/MemTensor/OmniMemEval)
-[3] [HyperMem (ACL 2026)](https://github.com/EverMind-AI/HyperMem)
-[4] [EverOS](https://github.com/EverMind-AI/EverOS)

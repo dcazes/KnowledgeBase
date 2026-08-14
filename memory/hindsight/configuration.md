@@ -4,7 +4,19 @@ title: Hindsight Configuration
 description: Configure Hindsight — control plane + API settings, model/LLM config, persistence, agent SDK options; what's in the v0.8.4 checkout.
 resource: https://hindsight.vectorize.io
 tags: [hindsight, configuration, control-plane, api]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: hindsight-docs-configuration
+    resource: "https://hindsight.vectorize.io"
+    title: "Hindsight docs — configuration"
+    author: "site:hindsight.vectorize.io"
+  - id: hindsight-github
+    resource: "https://github.com/vectorize-io/hindsight"
+    title: "Hindsight GitHub"
+    author: "site:github.com"
 ---
 
 # Configuration
@@ -35,8 +47,3 @@ Server deployments use the `docker/` compose (Postgres or similar backing store 
 CLI reads env or a local config for API endpoint + keys (per `hindsight-cli` docs in checkout).
 
 > The checkout is **not deployed** here (2026-08-13) — config files are templates in the repo, not live env on this machine.
-
-# Citations
-
-[1] [Hindsight docs — configuration](https://hindsight.vectorize.io)
-[2] [Hindsight GitHub](https://github.com/vectorize-io/hindsight)

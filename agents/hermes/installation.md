@@ -4,7 +4,17 @@ title: Hermes — Installation & Runtime
 description: Running Hermes (desktop GUI / TUI), its home directory, and where config/secrets/skills live.
 resource: https://hermes-agent.nousresearch.com
 tags: [hermes, install, runtime, desktop, tui, home-dir]
-timestamp: 2026-07-09T03:21:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:21:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:21:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: setup-note-config-files
+    resource: "/../../vault/03%20-%20Reference/Hermes%20Setup.md"
+    title: "Setup note — config files"
+  - id: overview
+    resource: "overview.md"
+    title: "Overview"
 ---
 
 # Runtime
@@ -46,8 +56,3 @@ hermes --help          # if available
 | `hermes: command not found` | not on PATH | install/relink the binary |
 | Model errors | bad key in `.env` | check `~/.hermes/.env` |
 | Toolset missing | disabled in config | `hermes setup tools` |
-
-# Citations
-
-[1] [Setup note — config files](/../../vault/03%20-%20Reference/Hermes%20Setup.md)
-[2] [Overview](overview.md)

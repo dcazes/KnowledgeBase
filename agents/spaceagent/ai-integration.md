@@ -4,7 +4,15 @@ title: Space Agent AI Integration
 description: Integrate Space Agent — live workspace reshaping (UI/tools/widgets), SKILL.md capabilities, server API for agents, vs terminal agents.
 resource: https://github.com/agent0ai/space-agent
 tags: [space-agent, integration, skills, agents]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: space-agent-github
+    resource: "https://github.com/agent0ai/space-agent"
+    title: "Space Agent GitHub"
+    author: "site:github.com"
 ---
 
 # AI Integration
@@ -34,7 +42,3 @@ While you work, the agent can construct new **pages, tools, widgets, and workflo
 | [Hermes](../hermes/index.md) | terminal | skills, tools, cron |
 
 Complementary: Space Agent for in-workspace UI/tool building; the terminal agents for code/dev workflows.
-
-# Citations
-
-[1] [Space Agent GitHub](https://github.com/agent0ai/space-agent)

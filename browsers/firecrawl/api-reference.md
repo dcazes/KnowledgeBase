@@ -4,7 +4,19 @@ title: Firecrawl — API Reference (v2)
 description: The v2 HTTP endpoints — scrape, search, crawl, map, batch-scrape, extract, agent, parse — with request/response examples against the local :3002 instance.
 resource: https://github.com/firecrawl/firecrawl/tree/main/apps/api/src/controllers/v2
 tags: [firecrawl, api, v2, scrape, search, crawl, extract, reference]
-timestamp: 2026-07-09T00:38:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:38:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:38:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: v2-controllers-github
+    resource: "https://github.com/firecrawl/firecrawl/tree/main/apps/api/src/controllers/v2"
+    title: "v2 controllers (GitHub)"
+    author: "site:github.com"
+  - id: routes-mount-index-ts
+    resource: "https://github.com/firecrawl/firecrawl/blob/main/apps/api/src/index.ts"
+    title: "Routes mount (index.ts)"
+    author: "site:github.com"
 ---
 
 # Base URL
@@ -113,8 +125,3 @@ From `apps/api/src/controllers/v2/`: `scrape-browser`, `f-search`, `crawl-status
 curl -s http://127.0.0.1:3002/ | head -c 200     # info route
 curl -s http://127.0.0.1:3002/v2/queue-status     # queue depth
 ```
-
-# Citations
-
-[1] [v2 controllers (GitHub)](https://github.com/firecrawl/firecrawl/tree/main/apps/api/src/controllers/v2)
-[2] [Routes mount (index.ts)](https://github.com/firecrawl/firecrawl/blob/main/apps/api/src/index.ts)

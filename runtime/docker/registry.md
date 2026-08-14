@@ -4,7 +4,27 @@ title: Docker — Registry & Images
 description: Image registries (Docker Hub, private), tagging strategy, push/pull, and safe pruning of disk space.
 resource: https://docs.docker.com/docker-hub/
 tags: [docker, registry, images, hub, tagging]
-timestamp: 2026-07-08T22:35:00Z
+generated: { by: "human:daniel", at: "2026-07-08T22:35:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-08T22:35:00Z" } ]
+status: stable
+stale_after: 2027-01-04
+sources:
+  - id: docker-hub
+    resource: "https://docs.docker.com/docker-hub/"
+    title: "Docker Hub"
+    author: "site:docs.docker.com"
+  - id: docker-tag-reference
+    resource: "https://docs.docker.com/reference/cli/docker/image/tag/"
+    title: "docker tag reference"
+    author: "site:docs.docker.com"
+  - id: docker-pull-reference
+    resource: "https://docs.docker.com/reference/cli/docker/image/pull/"
+    title: "docker pull reference"
+    author: "site:docs.docker.com"
+  - id: ghcr-github-container-registry
+    resource: "https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry"
+    title: "GHCR (GitHub Container Registry)"
+    author: "site:docs.github.com"
 ---
 
 # Registries
@@ -48,10 +68,3 @@ docker system df                # see space used by images/volumes/containers
 * Pin versions in compose (`image: searxng/searxng:2024.x` instead of `:latest`) so updates are deliberate.
 * Use digest pinning for reproducibility: `image: repo/app@sha256:abc...`.
 * `docker system prune -a` is the nuclear option — combine with `--volumes` only if you mean to wipe data.
-
-# Citations
-
-[1] [Docker Hub](https://docs.docker.com/docker-hub/)
-[2] [docker tag reference](https://docs.docker.com/reference/cli/docker/image/tag/)
-[3] [docker pull reference](https://docs.docker.com/reference/cli/docker/image/pull/)
-[4] [GHCR (GitHub Container Registry)](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)

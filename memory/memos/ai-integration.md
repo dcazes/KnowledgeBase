@@ -4,7 +4,25 @@ title: MemOS — AI Integration
 description: How MemOS integrates as agent memory — MCP server for Hermes/OpenCode/Cursor, official Hermes & OpenClaw local plugins, and how it complements Graphiti.
 resource: https://memos-docs.openmem.net/home/overview/
 tags: [memos, integration, mcp, hermes, openclaw, opencode, memory, agents]
-timestamp: 2026-07-16T00:00:00Z
+generated: { by: "human:daniel", at: "2026-07-16T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-16T00:00:00Z" } ]
+status: stable
+stale_after: 2027-01-12
+sources:
+  - id: memos-repo
+    resource: "https://github.com/MemTensor/MemOS"
+    title: "MemOS repo"
+    author: "site:github.com"
+  - id: memos-hermes-plugin-news
+    resource: "https://github.com/MemTensor/MemOS"
+    title: "MemOS Hermes plugin news"
+    author: "site:github.com"
+  - id: graphiti
+    resource: "../graphiti/index.md"
+    title: "Graphiti"
+  - id: agent-stack
+    resource: "../../agents/agent-stack/index.md"
+    title: "Agent Stack"
 ---
 
 # MemOS as agent memory
@@ -47,10 +65,3 @@ Hermes / OpenCode / Cursor / Windsurf / OpenClaw
 
 * LLM/embedder for MemOS can be local (Ollama) — keep it off the public internet; put behind **Tailscale** like the rest of the stack ([Tailscale](../../runtime/tailscale/index.md)).
 * Memory feedback loop: correct/supplement memories via natural-language feedback over the API.
-
-# Citations
-
-[1] [MemOS repo](https://github.com/MemTensor/MemOS)
-[2] [MemOS Hermes plugin news](https://github.com/MemTensor/MemOS)
-[3] [Graphiti](../graphiti/index.md)
-[4] [Agent Stack](../../agents/agent-stack/index.md)

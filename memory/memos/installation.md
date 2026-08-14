@@ -4,7 +4,19 @@ title: MemOS — Installation & Deployment
 description: Run MemOS via pip install MemoryOS (uvicorn :8000) or Docker (API + Neo4j + Qdrant); verify with /health.
 resource: https://memos-docs.openmem.net/home/overview/
 tags: [memos, install, deploy, uvicorn, docker, memory]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: memos-repo
+    resource: "https://github.com/MemTensor/MemOS"
+    title: "MemOS repo"
+    author: "site:github.com"
+  - id: pypi-memoryos
+    resource: "https://pypi.org/project/MemoryOS/"
+    title: "PyPI — MemoryOS"
+    author: "site:pypi.org"
 ---
 
 # Deployment model
@@ -59,8 +71,3 @@ curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8000/health
 | API 500 / can't connect to DB | Neo4j/Qdrant down or creds wrong | start the Docker stack or fix `QDRANT_*`/`NEO4J_*` env |
 | `/health` unreachable | wrong port / not started | confirm `:8000`; `make serve` logs |
 | Slow ingest | concurrency | raise scheduler concurrency in config |
-
-# Citations
-
-[1] [MemOS repo](https://github.com/MemTensor/MemOS)
-[2] [PyPI — MemoryOS](https://pypi.org/project/MemoryOS/)

@@ -4,7 +4,23 @@ title: Cursor AI Integration
 description: How Cursor connects to AI models and external tools via MCP, and how it relates to the rest of the local AI stack.
 resource: https://docs.cursor.com/context/mcp
 tags: [cursor, mcp, ai, integration, graphify, firecrawl, searxng]
-timestamp: 2026-07-09T04:00:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:00:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: cursor-mcp-docs
+    resource: "https://docs.cursor.com/context/mcp"
+    title: "Cursor MCP Docs"
+    author: "site:docs.cursor.com"
+  - id: cursor-docs
+    resource: "https://docs.cursor.com/"
+    title: "Cursor Docs"
+    author: "site:docs.cursor.com"
+  - id: cursor
+    resource: "https://cursor.com/"
+    title: "Cursor"
+    author: "site:cursor.com"
 ---
 
 # Cursor AI Integration
@@ -40,9 +56,3 @@ Example servers that fit this stack:
 3. The model acts on the tool output (edits, answers, or further tool calls).
 
 > **Note:** MCP config shape and available server fields should be confirmed against the current Cursor docs at write time.
-
-# Citations
-
-[1] [Cursor MCP Docs](https://docs.cursor.com/context/mcp)
-[2] [Cursor Docs](https://docs.cursor.com/)
-[3] [Cursor](https://cursor.com/)

@@ -4,7 +4,31 @@ title: AnythingLLM — Alternatives
 description: How AnythingLLM compares to OpenWebUI, Dify, LibreChat, and PrivateGPT for self-hosted RAG chat.
 resource: https://github.com/Mintplex-Labs/anything-llm
 tags: [anythingllm, alternatives, openwebui, dify, librechat, privategpt, comparison]
-timestamp: 2026-07-09T02:36:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:36:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:36:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: anythingllm
+    resource: "https://github.com/Mintplex-Labs/anything-llm"
+    title: "AnythingLLM"
+    author: "site:github.com"
+  - id: openwebui
+    resource: "https://github.com/open-webui/open-webui"
+    title: "OpenWebUI"
+    author: "site:github.com"
+  - id: dify
+    resource: "https://github.com/langgenius/dify"
+    title: "Dify"
+    author: "site:github.com"
+  - id: librechat
+    resource: "https://github.com/danny-avila/LibreChat"
+    title: "LibreChat"
+    author: "site:github.com"
+  - id: privategpt
+    resource: "https://github.com/Pr-Albs/PrivateGPT"
+    title: "PrivateGPT"
+    author: "site:github.com"
 ---
 
 # Why consider alternatives?
@@ -53,11 +77,3 @@ Already in your stack (`:3000`).
 * **OpenWebUI** — general chat platform (served on :3000).
 * **Dify** — build apps/workflows.
 * **LibreChat / PrivateGPT** — lighter alternatives.
-
-# Citations
-
-[1] [AnythingLLM](https://github.com/Mintplex-Labs/anything-llm)
-[2] [OpenWebUI](https://github.com/open-webui/open-webui)
-[3] [Dify](https://github.com/langgenius/dify)
-[4] [LibreChat](https://github.com/danny-avila/LibreChat)
-[5] [PrivateGPT](https://github.com/Pr-Albs/PrivateGPT)

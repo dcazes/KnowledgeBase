@@ -4,7 +4,26 @@ title: Frigate — Configuration
 description: Anatomy of config.yml — go2rtc streams, detectors (ONNX), ffmpeg hwaccel, cameras, recording; secrets redacted.
 resource: https://docs.frigate.video/configuration/
 tags: [frigate, config, go2rtc, detector, onnx, ffmpeg, redacted-secrets]
-timestamp: 2026-07-09T04:17:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:17:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:17:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: configuration-docs
+    resource: "https://docs.frigate.video/configuration/"
+    title: "Configuration docs"
+    author: "site:docs.frigate.video"
+  - id: go2rtc
+    resource: "https://docs.frigate.video/configuration/go2rtc/"
+    title: "go2rtc"
+    author: "site:docs.frigate.video"
+  - id: detectors
+    resource: "https://docs.frigate.video/configuration/detectors/"
+    title: "Detectors"
+    author: "site:docs.frigate.video"
+  - id: local-config
+    resource: "/../../programs/frigate/config.yml"
+    title: "Local config"
 ---
 
 # config.yml anatomy (this machine)
@@ -56,10 +75,3 @@ cameras:
 
 * ⚠️ The real `config.yml` contains the **camera password** and the compose sets `FRIGATE_RTSP_PASSWORD`. Never record literal values in this KB.
 * Consider moving secrets to an env file / Docker secret and referencing them.
-
-# Citations
-
-[1] [Configuration docs](https://docs.frigate.video/configuration/)
-[2] [go2rtc](https://docs.frigate.video/configuration/go2rtc/)
-[3] [Detectors](https://docs.frigate.video/configuration/detectors/)
-[4] [Local config](/../../programs/frigate/config.yml)

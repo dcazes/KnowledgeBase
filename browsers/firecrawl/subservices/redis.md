@@ -4,7 +4,14 @@ title: Firecrawl Subservice — Redis
 description: The redis container — cache and rate-limit store used by the Firecrawl api (REDIS_URL / REDIS_RATE_LIMIT_URL).
 resource: https://github.com/firecrawl/firecrawl
 tags: [firecrawl, redis, subservice, cache, rate-limit]
-timestamp: 2026-07-09T00:34:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:34:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:34:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: local-compose-redis-service
+    resource: "/../../programs/firecrawl/firecrawl/docker-compose.yaml"
+    title: "Local compose (redis service)"
 ---
 
 # Role
@@ -36,7 +43,3 @@ Both point at the `redis` service on the `backend` network (port 6379).
 |---------|-------|-----|
 | API errors on rate limit | redis down | `docker compose restart redis` |
 | Cache misses / slow | redis evicting | check memory; increase if needed |
-
-# Citations
-
-[1] [Local compose (redis service)](/../../programs/firecrawl/firecrawl/docker-compose.yaml)

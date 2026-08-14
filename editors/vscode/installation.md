@@ -4,7 +4,18 @@ title: VSCode — Installation & Launch
 description: Installing VS Code and launching it via the code command and the desktop launcher; useful CLI flags.
 resource: https://code.visualstudio.com/docs/setup/setup-overview
 tags: [vscode, install, launch, cli, code, desktop]
-timestamp: 2026-07-09T02:11:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:11:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:11:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: setup-overview-docs
+    resource: "https://code.visualstudio.com/docs/setup/setup-overview"
+    title: "Setup overview (docs)"
+    author: "site:code.visualstudio.com"
+  - id: local-launcher
+    resource: "/../../programs/VSCode.desktop"
+    title: "Local launcher"
 ---
 
 # This machine
@@ -55,8 +66,3 @@ which code
 | `code: command not found` | not installed | install per above |
 | Launcher does nothing | `code` not on PATH | run `code` from terminal to see errors |
 | Extensions missing | profile/sync off | sign in to Settings Sync or reinstall |
-
-# Citations
-
-[1] [Setup overview (docs)](https://code.visualstudio.com/docs/setup/setup-overview)
-[2] [Local launcher](/../../programs/VSCode.desktop)

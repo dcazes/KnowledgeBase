@@ -4,7 +4,19 @@ title: Graphify — MCP Server
 description: Serve a built graph over MCP (stdio or HTTP) so any MCP-capable agent can query it; flags, auth, and container deployment.
 resource: https://github.com/Graphify-Labs/graphify
 tags: [graphify, mcp, model-context-protocol, server, integration]
-timestamp: 2026-07-09T00:16:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:16:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:16:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: graphify-github-mcp-section
+    resource: "https://github.com/Graphify-Labs/graphify"
+    title: "Graphify GitHub (MCP section)"
+    author: "site:github.com"
+  - id: graphifyy-pypi-serve-transport-flags
+    resource: "https://pypi.org/project/graphifyy/"
+    title: "graphifyy PyPI (serve / transport flags)"
+    author: "site:pypi.org"
 ---
 
 # Why an MCP server
@@ -80,8 +92,3 @@ Every `query_graph` call is logged to `~/.cache/graphify-queries.log` (JSON Line
 
 * **Hermes** can consume the HTTP MCP endpoint (`http://127.0.0.1:8080/mcp`) so it grounds answers in your graph.
 * Pair with the **SearXNG → Graphify** ingestion pattern (see SearXNG [AI Integration](../../runtime/searxng/ai-integration.md)): search → `graphify add <url>` → serve over MCP.
-
-# Citations
-
-[1] [Graphify GitHub (MCP section)](https://github.com/Graphify-Labs/graphify)
-[2] [graphifyy PyPI (serve / transport flags)](https://pypi.org/project/graphifyy/)

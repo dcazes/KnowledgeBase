@@ -4,7 +4,27 @@ title: Pydantic AI v2
 description: Python library for AI-oriented agent development, featuring a capability-first design and a leaner core since the v2 architecture.
 resource: https://pydantic.dev/articles/pydantic-ai-v2
 tags: [pydantic, ai, agents, python, library]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: pydantic-ai-release-notes
+    resource: "https://github.com/pydantic/pydantic-ai/releases"
+    title: "Pydantic AI release notes"
+    author: "site:github.com"
+  - id: pydantic-ai-v2-overview
+    resource: "https://pydantic.dev/articles/pydantic-ai-v2"
+    title: "Pydantic AI v2 overview"
+    author: "site:pydantic.dev"
+  - id: installation-guide
+    resource: "https://pydantic.dev/docs/ai/overview/install/"
+    title: "Installation guide"
+    author: "site:pydantic.dev"
+  - id: ghsa-h4xc-3qfq-jf93-high-web-chat-ui-csrf-patched-in-2-28-0
+    resource: "https://github.com/pydantic/pydantic-ai/security/advisories/GHSA-h4xc-3qfq-jf93"
+    title: "GHSA-h4xc-3qfq-jf93 — High: web chat UI CSRF (patched in 2.28.0)"
+    author: "site:github.com"
 ---
 
 # Pydantic AI v2
@@ -84,10 +104,3 @@ print(agent.run())
 - **Async support:** Capabilities can be async; use `await` on tool calls.  
 - **Supported providers:** OpenAI, Anthropic, local LLMs (e.g., Ollama), and community‑provided back‑ends.  
 - **Licensing:** MIT.
-
-# Citations
-
-[1] [Pydantic AI release notes](https://github.com/pydantic/pydantic-ai/releases)
-[2] [Pydantic AI v2 overview](https://pydantic.dev/articles/pydantic-ai-v2)
-[3] [Installation guide](https://pydantic.dev/docs/ai/overview/install/)
-[4] [GHSA-h4xc-3qfq-jf93 — High: web chat UI CSRF (patched in 2.28.0)](https://github.com/pydantic/pydantic-ai/security/advisories/GHSA-h4xc-3qfq-jf93)

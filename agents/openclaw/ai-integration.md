@@ -4,7 +4,23 @@ title: OpenClaw — AI Integration
 description: Using OpenClaw to front your agents (Hermes/OpenCode) and tools (Firecrawl, Graphify, SearXNG) via channels and MCP.
 resource: https://docs.openclaw.ai/
 tags: [openclaw, integration, agents, hermes, opencode, mcp, skills]
-timestamp: 2026-07-09T03:13:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:13:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:13:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: architecture
+    resource: "architecture.md"
+    title: "Architecture"
+  - id: hermes
+    resource: "/../../hermes/index.md"
+    title: "Hermes"
+  - id: opencode
+    resource: "/../../opencode/index.md"
+    title: "OpenCode"
+  - id: graphify-mcp
+    resource: "/../../graphify/mcp-server.md"
+    title: "Graphify MCP"
 ---
 
 # Fronting your agents
@@ -40,10 +56,3 @@ Build custom skills for repetitive tasks (e.g. "summarize my vault", "scrape thi
 | App builder | Dify |
 | Chat UI | OpenWebUI / AnythingLLM |
 | Tools | Firecrawl, Graphify, SearXNG |
-
-# Citations
-
-[1] [Architecture](architecture.md)
-[2] [Hermes](/../../hermes/index.md)
-[3] [OpenCode](/../../opencode/index.md)
-[4] [Graphify MCP](/../../graphify/mcp-server.md)

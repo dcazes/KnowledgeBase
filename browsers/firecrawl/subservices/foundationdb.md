@@ -4,7 +4,14 @@ title: Firecrawl Subservice — FoundationDB
 description: The foundationdb container — experimental queue backend (NUQ_BACKEND=fdb) as an alternative to NUQ Postgres.
 resource: https://github.com/firecrawl/firecrawl
 tags: [firecrawl, foundationdb, subservice, fdb, queue, experimental]
-timestamp: 2026-07-09T00:37:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:37:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:37:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: local-compose-foundationdb-services
+    resource: "/../../programs/firecrawl/firecrawl/docker-compose.yaml"
+    title: "Local compose (foundationdb services)"
 ---
 
 # Role
@@ -36,7 +43,3 @@ Leave it **off** unless you specifically want FDB's distributed store. It's mark
 |---------|-------|-----|
 | API can't reach FDB | cluster file missing | ensure `fdb-cluster-file` volume shared; re-run init |
 | DB not configured | init didn't run | `docker compose up foundationdb-init` |
-
-# Citations
-
-[1] [Local compose (foundationdb services)](/../../programs/firecrawl/firecrawl/docker-compose.yaml)

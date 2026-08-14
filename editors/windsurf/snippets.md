@@ -4,7 +4,20 @@ title: Windsurf — Snippets & Cheat Sheet
 description: Copy-paste install, sign-in, agent (Devin Local, ex-Cascade) usage, and MCP registration for Windsurf (now Devin Desktop).
 resource: https://docs.windsurf.com/
 tags: [windsurf, snippets, cheat-sheet, cascade, mcp, flows]
-timestamp: 2026-07-09T03:35:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:35:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:35:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: installation
+    resource: "installation.md"
+    title: "Installation"
+  - id: features
+    resource: "features.md"
+    title: "Features"
+  - id: ai-integration
+    resource: "ai-integration.md"
+    title: "AI Integration"
 ---
 
 # Install + launch
@@ -47,9 +60,3 @@ windsurf --version
 | Devin Local offline | not signed in | sign in with Codeium |
 | MCP tools missing | not registered | add servers in settings; reload |
 | Model errors | plan/quota | check Codeium tier |
-
-# Citations
-
-[1] [Installation](installation.md)
-[2] [Features](features.md)
-[3] [AI Integration](ai-integration.md)

@@ -4,7 +4,17 @@ title: CloakBrowser — Installation & Launch
 description: Running CloakBrowser via the desktop launcher / npx CLI, and the Docker manager service, with ports and profiles.
 resource: https://github.com/cloakhq/cloakbrowser
 tags: [cloakbrowser, install, cli, docker, cdp, launch]
-timestamp: 2026-07-09T01:11:00Z
+generated: { by: "human:daniel", at: "2026-07-09T01:11:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T01:11:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: local-launcher
+    resource: "/../../programs/CloakBrowser.desktop"
+    title: "Local launcher"
+  - id: cloakbrowser-manager-service-historical-was-in-the-former-combined-searxng-compose-now-defunct
+    resource: "/../../programs/searxng/docker-compose.yml"
+    title: "CloakBrowser manager service (historical — was in the former combined SearXNG compose, now defunct)"
 ---
 
 # Option A — Node CLI (launcher)
@@ -56,8 +66,3 @@ docker volume ls | grep cloak_profiles
 | :9222 refused | browser not launched | run the launcher command |
 | Docker :8080 down | service not started | `docker compose up -d cloakbrowser-manager` |
 | Profiles lost | volume missing | ensure `cloak_profiles` volume exists |
-
-# Citations
-
-[1] [Local launcher](/../../programs/CloakBrowser.desktop)
-[2] [CloakBrowser manager service (historical — was in the former combined SearXNG compose, now defunct)](/../../programs/searxng/docker-compose.yml)

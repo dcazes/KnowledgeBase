@@ -4,7 +4,18 @@ title: Firecrawl — Self-Hosting
 description: How to run the Firecrawl stack from the local compose, configure .env, wire SearXNG as the search backend, and the known self-host limitations.
 resource: https://github.com/firecrawl/firecrawl/blob/main/SELF_HOST.md
 tags: [firecrawl, self-hosting, docker, compose, searxng, deployment]
-timestamp: 2026-07-09T00:40:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:40:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:40:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: self-host-md
+    resource: "https://github.com/firecrawl/firecrawl/blob/main/SELF_HOST.md"
+    title: "SELF_HOST.md"
+    author: "site:github.com"
+  - id: local-compose
+    resource: "/../../programs/firecrawl/firecrawl/docker-compose.yaml"
+    title: "Local compose"
 ---
 
 # Prerequisites
@@ -90,8 +101,3 @@ Per `SELF_HOST.md`:
 | Search fails | SearXNG down | ensure `searxng` service up; check `SEARXNG_ENDPOINT` |
 | Extract 403 | no AI key | set `OPENAI_API_KEY` / `OPENAI_BASE_URL` |
 | Build needed | using `build:` images | first `up` compiles api/playwright/nuq-postgres |
-
-# Citations
-
-[1] [SELF_HOST.md](https://github.com/firecrawl/firecrawl/blob/main/SELF_HOST.md)
-[2] [Local compose](/../../programs/firecrawl/firecrawl/docker-compose.yaml)

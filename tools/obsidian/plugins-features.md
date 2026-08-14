@@ -4,7 +4,19 @@ title: Obsidian — Plugins & Features
 description: Obsidian's core features — bidirectional links, backlinks, graph view, core plugins, and community extensions (Dataview, Templates, Canvas).
 resource: https://help.obsidian.md/
 tags: [obsidian, plugins, features, graph-view, backlinks, dataview, canvas]
-timestamp: 2026-07-09T04:08:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:08:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:08:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: help-core-plugins
+    resource: "https://help.obsidian.md/"
+    title: "Help — Core plugins"
+    author: "site:help.obsidian.md"
+  - id: graph-view
+    resource: "https://help.obsidian.md/Plugins/Graph+view"
+    title: "Graph view"
+    author: "site:help.obsidian.md"
 ---
 
 # Core features
@@ -31,8 +43,3 @@ Installed separately (bridge, dataview, etc.). Notable:
 
 * Structured, linkable notes = a great knowledge source for **Graphify** (ingest → graph) and for **Hermes** to read.
 * Frontmatter (like OKF `type:`) makes notes queryable via Dataview.
-
-# Citations
-
-[1] [Help — Core plugins](https://help.obsidian.md/)
-[2] [Graph view](https://help.obsidian.md/Plugins/Graph+view)

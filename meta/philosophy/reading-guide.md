@@ -4,7 +4,14 @@ title: Philosophy — Reading Guide
 description: How to navigate kbv2 — start at the root index, follow program doc sets, use architecture for cross-cutting comparisons, respect the conventions.
 resource: ../../index.md
 tags: [philosophy, reading-guide, meta]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: okf-specification
+    resource: "../../AGENTS.md"
+    title: "OKF specification"
 ---
 
 # Reading Guide
@@ -34,7 +41,3 @@ How the vault is organized and how to read it efficiently.
 * **Links are relative** (`../memos/index.md`) — valid in Obsidian.
 * **Citations** at the end of every doc, numbered, official sources.
 * **Last verified** dates tell you how fresh a doc is — docs for unverified/upstream-only tools say so explicitly.
-
-# Citations
-
-[1] [OKF specification](../../AGENTS.md) — Open Knowledge Format v0.1

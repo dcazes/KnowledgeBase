@@ -4,7 +4,19 @@ title: Tailscale — Installation & Auth
 description: Installing the Tailscale client, bringing it up, and authenticating a device to your tailnet.
 resource: https://tailscale.com/download
 tags: [tailscale, install, up, auth, login, client]
-timestamp: 2026-07-09T02:21:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:21:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:21:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: download-install
+    resource: "https://tailscale.com/download"
+    title: "Download/install"
+    author: "site:tailscale.com"
+  - id: install-script
+    resource: "https://tailscale.com/kb/1031/install-linux/"
+    title: "Install script"
+    author: "site:tailscale.com"
 ---
 
 # Install (Linux — Debian/Ubuntu)
@@ -54,8 +66,3 @@ tailscale ping <other-host>
 | Can't auth | browser/SSO issue | re-run `sudo tailscale up`, open URL |
 | Device offline | daemon stopped | `sudo systemctl restart tailscaled` |
 | Peers unreachable | ACL / network | check `tailscale status`; review ACL |
-
-# Citations
-
-[1] [Download/install](https://tailscale.com/download)
-[2] [Install script](https://tailscale.com/kb/1031/install-linux/)

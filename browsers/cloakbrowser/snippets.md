@@ -4,7 +4,17 @@ title: CloakBrowser — Snippets & Cheat Sheet
 description: Copy-paste commands to launch CloakBrowser, connect over CDP, and run the Docker manager.
 resource: https://github.com/cloakhq/cloakbrowser
 tags: [cloakbrowser, snippets, cheat-sheet, cdp, cli, docker]
-timestamp: 2026-07-09T01:15:00Z
+generated: { by: "human:daniel", at: "2026-07-09T01:15:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T01:15:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: installation
+    resource: "installation.md"
+    title: "Installation"
+  - id: usage-cdp
+    resource: "usage.md"
+    title: "Usage (CDP)"
 ---
 
 # Launch (CLI)
@@ -55,8 +65,3 @@ docker volume ls | grep cloak_profiles
 | `npx` not found | Node missing | install Node |
 | Docker :8080 down | not started | `docker compose up -d cloakbrowser-manager` |
 | Profiles lost | volume missing | check `cloak_profiles` |
-
-# Citations
-
-[1] [Installation](installation.md)
-[2] [Usage (CDP)](usage.md)

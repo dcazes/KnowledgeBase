@@ -4,7 +4,19 @@ title: OpenConcho Installation
 description: Install OpenConcho — GitHub release binaries (v0.16.1) or build from source (pnpm), docker-compose/Helm from checkout; verify against a Honcho URL.
 resource: https://github.com/offendingcommit/openconcho
 tags: [openconcho, installation, releases, docker, helm]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: openconcho-github-readme
+    resource: "https://github.com/offendingcommit/openconcho"
+    title: "OpenConcho GitHub — README"
+    author: "site:github.com"
+  - id: openconcho-github-releases
+    resource: "https://github.com/offendingcommit/openconcho/releases"
+    title: "OpenConcho GitHub Releases"
+    author: "site:github.com"
 ---
 
 # Installation
@@ -40,8 +52,3 @@ docker compose up -d          # serves the web UI
 ## Status on this machine
 
 * `programs/openconcho` checkout present (v0.16.0) — **not deployed** (recon 2026-08-12); [Honcho](../honcho/index.md) is also not running, so there's nothing to connect to yet.
-
-# Citations
-
-[1] [OpenConcho GitHub — README](https://github.com/offendingcommit/openconcho)
-[2] [OpenConcho GitHub Releases](https://github.com/offendingcommit/openconcho/releases)

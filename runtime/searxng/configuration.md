@@ -4,7 +4,30 @@ title: SearXNG — Configuration
 description: How settings.yml is structured, what your instance overrides, enabling/disabling engines, rate limiting, caching, and the preferences UI.
 resource: https://docs.searxng.org/admin/settings/settings.html
 tags: [searxng, configuration, settings, engines, rate-limiting, cache, image-proxy]
-timestamp: 2026-07-08T23:45:00Z
+generated: { by: "human:daniel", at: "2026-07-08T23:45:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-08T23:45:00Z" } ]
+status: stable
+stale_after: 2027-01-04
+sources:
+  - id: settings-reference
+    resource: "https://docs.searxng.org/admin/settings/settings.html"
+    title: "Settings reference"
+    author: "site:docs.searxng.org"
+  - id: server-settings
+    resource: "https://docs.searxng.org/admin/settings/settings_server.html"
+    title: "Server settings"
+    author: "site:docs.searxng.org"
+  - id: general-settings
+    resource: "https://docs.searxng.org/admin/settings/settings_general.html"
+    title: "General settings"
+    author: "site:docs.searxng.org"
+  - id: engines-configuration
+    resource: "https://docs.searxng.org/admin/settings/settings_engines.html"
+    title: "Engines configuration"
+    author: "site:docs.searxng.org"
+  - id: local-settings-programs-firecrawl-firecrawl-searxng-config-settings-yml
+    resource: "/../../programs/firecrawl/firecrawl/searxng-config/settings.yml"
+    title: "Local settings - programs/firecrawl/firecrawl/searxng-config/settings.yml"
 ---
 
 # Configuration model
@@ -149,11 +172,3 @@ Changes here are stored in a cookie unless you persist them server-side.
 | Container ignores my settings | Mount path wrong | Verify `docker inspect agent_searxng --format '{{json .Mounts}}'` |
 | Searing starts then errors | `limiter: true` without Redis/Valkey | Disable limiter or add a cache backend |
 | "secret_key" warning | Default/example key | Set a random `secret_key` |
-
-# Citations
-
-[1] [Settings reference](https://docs.searxng.org/admin/settings/settings.html)
-[2] [Server settings](https://docs.searxng.org/admin/settings/settings_server.html)
-[3] [General settings](https://docs.searxng.org/admin/settings/settings_general.html)
-[4] [Engines configuration](https://docs.searxng.org/admin/settings/settings_engines.html)
-[5] [Local settings - programs/firecrawl/firecrawl/searxng-config/settings.yml](/../../programs/firecrawl/firecrawl/searxng-config/settings.yml)

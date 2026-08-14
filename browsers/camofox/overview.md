@@ -4,7 +4,21 @@ title: Camofox — Overview
 description: A local browser server built on Camoufox (anti-detection Firefox fork) that gives AI agents a headed, stealthy browser with a watchable UI and VNC.
 resource: https://github.com/daijro/camoufox
 tags: [camofox, camoufox, browser, anti-detection, automation, hermes]
-timestamp: 2026-07-09T01:00:00Z
+generated: { by: "human:daniel", at: "2026-07-09T01:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T01:00:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: camoufox-github
+    resource: "https://github.com/daijro/camoufox"
+    title: "Camoufox GitHub"
+    author: "site:github.com"
+  - id: local-launcher
+    resource: "/../../programs/Camofox%20Launcher.desktop"
+    title: "Local launcher"
+  - id: local-launcher-programs-camofox-launcher-desktop
+    resource: "/../../programs/Camofox%20Launcher.desktop"
+    title: "Local launcher - programs/Camofox Launcher.desktop"
 ---
 
 # What Camofox is
@@ -32,9 +46,3 @@ Camoufox is the engine (Firefox fork, anti-detection patches at the C++ level); 
 * **Hermes** uses Camofox as its **headed/anti-bot browser backend** (see [AI Integration](ai-integration.md)).
 * Complements **Firecrawl** (which uses Playwright for rendering) — Camofox is the stealthy, human-watchable option for flows that need it.
 * Distinct from **CloakBrowser** (separate stealth browser server — see its own KB page).
-
-# Citations
-
-[1] [Camoufox GitHub](https://github.com/daijro/camoufox)
-[2] [Local launcher](/../../programs/Camofox%20Launcher.desktop)
-[3] [Local launcher - programs/Camofox Launcher.desktop](/../../programs/Camofox%20Launcher.desktop)

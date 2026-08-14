@@ -4,7 +4,22 @@ title: Frigate — AI Integration
 description: Frigate's role as a computer-vision object detector vs the LLM/agent stack; optional pathways to feed detections into agents.
 resource: https://docs.frigate.video/
 tags: [frigate, ai, object-detection, computer-vision, integration, mqtt]
-timestamp: 2026-07-09T04:19:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:19:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:19:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: frigate
+    resource: "https://frigate.video/"
+    title: "Frigate"
+    author: "site:frigate.video"
+  - id: api-docs
+    resource: "https://docs.frigate.video/"
+    title: "API/docs"
+    author: "site:docs.frigate.video"
+  - id: overview
+    resource: "overview.md"
+    title: "Overview"
 ---
 
 # What "AI" means here
@@ -34,9 +49,3 @@ None of these are configured here yet — Frigate runs standalone as surveillanc
 | **Frigate** | CV object detection (GPU) |
 | OpenWebUI / Dify / Hermes | LLM reasoning/agents |
 | Graphify | knowledge graph |
-
-# Citations
-
-[1] [Frigate](https://frigate.video/)
-[2] [API/docs](https://docs.frigate.video/)
-[3] [Overview](overview.md)

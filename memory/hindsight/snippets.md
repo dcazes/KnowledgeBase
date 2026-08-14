@@ -4,7 +4,19 @@ title: Hindsight Snippets
 description: Hindsight cheat sheet — CLI, client SDK calls, API probes, skill wiring, learning-loop pattern (v0.8.4).
 resource: https://hindsight.vectorize.io
 tags: [hindsight, snippets, cheat-sheet]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: hindsight-docs
+    resource: "https://hindsight.vectorize.io"
+    title: "Hindsight docs"
+    author: "site:hindsight.vectorize.io"
+  - id: hindsight-github
+    resource: "https://github.com/vectorize-io/hindsight"
+    title: "Hindsight GitHub"
+    author: "site:github.com"
 ---
 
 # Snippets
@@ -53,8 +65,3 @@ cp -r programs/hindsight/skills/<skill> ~/.config/opencode/skills/
 3. next task start → hindsight.recall("what did we learn…")
 4. agent acts on recalled knowledge
 ```
-
-# Citations
-
-[1] [Hindsight docs](https://hindsight.vectorize.io)
-[2] [Hindsight GitHub](https://github.com/vectorize-io/hindsight)

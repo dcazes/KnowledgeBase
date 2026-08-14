@@ -4,7 +4,19 @@ title: OpenWebUI
 description: Self-hosted AI chat platform with RAG + web search — documented as reference; compose present locally, not currently running.
 resource: https://github.com/open-webui/open-webui
 tags: [openwebui, chat, rag, self-hosted]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: openwebui-github
+    resource: "https://github.com/open-webui/open-webui"
+    title: "OpenWebUI GitHub"
+    author: "site:github.com"
+  - id: openwebui-docs
+    resource: "https://docs.openwebui.com/"
+    title: "OpenWebUI docs"
+    author: "site:docs.openwebui.com"
 ---
 
 # OpenWebUI
@@ -42,8 +54,3 @@ Self-hosted AI chat platform (served on `:3001`); RAG + web search. Documented h
 ## Last verified
 
 **2026-08-12** — **v0.11.0** (2026-07-27). Port corrected to 3001→8080; compose at `programs/openwebui/docker-compose.yaml`. Prior verification 2026-07-09 against upstream docs.openwebui.com.
-
-# Citations
-
-[1] [OpenWebUI GitHub](https://github.com/open-webui/open-webui)
-[2] [OpenWebUI docs](https://docs.openwebui.com/)

@@ -4,7 +4,27 @@ title: LightRAG
 description: Lightweight, graph-powered RAG engine (HKUDS) — dual-level retrieval over an incremental knowledge graph, local or cloud LLMs, Python library + server.
 resource: https://github.com/HKUDS/LightRAG
 tags: [lightrag, rag, graph, retrieval, llm, knowledge]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: lightrag-github
+    resource: "https://github.com/HKUDS/LightRAG"
+    title: "LightRAG GitHub"
+    author: "site:github.com"
+  - id: lightrag-docs
+    resource: "https://lightrag.readthedocs.io/en/latest/"
+    title: "LightRAG docs"
+    author: "site:lightrag.readthedocs.io"
+  - id: lightrag-on-pypi
+    resource: "https://pypi.org/project/lightrag-hku/"
+    title: "LightRAG on PyPI"
+    author: "site:pypi.org"
+  - id: paper-arxiv-2410-05779
+    resource: "https://arxiv.org/abs/2410.05779"
+    title: "Paper (arXiv 2410.05779)"
+    author: "site:arxiv.org"
 ---
 
 # LightRAG
@@ -27,13 +47,6 @@ Local checkout: `programs/LightRAG` (git, HKUDS, main, commit 2026-07-21) at **v
 * [Graphiti](../graphiti/index.md) — temporal graph for agent memory (different job: memory vs retrieval)
 * [Graphify](../graphify/index.md) — folder→knowledge-graph compiler (offline; LightRAG is query-time RAG)
 * [Ollama](../../runtime/ollama/index.md) — local LLM backend for LightRAG
-
-# Citations
-
-[1] [LightRAG GitHub](https://github.com/HKUDS/LightRAG)
-[2] [LightRAG docs](https://lightrag.readthedocs.io/en/latest/)
-[3] [LightRAG on PyPI](https://pypi.org/project/lightrag-hku/)
-[4] [Paper (arXiv 2410.05779)](https://arxiv.org/abs/2410.05779)
 
 ## Last verified
 

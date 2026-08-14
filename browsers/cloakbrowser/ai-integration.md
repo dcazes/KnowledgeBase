@@ -4,7 +4,23 @@ title: CloakBrowser — AI Integration
 description: CloakBrowser as a Chromium-based agent browser backend, and how it relates to Camofox and Firecrawl.
 resource: https://github.com/cloakhq/cloakbrowser
 tags: [cloakbrowser, integration, agents, cdp, camofox, firecrawl]
-timestamp: 2026-07-09T01:13:00Z
+generated: { by: "human:daniel", at: "2026-07-09T01:13:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T01:13:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: overview
+    resource: "overview.md"
+    title: "Overview"
+  - id: usage-cdp
+    resource: "usage.md"
+    title: "Usage (CDP)"
+  - id: camofox-contrast
+    resource: "/../../camofox/index.md"
+    title: "Camofox (contrast)"
+  - id: firecrawl-contrast
+    resource: "/../../firecrawl/index.md"
+    title: "Firecrawl (contrast)"
 ---
 
 # Agent browser backend (Chromium side)
@@ -37,10 +53,3 @@ The SearXNG compose listed `cloakbrowser-manager` as a service, signaling CloakB
 1. Launch `npx cloakbrowser --remote-debugging-port=9222 --headless=false`.
 2. Agent connects via Playwright/Puppeteer on :9222.
 3. For logins, use the visible window or the Docker manager's `cloak_profiles`.
-
-# Citations
-
-[1] [Overview](overview.md)
-[2] [Usage (CDP)](usage.md)
-[3] [Camofox (contrast)](/../../camofox/index.md)
-[4] [Firecrawl (contrast)](/../../firecrawl/index.md)

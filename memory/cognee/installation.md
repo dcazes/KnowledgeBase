@@ -4,7 +4,19 @@ title: Cognee Installation
 description: Install Cognee — pip install cognee (v1.4.2) or local v1.4.0; optional Docker compose (API + Postgres + vector) + cognee-frontend; verify with add+cognify.
 resource: https://docs.cognee.ai
 tags: [cognee, installation, pip, docker]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: cognee-docs-quickstart
+    resource: "https://docs.cognee.ai"
+    title: "Cognee docs — quickstart"
+    author: "site:docs.cognee.ai"
+  - id: cognee-on-pypi
+    resource: "https://pypi.org/project/cognee/"
+    title: "Cognee on PyPI"
+    author: "site:pypi.org"
 ---
 
 # Installation
@@ -39,8 +51,3 @@ The checkout includes a `cognee-frontend` app (UI for browsing/searching the kno
 ## Status on this machine
 
 * `programs/cognee` checkout present (v1.4.0), compose + frontend present — **not deployed**, no running containers (recon 2026-08-12).
-
-# Citations
-
-[1] [Cognee docs — quickstart](https://docs.cognee.ai)
-[2] [Cognee on PyPI](https://pypi.org/project/cognee/)

@@ -4,7 +4,20 @@ title: Agent Stack — Overview
 description: All-in-one agentic-stack prototype that wires SearchXNG, Firecrawl, Camofox, Frigate, Ollama, LiteLLM, Graphiti (FalkorDB), and Weaviate into one Docker Compose on a shared network.
 resource: https://github.com/mendableai/firecrawl
 tags: [agent-stack, compose, all-in-one, prototype, architecture]
-timestamp: 2026-07-09T00:00:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:00:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: blueprint
+    resource: "../../meta/architecture/agentic-system-blueprint.md"
+    title: "Blueprint"
+  - id: search-backend-compare
+    resource: "../../meta/architecture/search-backend/vespa-vs-weaviate.md"
+    title: "Search backend compare"
+  - id: memory-compare
+    resource: "../../meta/architecture/memory/memory-comparison.md"
+    title: "Memory compare"
 ---
 
 # What the Agent Stack is
@@ -40,9 +53,3 @@ The master compose uses Docker Compose's `include` to reference each program's *
 # How it fits your stack
 
 This composes the individual programs you already run — it is the "one command to rule them all" wrapper, not a separate product. Where a service already has a working standalone deploy (Firecrawl, Frigate), the master `include`s it; where one doesn't yet (Weaviate, Graphiti MCP, LiteLLM, Ollama, parser), the master defines it.
-
-# Citations
-
-[1] [Blueprint](../../meta/architecture/agentic-system-blueprint.md)
-[2] [Search backend compare](../../meta/architecture/search-backend/vespa-vs-weaviate.md)
-[3] [Memory compare](../../meta/architecture/memory/memory-comparison.md)

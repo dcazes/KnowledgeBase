@@ -4,7 +4,21 @@ title: SearXNG — Search API
 description: The programmatic /search endpoint (JSON/CSV/RSS) — parameters, response schema, and copy-paste curl + Python examples for the AI stack.
 resource: https://docs.searxng.org/dev/search_api.html
 tags: [searxng, api, json, csv, rss, programmatic, search-api]
-timestamp: 2026-07-08T23:50:00Z
+generated: { by: "human:daniel", at: "2026-07-08T23:50:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-08T23:50:00Z" } ]
+status: stable
+stale_after: 2027-01-04
+sources:
+  - id: search-api
+    resource: "https://docs.searxng.org/dev/search_api.html"
+    title: "Search API"
+    author: "site:docs.searxng.org"
+  - id: local-settings-formats-programs-firecrawl-firecrawl-searxng-config-settings-yml
+    resource: "/../../programs/firecrawl/firecrawl/searxng-config/settings.yml"
+    title: "Local settings (formats) - programs/firecrawl/firecrawl/searxng-config/settings.yml"
+  - id: deployment-installation-md
+    resource: "installation.md"
+    title: "Deployment - installation.md"
 ---
 
 # Overview
@@ -133,9 +147,3 @@ curl -s "http://127.0.0.1:8088/search?q=test&format=json" \
 | Empty `results` | All engines disabled / no egress | Check `/preferences`; test outbound connectivity |
 | Slow (>5 s) | Too many engines queried | Narrow `categories` |
 | CAPTCHA from Google | Over-querying | Disable Google in config; rely on DDG/Bing |
-
-# Citations
-
-[1] [Search API](https://docs.searxng.org/dev/search_api.html)
-[2] [Local settings (formats) - programs/firecrawl/firecrawl/searxng-config/settings.yml](/../../programs/firecrawl/firecrawl/searxng-config/settings.yml)
-[3] [Deployment - installation.md](installation.md)

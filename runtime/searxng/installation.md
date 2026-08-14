@@ -4,7 +4,25 @@ title: SearXNG — Installation & Deployment
 description: Deploy SearXNG with Docker Compose from the local config; fix the settings mount path; start and verify the instance.
 resource: https://docs.searxng.org/admin/installation-docker.html
 tags: [searxng, install, docker, compose, deployment]
-timestamp: 2026-07-08T23:10:00Z
+generated: { by: "human:daniel", at: "2026-07-08T23:10:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-08T23:10:00Z" } ]
+status: stable
+stale_after: 2027-01-04
+sources:
+  - id: docker-installation
+    resource: "https://docs.searxng.org/admin/installation-docker.html"
+    title: "Docker installation"
+    author: "site:docs.searxng.org"
+  - id: settings-reference
+    resource: "https://docs.searxng.org/admin/settings/settings.html"
+    title: "Settings reference"
+    author: "site:docs.searxng.org"
+  - id: local-compose-programs-firecrawl-firecrawl-docker-compose-yaml
+    resource: "/../../programs/firecrawl/firecrawl/docker-compose.yaml"
+    title: "Local compose - programs/firecrawl/firecrawl/docker-compose.yaml"
+  - id: local-settings-programs-firecrawl-firecrawl-searxng-config-settings-yml
+    resource: "/../../programs/firecrawl/firecrawl/searxng-config/settings.yml"
+    title: "Local settings - programs/firecrawl/firecrawl/searxng-config/settings.yml"
 ---
 
 # Deployment model
@@ -95,10 +113,3 @@ The official image reads `SEARXNG_*` env vars (see `.env` in `programs/firecrawl
 | Zero results | All engines disabled / network egress blocked | Check `/preferences`; test egress |
 | "secret_key" warning | Default key in use | Set a random `secret_key` |
 | Port clash with CloakBrowser | Only one service owns `8088` | Ensure no other container publishes `8088` on the host |
-
-# Citations
-
-[1] [Docker installation](https://docs.searxng.org/admin/installation-docker.html)
-[2] [Settings reference](https://docs.searxng.org/admin/settings/settings.html)
-[3] [Local compose - programs/firecrawl/firecrawl/docker-compose.yaml](/../../programs/firecrawl/firecrawl/docker-compose.yaml)
-[4] [Local settings - programs/firecrawl/firecrawl/searxng-config/settings.yml](/../../programs/firecrawl/firecrawl/searxng-config/settings.yml)

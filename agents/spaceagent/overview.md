@@ -4,7 +4,15 @@ title: Space Agent Overview
 description: How Space Agent works — browser-runtime agent, live workspace reshaping (pages/tools/widgets), SKILL.md text capabilities, token-efficient protocol, hierarchy.
 resource: https://github.com/agent0ai/space-agent
 tags: [space-agent, overview, browser-runtime, skills]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: space-agent-github
+    resource: "https://github.com/agent0ai/space-agent"
+    title: "Space Agent GitHub"
+    author: "site:github.com"
 ---
 
 # Overview
@@ -35,7 +43,3 @@ Node.js/JavaScript; CLI `space` / `space.js` with `commands/params.yaml`; repo: 
 ## Status here
 
 Local `programs/spaceagent/` empty; not deployed. Documented from upstream (2026-08-13).
-
-# Citations
-
-[1] [Space Agent GitHub](https://github.com/agent0ai/space-agent)

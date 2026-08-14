@@ -4,7 +4,14 @@ title: Firecrawl Subservice — RabbitMQ
 description: The rabbitmq container — AMQP message broker that carries Firecrawl's job queue (NUQ_RABBITMQ_URL).
 resource: https://github.com/firecrawl/firecrawl
 tags: [firecrawl, rabbitmq, subservice, amqp, queue]
-timestamp: 2026-07-09T00:35:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:35:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:35:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: local-compose-rabbitmq-service
+    resource: "/../../programs/firecrawl/firecrawl/docker-compose.yaml"
+    title: "Local compose (rabbitmq service)"
 ---
 
 # Role
@@ -32,7 +39,3 @@ From your running stack: `4369`, `5671-5672`, `15671-15672`, `25672` (AMQP 5672 
 |---------|-------|-----|
 | API won't start | RabbitMQ unhealthy | `docker compose logs rabbitmq`; ensure it passes healthcheck |
 | Jobs stuck | queue full / worker dead | inspect management UI; restart workers |
-
-# Citations
-
-[1] [Local compose (rabbitmq service)](/../../programs/firecrawl/firecrawl/docker-compose.yaml)

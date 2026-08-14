@@ -4,7 +4,18 @@ title: CloakBrowser — Usage
 description: Driving CloakBrowser over CDP (port 9222), connecting Playwright/agent clients, and using persistent profiles.
 resource: https://github.com/cloakhq/cloakbrowser
 tags: [cloakbrowser, usage, cdp, playwright, automation, agent]
-timestamp: 2026-07-09T01:12:00Z
+generated: { by: "human:daniel", at: "2026-07-09T01:12:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T01:12:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: installation-ports
+    resource: "installation.md"
+    title: "Installation / ports"
+  - id: chrome-devtools-protocol
+    resource: "https://chromedevtools.github.io/devtools-protocol/"
+    title: "Chrome DevTools Protocol"
+    author: "site:chromedevtools.github.io"
 ---
 
 # CDP endpoint (port 9222)
@@ -57,8 +68,3 @@ The Docker `cloakbrowser-manager` stores profiles in the `cloak_profiles` volume
 2. Agent connects via CDP (Playwright/Puppeteer) on :9222.
 3. Navigate, interact, extract.
 4. For logins, watch the visible window or use the Docker manager's persistent profile.
-
-# Citations
-
-[1] [Installation / ports](installation.md)
-[2] [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/)

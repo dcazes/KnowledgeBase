@@ -4,7 +4,19 @@ title: Mem0 Alternatives
 description: Mem0 vs MemOS, Graphiti, Zep, LangMem — when each memory approach fits; local vs cloud; how they differ for this agent stack.
 resource: https://docs.mem0.ai
 tags: [mem0, alternatives, memory, graphiti, memos, zep, comparison]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: mem0-docs-alternatives
+    resource: "https://docs.mem0.ai"
+    title: "Mem0 docs — alternatives"
+    author: "site:docs.mem0.ai"
+  - id: mem0-github
+    resource: "https://github.com/mem0ai/mem0"
+    title: "Mem0 GitHub"
+    author: "site:github.com"
 ---
 
 # Alternatives
@@ -25,8 +37,3 @@ timestamp: 2026-08-13T00:00:00Z
 * **Graph vs scoped-keyword extraction matters** → Mem0's graph store (Neo4j) covers light graph needs; Graphiti is the heavy graph engine.
 
 See the [memory comparison](../../meta/architecture/memory/memory-comparison.md) for the architecture-level view.
-
-# Citations
-
-[1] [Mem0 docs — alternatives](https://docs.mem0.ai)
-[2] [Mem0 GitHub](https://github.com/mem0ai/mem0)

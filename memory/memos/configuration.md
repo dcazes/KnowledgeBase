@@ -4,7 +4,26 @@ title: MemOS — Configuration
 description: MemOS .env model routing (LLM to largest local model via LiteLLM :4000; embeddings/rerank to 4B local models) and MemCube scoping/feedback controls — the small-model survival plan.
 resource: https://github.com/MemTensor/MemOS
 tags: [memos, configuration, model-routing, llm, embedding, small-models, cubes, feedback]
-timestamp: 2026-07-15T14:32:00Z
+generated: { by: "human:daniel", at: "2026-07-15T14:32:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-15T14:32:00Z" } ]
+status: stable
+stale_after: 2027-01-11
+sources:
+  - id: memos-github
+    resource: "https://github.com/MemTensor/MemOS"
+    title: "MemOS GitHub"
+    author: "site:github.com"
+  - id: hypermem-acl-2026-4b-embed-rerank
+    resource: "https://github.com/EverMind-AI/HyperMem"
+    title: "HyperMem (ACL 2026, 4B embed/rerank)"
+    author: "site:github.com"
+  - id: memory-poisoning-writeup-mem0
+    resource: "https://mem0.ai/blog/memory-poisoning-how-bad-inputs-corrupt-your-ai-agent-s-memory"
+    title: "Memory poisoning writeup (Mem0)"
+    author: "site:mem0.ai"
+  - id: litellm-local-proxy-on-this-machine
+    resource: "../../agents/agent-stack/index.md"
+    title: "LiteLLM local proxy on this machine"
 ---
 
 # The small-model problem
@@ -44,10 +63,3 @@ MemOS organizes memory into **cubes** with owner scoping. Use this to avoid the 
 1. Extract only **stable facts / preferences / confirmed corrections** — not speculative output.
 2. Tag `source` (`human` vs `agent` vs `tool`) so retrieval can exclude `agent`-generated facts from safety-sensitive flows.
 3. Let the system consolidate; you govern at the edges (review shared cubes, run a benchmark periodically).
-
-# Citations
-
-[1] [MemOS GitHub](https://github.com/MemTensor/MemOS)
-[2] [HyperMem (ACL 2026, 4B embed/rerank)](https://github.com/EverMind-AI/HyperMem)
-[3] [Memory poisoning writeup (Mem0)](https://mem0.ai/blog/memory-poisoning-how-bad-inputs-corrupt-your-ai-agent-s-memory)
-[4] [LiteLLM local proxy on this machine](../../agents/agent-stack/index.md)

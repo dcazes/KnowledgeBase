@@ -4,7 +4,27 @@ title: Weaviate — Modules & Multimodal
 description: Weaviate's module system and multi-vector objects for handling text, code, and image modalities.
 resource: https://weaviate.io/developers/weaviate/modules
 tags: [weaviate, modules, multimodal, multi-vector, code, image, embed]
-timestamp: 2026-07-09T06:06:00Z
+generated: { by: "human:daniel", at: "2026-07-09T06:06:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T06:06:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: modules-docs
+    resource: "https://weaviate.io/developers/weaviate/modules"
+    title: "Modules docs"
+    author: "site:weaviate.io"
+  - id: multi-vector
+    resource: "https://weaviate.io/developers/weaviate/concepts/vector-index"
+    title: "Multi-vector"
+    author: "site:weaviate.io"
+  - id: colpali
+    resource: "https://huggingface.co/blog/manu/colpali"
+    title: "ColPali"
+    author: "site:huggingface.co"
+  - id: code-rag-ast
+    resource: "https://www.lancedb.com/blog/building-rag-on-codebases-part-2"
+    title: "Code RAG AST"
+    author: "site:www.lancedb.com"
 ---
 
 # Modules
@@ -36,10 +56,3 @@ collection.data.insert(
 | Text | `text2vec-*` + BM25 (hybrid) |
 | Code | AST-chunked source + code embedder; BM25 on identifiers |
 | Image | `multi2vec-*` or store ColPali/VLM vectors as named vectors |
-
-# Citations
-
-[1] [Modules docs](https://weaviate.io/developers/weaviate/modules)
-[2] [Multi-vector](https://weaviate.io/developers/weaviate/concepts/vector-index)
-[3] [ColPali](https://huggingface.co/blog/manu/colpali)
-[4] [Code RAG AST](https://www.lancedb.com/blog/building-rag-on-codebases-part-2)

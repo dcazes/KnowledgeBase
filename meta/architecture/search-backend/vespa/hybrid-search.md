@@ -4,7 +4,22 @@ title: Vespa — Hybrid Search
 description: Vespa's combination of dense vector search, BM25 keyword search, structured filtering, and ML ranking in a single query.
 resource: https://docs.vespa.ai/
 tags: [vespa, hybrid-search, vector, bm25, filtering, ranking, tensor]
-timestamp: 2026-07-09T06:01:00Z
+generated: { by: "human:daniel", at: "2026-07-09T06:01:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T06:01:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: vespa-docs-hybrid
+    resource: "https://docs.vespa.ai/documentation/ranking.html"
+    title: "Vespa docs — hybrid"
+    author: "site:docs.vespa.ai"
+  - id: vespa-vector-database
+    resource: "https://vespa.ai/vector-database/"
+    title: "Vespa vector database"
+    author: "site:vespa.ai"
+  - id: hybrid-search-overview
+    resource: "/../../search-backend/vespa-vs-weaviate.md"
+    title: "Hybrid search overview"
 ---
 
 # Hybrid retrieval in Vespa
@@ -31,9 +46,3 @@ query: "how does Vespa rank at scale"
   ├─ filter: doc_type = architecture           # structured
   └─ rank: ML model over [vector_score, bm25]  # learned ranking
 ```
-
-# Citations
-
-[1] [Vespa docs — hybrid](https://docs.vespa.ai/documentation/ranking.html)
-[2] [Vespa vector database](https://vespa.ai/vector-database/)
-[3] [Hybrid search overview](/../../search-backend/vespa-vs-weaviate.md)

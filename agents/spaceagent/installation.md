@@ -4,7 +4,15 @@ title: Space Agent Installation
 description: Install Space Agent — desktop app from GitHub Releases (no terminal), or server (clone, npm install, create user, node space serve); empty local dir on this machine.
 resource: https://github.com/agent0ai/space-agent
 tags: [space-agent, installation, server, desktop]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: space-agent-github-readme
+    resource: "https://github.com/agent0ai/space-agent"
+    title: "Space Agent GitHub — README"
+    author: "site:github.com"
 ---
 
 # Installation
@@ -33,7 +41,3 @@ npm run dev
 
 * `programs/spaceagent/` — **EMPTY dir**, no checkout, not deployed (verified 2026-08-12).
 * No upstream version tag to pin (no semver reported as of 2026-08-13).
-
-# Citations
-
-[1] [Space Agent GitHub — README](https://github.com/agent0ai/space-agent)

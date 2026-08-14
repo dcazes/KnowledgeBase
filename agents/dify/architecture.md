@@ -4,7 +4,20 @@ title: Dify — Architecture
 description: The Dify container set — api, api_websocket, worker, worker_beat, web, databases, redis, sandbox, plugin_daemon, ssrf_proxy, nginx, and selectable vector stores.
 resource: https://github.com/langgenius/dify/tree/main/docker
 tags: [dify, architecture, containers, celery, redis, vector-db, subservices]
-timestamp: 2026-07-09T00:52:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:52:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:52:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: docker-docker-compose-yaml-local
+    resource: "/../../programs/archive/dify/docker/docker-compose.yaml"
+    title: "docker/docker-compose.yaml (local)"
+  - id: docker-compose-middleware-yaml-local
+    resource: "/../../programs/archive/dify/docker/docker-compose.middleware.yaml"
+    title: "docker-compose.middleware.yaml (local)"
+  - id: agents-md-async-via-celery-redis
+    resource: "/../../programs/archive/dify/AGENTS.md"
+    title: "AGENTS.md — async via Celery/Redis"
 ---
 
 # Service topology
@@ -69,9 +82,3 @@ The compose defines many; you enable the one you want and set `VECTOR_STORE`:
 # Why this matters
 
 Celery + Redis means heavy jobs (document indexing, batch embedding) run off the request path — the API stays responsive. The sandbox + ssrf_proxy are security boundaries for user-supplied code and outbound fetches.
-
-# Citations
-
-[1] [docker/docker-compose.yaml (local)](/../../programs/archive/dify/docker/docker-compose.yaml)
-[2] [docker-compose.middleware.yaml (local)](/../../programs/archive/dify/docker/docker-compose.middleware.yaml)
-[3] [AGENTS.md — async via Celery/Redis](/../../programs/archive/dify/AGENTS.md)

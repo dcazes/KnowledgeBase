@@ -4,7 +4,19 @@ title: OpenCode Installation
 description: How to install OpenCode (npm or curl), set up PATH to ~/.opencode/bin, and verify with opencode --version and opencode /init.
 resource: https://opencode.ai/docs/install
 tags: [opencode, install, setup, terminal, npm]
-timestamp: 2026-07-09T03:25:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:25:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:25:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: opencode-install-docs
+    resource: "https://opencode.ai/docs/install"
+    title: "OpenCode Install Docs"
+    author: "site:opencode.ai"
+  - id: opencode-github-repository-anomalyco
+    resource: "https://github.com/anomalyco/opencode"
+    title: "OpenCode GitHub repository (anomalyco)"
+    author: "site:github.com"
 ---
 
 # OpenCode Installation
@@ -62,7 +74,3 @@ After init, edit `.opencode.json` per [configuration](configuration.md).
 - [ ] `opencode --version` prints `1.17.18` (or newer).
 - [ ] `which opencode` resolves to `~/.opencode/bin/opencode`.
 - [ ] `opencode /init` creates a `.opencode.json` in the project root.
-
-# Citations
-[1] [OpenCode Install Docs](https://opencode.ai/docs/install)
-[2] [OpenCode GitHub repository (anomalyco)](https://github.com/anomalyco/opencode)

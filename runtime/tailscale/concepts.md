@@ -4,7 +4,35 @@ title: Tailscale — Concepts
 description: Core Tailscale building blocks — tailnet, WireGuard, MagicDNS, DERP, ACLs, exit nodes, funnel, Taildrop, SSH.
 resource: https://tailscale.com/kb/1017/how-tailscale-works/
 tags: [tailscale, concepts, tailnet, wireguard, magicdns, derp, acl, funnel, exit-node]
-timestamp: 2026-07-09T02:22:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:22:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:22:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: how-tailscale-works
+    resource: "https://tailscale.com/kb/1017/how-tailscale-works/"
+    title: "How Tailscale works"
+    author: "site:tailscale.com"
+  - id: magicdns
+    resource: "https://tailscale.com/kb/1081/magicdns/"
+    title: "MagicDNS"
+    author: "site:tailscale.com"
+  - id: derp
+    resource: "https://tailscale.com/kb/1232/derp-servers/"
+    title: "DERP"
+    author: "site:tailscale.com"
+  - id: funnel
+    resource: "https://tailscale.com/kb/1223/funnel/"
+    title: "Funnel"
+    author: "site:tailscale.com"
+  - id: exit-nodes
+    resource: "https://tailscale.com/kb/1103/exit-nodes/"
+    title: "Exit nodes"
+    author: "site:tailscale.com"
+  - id: acls
+    resource: "https://tailscale.com/kb/1018/acl/"
+    title: "ACLs"
+    author: "site:tailscale.com"
 ---
 
 # Building blocks
@@ -36,12 +64,3 @@ Access is decided by **identity + ACL**, not network position. Even inside the t
 * Reach `:4000`, `:3000`, `:8080`, `:3002` from any tailnet device via MagicDNS names.
 * Use **Funnel** only for services you genuinely want public (e.g. a demo of OpenWebUI); keep the rest tailnet-private.
 * Use **Exit Node** on this machine to route a laptop's traffic through it if desired.
-
-# Citations
-
-[1] [How Tailscale works](https://tailscale.com/kb/1017/how-tailscale-works/)
-[2] [MagicDNS](https://tailscale.com/kb/1081/magicdns/)
-[3] [DERP](https://tailscale.com/kb/1232/derp-servers/)
-[4] [Funnel](https://tailscale.com/kb/1223/funnel/)
-[5] [Exit nodes](https://tailscale.com/kb/1103/exit-nodes/)
-[6] [ACLs](https://tailscale.com/kb/1018/acl/)

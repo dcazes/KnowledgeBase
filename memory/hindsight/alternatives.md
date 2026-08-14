@@ -4,7 +4,19 @@ title: Hindsight Alternatives
 description: Hindsight vs Graphiti, Mem0, MemOS, Zep, LangMem — learning-based agent memory vs storage/recall systems; fit for this stack.
 resource: https://hindsight.vectorize.io
 tags: [hindsight, alternatives, memory, comparison]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: hindsight-docs
+    resource: "https://hindsight.vectorize.io"
+    title: "Hindsight docs"
+    author: "site:hindsight.vectorize.io"
+  - id: hindsight-github
+    resource: "https://github.com/vectorize-io/hindsight"
+    title: "Hindsight GitHub"
+    author: "site:github.com"
 ---
 
 # Alternatives
@@ -25,8 +37,3 @@ timestamp: 2026-08-13T00:00:00Z
 * **Per-user facts, simple API** → Mem0.
 * **Full memory OS with MCP** → MemOS.
 * **Combo**: Hindsight (learning) + Graphiti (provenance) is a strong pairing; see the [memory comparison](../../meta/architecture/memory/memory-comparison.md).
-
-# Citations
-
-[1] [Hindsight docs](https://hindsight.vectorize.io)
-[2] [Hindsight GitHub](https://github.com/vectorize-io/hindsight)

@@ -4,7 +4,23 @@ title: Antigravity 2.0 Snippets
 description: Copy-paste snippets for Antigravity 2.0 — downloading/signing in, Antigravity CLI basics, and migrating from Gemini CLI. Conservative, web-verified commands only.
 resource: Antigravity 2.0
 tags: [google, antigravity, cli, snippets, migration, gemini-cli]
-timestamp: 2026-07-09T03:28:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:28:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:28:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: antigravity-official-site
+    resource: "https://antigravity.google/"
+    title: "Antigravity — official site"
+    author: "site:antigravity.google"
+  - id: antigravity-2-0-product-page
+    resource: "https://antigravity.google/product/antigravity-2"
+    title: "Antigravity 2.0 product page"
+    author: "site:antigravity.google"
+  - id: transitioning-gemini-cli-to-antigravity-cli
+    resource: "https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/"
+    title: "Transitioning Gemini CLI to Antigravity CLI"
+    author: "site:developers.googleblog.com"
 ---
 
 # Antigravity 2.0 Snippets
@@ -71,8 +87,3 @@ Context: on **June 18, 2026**, Gemini CLI and Gemini Code Assist IDE extensions 
 - [Installation](installation.md)
 - [Agents](agents.md)
 - Migration source: [Transitioning Gemini CLI to Antigravity CLI](https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/)
-
-# Citations
-[1] [Antigravity — official site](https://antigravity.google/)
-[2] [Antigravity 2.0 product page](https://antigravity.google/product/antigravity-2)
-[3] [Transitioning Gemini CLI to Antigravity CLI](https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/)

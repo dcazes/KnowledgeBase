@@ -4,7 +4,19 @@ title: SurfSense Alternatives
 description: SurfSense vs Obsidian, Supermemory, Mem0/MemOS, Rewind — personal knowledge assistants and memory layers compared for this machine.
 resource: https://github.com/modsetter/surfsense
 tags: [surfsense, alternatives, comparison, knowledge]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: surfsense-github
+    resource: "https://github.com/modsetter/surfsense"
+    title: "SurfSense GitHub"
+    author: "site:github.com"
+  - id: surfsense-docs
+    resource: "https://docs.modsetter.com/surfsense"
+    title: "SurfSense docs"
+    author: "site:docs.modsetter.com"
 ---
 
 # Alternatives
@@ -24,8 +36,3 @@ timestamp: 2026-08-13T00:00:00Z
 * **Curated manual knowledge base** → Obsidian.
 * **Developer/agent memory** → Mem0/MemOS/Graphiti.
 * **DIY scrape→search pipeline** → Firecrawl + a vector/graph backend (architecture docs).
-
-# Citations
-
-[1] [SurfSense GitHub](https://github.com/modsetter/surfsense)
-[2] [SurfSense docs](https://docs.modsetter.com/surfsense)

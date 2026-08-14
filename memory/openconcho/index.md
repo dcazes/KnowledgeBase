@@ -4,7 +4,19 @@ title: OpenConcho
 description: Fast, privacy-first desktop & web UI for self-hosted Honcho instances (offendingcommit) — browse memories/peers/sessions, chat with memory context; v0.16.0.
 resource: https://github.com/offendingcommit/openconcho
 tags: [openconcho, honcho, ui, memory, desktop]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: openconcho-github
+    resource: "https://github.com/offendingcommit/openconcho"
+    title: "OpenConcho GitHub"
+    author: "site:github.com"
+  - id: openconcho-github-releases
+    resource: "https://github.com/offendingcommit/openconcho/releases"
+    title: "OpenConcho GitHub Releases"
+    author: "site:github.com"
 ---
 
 # OpenConcho
@@ -26,11 +38,6 @@ Local checkout: `programs/openconcho` (git, offendingcommit, main, commit 2026-0
 
 * [Honcho](../honcho/index.md) — the backend this UI talks to (v3.0.11 local checkout)
 * [Mem0 → OpenMemory](../mem0/installation.md) — analogous UI for Mem0
-
-# Citations
-
-[1] [OpenConcho GitHub](https://github.com/offendingcommit/openconcho)
-[2] [OpenConcho GitHub Releases](https://github.com/offendingcommit/openconcho/releases)
 
 ## Last verified
 

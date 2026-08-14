@@ -4,7 +4,27 @@ title: Docker — Images & Containers
 description: The core lifecycle (build/pull/run/exec/stop/rm), Dockerfile essentials, and how layer caching keeps builds fast.
 resource: https://docs.docker.com/get-started/docker-concepts/building-images/
 tags: [docker, images, containers, dockerfile]
-timestamp: 2026-07-08T22:35:00Z
+generated: { by: "human:daniel", at: "2026-07-08T22:35:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-08T22:35:00Z" } ]
+status: stable
+stale_after: 2027-01-04
+sources:
+  - id: docker-building-images-concepts
+    resource: "https://docs.docker.com/get-started/docker-concepts/building-images/"
+    title: "Docker building images concepts"
+    author: "site:docs.docker.com"
+  - id: dockerfile-reference
+    resource: "https://docs.docker.com/reference/dockerfile/"
+    title: "Dockerfile reference"
+    author: "site:docs.docker.com"
+  - id: best-practices-for-writing-dockerfiles
+    resource: "https://docs.docker.com/build/building/best-practices/"
+    title: "Best practices for writing Dockerfiles"
+    author: "site:docs.docker.com"
+  - id: docker-exec-reference
+    resource: "https://docs.docker.com/reference/cli/docker/container/exec/"
+    title: "docker exec reference"
+    author: "site:docs.docker.com"
 ---
 
 # Lifecycle commands
@@ -104,10 +124,3 @@ docker image history myapp:1.0     # see layer sizes
 docker inspect web                 # full JSON config/state
 docker stats                       # live CPU/mem/IO per container
 ```
-
-# Citations
-
-[1] [Docker building images concepts](https://docs.docker.com/get-started/docker-concepts/building-images/)
-[2] [Dockerfile reference](https://docs.docker.com/reference/dockerfile/)
-[3] [Best practices for writing Dockerfiles](https://docs.docker.com/build/building/best-practices/)
-[4] [docker exec reference](https://docs.docker.com/reference/cli/docker/container/exec/)

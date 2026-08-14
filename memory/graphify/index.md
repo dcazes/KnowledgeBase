@@ -4,7 +4,19 @@ title: Graphify
 description: AI coding-assistant skill that turns folders of code/docs/papers into a queryable knowledge graph with confidence tags.
 resource: https://github.com/Graphify-Labs/graphify
 tags: [graphify, knowledge-graph, skill, hermes, opencode]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: graphify-github-graphify-labs-graphify
+    resource: "https://github.com/Graphify-Labs/graphify"
+    title: "Graphify GitHub (Graphify-Labs/graphify)"
+    author: "site:github.com"
+  - id: graphifyy-on-pypi
+    resource: "https://pypi.org/project/graphifyy/"
+    title: "graphifyy on PyPI"
+    author: "site:pypi.org"
 ---
 
 # Graphify
@@ -42,8 +54,3 @@ An AI coding-assistant **skill** that turns any folder of code, docs, papers, im
 ## Last verified
 
 **2026-08-12** — Version bumped to v0.9.32 (2026-07-30). All platform flags, backend env vars, and integration docs originally verified 2026-07-09 against upstream Graphify-Labs/graphify GitHub and PyPI `graphifyy`.
-
-# Citations
-
-[1] [Graphify GitHub (Graphify-Labs/graphify)](https://github.com/Graphify-Labs/graphify)
-[2] [graphifyy on PyPI](https://pypi.org/project/graphifyy/)

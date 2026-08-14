@@ -4,7 +4,19 @@ title: Hermes
 description: Agent runtime (v0.20.0 / CalVer 2026.8.3 "Herald") with desktop GUI/TUI, A2A v1.0, voice/TTS, signed webhooks, and cron-based background tasks.
 resource: https://hermes-agent.nousresearch.com
 tags: [hermes, agent, runtime, automation, gui, tui, toolsets, a2a, voice, tts]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: hermes-github
+    resource: "https://github.com/nous-research/hermes-agent"
+    title: "Hermes GitHub"
+    author: "site:github.com"
+  - id: hermes-docs
+    resource: "https://hermes-agent.nousresearch.com/"
+    title: "Hermes docs"
+    author: "site:hermes-agent.nousresearch.com"
 ---
 
 # Hermes
@@ -41,8 +53,3 @@ Hermes Agent terminal AI (v0.20.0 / CalVer 2026.8.3 "Herald"); skills, tools, cr
 ## Last verified
 
 **2026-08-12** — Config, skills, and integration docs verified against local `~/.hermes/` and upstream Hermes docs. v0.20.0 / CalVer 2026.8.3 "Herald"; A2A v1.0, voice/TTS, signed webhooks.
-
-# Citations
-
-[1] [Hermes GitHub](https://github.com/nous-research/hermes-agent)
-[2] [Hermes docs](https://hermes-agent.nousresearch.com/)

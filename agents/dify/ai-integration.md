@@ -4,7 +4,27 @@ title: Dify — AI Integration
 description: Connecting Dify to your stack — model providers via the :4000 proxy, SearXNG web search, Firecrawl web ingestion, and Graphify structuring of RAG outputs.
 resource: https://docs.dify.ai
 tags: [dify, integration, searxng, firecrawl, graphify, openai-compatible, rag]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: dify-docs
+    resource: "https://docs.dify.ai"
+    title: "Dify docs"
+    author: "site:docs.dify.ai"
+  - id: dify-model-providers
+    resource: "https://docs.dify.ai/guides/model-configuration"
+    title: "Dify model providers"
+    author: "site:docs.dify.ai"
+  - id: firecrawl-api
+    resource: "https://docs.firecrawl.dev/api-reference"
+    title: "Firecrawl API"
+    author: "site:docs.firecrawl.dev"
+  - id: searxng-api
+    resource: "https://docs.searxng.org/dev/search_api.html"
+    title: "SearXNG API"
+    author: "site:docs.searxng.org"
 ---
 
 # Models via the :4000 proxy
@@ -32,10 +52,3 @@ Graphify can structure the outputs of Dify RAG pipelines into a knowledge graph 
 # Deployment status
 
 Source is at `programs/archive/dify/` (archived; upstream v1.16.1, local compose pins `langgenius/dify-api:1.15.0`). No container is currently running. See [Installation](installation.md) to bring it up.
-
-# Citations
-
-[1] [Dify docs](https://docs.dify.ai)
-[2] [Dify model providers](https://docs.dify.ai/guides/model-configuration)
-[3] [Firecrawl API](https://docs.firecrawl.dev/api-reference)
-[4] [SearXNG API](https://docs.searxng.org/dev/search_api.html)

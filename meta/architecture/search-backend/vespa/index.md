@@ -4,7 +4,22 @@ title: Vespa
 description: Unified serving engine combining vector search, BM25, structured filtering, and ML ranking in one self-hosted system at billion-scale — the candidate primary search backend for the multi-modal KB.
 resource: https://vespa.ai/
 tags: [vespa, vector-db, hybrid-search, search, ranking]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: vespa
+    resource: "https://vespa.ai/"
+    title: "Vespa"
+    author: "site:vespa.ai"
+  - id: vespa-vector-database
+    resource: "https://vespa.ai/vector-database/"
+    title: "Vespa vector database"
+    author: "site:vespa.ai"
+  - id: search-backend-comparison
+    resource: "/../../search-backend/vespa-vs-weaviate.md"
+    title: "Search backend comparison"
 ---
 
 # Vespa
@@ -23,9 +38,3 @@ A **unified serving engine** that combines vector search, BM25/keyword search, s
 * **Not installed** — candidate architecture only; document from upstream.
 * **Role here:** primary retrieval engine for the massive multi-modal KB (text + code + images).
 * **Constraint:** must self-host (your stack is local-first).
-
-# Citations
-
-[1] [Vespa](https://vespa.ai/)
-[2] [Vespa vector database](https://vespa.ai/vector-database/)
-[3] [Search backend comparison](/../../search-backend/vespa-vs-weaviate.md)

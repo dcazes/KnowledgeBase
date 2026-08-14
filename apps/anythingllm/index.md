@@ -4,7 +4,19 @@ title: AnythingLLM
 description: All-in-one local-first RAG chat app with workspaces and agent skills — documented as reference, not deployed on this machine.
 resource: https://github.com/Mintplex-Labs/anything-llm
 tags: [anythingllm, rag, chat, local-ai]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: anythingllm-github
+    resource: "https://github.com/Mintplex-Labs/anything-llm"
+    title: "AnythingLLM GitHub"
+    author: "site:github.com"
+  - id: anythingllm-docs
+    resource: "https://docs.anythingllm.com/"
+    title: "AnythingLLM docs"
+    author: "site:docs.anythingllm.com"
 ---
 
 # AnythingLLM
@@ -40,8 +52,3 @@ All-in-one local-first RAG chat app with workspaces and agent skills. Documented
 ## Last verified
 
 **2026-08-12** — **v1.15.0** (2026-06-25, latest as of Aug 2026). Deployment, skills, and integration docs originally verified 2026-07-09.
-
-# Citations
-
-[1] [AnythingLLM GitHub](https://github.com/Mintplex-Labs/anything-llm)
-[2] [AnythingLLM docs](https://docs.anythingllm.com/)

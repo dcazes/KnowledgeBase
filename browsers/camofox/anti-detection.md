@@ -4,7 +4,18 @@ title: Camofox — Anti-Detection
 description: How Camoufox spoofs browser fingerprints to resist bot detection, and the limits (CAPTCHAs still need human/VNC help).
 resource: https://github.com/daijro/camoufox
 tags: [camofox, anti-detection, fingerprint, captcha, stealth, privacy]
-timestamp: 2026-07-09T01:03:00Z
+generated: { by: "human:daniel", at: "2026-07-09T01:03:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T01:03:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: camoufox-anti-detection-github
+    resource: "https://github.com/daijro/camoufox"
+    title: "Camoufox anti-detection (GitHub)"
+    author: "site:github.com"
+  - id: local-launcher-programs-camofox-launcher-desktop
+    resource: "/../../programs/Camofox%20Launcher.desktop"
+    title: "Local launcher - programs/Camofox Launcher.desktop"
 ---
 
 # The problem Camoufox solves
@@ -32,8 +43,3 @@ Camoufox is a **Firefox fork** with anti-detection patches:
 * Use the VNC view for any login that needs a human.
 * Don't crank speed; mimic human pacing.
 * Treat it as stealth, not invisibility.
-
-# Citations
-
-[1] [Camoufox anti-detection (GitHub)](https://github.com/daijro/camoufox)
-[2] [Local launcher - programs/Camofox Launcher.desktop](/../../programs/Camofox%20Launcher.desktop)

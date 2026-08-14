@@ -4,7 +4,31 @@ title: Windsurf — Alternatives
 description: How Windsurf compares to Cursor, VSCode, OpenCode, and Zed for AI-assisted coding.
 resource: https://windsurf.com/
 tags: [windsurf, alternatives, cursor, vscode, opencode, zed, comparison]
-timestamp: 2026-07-09T03:34:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:34:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:34:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: windsurf
+    resource: "https://windsurf.com/"
+    title: "Windsurf"
+    author: "site:windsurf.com"
+  - id: cursor
+    resource: "https://cursor.com/"
+    title: "Cursor"
+    author: "site:cursor.com"
+  - id: vscode
+    resource: "https://code.visualstudio.com/"
+    title: "VSCode"
+    author: "site:code.visualstudio.com"
+  - id: opencode
+    resource: "https://opencode.ai/"
+    title: "OpenCode"
+    author: "site:opencode.ai"
+  - id: zed
+    resource: "https://zed.dev/"
+    title: "Zed"
+    author: "site:zed.dev"
 ---
 
 # Why consider alternatives?
@@ -60,11 +84,3 @@ Native (Rust) fast editor with AI.
 * **VSCode** — general editor.
 * **OpenCode** — terminal agent.
 * **Zed** — speed.
-
-# Citations
-
-[1] [Windsurf](https://windsurf.com/)
-[2] [Cursor](https://cursor.com/)
-[3] [VSCode](https://code.visualstudio.com/)
-[4] [OpenCode](https://opencode.ai/)
-[5] [Zed](https://zed.dev/)

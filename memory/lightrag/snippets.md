@@ -4,7 +4,19 @@ title: LightRAG Snippets
 description: LightRAG cheat sheet — install, library insert/query, hybrid/local/global modes, REST calls, incremental updates, storage env.
 resource: https://lightrag.readthedocs.io/en/latest/
 tags: [lightrag, snippets, cheat-sheet, rag]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: lightrag-docs-examples
+    resource: "https://lightrag.readthedocs.io/en/latest/"
+    title: "LightRAG docs — examples"
+    author: "site:lightrag.readthedocs.io"
+  - id: lightrag-github
+    resource: "https://github.com/HKUDS/LightRAG"
+    title: "LightRAG GitHub"
+    author: "site:github.com"
 ---
 
 # Snippets
@@ -63,8 +75,3 @@ curl http://localhost:9621/documents  # list indexed docs
 export LLM_BINDING=ollama LLM_MODEL=llama3.1 OLLAMA_HOST=http://localhost:11434
 export EMBEDDING_BINDING=ollama EMBEDDING_MODEL=nomic-embed-text
 ```
-
-# Citations
-
-[1] [LightRAG docs — examples](https://lightrag.readthedocs.io/en/latest/)
-[2] [LightRAG GitHub](https://github.com/HKUDS/LightRAG)

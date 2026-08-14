@@ -4,7 +4,20 @@ title: Graphiti — Snippets & Cheat Sheet
 description: Copy-paste install, Neo4j, env, Python client, and MCP server commands for Graphiti.
 resource: https://github.com/getzep/graphiti
 tags: [graphiti, snippets, cheat-sheet, neo4j, python, mcp, env]
-timestamp: 2026-07-09T05:08:00Z
+generated: { by: "human:daniel", at: "2026-07-09T05:08:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T05:08:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: installation
+    resource: "installation.md"
+    title: "Installation"
+  - id: backends
+    resource: "backends.md"
+    title: "Backends"
+  - id: mcp-server
+    resource: "mcp-server.md"
+    title: "MCP Server"
 ---
 
 # Install
@@ -60,9 +73,3 @@ python -c "import graphiti_core; print('ok')"
 | DB connect fail | Neo4j down | start container; check NEO4J_* |
 | Schema errors | weak LLM | use Structured-Output model |
 | Slow ingest | concurrency | raise SEMAPHORE_LIMIT |
-
-# Citations
-
-[1] [Installation](installation.md)
-[2] [Backends](backends.md)
-[3] [MCP Server](mcp-server.md)

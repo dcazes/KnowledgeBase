@@ -4,7 +4,19 @@ title: PydanticAI Configuration
 description: Configure PydanticAI agents — model selection, Agent(...) args (instructions/result_type/tools), deps via RunContext, environment/provider keys, v2 capabilities.
 resource: https://pydantic.dev/docs/ai/
 tags: [pydantic, ai, configuration, agents, models]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: pydanticai-docs-agents
+    resource: "https://pydantic.dev/docs/ai/agents/"
+    title: "PydanticAI docs — agents"
+    author: "site:pydantic.dev"
+  - id: pydanticai-docs-models
+    resource: "https://pydantic.dev/docs/ai/models/"
+    title: "PydanticAI docs — models"
+    author: "site:pydantic.dev"
 ---
 
 # Configuration
@@ -70,8 +82,3 @@ agent = Agent(
 ## Env for local models
 
 Set `OLLAMA_HOST` (default `http://localhost:11434`) when using `ollama:` providers; see [Ollama](../../runtime/ollama/index.md).
-
-# Citations
-
-[1] [PydanticAI docs — agents](https://pydantic.dev/docs/ai/agents/)
-[2] [PydanticAI docs — models](https://pydantic.dev/docs/ai/models/)

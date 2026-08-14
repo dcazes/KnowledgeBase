@@ -4,7 +4,19 @@ title: Hindsight AI Integration
 description: Integrate Hindsight as agent memory — clients/SDKs, skills, integrations, learning-loop pattern, vs Graphiti/Mem0/MemOS for this stack.
 resource: https://hindsight.vectorize.io
 tags: [hindsight, integration, agents, sdk, skills]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: hindsight-docs
+    resource: "https://hindsight.vectorize.io"
+    title: "Hindsight docs"
+    author: "site:hindsight.vectorize.io"
+  - id: hindsight-github
+    resource: "https://github.com/vectorize-io/hindsight"
+    title: "Hindsight GitHub"
+    author: "site:github.com"
 ---
 
 # AI Integration
@@ -40,8 +52,3 @@ The repo ships `skills/` — ready-made agent skills that wrap Hindsight memory 
 
 * Not deployed here (2026-08-13). Complements [Mem0](../mem0/index.md) (facts) and [Graphiti](../graphiti/index.md) (temporal provenance) — Hindsight's differentiator is the **learning pass** (behavior improvement) rather than storage/recall.
 * See the [memory comparison](../../meta/architecture/memory/memory-comparison.md) for the full landscape.
-
-# Citations
-
-[1] [Hindsight docs](https://hindsight.vectorize.io)
-[2] [Hindsight GitHub](https://github.com/vectorize-io/hindsight)

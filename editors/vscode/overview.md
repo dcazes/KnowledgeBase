@@ -4,7 +4,22 @@ title: VSCode — Overview
 description: Free open-source AI code editor (VS Code / Code-OSS) — architecture, editions, and its role editing your programs/* repos and agent skills.
 resource: https://code.visualstudio.com/
 tags: [vscode, editor, ide, code-oss, ai, copilot, development]
-timestamp: 2026-07-09T02:10:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:10:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:10:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: vs-code-official
+    resource: "https://code.visualstudio.com/"
+    title: "VS Code official"
+    author: "site:code.visualstudio.com"
+  - id: vscodium-code-oss-build
+    resource: "https://vscodium.com/"
+    title: "VSCodium (Code-OSS build)"
+    author: "site:vscodium.com"
+  - id: local-launcher
+    resource: "/../../programs/VSCode.desktop"
+    title: "Local launcher"
 ---
 
 # What VSCode is
@@ -34,9 +49,3 @@ VSCode is the **editor** for:
 * General notes/config in the vault and `kbv2/`.
 
 It is *not* a runtime itself — it launches the tools (Docker, Node, Git) that actually build/run the stack.
-
-# Citations
-
-[1] [VS Code official](https://code.visualstudio.com/)
-[2] [VSCodium (Code-OSS build)](https://vscodium.com/)
-[3] [Local launcher](/../../programs/VSCode.desktop)

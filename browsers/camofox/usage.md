@@ -4,7 +4,18 @@ title: Camofox — Usage
 description: Driving the Camofox browser server via its API on :9377 and watching it via noVNC on :6080.
 resource: https://github.com/daijro/camoufox
 tags: [camofox, usage, api, novnc, browser-automation]
-timestamp: 2026-07-09T01:02:00Z
+generated: { by: "human:daniel", at: "2026-07-09T01:02:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T01:02:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: camoufox-playwright-compatible
+    resource: "https://github.com/daijro/camoufox"
+    title: "Camoufox (Playwright-compatible)"
+    author: "site:github.com"
+  - id: installation-ports
+    resource: "installation.md"
+    title: "Installation / ports"
 ---
 
 # Two faces of Camofox
@@ -52,8 +63,3 @@ You'll see the live Firefox desktop. Useful for:
 2. Agent opens a session via `:9377`, navigates, interacts.
 3. If a login/CAPTCHA appears, you open `:6080` and complete it.
 4. Agent continues and reads results.
-
-# Citations
-
-[1] [Camoufox (Playwright-compatible)](https://github.com/daijro/camoufox)
-[2] [Installation / ports](installation.md)

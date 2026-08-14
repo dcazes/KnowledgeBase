@@ -4,7 +4,19 @@ title: Search Backend
 description: The retrieval engine under the knowledge base — compares Vespa (unified vector+BM25+ML ranking at billion-scale) vs Weaviate (hybrid search, modules, easy schema) for scaling text/code/image search.
 resource: https://vespa.ai/
 tags: [search, vector-db, hybrid-search, architecture]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: vespa
+    resource: "https://vespa.ai/"
+    title: "Vespa"
+    author: "site:vespa.ai"
+  - id: weaviate
+    resource: "https://weaviate.io/"
+    title: "Weaviate"
+    author: "site:weaviate.io"
 ---
 
 # Search Backend
@@ -27,8 +39,3 @@ Graphs (Graphify/Graphiti) model *relationships*; they don't do fuzzy/semantic/k
 ## Scope
 
 This section focuses on **Vespa** and **Weaviate** (both self-hostable, both hybrid + multimodal-capable). Qdrant/Milvus/pgvector/LanceDB are deferred.
-
-# Citations
-
-[1] [Vespa](https://vespa.ai/)
-[2] [Weaviate](https://weaviate.io/)

@@ -4,7 +4,23 @@ title: Windsurf (now Devin Desktop)
 description: AI-native code editor by Cognition (formerly Codeium's Windsurf, now Devin Desktop) — with Devin Local agent replacing Cascade.
 resource: https://docs.devin.ai/
 tags: [windsurf, devin-desktop, codeium, ai-editor, cascade, devin-local, agentic-coding]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: windsurf-now-devin-desktop
+    resource: "https://devin.ai/blog/windsurf-is-now-devin-desktop"
+    title: "Windsurf (now Devin Desktop)"
+    author: "site:devin.ai"
+  - id: docs
+    resource: "https://docs.devin.ai/"
+    title: "Docs"
+    author: "site:docs.devin.ai"
+  - id: cognition
+    resource: "https://www.cognition.ai/"
+    title: "Cognition"
+    author: "site:www.cognition.ai"
 ---
 
 # Windsurf (now Devin Desktop)
@@ -37,9 +53,3 @@ Windsurf (now **Devin Desktop**, rebranded by Cognition effective 2026-06-02) is
 ## Last verified
 
 **2026-08-12** — All feature descriptions and integration notes verified against upstream docs.devin.ai. Windsurf rebranded to Devin Desktop (Cognition, 2026-06-02); Cascade retired → Devin Local.
-
-# Citations
-
-[1] [Windsurf (now Devin Desktop)](https://devin.ai/blog/windsurf-is-now-devin-desktop)
-[2] [Docs](https://docs.devin.ai/)
-[3] [Cognition](https://www.cognition.ai/)

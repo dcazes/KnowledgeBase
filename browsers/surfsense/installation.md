@@ -4,7 +4,19 @@ title: SurfSense Installation
 description: Install/run SurfSense — docker compose up from programs/surfsense, version pins, first-run setup, verification via containers/ports.
 resource: https://github.com/modsetter/surfsense
 tags: [surfsense, installation, docker, compose]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: surfsense-github-compose
+    resource: "https://github.com/modsetter/surfsense"
+    title: "SurfSense GitHub — compose"
+    author: "site:github.com"
+  - id: surfsense-docs
+    resource: "https://docs.modsetter.com/surfsense"
+    title: "SurfSense docs"
+    author: "site:docs.modsetter.com"
 ---
 
 # Installation
@@ -41,8 +53,3 @@ docker compose exec frontend sh -c 'wget -qO- http://localhost:3000 | head -5'
 ## Version pins (compose, verified)
 
 * `pgvector/pgvector:pg17`, `redis:8-alpine`, `searxng/searxng:2026.3.13-3c1f68c59`, `caddy:2-alpine`, `rocicorp/zero:1.6.0`, backend/frontend `ghcr.io/modsetter/...:${SURFSENSE_VERSION:-latest}`.
-
-# Citations
-
-[1] [SurfSense GitHub — compose](https://github.com/modsetter/surfsense)
-[2] [SurfSense docs](https://docs.modsetter.com/surfsense)

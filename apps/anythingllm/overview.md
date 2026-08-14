@@ -4,7 +4,22 @@ title: AnythingLLM — Overview
 description: All-in-one, local-first AI app combining document RAG, chat, workspaces, and agent skills; self-hosted via Docker or Desktop.
 resource: https://github.com/Mintplex-Labs/anything-llm
 tags: [anythingllm, rag, chat, workspace, agents, local-first, self-hosted]
-timestamp: 2026-07-09T02:30:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:30:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:30:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: anythingllm-official
+    resource: "https://anythingllm.com/"
+    title: "AnythingLLM official"
+    author: "site:anythingllm.com"
+  - id: github
+    resource: "https://github.com/Mintplex-Labs/anything-llm"
+    title: "GitHub"
+    author: "site:github.com"
+  - id: overview-prior-notes-grounding
+    resource: "/../../kb/anythingllm/overview.md"
+    title: "Overview (prior notes, grounding)"
 ---
 
 # What AnythingLLM is
@@ -46,9 +61,3 @@ AnythingLLM is an **all-in-one AI application** for a "powerful local-first agen
 
 * **Docker** — `mintplexlabs/anythingllm`, port `3001` (see [Installation](installation.md)).
 * **Desktop AppImage** — one-click, single-user (download from the AnythingLLM GitHub releases page).
-
-# Citations
-
-[1] [AnythingLLM official](https://anythingllm.com/)
-[2] [GitHub](https://github.com/Mintplex-Labs/anything-llm)
-[3] [Overview (prior notes, grounding)](/../../kb/anythingllm/overview.md)

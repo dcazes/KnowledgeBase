@@ -4,7 +4,23 @@ title: AnythingLLM — AI Integration
 description: Connecting AnythingLLM to your stack — SearXNG web search, Firecrawl extract, Graphify MCP, and the :4000 inference proxy.
 resource: https://docs.anythingllm.com
 tags: [anythingllm, integration, searxng, firecrawl, graphify, mcp, openai-compatible]
-timestamp: 2026-07-09T02:35:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:35:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:35:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: overview
+    resource: "overview.md"
+    title: "Overview"
+  - id: searxng
+    resource: "/../../searxng/index.md"
+    title: "SearXNG"
+  - id: firecrawl
+    resource: "/../../firecrawl/index.md"
+    title: "Firecrawl"
+  - id: graphify
+    resource: "/../../graphify/index.md"
+    title: "Graphify"
 ---
 
 # Models via the :4000 proxy
@@ -48,10 +64,3 @@ MCP: graphify  (stdio: python -m graphify.serve)
 | Web search | SearXNG | `http://localhost:8080` |
 | Deep extract | Firecrawl | `http://localhost:3002` |
 | Graph RAG | Graphify MCP | `python -m graphify.serve` |
-
-# Citations
-
-[1] [Overview](overview.md)
-[2] [SearXNG](/../../searxng/index.md)
-[3] [Firecrawl](/../../firecrawl/index.md)
-[4] [Graphify](/../../graphify/index.md)

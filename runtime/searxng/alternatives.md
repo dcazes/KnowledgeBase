@@ -4,7 +4,31 @@ title: SearXNG — Alternatives
 description: How SearXNG compares to other metasearch/privacy search options and commercial search APIs, with pros/cons to help decide when (not) to use it.
 resource: https://github.com/searxng/searxng
 tags: [searxng, alternatives, librex, brave, serpapi, metasearch, comparison]
-timestamp: 2026-07-08T23:59:00Z
+generated: { by: "human:daniel", at: "2026-07-08T23:59:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-08T23:59:00Z" } ]
+status: stable
+stale_after: 2027-01-04
+sources:
+  - id: searxng-github-active-33-6k-stars-not-archived
+    resource: "https://github.com/searxng/searxng"
+    title: "SearXNG GitHub (active, ~33.6k stars, not archived)"
+    author: "site:github.com"
+  - id: searx-upstream-discontinued-archived-succeeded-by-searxng
+    resource: "https://github.com/searx/searx"
+    title: "SearX (upstream) — discontinued/archived, succeeded by SearXNG"
+    author: "site:github.com"
+  - id: librex-github
+    resource: "https://github.com/hnnq1/LibreX"
+    title: "LibreX GitHub"
+    author: "site:github.com"
+  - id: brave-search-api
+    resource: "https://brave.com/search/api/"
+    title: "Brave Search API"
+    author: "site:brave.com"
+  - id: serpapi
+    resource: "https://serpapi.com/"
+    title: "SerpAPI"
+    author: "site:serpapi.com"
 ---
 
 # Why consider alternatives?
@@ -90,11 +114,3 @@ A **commercial** API that returns structured Google (and other) search results.
 * Use **Brave/SerpAPI** only when you need a managed API for a specific app and accept the cost/key.
 * Use **LibreX** only if you want a lighter self-hosted option and can sacrifice engine breadth.
 * Never start new work on **SearX (upstream)**.
-
-# Citations
-
-[1] [SearXNG GitHub (active, ~33.6k stars, not archived)](https://github.com/searxng/searxng)
-[2] [SearX (upstream) — discontinued/archived, succeeded by SearXNG](https://github.com/searx/searx)
-[3] [LibreX GitHub](https://github.com/hnnq1/LibreX)
-[4] [Brave Search API](https://brave.com/search/api/)
-[5] [SerpAPI](https://serpapi.com/)

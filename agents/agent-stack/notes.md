@@ -4,7 +4,48 @@ title: Agent Stack — Notes (rationale + gaps)
 description: Why each service is in the all-in-one, locked decisions, candidates not yet wired, memory/search-backend choices, local-model plan, security reminders.
 resource: https://github.com/mendableai/firecrawl
 tags: [agent-stack, notes, rationale, decisions, gaps]
-timestamp: 2026-07-09T00:00:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:00:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: firecrawl
+    resource: "https://github.com/mendableai/firecrawl"
+    title: "Firecrawl"
+    author: "site:github.com"
+  - id: graphiti-mcp
+    resource: "https://github.com/getzep/graphiti/tree/main/mcp_server"
+    title: "Graphiti MCP"
+    author: "site:github.com"
+  - id: weaviate-install
+    resource: "https://weaviate.io/developers/weaviate/installation/docker-compose"
+    title: "Weaviate install"
+    author: "site:weaviate.io"
+  - id: searxng-docker
+    resource: "https://github.com/searxng/searxng-docker"
+    title: "SearXNG-docker"
+    author: "site:github.com"
+  - id: camofox
+    resource: "https://github.com/camofox/camofox"
+    title: "Camofox"
+    author: "site:github.com"
+  - id: ollama
+    resource: "https://github.com/ollama/ollama"
+    title: "Ollama"
+    author: "site:github.com"
+  - id: litellm
+    resource: "https://github.com/BerriAI/litellm"
+    title: "LiteLLM"
+    author: "site:github.com"
+  - id: blueprint
+    resource: "../../meta/architecture/agentic-system-blueprint.md"
+    title: "Blueprint"
+  - id: search-backend-compare
+    resource: "../../meta/architecture/search-backend/vespa-vs-weaviate.md"
+    title: "Search backend compare"
+  - id: memory-compare
+    resource: "../../meta/architecture/memory/memory-comparison.md"
+    title: "Memory compare"
 ---
 
 # Agent Stack — NOTES
@@ -58,16 +99,3 @@ Weaviate is the **start** choice. To switch to **Vespa**, replace the `weaviate`
 * Every `CHANGE_ME` must be replaced before deploy.
 * Don't expose `:4000`/`:8087`/`:8000` publicly — keep them on `agent-net` + Tailscale.
 * `.env` is git-ignored in real use; this `.env.example` has no secrets.
-
-# Citations
-
-[1] [Firecrawl](https://github.com/mendableai/firecrawl)
-[2] [Graphiti MCP](https://github.com/getzep/graphiti/tree/main/mcp_server)
-[3] [Weaviate install](https://weaviate.io/developers/weaviate/installation/docker-compose)
-[4] [SearXNG-docker](https://github.com/searxng/searxng-docker)
-[5] [Camofox](https://github.com/camofox/camofox)
-[6] [Ollama](https://github.com/ollama/ollama)
-[7] [LiteLLM](https://github.com/BerriAI/litellm)
-[8] [Blueprint](../../meta/architecture/agentic-system-blueprint.md)
-[9] [Search backend compare](../../meta/architecture/search-backend/vespa-vs-weaviate.md)
-[10] [Memory compare](../../meta/architecture/memory/memory-comparison.md)

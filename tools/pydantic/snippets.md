@@ -4,7 +4,15 @@ title: Pydantic Snippets
 description: Pydantic cheat sheet — BaseModel, Field, validators, dump/validate, Settings, JSON Schema export (v2).
 resource: https://docs.pydantic.dev
 tags: [pydantic, snippets, cheat-sheet]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: pydantic-docs
+    resource: "https://docs.pydantic.dev"
+    title: "Pydantic docs"
+    author: "site:docs.pydantic.dev"
 ---
 
 # Snippets
@@ -71,7 +79,3 @@ class S(BaseSettings):
 
 s = S()          # reads MY_API_KEY from env
 ```
-
-# Citations
-
-[1] [Pydantic docs](https://docs.pydantic.dev)

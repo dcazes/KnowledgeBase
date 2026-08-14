@@ -4,7 +4,22 @@ title: Frigate
 description: Open-source NVR with real-time AI object detection for IP cameras — go2rtc ingest, ONNX detector, GPU-accelerated.
 resource: https://frigate.video/
 tags: [frigate, nvr, surveillance, object-detection, camera, ai, onnx]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: frigate
+    resource: "https://frigate.video/"
+    title: "Frigate"
+    author: "site:frigate.video"
+  - id: docs-architecture
+    resource: "https://docs.frigate.video/"
+    title: "Docs — Architecture"
+    author: "site:docs.frigate.video"
+  - id: local-config
+    resource: "/../../programs/frigate/config.yml"
+    title: "Local config"
 ---
 
 # Frigate
@@ -40,9 +55,3 @@ An open-source **NVR (Network Video Recorder)** designed for **real-time AI obje
 ## Last verified
 
 **2026-08-12** — All compose ports, GPU config, go2rtc wiring, and camera config verified against local `programs/frigate/config.yml` and `docker-compose.yml`. Stable 0.17.2; ONNX detector (TensorRT removed in 0.16.0).
-
-# Citations
-
-[1] [Frigate](https://frigate.video/)
-[2] [Docs — Architecture](https://docs.frigate.video/)
-[3] [Local config](/../../programs/frigate/config.yml)

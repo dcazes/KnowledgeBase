@@ -4,7 +4,24 @@ title: Hermes — Alternatives
 description: How Hermes compares to OpenCode, OpenClaw, Codex CLI, Aider, and Claude Code — a feature/role comparison table with pros and cons.
 resource: https://hermes-agent.nousresearch.com
 tags: [hermes, alternatives, opencode, openclaw, codex, aider, claude-code, comparison]
-timestamp: 2026-07-09T03:26:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:26:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:26:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: hermes-nous-research
+    resource: "https://hermes-agent.nousresearch.com"
+    title: "Hermes (Nous Research)"
+    author: "site:hermes-agent.nousresearch.com"
+  - id: hermes-setup-note-vault
+    resource: "/../../vault/03%20-%20Reference/Hermes%20Setup.md"
+    title: "Hermes setup note (vault)"
+  - id: overview
+    resource: "overview.md"
+    title: "Overview"
+  - id: ai-integration
+    resource: "ai-integration.md"
+    title: "AI Integration"
 ---
 
 # Hermes vs the field
@@ -49,10 +66,3 @@ Hermes is one agent runtime among several. The key axis is **autonomous/backgrou
 # When to reach for Hermes
 
 Use Hermes when the job is **unattended, scheduled, or needs to drive a real browser/desktop** (Camofox, `/browser connect`, `computer_use`). Use OpenCode/Aider/Claude Code when you want to **pair interactively** on code.
-
-# Citations
-
-[1] [Hermes (Nous Research)](https://hermes-agent.nousresearch.com)
-[2] [Hermes setup note (vault)](/../../vault/03%20-%20Reference/Hermes%20Setup.md)
-[3] [Overview](overview.md)
-[4] [AI Integration](ai-integration.md)

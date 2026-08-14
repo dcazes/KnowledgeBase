@@ -4,7 +4,23 @@ title: Docker — Overview
 description: Containerization platform that packages apps and dependencies into portable, isolated containers sharing the host kernel.
 resource: https://docs.docker.com/get-started/docker-overview/
 tags: [docker, containers, infrastructure, devops]
-timestamp: 2026-07-08T22:35:00Z
+generated: { by: "human:daniel", at: "2026-07-08T22:35:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-08T22:35:00Z" } ]
+status: stable
+stale_after: 2027-01-04
+sources:
+  - id: docker-overview
+    resource: "https://docs.docker.com/get-started/docker-overview/"
+    title: "Docker overview"
+    author: "site:docs.docker.com"
+  - id: docker-architecture
+    resource: "https://docs.docker.com/get-started/docker-overview/#docker-architecture"
+    title: "Docker architecture"
+    author: "site:docs.docker.com"
+  - id: oci-image-spec
+    resource: "https://github.com/opencontainers/image-spec"
+    title: "OCI image spec"
+    author: "site:github.com"
 ---
 
 # What Docker is
@@ -41,9 +57,3 @@ docker CLI  ──>  dockerd (daemon)  ──>  containerd  ──>  runc  ─�
 
 * **Use it** when you want reproducible environments, isolation, easy cleanup, or to run services (like your AI stack) without polluting the host.
 * **It is not** a substitute for a VM when you need a different kernel, or for heavy local LLM inference where you'd rather talk to cloud endpoints (your setup routes inference through OpenRouter/NIM per the KB plan).
-
-# Citations
-
-[1] [Docker overview](https://docs.docker.com/get-started/docker-overview/)
-[2] [Docker architecture](https://docs.docker.com/get-started/docker-overview/#docker-architecture)
-[3] [OCI image spec](https://github.com/opencontainers/image-spec)

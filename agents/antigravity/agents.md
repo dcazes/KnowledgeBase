@@ -4,7 +4,23 @@ title: Antigravity 2.0 Agents
 description: Reference for Antigravity 2.0's agent orchestration model — parallel autonomous agents across independent projects, the Managed Agents API, the persistent isolated Linux sandbox, and the user-trust/verification model.
 resource: Antigravity 2.0
 tags: [google, antigravity, agents, orchestration, sandbox, managed-agents]
-timestamp: 2026-07-09T03:28:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:28:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:28:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: antigravity-2-0-product-page
+    resource: "https://antigravity.google/product/antigravity-2"
+    title: "Antigravity 2.0 product page"
+    author: "site:antigravity.google"
+  - id: google-i-o-2026-developer-highlights
+    resource: "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/"
+    title: "Google I/O 2026 developer highlights"
+    author: "site:blog.google"
+  - id: antigravity-official-site
+    resource: "https://antigravity.google/"
+    title: "Antigravity — official site"
+    author: "site:antigravity.google"
 ---
 
 # Antigravity 2.0 Agents
@@ -44,8 +60,3 @@ Because Antigravity targets professional developers *and* hobbyist vibe-coders, 
 - [Overview](overview.md)
 - [AI Integration](ai-integration.md)
 - Cross-program: compare with the user's local-first agent stack — [OpenCode](/../../opencode/index.md), [Hermes](/../../hermes/index.md)
-
-# Citations
-[1] [Antigravity 2.0 product page](https://antigravity.google/product/antigravity-2)
-[2] [Google I/O 2026 developer highlights](https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/)
-[3] [Antigravity — official site](https://antigravity.google/)

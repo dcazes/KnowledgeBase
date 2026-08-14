@@ -4,7 +4,19 @@ title: OpenCode Configuration
 description: The .opencode.json structure — model selection, allow/deny permissions, MCP servers, custom tools, and the :4000 OpenAI-compatible proxy.
 resource: https://opencode.ai/docs/config
 tags: [opencode, config, json, permissions, mcp, proxy]
-timestamp: 2026-07-09T03:25:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:25:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:25:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: opencode-config-docs
+    resource: "https://opencode.ai/docs/config"
+    title: "OpenCode Config Docs"
+    author: "site:opencode.ai"
+  - id: opencode-github-repository-anomalyco
+    resource: "https://github.com/anomalyco/opencode"
+    title: "OpenCode GitHub repository (anomalyco)"
+    author: "site:github.com"
 ---
 
 # OpenCode Configuration
@@ -103,7 +115,3 @@ opencode --version          # confirm binary is active
 # Launch and confirm the model + tools load without errors
 opencode
 ```
-
-# Citations
-[1] [OpenCode Config Docs](https://opencode.ai/docs/config)
-[2] [OpenCode GitHub repository (anomalyco)](https://github.com/anomalyco/opencode)

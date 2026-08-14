@@ -4,7 +4,15 @@ title: PydanticAI Snippets
 description: PydanticAI cheat sheet — agent definition, structured output, tools, RunContext deps, streaming, local Ollama models.
 resource: https://pydantic.dev/docs/ai/
 tags: [pydantic, ai, snippets, cheat-sheet]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: pydanticai-docs
+    resource: "https://pydantic.dev/docs/ai/"
+    title: "PydanticAI docs"
+    author: "site:pydantic.dev"
 ---
 
 # Snippets
@@ -74,7 +82,3 @@ async with agent.run_stream("story") as stream:
 result = agent.run_sync("hi")
 print(result.cost())   # request tokens, model, etc.
 ```
-
-# Citations
-
-[1] [PydanticAI docs](https://pydantic.dev/docs/ai/)

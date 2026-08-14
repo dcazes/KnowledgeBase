@@ -4,7 +4,27 @@ title: Antigravity 2.0 Overview
 description: What Google Antigravity 2.0 is — an agent-first desktop platform for orchestrating parallel autonomous agents on cloud Gemini models, and how it differs from an AI-assisted IDE.
 resource: Antigravity 2.0
 tags: [google, antigravity, agents, gemini, ide, cloud]
-timestamp: 2026-07-09T03:28:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:28:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:28:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: antigravity-2-0-product-page
+    resource: "https://antigravity.google/product/antigravity-2"
+    title: "Antigravity 2.0 product page"
+    author: "site:antigravity.google"
+  - id: google-i-o-2026-developer-highlights
+    resource: "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/"
+    title: "Google I/O 2026 developer highlights"
+    author: "site:blog.google"
+  - id: transitioning-gemini-cli-to-antigravity-cli
+    resource: "https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/"
+    title: "Transitioning Gemini CLI to Antigravity CLI"
+    author: "site:developers.googleblog.com"
+  - id: antigravity-official-site
+    resource: "https://antigravity.google/"
+    title: "Antigravity — official site"
+    author: "site:antigravity.google"
 ---
 
 # Antigravity 2.0 Overview
@@ -45,9 +65,3 @@ Users are directed to migrate to **Antigravity CLI** and **Antigravity 2.0**. Th
 
 - Antigravity is a newer product. Do not assert live runtime state; use the verify steps in [installation.md](installation.md) and the official sources.
 - The user runs Linux and has a local GTX 1060 — neither matters here, because model inference is cloud-side on Gemini.
-
-# Citations
-[1] [Antigravity 2.0 product page](https://antigravity.google/product/antigravity-2)
-[2] [Google I/O 2026 developer highlights](https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/)
-[3] [Transitioning Gemini CLI to Antigravity CLI](https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/)
-[4] [Antigravity — official site](https://antigravity.google/)

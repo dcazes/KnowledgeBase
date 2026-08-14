@@ -4,7 +4,19 @@ title: Ollama Configuration
 description: Configure Ollama — OLLAMA_HOST / OLLAMA_MODELS / keep_alive, model defaults, concurrency, embeddings; OpenAI-compatible settings.
 resource: https://docs.ollama.com
 tags: [ollama, configuration, env, models]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: ollama-docs-configuration
+    resource: "https://docs.ollama.com"
+    title: "Ollama docs — configuration"
+    author: "site:docs.ollama.com"
+  - id: ollama-github
+    resource: "https://github.com/ollama/ollama"
+    title: "Ollama GitHub"
+    author: "site:github.com"
 ---
 
 # Configuration
@@ -40,8 +52,3 @@ Passed per request: `options: {"temperature": 0.2, "num_ctx": 8192, "seed": 42}`
 ## Embeddings
 
 `ollama pull nomic-embed-text` then `POST /api/embed {"model": "nomic-embed-text", "input": "…"}` — used by [Mem0](../../memory/mem0/index.md)/[LightRAG](../../memory/lightrag/index.md) as local embedder.
-
-# Citations
-
-[1] [Ollama docs — configuration](https://docs.ollama.com)
-[2] [Ollama GitHub](https://github.com/ollama/ollama)

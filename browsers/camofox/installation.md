@@ -4,7 +4,21 @@ title: Camofox — Installation & Launch
 description: Build and launch the Camofox browser server via make, the Docker image, ports, and the desktop launcher.
 resource: https://github.com/daijro/camoufox
 tags: [camofox, install, docker, make, launch, deployment]
-timestamp: 2026-07-09T01:01:00Z
+generated: { by: "human:daniel", at: "2026-07-09T01:01:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T01:01:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: local-launcher-programs-camofox-launcher-desktop
+    resource: "/../../programs/Camofox%20Launcher.desktop"
+    title: "Local launcher - programs/Camofox Launcher.desktop"
+  - id: local-launcher-programs-camofox-launcher-desktop-2
+    resource: "/../../programs/Camofox%20Launcher.desktop"
+    title: "Local launcher - programs/Camofox Launcher.desktop"
+  - id: camoufox-upstream
+    resource: "https://github.com/daijro/camoufox"
+    title: "Camoufox upstream"
+    author: "site:github.com"
 ---
 
 # Source location
@@ -54,9 +68,3 @@ curl -s -o /dev/null -w "%{http_code}\n" http://localhost:9377/   # API up
 | API :9377 down | container not started | `make up` |
 | VNC blank | noVNC not exposed | check :6080 published |
 | Build fails | Docker not running | `systemctl --user start docker-desktop` |
-
-# Citations
-
-[1] [Local launcher - programs/Camofox Launcher.desktop](/../../programs/Camofox%20Launcher.desktop)
-[2] [Local launcher - programs/Camofox Launcher.desktop](/../../programs/Camofox%20Launcher.desktop)
-[3] [Camoufox upstream](https://github.com/daijro/camoufox)

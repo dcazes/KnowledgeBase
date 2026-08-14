@@ -4,7 +4,25 @@ title: OpenWebUI — RAG & Web Search
 description: Built-in local RAG (9 vector DBs, hybrid search, reranking) and wiring SearXNG + Firecrawl as web-search-for-RAG providers.
 resource: https://docs.openwebui.com/features/rag/
 tags: [openwebui, rag, web-search, searxng, firecrawl, vector-db, retrieval]
-timestamp: 2026-07-09T02:03:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:03:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:03:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: rag-features-docs
+    resource: "https://docs.openwebui.com/features/rag/"
+    title: "RAG features (docs)"
+    author: "site:docs.openwebui.com"
+  - id: web-search-providers-readme
+    resource: "https://github.com/open-webui/open-webui#-web-search-for-rag"
+    title: "Web search providers (README)"
+    author: "site:github.com"
+  - id: searxng-endpoint
+    resource: "/../../searxng/index.md"
+    title: "SearXNG endpoint"
+  - id: firecrawl-endpoint
+    resource: "/../../firecrawl/index.md"
+    title: "Firecrawl endpoint"
 ---
 
 # Built-in RAG
@@ -48,10 +66,3 @@ Firecrawl returns clean Markdown/JSON for the agent to ingest.
 * **Web RAG** — live web via SearXNG/Firecrawl, for current info.
 
 Both feed the same retrieval pipeline (hybrid + rerank).
-
-# Citations
-
-[1] [RAG features (docs)](https://docs.openwebui.com/features/rag/)
-[2] [Web search providers (README)](https://github.com/open-webui/open-webui#-web-search-for-rag)
-[3] [SearXNG endpoint](/../../searxng/index.md)
-[4] [Firecrawl endpoint](/../../firecrawl/index.md)

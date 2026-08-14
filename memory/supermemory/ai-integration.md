@@ -4,7 +4,19 @@ title: Supermemory AI Integration
 description: Integrate Supermemory — browser extension capture, answering from personal memory, export/interop, vs the developer memory stack (Mem0/MemOS/Graphiti).
 resource: https://supermemory.ai
 tags: [supermemory, integration, extension, memory]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: supermemory
+    resource: "https://supermemory.ai"
+    title: "Supermemory"
+    author: "site:supermemory.ai"
+  - id: supermemory-developers
+    resource: "https://supermemory.ai/developers"
+    title: "Supermemory developers"
+    author: "site:supermemory.ai"
 ---
 
 # AI Integration
@@ -36,8 +48,3 @@ Supermemory is an **end-user product** rather than a developer library — integ
 | Use here | personal memory companion | agent stack memory |
 
 Both can coexist: Supermemory for personal browsing memory, the agent stack for app-level memory.
-
-# Citations
-
-[1] [Supermemory](https://supermemory.ai)
-[2] [Supermemory developers](https://supermemory.ai/developers)

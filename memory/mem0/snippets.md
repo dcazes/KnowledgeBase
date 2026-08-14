@@ -4,7 +4,19 @@ title: Mem0 Snippets
 description: Mem0 cheat sheet — pip install, Memory.from_config, add/search/get/update/delete, scoped queries, OpenMemory HTTP calls, Docker.
 resource: https://docs.mem0.ai
 tags: [mem0, snippets, cheat-sheet, memory, api]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: mem0-docs-quickstart
+    resource: "https://docs.mem0.ai/quickstart"
+    title: "Mem0 docs — quickstart"
+    author: "site:docs.mem0.ai"
+  - id: mem0-github
+    resource: "https://github.com/mem0ai/mem0"
+    title: "Mem0 GitHub"
+    author: "site:github.com"
 ---
 
 # Snippets
@@ -65,8 +77,3 @@ curl "http://localhost:3000/api/memories/search?query=this&user_id=alice" -H "Au
 git clone https://github.com/mem0ai/OpenMemory && cd OpenMemory
 docker compose up -d        # UI :3000
 ```
-
-# Citations
-
-[1] [Mem0 docs — quickstart](https://docs.mem0.ai/quickstart)
-[2] [Mem0 GitHub](https://github.com/mem0ai/mem0)

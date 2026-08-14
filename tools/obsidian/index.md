@@ -4,7 +4,22 @@ title: Obsidian
 description: Local-first Markdown knowledge-base / PKM app (v1.13.7, closed-source) using plain-text .md files in a vault with bidirectional links and graph view.
 resource: https://obsidian.md/
 tags: [obsidian, pkm, notes, markdown, vault, knowledge-base, local-first]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: obsidian
+    resource: "https://obsidian.md/"
+    title: "Obsidian"
+    author: "site:obsidian.md"
+  - id: help-docs
+    resource: "https://help.obsidian.md/"
+    title: "Help/docs"
+    author: "site:help.obsidian.md"
+  - id: local-launcher-programs-obsidian-desktop
+    resource: "/../../programs/Obsidian.desktop"
+    title: "Local launcher - programs/Obsidian.desktop"
 ---
 
 # Obsidian
@@ -37,9 +52,3 @@ A **local-first Markdown knowledge-base / PKM app** (closed-source app, open `.m
 ## Last verified
 
 **2026-08-12** — Launcher, vault path, `.obsidian/` config files, and integration docs verified. Obsidian v1.13.7 (2026-08-12); closed-source (free personal, paid Sync/Publish).
-
-# Citations
-
-[1] [Obsidian](https://obsidian.md/)
-[2] [Help/docs](https://help.obsidian.md/)
-[3] [Local launcher - programs/Obsidian.desktop](/../../programs/Obsidian.desktop)

@@ -4,7 +4,15 @@ title: OpenCode
 description: Terminal-native open-source AI coding agent (anomalyco/opencode, v1.18.18) — no daemons, per-project isolation, MCP + custom tools.
 resource: https://opencode.ai/docs
 tags: [opencode, ai-agent, terminal, coding, anomalyco, opencode-ai]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: opencode-github
+    resource: "https://github.com/anomalyco/opencode"
+    title: "OpenCode GitHub"
+    author: "site:github.com"
 ---
 
 # OpenCode
@@ -36,7 +44,3 @@ OpenCode terminal AI agent (v1.18.18); skills, tools, delegation. A lightweight 
 ## Last verified
 
 **2026-08-12** — Config and integration docs verified. OpenCode v1.18.18; repo at github.com/anomalyco/opencode; npm package opencode-ai.
-
-# Citations
-
-[1] [OpenCode GitHub](https://github.com/anomalyco/opencode)

@@ -4,7 +4,18 @@ title: OpenWebUI — API
 description: OpenWebUI's OpenAI-compatible API plus admin endpoints, with examples against the :3001 service.
 resource: https://docs.openwebui.com/openapi/
 tags: [openwebui, api, openai-compatible, chat, admin, integration]
-timestamp: 2026-07-09T02:05:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:05:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:05:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: openwebui-openapi-docs
+    resource: "https://docs.openwebui.com/openapi/"
+    title: "OpenWebUI OpenAPI/docs"
+    author: "site:docs.openwebui.com"
+  - id: configuration-model-connection
+    resource: "configuration.md"
+    title: "Configuration (model connection)"
 ---
 
 # OpenAI-compatible API
@@ -59,8 +70,3 @@ r = c.chat.completions.create(model="<model-id>",
     messages=[{"role":"user","content":"Hi"}])
 print(r.choices[0].message.content)
 ```
-
-# Citations
-
-[1] [OpenWebUI OpenAPI/docs](https://docs.openwebui.com/openapi/)
-[2] [Configuration (model connection)](configuration.md)

@@ -4,7 +4,23 @@ title: Graphiti — Concepts (Context Graph)
 description: Graphiti's data model — entities, facts/relationships with temporal validity windows, episodes (provenance), and custom Pydantic ontology.
 resource: https://github.com/getzep/graphiti#what-is-a-context-graph
 tags: [graphiti, context-graph, entities, episodes, ontology, temporal, validity-window]
-timestamp: 2026-07-09T05:02:00Z
+generated: { by: "human:daniel", at: "2026-07-09T05:02:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T05:02:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: what-is-a-context-graph-readme
+    resource: "https://github.com/getzep/graphiti#what-is-a-context-graph"
+    title: "What is a Context Graph (README)"
+    author: "site:github.com"
+  - id: neo4j-graphiti
+    resource: "https://neo4j.com/blog/developer/graphiti-knowledge-graph-memory/"
+    title: "Neo4j — Graphiti"
+    author: "site:neo4j.com"
+  - id: zep-graphiti
+    resource: "https://www.getzep.com/platform/graphiti/"
+    title: "Zep — Graphiti"
+    author: "site:www.getzep.com"
 ---
 
 # The context graph
@@ -35,9 +51,3 @@ A **context graph** is a temporal graph of entities, relationships, and facts �
 # Why episodes matter
 
 Episodes keep the original text. Graphiti can return relevant episodes in search (BM25) and provides helpers to get the **source episode text** for any node/edge — enabling citations/quotations.
-
-# Citations
-
-[1] [What is a Context Graph (README)](https://github.com/getzep/graphiti#what-is-a-context-graph)
-[2] [Neo4j — Graphiti](https://neo4j.com/blog/developer/graphiti-knowledge-graph-memory/)
-[3] [Zep — Graphiti](https://www.getzep.com/platform/graphiti/)

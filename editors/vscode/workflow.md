@@ -4,7 +4,21 @@ title: VSCode — Workflow (programs/* & Agent Skills)
 description: Using VS Code to edit the local programs/* repos and to author agent skills (Graphify/Hermes/OpenCode).
 resource: https://code.visualstudio.com/docs
 tags: [vscode, workflow, programs, agent-skills, graphify, hermes, opencode]
-timestamp: 2026-07-09T02:13:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:13:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:13:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: vs-code-docs
+    resource: "https://code.visualstudio.com/docs"
+    title: "VS Code docs"
+    author: "site:code.visualstudio.com"
+  - id: ai-features-mcp
+    resource: "ai-features.md"
+    title: "AI Features (MCP)"
+  - id: graphify-skills
+    resource: "/../../graphify/ai-integration.md"
+    title: "Graphify skills"
 ---
 
 # Editing the programs/* repos
@@ -41,9 +55,3 @@ Workflow:
 * Use **multi-root workspaces** to keep several `programs/*` repos open at once.
 * Enable **Settings Sync** (or commit `.vscode/`) to share config across machines.
 * For Docker-heavy repos, install the **Docker** extension for Compose-aware editing.
-
-# Citations
-
-[1] [VS Code docs](https://code.visualstudio.com/docs)
-[2] [AI Features (MCP)](ai-features.md)
-[3] [Graphify skills](/../../graphify/ai-integration.md)

@@ -4,7 +4,21 @@ title: Frigate — Installation
 description: Deploying Frigate via the local docker-compose.yml (stable image, ports, NVIDIA GPU, storage).
 resource: https://docs.frigate.video/installation/
 tags: [frigate, install, docker-compose, gpu, ports, storage]
-timestamp: 2026-07-09T04:16:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:16:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:16:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: install-docs
+    resource: "https://docs.frigate.video/installation/"
+    title: "Install docs"
+    author: "site:docs.frigate.video"
+  - id: local-compose
+    resource: "/../../programs/frigate/docker-compose.yml"
+    title: "Local compose"
+  - id: configuration
+    resource: "configuration.md"
+    title: "Configuration"
 ---
 
 # Deploy (this machine)
@@ -55,9 +69,3 @@ The compose sets `FRIGATE_RTSP_PASSWORD` and `config.yml` holds the **camera pas
 | No detection | GPU/detector misconfig | check detector type + `preset-nvidia` |
 | Camera offline | go2rtc/creds | verify `go2rtc` streams + redacted creds |
 | Drive wear | recordings | tmpfs cache helps; point storage at fast disk |
-
-# Citations
-
-[1] [Install docs](https://docs.frigate.video/installation/)
-[2] [Local compose](/../../programs/frigate/docker-compose.yml)
-[3] [Configuration](configuration.md)

@@ -4,7 +4,22 @@ title: Dify
 description: Open-source LLM application development platform — visual AI workflows, RAG pipelines, autonomous agents — documented as reference.
 resource: https://github.com/langgenius/dify
 tags: [dify, llmops, workflows, rag, agents]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: dify-github
+    resource: "https://github.com/langgenius/dify"
+    title: "Dify GitHub"
+    author: "site:github.com"
+  - id: dify-docs
+    resource: "https://docs.dify.ai"
+    title: "Dify docs"
+    author: "site:docs.dify.ai"
+  - id: local-source-programs-archive-dify
+    resource: "/../../programs/archive/dify/"
+    title: "Local source - programs/archive/dify/"
 ---
 
 # Dify
@@ -42,9 +57,3 @@ Open-source **LLM application development platform** — visual AI workflows, RA
 ## Last verified
 
 **2026-08-12** — **v1.16.1** (2026-07-28) upstream; local compose (archive) pins `langgenius/dify-api:1.15.0`. Source path corrected to `programs/archive/dify/`. Prior verification 2026-07-09 against local docker/ and upstream docs.dify.ai.
-
-# Citations
-
-[1] [Dify GitHub](https://github.com/langgenius/dify)
-[2] [Dify docs](https://docs.dify.ai)
-[3] [Local source - programs/archive/dify/](/../../programs/archive/dify/)

@@ -4,7 +4,35 @@ title: Firecrawl — Alternatives
 description: How Firecrawl compares to ScraperAPI, Crawl4AI, Playwright, Apify, and Jina AI — and when to pick which.
 resource: https://github.com/firecrawl/firecrawl
 tags: [firecrawl, alternatives, scraping, crawl4ai, scraperapi, apify, jina, comparison]
-timestamp: 2026-07-09T00:42:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:42:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:42:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: firecrawl
+    resource: "https://github.com/firecrawl/firecrawl"
+    title: "Firecrawl"
+    author: "site:github.com"
+  - id: crawl4ai
+    resource: "https://github.com/unclecode/crawl4ai"
+    title: "Crawl4AI"
+    author: "site:github.com"
+  - id: scraperapi
+    resource: "https://www.scraperapi.com/"
+    title: "ScraperAPI"
+    author: "site:www.scraperapi.com"
+  - id: apify
+    resource: "https://apify.com/"
+    title: "Apify"
+    author: "site:apify.com"
+  - id: playwright
+    resource: "https://playwright.dev/"
+    title: "Playwright"
+    author: "site:playwright.dev"
+  - id: jina-ai
+    resource: "https://jina.ai/"
+    title: "Jina AI"
+    author: "site:jina.ai"
 ---
 
 # Why consider alternatives?
@@ -70,12 +98,3 @@ Reader + embedding API that turns URLs into clean text/embeddings.
 * **Playwright** — for custom browser flows.
 * **Jina** — for quick clean-read + embeddings during RAG ingestion.
 * **SurfSense** — different niche: platform scrapers (Reddit/YouTube/Instagram/TikTok/Maps/Indeed) + its own knowledge base; complementary for social-platform capture (see [SurfSense](../surfsense/index.md)).
-
-# Citations
-
-[1] [Firecrawl](https://github.com/firecrawl/firecrawl)
-[2] [Crawl4AI](https://github.com/unclecode/crawl4ai)
-[3] [ScraperAPI](https://www.scraperapi.com/)
-[4] [Apify](https://apify.com/)
-[5] [Playwright](https://playwright.dev/)
-[6] [Jina AI](https://jina.ai/)

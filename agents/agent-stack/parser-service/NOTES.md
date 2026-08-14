@@ -4,7 +4,22 @@ title: Parser Service — NOTES
 description: Integration notes and official sources for the Docling/MinerU parser-service prototype.
 resource: https://github.com/opendatalab/mineru
 tags: [parser, docling, mineru, agent-stack, notes]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: docling
+    resource: "https://github.com/docling-project/docling"
+    title: "Docling"
+    author: "site:github.com"
+  - id: mineru
+    resource: "https://github.com/opendatalab/mineru"
+    title: "MinerU"
+    author: "site:github.com"
+  - id: integration-map
+    resource: "../notes.md"
+    title: "Integration map"
 ---
 
 # Parser Service — NOTES
@@ -31,9 +46,3 @@ Hermes can call the parser over HTTP (`:5007`/`:5008`) or via the Docling agent 
 
 ## Not deployed
 CPU-capable; GPU optional (uncomment deploy block for MinerU OCR). Joins `agent-net` (external) so it reaches Ollama/Weaviate.
-
-# Citations
-
-[1] [Docling](https://github.com/docling-project/docling)
-[2] [MinerU](https://github.com/opendatalab/mineru)
-[3] [Integration map](../notes.md)

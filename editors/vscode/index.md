@@ -4,7 +4,18 @@ title: VSCode
 description: Free open-source AI code editor (VS Code / Code-OSS) — the editor for programs/* repos and agent-skill authoring, with Copilot, Agent Mode, and Agent Host architecture.
 resource: https://code.visualstudio.com/
 tags: [vscode, editor, ide, code-oss, ai, copilot, development]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: vs-code-official-site
+    resource: "https://code.visualstudio.com/"
+    title: "VS Code official site"
+    author: "site:code.visualstudio.com"
+  - id: local-launcher-programs-vscode-desktop
+    resource: "/../../programs/VSCode.desktop"
+    title: "Local launcher - programs/VSCode.desktop"
 ---
 
 # VSCode
@@ -39,8 +50,3 @@ A free, **open-source AI code editor** (Microsoft's VS Code, built on the Code-O
 ## Last verified
 
 **2026-08-12** — Launcher, binary location, and AI feature docs verified against upstream code.visualstudio.com. VS Code v1.133 (2026-08-12); Agent Host architecture (AHP protocol) since v1.130.
-
-# Citations
-
-[1] [VS Code official site](https://code.visualstudio.com/)
-[2] [Local launcher - programs/VSCode.desktop](/../../programs/VSCode.desktop)

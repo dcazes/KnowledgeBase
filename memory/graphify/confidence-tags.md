@@ -4,7 +4,19 @@ title: Graphify — Confidence Tags
 description: What EXTRACTED / INFERRED / AMBIGUOUS mean on every graph edge, and how to read them when trusting the graph.
 resource: https://github.com/Graphify-Labs/graphify
 tags: [graphify, confidence, edges, extracted, inferred, ambiguous, trust]
-timestamp: 2026-07-09T00:18:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:18:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:18:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: graphify-github-confidence-tags-in-readme
+    resource: "https://github.com/Graphify-Labs/graphify"
+    title: "Graphify GitHub (confidence tags in README)"
+    author: "site:github.com"
+  - id: graphifyy-pypi-extracted-inferred-ambiguous-description
+    resource: "https://pypi.org/project/graphifyy/"
+    title: "graphifyy PyPI (EXTracted/INFERRED/AMBIGUOUS description)"
+    author: "site:pypi.org"
 ---
 
 # Why confidence tags exist
@@ -47,8 +59,3 @@ Here the `imports`/`method` edges are `EXTRACTED` (literally in code); the `uses
 
 * `graphify extract ./docs --dedup-llm` — adds an LLM tiebreaker for ambiguous entity pairs (uses the same API key) to reduce `AMBIGUOUS` noise.
 * `graphify extract ./docs --force` — rebuild cleanly after refactors (clears ghost duplicates that can produce false edges).
-
-# Citations
-
-[1] [Graphify GitHub (confidence tags in README)](https://github.com/Graphify-Labs/graphify)
-[2] [graphifyy PyPI (EXTracted/INFERRED/AMBIGUOUS description)](https://pypi.org/project/graphifyy/)

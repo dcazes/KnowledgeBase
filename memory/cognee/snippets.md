@@ -4,7 +4,19 @@ title: Cognee Snippets
 description: Cognee cheat sheet — install, add data, cognify, semantic vs graph-completion search, prune/reset, docker.
 resource: https://docs.cognee.ai
 tags: [cognee, snippets, cheat-sheet]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: cognee-docs-quickstart
+    resource: "https://docs.cognee.ai"
+    title: "Cognee docs — quickstart"
+    author: "site:docs.cognee.ai"
+  - id: cognee-github
+    resource: "https://github.com/topoteretes/cognee"
+    title: "Cognee GitHub"
+    author: "site:github.com"
 ---
 
 # Snippets
@@ -56,8 +68,3 @@ await cognee.data_points.list_datasets()
 ```bash
 cd programs/cognee && docker compose up -d   # API + Postgres + vector store
 ```
-
-# Citations
-
-[1] [Cognee docs — quickstart](https://docs.cognee.ai)
-[2] [Cognee GitHub](https://github.com/topoteretes/cognee)

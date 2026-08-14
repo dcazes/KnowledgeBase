@@ -4,7 +4,19 @@ title: Cursor Overview
 description: What Cursor is, why it matters as an AI-first VS Code fork, and how it fits the user's local AI editor stack.
 resource: https://cursor.com/
 tags: [cursor, editor, ai, vscode-fork, anysphere]
-timestamp: 2026-07-09T04:00:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:00:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: cursor
+    resource: "https://cursor.com/"
+    title: "Cursor"
+    author: "site:cursor.com"
+  - id: cursor-docs
+    resource: "https://docs.cursor.com/"
+    title: "Cursor Docs"
+    author: "site:docs.cursor.com"
 ---
 
 # Cursor Overview
@@ -32,8 +44,3 @@ On this machine, Cursor is one option in a broader AI-editor toolkit. The table 
 ## Relationship to other agents
 
 Cursor's Agent mode overlaps conceptually with OpenCode and Claude Code: all perform autonomous multi-file edits. The distinction is that Cursor runs inside a GUI editor forked from VS Code, whereas OpenCode is a terminal CLI and Claude Code is an Anthropic CLI agent. Cursor can also expose tooling to other agents via MCP (see [AI Integration](ai-integration.md)).
-
-# Citations
-
-[1] [Cursor](https://cursor.com/)
-[2] [Cursor Docs](https://docs.cursor.com/)

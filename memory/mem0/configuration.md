@@ -4,7 +4,19 @@ title: Mem0 Configuration
 description: Configure Mem0 — .env provider keys, config.json for vector_store / graph_store / embedder, scoping defaults, on_conflict behavior.
 resource: https://docs.mem0.ai
 tags: [mem0, configuration, env, vector-store, graph-store]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: mem0-docs-configuration
+    resource: "https://docs.mem0.ai/components/llms"
+    title: "Mem0 docs — configuration"
+    author: "site:docs.mem0.ai"
+  - id: mem0-github-config-json
+    resource: "https://github.com/mem0ai/mem0"
+    title: "Mem0 GitHub — config.json"
+    author: "site:github.com"
 ---
 
 # Configuration
@@ -39,8 +51,3 @@ Notable options:
 
 * No `config.json` → embedded Qdrant (localhost) + OpenAI models + gpt-4o.
 * `Memory.from_config()` reads `config.json` from CWD or `MEM0_CONFIG_PATH`.
-
-# Citations
-
-[1] [Mem0 docs — configuration](https://docs.mem0.ai/components/llms)
-[2] [Mem0 GitHub — config.json](https://github.com/mem0ai/mem0)

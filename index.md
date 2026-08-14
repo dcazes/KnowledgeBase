@@ -4,12 +4,19 @@ title: Software Knowledge Base
 description: OKF (v0.1) bundle of 297 structured notes across 36 programs — the local `programs/` stack, editors, memory/graph engines, agent frameworks, and architecture meta-docs. Cross-linked index of every concept group.
 resource: file:///home/daniel/Desktop/kbv2
 tags: [knowledge-base, okf, programs, index, hub]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: open-knowledge-format-spec-local
+    resource: "/../kb/metaknowledge/SPEC.md"
+    title: "Open Knowledge Format spec (local)"
 ---
 
 # Software Knowledge Base
 
-An Open Knowledge Format (OKF v0.1) bundle of structured notes on the software in `programs/`. Each program is a subdirectory (concept group) with focused docs, snippets, and official citations. Every concept doc carries OKF `type` frontmatter and ends with a `# Citations` block linking official/trusted sources.
+An Open Knowledge Format (OKF v0.2) bundle of structured notes on the software in `programs/`. Each program is a subdirectory (concept group) with focused docs, snippets, and official citations. Every concept doc carries OKF `type` frontmatter and a `sources:` frontmatter list linking official/trusted sources.
 
 ## Programs (all built)
 
@@ -91,12 +98,8 @@ An Open Knowledge Format (OKF v0.1) bundle of structured notes on the software i
 | Space Agent | 7 | ✅ (NEW, P3) |
 | Philosophy | 3 | ✅ (NEW, P3 seed) |
 
-**Total: 293 program docs across 36 programs** (297 md files in the vault — the +4 are the root `index.md`, `IDEA.md`, `AGENTS.md`, and the `.slim/` refresh tracker, which are not program docs). Every concept doc carries OKF `type` frontmatter; every doc ends with a `# Citations` block linking official/trusted sources. Backlink audit (2026-08-13): 0 broken links, 0 duplicate basenames.
+**Total: 293 program docs across 36 programs** (297 md files in the vault — the +4 are the root `index.md`, `IDEA.md`, `AGENTS.md`, and the `.slim/` refresh tracker, which are not program docs). Every concept doc carries OKF `type` frontmatter; every doc lists official/trusted sources in a `sources:` frontmatter block. Backlink audit (2026-08-13): 0 broken links, 0 duplicate basenames.
 
 ## Last verified
 
 **2026-08-13** — Root index rebuilt after the 2026-08-12 deep refresh (P1–P2) and Oracle gate-2 review: counts corrected, ports/ownership facts aligned (SearXNG 8088, OpenWebUI 3001, Antigravity cloud, Windsurf→Devin), MemOS/PydanticAI/Agent Stack rows added. **P3 (2026-08-13)**: 12 program folders added (Mem0, LightRAG, Ollama, Cognee, Honcho, Supermemory, SurfSense, Hindsight, OpenConcho, Pydantic, Space Agent, Philosophy), PydanticAI expanded 2→8; total 293 program docs across 36 programs. **Gate-3 fixes (2026-08-13)**: Honcho/OpenConcho/Hindsight install facts corrected to verified SDK/distribution reality; PydanticAI advisory + Python req + version corrected; Mem0 pinned to PyPI 2.0.18; SurfSense ports marked internal-vs-published.
-
-# Citations
-
-[1] [Open Knowledge Format spec (local)](/../kb/metaknowledge/SPEC.md)

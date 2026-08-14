@@ -4,7 +4,22 @@ title: Weaviate
 description: Open-source vector database with hybrid search (dense + BM25), multi-vector support, and pluggable modules for code/image embeddings — the lighter, schema-first candidate primary search backend.
 resource: https://weaviate.io/
 tags: [weaviate, vector-db, hybrid-search, search]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: weaviate
+    resource: "https://weaviate.io/"
+    title: "Weaviate"
+    author: "site:weaviate.io"
+  - id: weaviate-docs
+    resource: "https://weaviate.io/developers/weaviate"
+    title: "Weaviate docs"
+    author: "site:weaviate.io"
+  - id: search-backend-comparison
+    resource: "/../../search-backend/vespa-vs-weaviate.md"
+    title: "Search backend comparison"
 ---
 
 # Weaviate
@@ -23,9 +38,3 @@ An open-source **vector database** with first-class **hybrid search** (dense + s
 * **Not installed** — candidate architecture only; document from upstream.
 * **Role here:** alternative primary search backend (vs Vespa) for the multi-modal KB.
 * **Constraint:** self-hostable (matches local-first stack).
-
-# Citations
-
-[1] [Weaviate](https://weaviate.io/)
-[2] [Weaviate docs](https://weaviate.io/developers/weaviate)
-[3] [Search backend comparison](/../../search-backend/vespa-vs-weaviate.md)

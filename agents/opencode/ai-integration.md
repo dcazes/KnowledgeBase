@@ -4,7 +4,23 @@ title: OpenCode AI Integration
 description: How OpenCode integrates with SearXNG (custom tool), Graphify (MCP), AnythingLLM (shared kb), Hermes co-existence, and the :4000 proxy.
 resource: https://opencode.ai/docs/integrations
 tags: [opencode, searxng, graphify, anythingllm, hermes, mcp, integrations]
-timestamp: 2026-07-09T03:25:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:25:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:25:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: opencode-integrations-docs
+    resource: "https://opencode.ai/docs/integrations"
+    title: "OpenCode Integrations Docs"
+    author: "site:opencode.ai"
+  - id: opencode-github-repository-anomalyco
+    resource: "https://github.com/anomalyco/opencode"
+    title: "OpenCode GitHub repository (anomalyco)"
+    author: "site:github.com"
+  - id: searxng-project
+    resource: "https://github.com/searxng/searxng"
+    title: "SearXNG project"
+    author: "site:github.com"
 ---
 
 # OpenCode AI Integration
@@ -71,8 +87,3 @@ curl -s 'http://localhost:8080/search?q=test&format=json' | head   # SearXNG up?
 curl -s http://127.0.0.1:8000 | head                              # Graphify MCP up?
 curl -s http://localhost:4000/v1/models | head                    # :4000 proxy up?
 ```
-
-# Citations
-[1] [OpenCode Integrations Docs](https://opencode.ai/docs/integrations)
-[2] [OpenCode GitHub repository (anomalyco)](https://github.com/anomalyco/opencode)
-[3] [SearXNG project](https://github.com/searxng/searxng)

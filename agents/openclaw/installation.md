@@ -4,7 +4,19 @@ title: OpenClaw — Installation
 description: Setting up OpenClaw via the openclaw onboard CLI and the Windows Hub companion app.
 resource: https://docs.openclaw.ai/
 tags: [openclaw, install, onboard, windows-hub, gateway, setup]
-timestamp: 2026-07-09T03:11:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:11:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:11:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: install-onboard-docs
+    resource: "https://docs.openclaw.ai/"
+    title: "Install / onboard docs"
+    author: "site:docs.openclaw.ai"
+  - id: github
+    resource: "https://github.com/openclaw/openclaw"
+    title: "GitHub"
+    author: "site:github.com"
 ---
 
 # Preferred setup — `openclaw onboard`
@@ -52,8 +64,3 @@ openclaw status          # if available
 | `openclaw: command not found` | not installed | install per docs; check PATH |
 | Channel won't connect | missing token | re-run onboard step for that channel |
 | Gateway not starting | port/dep issue | check onboard logs; free the port |
-
-# Citations
-
-[1] [Install / onboard docs](https://docs.openclaw.ai/)
-[2] [GitHub](https://github.com/openclaw/openclaw)

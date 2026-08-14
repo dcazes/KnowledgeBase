@@ -4,7 +4,23 @@ title: Mem0 Overview
 description: How Mem0 works — memory pipeline (ADD/UPDATE/DELETE/GET/SEARCH), storage backends (vector + graph), per-user/per-agent scoping, OpenMemory app vs library.
 resource: https://docs.mem0.ai
 tags: [mem0, memory, agents, pipeline, vector, graph]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: mem0-docs-overview
+    resource: "https://docs.mem0.ai"
+    title: "Mem0 docs — overview"
+    author: "site:docs.mem0.ai"
+  - id: mem0-github
+    resource: "https://github.com/mem0ai/mem0"
+    title: "Mem0 GitHub"
+    author: "site:github.com"
+  - id: openmemory
+    resource: "https://github.com/mem0ai/OpenMemory"
+    title: "OpenMemory"
+    author: "site:github.com"
 ---
 
 # Overview
@@ -46,9 +62,3 @@ Two ways to run:
 2. **OpenMemory app** — self-hosted FastAPI server + web UI (`docker compose up` on :3000) exposing the same operations over REST with per-user keys.
 
 Local checkout `programs/mem0` v2.0.12 is the library; the app is the `OpenMemory` companion repo (not checked out here).
-
-# Citations
-
-[1] [Mem0 docs — overview](https://docs.mem0.ai)
-[2] [Mem0 GitHub](https://github.com/mem0ai/mem0)
-[3] [OpenMemory](https://github.com/mem0ai/OpenMemory)

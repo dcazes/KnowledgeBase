@@ -4,7 +4,23 @@ title: Vespa vs Weaviate (Search Backend)
 description: Head-to-head comparison of Vespa and Weaviate as the primary search backend for a massive multi-modal KB.
 resource: https://zilliz.com/comparison/vespa-vs-weaviate
 tags: [vespa, weaviate, comparison, search-backend, hybrid, scale, multimodal]
-timestamp: 2026-07-09T06:14:00Z
+generated: { by: "human:daniel", at: "2026-07-09T06:14:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T06:14:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: vespa
+    resource: "https://vespa.ai/"
+    title: "Vespa"
+    author: "site:vespa.ai"
+  - id: weaviate
+    resource: "https://weaviate.io/"
+    title: "Weaviate"
+    author: "site:weaviate.io"
+  - id: vespa-vs-weaviate-zilliz
+    resource: "https://zilliz.com/comparison/vespa-vs-weaviate"
+    title: "Vespa vs Weaviate (Zilliz)"
+    author: "site:zilliz.com"
 ---
 
 # Vespa vs Weaviate (Search Backend)
@@ -32,9 +48,3 @@ Both are self-hostable, hybrid (vector + keyword), and multimodal-capable. The d
 ## Recommendation for this KB
 
 Start with the one matching your tolerance: **Vespa** for unified scale, **Weaviate** for speed-to-value. Either sits *under* the graph layers (Graphify/Graphiti) and *above* the parsers (Docling/Marker). Both run self-hosted (your constraint).
-
-# Citations
-
-[1] [Vespa](https://vespa.ai/)
-[2] [Weaviate](https://weaviate.io/)
-[3] [Vespa vs Weaviate (Zilliz)](https://zilliz.com/comparison/vespa-vs-weaviate)

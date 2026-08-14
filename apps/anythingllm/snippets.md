@@ -4,7 +4,20 @@ title: AnythingLLM — Snippets & Cheat Sheet
 description: Copy-paste deploy, storage-permission fix, model/web-search wiring, and backup commands for AnythingLLM.
 resource: https://docs.anythingllm.com
 tags: [anythingllm, snippets, cheat-sheet, docker, workspaces, rag]
-timestamp: 2026-07-09T02:37:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:37:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:37:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: installation
+    resource: "installation.md"
+    title: "Installation"
+  - id: ai-integration
+    resource: "ai-integration.md"
+    title: "AI Integration"
+  - id: workspaces
+    resource: "workspaces.md"
+    title: "Workspaces"
 ---
 
 # Deploy (Docker, :3001)
@@ -63,9 +76,3 @@ docker start anythingllm
 | `EACCES database.sqlite` | storage UID ≠ 1000 | `sudo chown -R 1000:1000 ~/anythingllm-storage` |
 | Port clash | 3001 used | change `-p` mapping |
 | AppImage no start | AppArmor | run installer (profile) |
-
-# Citations
-
-[1] [Installation](installation.md)
-[2] [AI Integration](ai-integration.md)
-[3] [Workspaces](workspaces.md)

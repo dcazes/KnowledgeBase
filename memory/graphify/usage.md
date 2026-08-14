@@ -4,7 +4,19 @@ title: Graphify — Usage
 description: Core Graphify commands — add, extract, query, update, cluster-only, export, obsidian/wiki output, and the git hook — with the most useful flags.
 resource: https://github.com/Graphify-Labs/graphify#usage
 tags: [graphify, usage, cli, commands, extract, query, export]
-timestamp: 2026-07-09T00:14:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:14:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:14:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: usage-github-readme
+    resource: "https://github.com/Graphify-Labs/graphify#usage"
+    title: "Usage (GitHub README)"
+    author: "site:github.com"
+  - id: graphifyy-pypi-command-reference
+    resource: "https://pypi.org/project/graphifyy/"
+    title: "graphifyy PyPI (command reference)"
+    author: "site:pypi.org"
 ---
 
 # Two entry points
@@ -132,8 +144,3 @@ graphify global add graphify-out/graph.json --as myrepo   # register a project g
 | Graph lost nodes after refactor | stale nodes linger | `graphify extract . --force` |
 | Output truncated mid-string | model hit output-token limit | `GRAPHIFY_MAX_OUTPUT_TOKENS=32768` |
 | Slow on local model | default timeouts/concurrency | `--api-timeout 900 --max-concurrency 2` |
-
-# Citations
-
-[1] [Usage (GitHub README)](https://github.com/Graphify-Labs/graphify#usage)
-[2] [graphifyy PyPI (command reference)](https://pypi.org/project/graphifyy/)

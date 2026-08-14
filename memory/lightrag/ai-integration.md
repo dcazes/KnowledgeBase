@@ -4,7 +4,19 @@ title: LightRAG AI Integration
 description: Use LightRAG as a document-grounded RAG engine — Python API, REST server, wiring into Hermes/OpenCode/MCP, vs GraphRAG and Graphify.
 resource: https://lightrag.readthedocs.io/en/latest/
 tags: [lightrag, integration, rag, api, server, agents]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: lightrag-docs-examples
+    resource: "https://lightrag.readthedocs.io/en/latest/"
+    title: "LightRAG docs — examples"
+    author: "site:lightrag.readthedocs.io"
+  - id: lightrag-github
+    resource: "https://github.com/HKUDS/LightRAG"
+    title: "LightRAG GitHub"
+    author: "site:github.com"
 ---
 
 # AI Integration
@@ -48,8 +60,3 @@ curl -X POST "http://localhost:9621/query" -H "Content-Type: application/json" \
 * Point Hermes/OpenCode tools at the `/query` endpoint (server mode) or use the library in-process.
 * LightRAG's graph retrieval complements [Graphiti](../graphiti/index.md) (temporal agent memory) — LightRAG for corpus Q&A, Graphiti for fact provenance.
 * Distinct from [Graphify](../graphify/index.md): Graphify compiles a static folder graph once (offline); LightRAG builds incrementally and retrieves at query time.
-
-# Citations
-
-[1] [LightRAG docs — examples](https://lightrag.readthedocs.io/en/latest/)
-[2] [LightRAG GitHub](https://github.com/HKUDS/LightRAG)

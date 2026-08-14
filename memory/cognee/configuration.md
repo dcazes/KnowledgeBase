@@ -4,7 +4,19 @@ title: Cognee Configuration
 description: Configure Cognee — LLM/embedding providers via cognee.config or .env, graph/vector/relational backends, data dir, pipeline options.
 resource: https://docs.cognee.ai
 tags: [cognee, configuration, env, backends]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: cognee-docs-configuration
+    resource: "https://docs.cognee.ai"
+    title: "Cognee docs — configuration"
+    author: "site:docs.cognee.ai"
+  - id: cognee-github-config
+    resource: "https://github.com/topoteretes/cognee"
+    title: "Cognee GitHub — config"
+    author: "site:github.com"
 ---
 
 # Configuration
@@ -52,8 +64,3 @@ GRAPH_DB_PROVIDER=networkx            # networkx | neo4j
 ## Pipeline options
 
 `cognee.add(...)` accepts `dataset_name`, `chunk_size`, `overwrite`, and output flags; `cognify` supports `graph_model` / `include_metadata` / `cognify_pipeline` choices.
-
-# Citations
-
-[1] [Cognee docs — configuration](https://docs.cognee.ai)
-[2] [Cognee GitHub — config](https://github.com/topoteretes/cognee)

@@ -1,10 +1,22 @@
 ---
 type: Concept
 title: Supermemory Overview
-description: What Supermemory is — personal AI memory: capture browsing/snippets, local semantic storage, question answering from memory; local-first desktop app.
+description: "What Supermemory is — personal AI memory: capture browsing/snippets, local semantic storage, question answering from memory; local-first desktop app."
 resource: https://supermemory.ai
 tags: [supermemory, overview, memory, semantic-search]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: supermemory
+    resource: "https://supermemory.ai"
+    title: "Supermemory"
+    author: "site:supermemory.ai"
+  - id: supermemory-github
+    resource: "https://github.com/supermemoryai/supermemory"
+    title: "Supermemory GitHub"
+    author: "site:github.com"
 ---
 
 # Overview
@@ -29,8 +41,3 @@ The desktop app keeps data locally (encrypted env, local model + DB). The local 
 ## Position
 
 End-user memory product (like a personal Rewind) rather than a developer library — it competes with consumer memory apps, while [Mem0](../mem0/index.md)/[MemOS](../memos/index.md) target agent/developer memory.
-
-# Citations
-
-[1] [Supermemory](https://supermemory.ai)
-[2] [Supermemory GitHub](https://github.com/supermemoryai/supermemory)

@@ -4,7 +4,19 @@ title: Tailscale — Overview
 description: Zero Trust, identity-based mesh networking over WireGuard that connects your devices, servers, clouds, and AI workloads without port forwarding.
 resource: https://tailscale.com/
 tags: [tailscale, vpn, mesh, wireguard, zero-trust, networking, tailnet]
-timestamp: 2026-07-09T02:20:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:20:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:20:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: tailscale-official
+    resource: "https://tailscale.com/"
+    title: "Tailscale official"
+    author: "site:tailscale.com"
+  - id: how-tailscale-works-docs
+    resource: "https://tailscale.com/kb/1017/how-tailscale-works/"
+    title: "How Tailscale works (docs)"
+    author: "site:tailscale.com"
 ---
 
 # What Tailscale is
@@ -34,8 +46,3 @@ device C ──┼── tunnels (mesh) ────────┼── your s
            │   + DERP relay if needed │
 control plane ── coordination server (auth, ACLs, keys)
 ```
-
-# Citations
-
-[1] [Tailscale official](https://tailscale.com/)
-[2] [How Tailscale works (docs)](https://tailscale.com/kb/1017/how-tailscale-works/)

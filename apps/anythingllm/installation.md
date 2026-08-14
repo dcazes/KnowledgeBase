@@ -4,7 +4,19 @@ title: AnythingLLM — Installation
 description: Deploy AnythingLLM via Docker (port 3001, storage volume, UID 1000 gotcha) or install the Desktop AppImage.
 resource: https://docs.anythingllm.com/installation-docker
 tags: [anythingllm, install, docker, appimage, deployment, uid-1000]
-timestamp: 2026-07-09T02:31:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:31:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:31:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: docker-install-docs
+    resource: "https://docs.anythingllm.com/installation-docker"
+    title: "Docker install docs"
+    author: "site:docs.anythingllm.com"
+  - id: anythingllm-github-releases-appimage
+    resource: "https://github.com/Mintplex-Labs/anything-llm/releases"
+    title: "AnythingLLM GitHub releases (AppImage)"
+    author: "site:github.com"
 ---
 
 # Option A — Docker (multi-user / server)
@@ -76,8 +88,3 @@ docker start anythingllm
 | Container exits | port 3001 in use | free port or change `-p` |
 | AppImage won't start | AppArmor/SUID | run installer (creates profile) |
 | Can't reach from LAN | firewall | `sudo ufw allow 3001/tcp` |
-
-# Citations
-
-[1] [Docker install docs](https://docs.anythingllm.com/installation-docker)
-[2] [AnythingLLM GitHub releases (AppImage)](https://github.com/Mintplex-Labs/anything-llm/releases)

@@ -4,7 +4,18 @@ title: Graphiti — Installation
 description: Installing graphiti-core (pip/uv), standing up a Neo4j backend, and setting required environment variables.
 resource: https://github.com/getzep/graphiti#installation
 tags: [graphiti, install, pip, uv, neo4j, env, openai-api-key]
-timestamp: 2026-07-09T05:01:00Z
+generated: { by: "human:daniel", at: "2026-07-09T05:01:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T05:01:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: installation-readme
+    resource: "https://github.com/getzep/graphiti#installation"
+    title: "Installation (README)"
+    author: "site:github.com"
+  - id: backends
+    resource: "backends.md"
+    title: "Backends"
 ---
 
 # Install graphiti-core
@@ -72,8 +83,3 @@ python -c "import graphiti_core; print(graphiti_core.__version__)"
 | Can't connect to DB | Neo4j down/creds | start Neo4j; check NEO4J_* env |
 | Ingestion schema fails | weak LLM | use Structured-Output-capable model |
 | Slow ingest | concurrency | raise `SEMAPHORE_LIMIT` |
-
-# Citations
-
-[1] [Installation (README)](https://github.com/getzep/graphiti#installation)
-[2] [Backends](backends.md)

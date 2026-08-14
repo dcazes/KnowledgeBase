@@ -4,7 +4,31 @@ title: Obsidian — Alternatives
 description: How Obsidian compares to Logseq, Joplin, VSCode, and Notion for personal knowledge management.
 resource: https://obsidian.md/
 tags: [obsidian, alternatives, logseq, joplin, vscode, notion, pkm, comparison]
-timestamp: 2026-07-09T04:10:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:10:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:10:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: obsidian
+    resource: "https://obsidian.md/"
+    title: "Obsidian"
+    author: "site:obsidian.md"
+  - id: logseq
+    resource: "https://logseq.com/"
+    title: "Logseq"
+    author: "site:logseq.com"
+  - id: joplin
+    resource: "https://joplinapp.org/"
+    title: "Joplin"
+    author: "site:joplinapp.org"
+  - id: vscode
+    resource: "https://code.visualstudio.com/"
+    title: "VSCode"
+    author: "site:code.visualstudio.com"
+  - id: notion
+    resource: "https://www.notion.so/"
+    title: "Notion"
+    author: "site:www.notion.so"
 ---
 
 # Why consider alternatives?
@@ -60,11 +84,3 @@ Hosted, block-based workspace.
 * **Joplin** — encrypted sync.
 * **VSCode** — code+notes.
 * **Notion** — collaborative.
-
-# Citations
-
-[1] [Obsidian](https://obsidian.md/)
-[2] [Logseq](https://logseq.com/)
-[3] [Joplin](https://joplinapp.org/)
-[4] [VSCode](https://code.visualstudio.com/)
-[5] [Notion](https://www.notion.so/)

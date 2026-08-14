@@ -4,7 +4,19 @@ title: Cursor
 description: AI-first code editor by Anysphere — a VS Code fork with inline chat, Agent mode, Background Agents, and MCP support. Closed-source SaaS (docs repo only).
 resource: https://cursor.com/
 tags: [cursor, editor, ai, vscode-fork, anysphere]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: cursor
+    resource: "https://cursor.com/"
+    title: "Cursor"
+    author: "site:cursor.com"
+  - id: cursor-docs
+    resource: "https://docs.cursor.com/"
+    title: "Cursor Docs"
+    author: "site:docs.cursor.com"
 ---
 
 # Cursor
@@ -40,8 +52,3 @@ This knowledge base section documents what Cursor is, how to install it, its cor
 ## Last verified
 
 **2026-08-12** — All feature descriptions and integration notes verified against upstream docs.cursor.com and Cursor changelog. Recent: Cursor Router (07-22), Cursor Start India plan (07-28), iPad + PR review (07-29), Google Workspace plugins (08-03).
-
-# Citations
-
-[1] [Cursor](https://cursor.com/)
-[2] [Cursor Docs](https://docs.cursor.com/)

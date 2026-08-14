@@ -4,7 +4,23 @@ title: Honcho
 description: AI memory + user modeling (Plastic Labs) — personas, state machine for user state, insights and goals; server + Python/TS SDKs; semantic memory layer for agents.
 resource: https://github.com/plastic-labs/honcho
 tags: [honcho, memory, user-modeling, personas, insights]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: honcho-github
+    resource: "https://github.com/plastic-labs/honcho"
+    title: "Honcho GitHub"
+    author: "site:github.com"
+  - id: honcho-docs
+    resource: "https://docs.honcho.dev"
+    title: "Honcho docs"
+    author: "site:docs.honcho.dev"
+  - id: honcho-ai-on-pypi
+    resource: "https://pypi.org/project/honcho-ai/"
+    title: "honcho-ai on PyPI"
+    author: "site:pypi.org"
 ---
 
 # Honcho
@@ -26,12 +42,6 @@ Local checkout: `programs/honcho` (git, plastic-labs, main, commit 2026-07-21) a
 
 * [Mem0](../mem0/index.md), [MemOS](../memos/index.md) — memory stores; Honcho = user modeling on top
 * [Graphiti](../graphiti/index.md) — temporal facts; Honcho = user state + personas
-
-# Citations
-
-[1] [Honcho GitHub](https://github.com/plastic-labs/honcho)
-[2] [Honcho docs](https://docs.honcho.dev)
-[3] [honcho-ai on PyPI](https://pypi.org/project/honcho-ai/)
 
 ## Last verified
 

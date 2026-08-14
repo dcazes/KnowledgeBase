@@ -4,7 +4,26 @@ title: SearXNG — Overview
 description: Self-hosted, privacy-respecting metasearch engine that fans a query out to many search engines, deduplicates, and returns unified results.
 resource: https://docs.searxng.org/
 tags: [searxng, metasearch, privacy, self-hosted, search, search-api]
-timestamp: 2026-07-08T23:10:00Z
+generated: { by: "human:daniel", at: "2026-07-08T23:10:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-08T23:10:00Z" } ]
+status: stable
+stale_after: 2027-01-04
+sources:
+  - id: searxng-overview-docs
+    resource: "https://docs.searxng.org/"
+    title: "SearXNG overview / docs"
+    author: "site:docs.searxng.org"
+  - id: searxng-github
+    resource: "https://github.com/searxng/searxng"
+    title: "SearXNG GitHub"
+    author: "site:github.com"
+  - id: configured-engines-categories
+    resource: "https://docs.searxng.org/user/configured_engines.html"
+    title: "Configured engines & categories"
+    author: "site:docs.searxng.org"
+  - id: local-config-programs-firecrawl-firecrawl-searxng-config
+    resource: "/../../programs/firecrawl/firecrawl/searxng-config/"
+    title: "Local config - programs/firecrawl/firecrawl/searxng-config/"
 ---
 
 # What SearXNG is
@@ -90,10 +109,3 @@ A localhost instance means queries originate from your own machine — maximum p
 | Results per query | 50–200 aggregated |
 | Memory usage | ~200–500 MB (container) |
 | CPU | Low idle, I/O-bound spikes on query |
-
-# Citations
-
-[1] [SearXNG overview / docs](https://docs.searxng.org/)
-[2] [SearXNG GitHub](https://github.com/searxng/searxng)
-[3] [Configured engines & categories](https://docs.searxng.org/user/configured_engines.html)
-[4] [Local config - programs/firecrawl/firecrawl/searxng-config/](/../../programs/firecrawl/firecrawl/searxng-config/)

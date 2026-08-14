@@ -4,7 +4,18 @@ title: Firecrawl Subservice — Playwright Service
 description: The playwright-service container — a standalone Playwright browser-rendering microservice the api delegates JS-heavy page rendering to.
 resource: https://github.com/firecrawl/firecrawl/tree/main/apps/playwright-service-ts
 tags: [firecrawl, playwright, subservice, browser, rendering, scraping]
-timestamp: 2026-07-09T00:33:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:33:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:33:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: apps-playwright-service-ts-github
+    resource: "https://github.com/firecrawl/firecrawl/tree/main/apps/playwright-service-ts"
+    title: "apps/playwright-service-ts (GitHub)"
+    author: "site:github.com"
+  - id: local-compose
+    resource: "/../../programs/firecrawl/firecrawl/docker-compose.yaml"
+    title: "Local compose"
 ---
 
 # Role
@@ -41,8 +52,3 @@ The api's `PLAYWRIGHT_MICROSERVICE_URL` points here. Any scrape that requires a 
 | Browser renders fail | service down | `docker compose restart playwright-service` |
 | Slow renders | `MAX_CONCURRENT_PAGES` too low | raise it |
 | Blocked by target | no proxy set | configure `PROXY_SERVER` |
-
-# Citations
-
-[1] [apps/playwright-service-ts (GitHub)](https://github.com/firecrawl/firecrawl/tree/main/apps/playwright-service-ts)
-[2] [Local compose](/../../programs/firecrawl/firecrawl/docker-compose.yaml)

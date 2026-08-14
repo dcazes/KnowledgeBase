@@ -4,7 +4,23 @@ title: Graphify — Installation
 description: Install the graphifyy package, register the skill into your agent (incl. Hermes), handle PATH on Linux, and pick a backend.
 resource: https://github.com/Graphify-Labs/graphify#install
 tags: [graphify, install, setup, hermes, cli, python]
-timestamp: 2026-07-09T00:12:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:12:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:12:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: install-docs-github
+    resource: "https://github.com/Graphify-Labs/graphify#install"
+    title: "Install docs (GitHub)"
+    author: "site:github.com"
+  - id: graphifyy-pypi
+    resource: "https://pypi.org/project/graphifyy/"
+    title: "graphifyy PyPI"
+    author: "site:pypi.org"
+  - id: hermes-platform-support-pypi-description
+    resource: "https://pypi.org/project/graphifyy/"
+    title: "Hermes platform support (PyPI description)"
+    author: "site:pypi.org"
 ---
 
 # Requirements
@@ -100,9 +116,3 @@ mkdir -p /tmp/gf-test && echo "# Note\nGraphify turns folders into graphs." > /t
 graphify extract /tmp/gf-test --backend openai
 ls /tmp/gf-test/graphify-out/      # expect GRAPH_REPORT.md + graph.json
 ```
-
-# Citations
-
-[1] [Install docs (GitHub)](https://github.com/Graphify-Labs/graphify#install)
-[2] [graphifyy PyPI](https://pypi.org/project/graphifyy/)
-[3] [Hermes platform support (PyPI description)](https://pypi.org/project/graphifyy/)

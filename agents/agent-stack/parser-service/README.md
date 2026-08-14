@@ -4,7 +4,26 @@ title: Parser Service — Prototype (Docling + MinerU)
 description: Agent-stack prototype service converting documents (PDF/DOCX/PPTX/images) to Markdown/JSON for Weaviate and Graphiti pipelines.
 resource: https://github.com/docling-project/docling
 tags: [parser, docling, mineru, agent-stack, prototype]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: docling
+    resource: "https://github.com/docling-project/docling"
+    title: "Docling"
+    author: "site:github.com"
+  - id: docling-skill
+    resource: "https://docling-project.github.io/docling/examples/agent_skill/docling-document-intelligence/SKILL/"
+    title: "Docling skill"
+    author: "site:docling-project.github.io"
+  - id: mineru
+    resource: "https://github.com/opendatalab/mineru"
+    title: "MinerU"
+    author: "site:github.com"
+  - id: agent-stack
+    resource: "../index.md"
+    title: "Agent stack"
 ---
 
 # Parser Service — Prototype (Docling + MinerU)
@@ -32,10 +51,3 @@ Raw docs can't go straight into Weaviate/Graphiti. A parser normalizes them to M
 | `wrapper.py` | Minimal HTTP API: POST file → return Markdown/JSON |
 | `README.md` | this file |
 | `NOTES.md` | integration + official sources |
-
-# Citations
-
-[1] [Docling](https://github.com/docling-project/docling)
-[2] [Docling skill](https://docling-project.github.io/docling/examples/agent_skill/docling-document-intelligence/SKILL/)
-[3] [MinerU](https://github.com/opendatalab/mineru)
-[4] [Agent stack](../index.md)

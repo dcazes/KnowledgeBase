@@ -4,7 +4,15 @@ title: Space Agent Configuration
 description: Configure Space Agent — admin user/groups, server bind, CUSTOMWARE_PATH, supervised zero-downtime deployment.
 resource: https://github.com/agent0ai/space-agent
 tags: [space-agent, configuration, server, admin]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: space-agent-github-readme
+    resource: "https://github.com/agent0ai/space-agent"
+    title: "Space Agent GitHub — README"
+    author: "site:github.com"
 ---
 
 # Configuration
@@ -37,7 +45,3 @@ node space supervise HOST=0.0.0.0 PORT=3000            # zero-downtime auto-upda
 ## Status here
 
 Not deployed (empty local dir). Config notes from upstream docs only.
-
-# Citations
-
-[1] [Space Agent GitHub — README](https://github.com/agent0ai/space-agent)

@@ -4,7 +4,23 @@ title: Graphiti — AI Integration
 description: Using Graphiti as temporal memory for agents (Hermes/OpenCode), its MCP server, and how it relates to the rest of your stack (incl. the :4000 proxy).
 resource: https://github.com/getzep/graphiti
 tags: [graphiti, integration, agents, hermes, opencode, mcp, memory, openai-compatible]
-timestamp: 2026-07-09T05:06:00Z
+generated: { by: "human:daniel", at: "2026-07-09T05:06:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T05:06:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: mcp-server
+    resource: "mcp-server.md"
+    title: "MCP server"
+  - id: vs-graphify
+    resource: "vs-graphify.md"
+    title: "vs Graphify"
+  - id: hermes
+    resource: "/../../hermes/index.md"
+    title: "Hermes"
+  - id: opencode
+    resource: "/../../opencode/index.md"
+    title: "OpenCode"
 ---
 
 # Agent memory
@@ -38,10 +54,3 @@ from graphiti_core.llm import LLMClient  # configure your OpenAI-compatible endp
 
 * Graphiti needs a graph DB (Neo4j) — heavier than Graphify's file-based approach.
 * MCP server is the cleanest integration path for your agents.
-
-# Citations
-
-[1] [MCP server](mcp-server.md)
-[2] [vs Graphify](vs-graphify.md)
-[3] [Hermes](/../../hermes/index.md)
-[4] [OpenCode](/../../opencode/index.md)

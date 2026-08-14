@@ -4,7 +4,19 @@ title: PydanticAI Alternatives
 description: PydanticAI vs LangChain/LangGraph, LlamaIndex, OpenAI Agents SDK, Instructor — Python agent framework options; when PydanticAI wins.
 resource: https://pydantic.dev/docs/ai/
 tags: [pydantic, ai, alternatives, agents, comparison]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: pydanticai-docs
+    resource: "https://pydantic.dev/docs/ai/"
+    title: "PydanticAI docs"
+    author: "site:pydantic.dev"
+  - id: pydanticai-github
+    resource: "https://github.com/pydantic/pydantic-ai"
+    title: "PydanticAI GitHub"
+    author: "site:github.com"
 ---
 
 # Alternatives
@@ -24,8 +36,3 @@ timestamp: 2026-08-13T00:00:00Z
 * **Complex multi-agent graph orchestration** → LangGraph.
 * **RAG-heavy retrieval apps** → LlamaIndex.
 * **Extraction only** → Instructor.
-
-# Citations
-
-[1] [PydanticAI docs](https://pydantic.dev/docs/ai/)
-[2] [PydanticAI GitHub](https://github.com/pydantic/pydantic-ai)

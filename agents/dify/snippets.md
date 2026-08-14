@@ -4,7 +4,20 @@ title: Dify — Snippets & Cheat Sheet
 description: Copy-paste commands for deploying Dify, configuring the :4000 model proxy, ingesting knowledge, and calling the API.
 resource: https://docs.dify.ai
 tags: [dify, snippets, cheat-sheet, deploy, api, rag]
-timestamp: 2026-07-09T00:58:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:58:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:58:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: installation
+    resource: "installation.md"
+    title: "Installation"
+  - id: api-reference
+    resource: "api.md"
+    title: "API reference"
+  - id: model-providers
+    resource: "model-providers.md"
+    title: "Model providers"
 ---
 
 # Deploy
@@ -73,9 +86,3 @@ curl -X POST http://localhost/v1/workflows/run \
 | Jobs stuck | redis/worker down | `docker compose restart redis worker` |
 | RAG empty | wrong vector store / embedding | verify VECTOR_STORE + embedding model |
 | Model 401 | proxy key | set API key the :4000 proxy accepts |
-
-# Citations
-
-[1] [Installation](installation.md)
-[2] [API reference](api.md)
-[3] [Model providers](model-providers.md)

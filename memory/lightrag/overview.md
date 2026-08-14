@@ -4,7 +4,23 @@ title: LightRAG Overview
 description: How LightRAG works — incremental knowledge-graph construction from documents, dual-level (low/high) retrieval, query modes, storage.
 resource: https://lightrag.readthedocs.io/en/latest/
 tags: [lightrag, overview, rag, graph, retrieval]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: lightrag-docs
+    resource: "https://lightrag.readthedocs.io/en/latest/"
+    title: "LightRAG docs"
+    author: "site:lightrag.readthedocs.io"
+  - id: lightrag-github
+    resource: "https://github.com/HKUDS/LightRAG"
+    title: "LightRAG GitHub"
+    author: "site:github.com"
+  - id: paper-arxiv-2410-05779
+    resource: "https://arxiv.org/abs/2410.05779"
+    title: "Paper (arXiv 2410.05779)"
+    author: "site:arxiv.org"
 ---
 
 # Overview
@@ -38,9 +54,3 @@ Backend via `KV_STORAGE` / `VECTOR_STORAGE` / `GRAPH_STORAGE` env vars:
 ## Server vs library
 
 Same engine behind a FastAPI server (`lightrag-server`, Docker images `hkuds/lightrag`). Local checkout provides both; the compose files use SQLite/Redis + NanoVectorDB by default.
-
-# Citations
-
-[1] [LightRAG docs](https://lightrag.readthedocs.io/en/latest/)
-[2] [LightRAG GitHub](https://github.com/HKUDS/LightRAG)
-[3] [Paper (arXiv 2410.05779)](https://arxiv.org/abs/2410.05779)

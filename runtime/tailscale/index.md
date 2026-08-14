@@ -4,7 +4,18 @@ title: Tailscale
 description: Zero Trust, identity-based mesh networking over WireGuard that connects devices, servers, clouds, and AI workloads without port forwarding.
 resource: https://tailscale.com/
 tags: [tailscale, vpn, mesh, wireguard, zero-trust, networking, tailnet]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: tailscale-official
+    resource: "https://tailscale.com/"
+    title: "Tailscale official"
+    author: "site:tailscale.com"
+  - id: local-dir-programs-tailscale-tailscale
+    resource: "/../../programs/tailscale/tailscale"
+    title: "Local dir - programs/tailscale/tailscale"
 ---
 
 # Tailscale
@@ -38,8 +49,3 @@ A **Zero Trust, identity-based connectivity platform** that builds a private mes
 ## Last verified
 
 **2026-08-12** — Client config, funnel/serve concepts, and AI stack exposure patterns verified against upstream tailscale.com/kb. Stable v1.102.2 (2026-08-04).
-
-# Citations
-
-[1] [Tailscale official](https://tailscale.com/)
-[2] [Local dir - programs/tailscale/tailscale](/../../programs/tailscale/tailscale)

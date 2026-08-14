@@ -4,7 +4,21 @@ title: Dify — Installation
 description: Deploy Dify Community Edition via Docker Compose from the local docker/ directory and reach the setup dashboard.
 resource: https://docs.dify.ai/getting-started/install-self-hosted
 tags: [dify, install, docker, compose, self-hosted, deployment]
-timestamp: 2026-07-09T00:51:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:51:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:51:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: install-self-hosted
+    resource: "https://docs.dify.ai/getting-started/install-self-hosted"
+    title: "Install self-hosted"
+    author: "site:docs.dify.ai"
+  - id: local-docker-dir-programs-archive-dify-docker
+    resource: "/../../programs/archive/dify/docker/"
+    title: "Local docker dir - programs/archive/dify/docker/"
+  - id: readme-quick-start
+    resource: "/../../programs/archive/dify/README.md"
+    title: "README quick start"
 ---
 
 # Requirements
@@ -61,9 +75,3 @@ docker compose logs -f api
 | Worker not processing | Redis down | `docker compose restart redis` |
 | Plugins missing | plugin_daemon down | `docker compose restart plugin_daemon` |
 | Migration errors | db not ready | wait; re-run `docker compose up -d` |
-
-# Citations
-
-[1] [Install self-hosted](https://docs.dify.ai/getting-started/install-self-hosted)
-[2] [Local docker dir - programs/archive/dify/docker/](/../../programs/archive/dify/docker/)
-[3] [README quick start](/../../programs/archive/dify/README.md)

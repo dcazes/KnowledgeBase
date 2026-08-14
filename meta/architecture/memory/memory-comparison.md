@@ -1,10 +1,38 @@
 ---
 type: Reference
 title: Agent Memory Systems — Comparison
-description: Head-to-head comparison of the agent-memory layer: Graphiti (temporal context graph), Mem0 (vector memory), MemOS (memory OS), Honcho (user modeling), LightRAG/Cognee (incremental graphs), Supermemory (RAG-style).
+description: "Head-to-head comparison of the agent-memory layer: Graphiti (temporal context graph), Mem0 (vector memory), MemOS (memory OS), Honcho (user modeling), LightRAG/Cognee (incremental graphs), Supermemory (RAG-style)."
 resource: https://github.com/getzep/graphiti
 tags: [graphiti, mem0, memos, honcho, comparison, memory, agent-memory, temporal, vector, memory-os]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: graphiti
+    resource: "https://github.com/getzep/graphiti"
+    title: "Graphiti"
+    author: "site:github.com"
+  - id: mem0
+    resource: "https://mem0.ai/"
+    title: "Mem0"
+    author: "site:mem0.ai"
+  - id: graphiti-vs-graphrag
+    resource: "https://github.com/getzep/graphiti#graphiti-vs-graphrag"
+    title: "Graphiti vs GraphRAG"
+    author: "site:github.com"
+  - id: memos
+    resource: "https://github.com/MemTensor/MemOS"
+    title: "MemOS"
+    author: "site:github.com"
+  - id: memos-a-memory-os-for-ai-system-arxiv-2507-03724
+    resource: "https://arxiv.org/abs/2507.03724"
+    title: "MemOS: A Memory OS for AI System (arXiv:2507.03724)"
+    author: "site:arxiv.org"
+  - id: honcho
+    resource: "https://docs.honcho.dev"
+    title: "Honcho"
+    author: "site:docs.honcho.dev"
 ---
 
 # Agent Memory Systems — Comparison
@@ -47,12 +75,3 @@ This is the **hub comparison for agent-memory layers** in the KB. The three orig
 ## How they relate to the KB
 
 All of these can serve as the **memory layer** above the search backend (Vespa/Weaviate) and alongside the local Firecrawl+SearXNG search stack. Graphiti adds a graph dimension; Mem0 is the lighter flat option; MemOS unifies graph+vector with an explicit memory lifecycle; Honcho adds the user-modeling dimension none of the others provide. Graphify (static graph) is a separate, non-temporal concern.
-
-# Citations
-
-[1] [Graphiti](https://github.com/getzep/graphiti)
-[2] [Mem0](https://mem0.ai/)
-[3] [Graphiti vs GraphRAG](https://github.com/getzep/graphiti#graphiti-vs-graphrag)
-[4] [MemOS](https://github.com/MemTensor/MemOS)
-[5] [MemOS: A Memory OS for AI System (arXiv:2507.03724)](https://arxiv.org/abs/2507.03724)
-[6] [Honcho](https://docs.honcho.dev)

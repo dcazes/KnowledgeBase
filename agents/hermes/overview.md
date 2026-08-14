@@ -4,7 +4,18 @@ title: Hermes — Overview
 description: Agent runtime (desktop GUI/TUI) for autonomous and background tasks using terminal, file, browser, code, skills, cron, and more.
 resource: https://hermes-agent.nousresearch.com
 tags: [hermes, agent, runtime, automation, gui, tui, toolsets]
-timestamp: 2026-07-09T03:20:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:20:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:20:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: hermes-nous-research
+    resource: "https://hermes-agent.nousresearch.com"
+    title: "Hermes (Nous Research)"
+    author: "site:hermes-agent.nousresearch.com"
+  - id: setup-note-toolsets
+    resource: "/../../vault/03%20-%20Reference/Hermes%20Setup.md"
+    title: "Setup note (toolsets)"
 ---
 
 # What Hermes is
@@ -34,8 +45,3 @@ Disabled: `coding`, `discord`, `discord_admin`, `feishu_*`, `homeassistant`, `ka
 | Chat UIs | OpenWebUI / AnythingLLM |
 
 Hermes can drive **Camofox** (browser), and call **SearXNG / Firecrawl / Graphify** (tools/skills).
-
-# Citations
-
-[1] [Hermes (Nous Research)](https://hermes-agent.nousresearch.com)
-[2] [Setup note (toolsets)](/../../vault/03%20-%20Reference/Hermes%20Setup.md)

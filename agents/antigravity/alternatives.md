@@ -4,7 +4,23 @@ title: Antigravity 2.0 Alternatives
 description: Comparison of Antigravity 2.0 against other coding agents/IDEs — Cursor, Windsurf, OpenCode, Claude Code, and GitHub Copilot/VS Code — with a pros/cons table and notes on Antigravity's agent-orchestration-first, Gemini-locked design.
 resource: Antigravity 2.0
 tags: [google, antigravity, alternatives, cursor, windsurf, opencode, claude-code, copilot]
-timestamp: 2026-07-09T03:28:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:28:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:28:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: antigravity-2-0-product-page
+    resource: "https://antigravity.google/product/antigravity-2"
+    title: "Antigravity 2.0 product page"
+    author: "site:antigravity.google"
+  - id: antigravity-official-site
+    resource: "https://antigravity.google/"
+    title: "Antigravity — official site"
+    author: "site:antigravity.google"
+  - id: google-i-o-2026-developer-highlights
+    resource: "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/"
+    title: "Google I/O 2026 developer highlights"
+    author: "site:blog.google"
 ---
 
 # Antigravity 2.0 Alternatives
@@ -52,8 +68,3 @@ How Antigravity 2.0 compares to other developer-agent tooling. The defining axes
 - [AI Integration](ai-integration.md)
 - [Overview](overview.md)
 - Cross-program: [OpenCode](/../../opencode/index.md), [Hermes](/../../hermes/index.md)
-
-# Citations
-[1] [Antigravity 2.0 product page](https://antigravity.google/product/antigravity-2)
-[2] [Antigravity — official site](https://antigravity.google/)
-[3] [Google I/O 2026 developer highlights](https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/)

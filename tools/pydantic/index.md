@@ -4,7 +4,23 @@ title: Pydantic
 description: Data validation & settings management in Python — the foundation under PydanticAI and the whole agent stack; system 2.9.0 / venv 2.13.4 on this machine.
 resource: https://docs.pydantic.dev
 tags: [pydantic, python, validation, schemas, settings]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: pydantic-docs
+    resource: "https://docs.pydantic.dev"
+    title: "Pydantic docs"
+    author: "site:docs.pydantic.dev"
+  - id: pydantic-github
+    resource: "https://github.com/pydantic/pydantic"
+    title: "Pydantic GitHub"
+    author: "site:github.com"
+  - id: pydantic-on-pypi
+    resource: "https://pypi.org/project/pydantic/"
+    title: "Pydantic on PyPI"
+    author: "site:pypi.org"
 ---
 
 # Pydantic
@@ -26,12 +42,6 @@ On this machine: system python has **pydantic 2.9.0**; the `programs/pydantic/.v
 
 * [PydanticAI](../../agents/pydanticAI/index.md) — the agent framework built on this (v2.28.0)
 * Template: `programs/pydantic/pydantic_ai_template.py`
-
-# Citations
-
-[1] [Pydantic docs](https://docs.pydantic.dev)
-[2] [Pydantic GitHub](https://github.com/pydantic/pydantic)
-[3] [Pydantic on PyPI](https://pypi.org/project/pydantic/)
 
 ## Last verified
 

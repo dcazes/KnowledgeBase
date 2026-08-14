@@ -4,7 +4,19 @@ title: SurfSense Configuration
 description: Configure SurfSense — .env (SURFSENSE_VERSION, SURFSENSE_VARIANT, keys), ports, volumes, scraper targets, gpu variant.
 resource: https://github.com/modsetter/surfsense
 tags: [surfsense, configuration, env, volumes]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: surfsense-github-compose
+    resource: "https://github.com/modsetter/surfsense"
+    title: "SurfSense GitHub — compose"
+    author: "site:github.com"
+  - id: surfsense-docs
+    resource: "https://docs.modsetter.com/surfsense"
+    title: "SurfSense docs"
+    author: "site:docs.modsetter.com"
 ---
 
 # Configuration
@@ -48,8 +60,3 @@ REDIS_PASSWORD=...
 ## GPU variant
 
 `docker-compose.gpu.yml` adds GPU passthrough (for local models/embeddings) — use when `SURFSENSE_VARIANT=cuda` images are selected.
-
-# Citations
-
-[1] [SurfSense GitHub — compose](https://github.com/modsetter/surfsense)
-[2] [SurfSense docs](https://docs.modsetter.com/surfsense)

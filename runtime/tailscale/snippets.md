@@ -4,7 +4,20 @@ title: Tailscale — Snippets & Cheat Sheet
 description: Copy-paste commands to install, auth, check status, and reach your local AI services over the tailnet.
 resource: https://tailscale.com/kb
 tags: [tailscale, snippets, cheat-sheet, cli, funmel, acl, magicdns]
-timestamp: 2026-07-09T02:25:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:25:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:25:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: installation
+    resource: "installation.md"
+    title: "Installation"
+  - id: concepts
+    resource: "concepts.md"
+    title: "Concepts"
+  - id: ai-integration
+    resource: "ai-integration.md"
+    title: "AI Integration"
 ---
 
 # Install + auth
@@ -59,9 +72,3 @@ Grant least privilege by identity; default-deny. Edit in the Tailscale admin con
 | Peer unreachable | ACL / NAT | `tailscale status`; check ACL; DERP fallback auto |
 | Funnel blocked | not enabled | `tailscale funnel <port> on` |
 | DNS not resolving | MagicDNS off | ensure MagicDNS enabled in admin |
-
-# Citations
-
-[1] [Installation](installation.md)
-[2] [Concepts](concepts.md)
-[3] [AI Integration](ai-integration.md)

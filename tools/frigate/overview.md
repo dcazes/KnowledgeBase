@@ -4,7 +4,22 @@ title: Frigate — Overview
 description: Open-source NVR with real-time AI object detection for IP cameras — go2rtc ingest, ONNX detector, GPU-accelerated.
 resource: https://frigate.video/
 tags: [frigate, nvr, surveillance, object-detection, camera, ai, onnx]
-timestamp: 2026-07-09T04:15:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:15:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:15:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: frigate
+    resource: "https://frigate.video/"
+    title: "Frigate"
+    author: "site:frigate.video"
+  - id: docs-architecture
+    resource: "https://docs.frigate.video/"
+    title: "Docs — Architecture"
+    author: "site:docs.frigate.video"
+  - id: local-config
+    resource: "/../../programs/frigate/config.yml"
+    title: "Local config"
 ---
 
 # What Frigate is
@@ -37,9 +52,3 @@ Frigate is the **surveillance** layer — separate from the LLM/agent tools, but
 
 * Camera credentials live in `config.yml` **in plaintext** — never copy them into this KB.
 * GPU helps detection/decoding throughput.
-
-# Citations
-
-[1] [Frigate](https://frigate.video/)
-[2] [Docs — Architecture](https://docs.frigate.video/)
-[3] [Local config](/../../programs/frigate/config.yml)

@@ -4,7 +4,29 @@ title: Graphiti — Alternatives
 description: How Graphiti compares to GraphRAG, Zep (managed), Graphify, and Mem0 for knowledge-graph / agent-memory.
 resource: https://github.com/getzep/graphiti
 tags: [graphiti, alternatives, graphrag, zep, graphify, mem0, agent-memory, comparison]
-timestamp: 2026-07-09T05:07:00Z
+generated: { by: "human:daniel", at: "2026-07-09T05:07:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T05:07:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: graphiti
+    resource: "https://github.com/getzep/graphiti"
+    title: "Graphiti"
+    author: "site:github.com"
+  - id: zep
+    resource: "https://www.getzep.com/"
+    title: "Zep"
+    author: "site:www.getzep.com"
+  - id: graphrag
+    resource: "https://github.com/microsoft/graphrag"
+    title: "GraphRAG"
+    author: "site:github.com"
+  - id: graphify
+    resource: "/../../graphify/index.md"
+    title: "Graphify"
+  - id: mem0
+    resource: "../mem0/index.md"
+    title: "Mem0"
 ---
 
 # Why consider alternatives?
@@ -63,11 +85,3 @@ Lightweight memory layer for agents.
 * **MemOS** — memory OS with lifecycle ([index](../memos/index.md)).
 * **Honcho** — user modeling / peers + conclusions ([index](../honcho/index.md)).
 * **LightRAG** / **Cognee** — incremental graph builders ([LightRAG](../lightrag/index.md), [Cognee](../cognee/index.md)).
-
-# Citations
-
-[1] [Graphiti](https://github.com/getzep/graphiti)
-[2] [Zep](https://www.getzep.com/)
-[3] [GraphRAG](https://github.com/microsoft/graphrag)
-[4] [Graphify](/../../graphify/index.md)
-[5] [Mem0](../mem0/index.md)

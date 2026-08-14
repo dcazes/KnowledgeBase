@@ -4,7 +4,27 @@ title: Antigravity 2.0
 description: Google's agent-first developer platform — desktop app + CLI for orchestrating autonomous agents in parallel across projects.
 resource: https://antigravity.google
 tags: [antigravity, google, agents, ai-editor]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: antigravity-official-site
+    resource: "https://antigravity.google/"
+    title: "Antigravity — official site"
+    author: "site:antigravity.google"
+  - id: antigravity-2-0-product-page
+    resource: "https://antigravity.google/product/antigravity-2"
+    title: "Antigravity 2.0 product page"
+    author: "site:antigravity.google"
+  - id: google-i-o-2026-developer-highlights
+    resource: "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/"
+    title: "Google I/O 2026 developer highlights"
+    author: "site:blog.google"
+  - id: transitioning-gemini-cli-to-antigravity-cli
+    resource: "https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/"
+    title: "Transitioning Gemini CLI to Antigravity CLI"
+    author: "site:developers.googleblog.com"
 ---
 
 # Antigravity 2.0
@@ -38,10 +58,3 @@ This directory is the OKF knowledge base for the Antigravity 2.0 program. Conten
 ## Last verified
 
 **2026-08-12** — Version pins updated: desktop app **2.8.0**, Antigravity CLI **1.1.12**; config at `~/.gemini/config/config.json`. Docker Compose deployments are community containerizations, not official — the product is Google's hosted platform. Prior verification 2026-07-09 against official Antigravity site, Google I/O 2026 announcements, and transition blog posts.
-
-# Citations
-
-[1] [Antigravity — official site](https://antigravity.google/)
-[2] [Antigravity 2.0 product page](https://antigravity.google/product/antigravity-2)
-[3] [Google I/O 2026 developer highlights](https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/)
-[4] [Transitioning Gemini CLI to Antigravity CLI](https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/)

@@ -1,10 +1,22 @@
 ---
 type: Reference
 title: SearXNG — Search Syntax
-description: Query operators and shortcuts — engine/category/language prefixes, boolean logic, site:/filetype: filters, and time ranges.
+description: "Query operators and shortcuts — engine/category/language prefixes, boolean logic, site:/filetype: filters, and time ranges."
 resource: https://docs.searxng.org/user/search-syntax.html
 tags: [searxng, syntax, operators, shortcuts, search-syntax]
-timestamp: 2026-07-08T23:55:00Z
+generated: { by: "human:daniel", at: "2026-07-08T23:55:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-08T23:55:00Z" } ]
+status: stable
+stale_after: 2027-01-04
+sources:
+  - id: search-syntax
+    resource: "https://docs.searxng.org/user/search-syntax.html"
+    title: "Search syntax"
+    author: "site:docs.searxng.org"
+  - id: configured-engines
+    resource: "https://docs.searxng.org/user/configured_engines.html"
+    title: "Configured engines"
+    author: "site:docs.searxng.org"
 ---
 
 # Overview
@@ -145,8 +157,3 @@ curl -s "http://127.0.0.1:8088/search?q=!github+docker&format=json" \
 | No results | Too restrictive | Drop some exclusions |
 | Wrong language | Auto-detect wrong | Set `!en` explicitly |
 | Slow | Too many engines | Narrow `categories` |
-
-# Citations
-
-[1] [Search syntax](https://docs.searxng.org/user/search-syntax.html)
-[2] [Configured engines](https://docs.searxng.org/user/configured_engines.html)

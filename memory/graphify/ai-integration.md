@@ -4,7 +4,22 @@ title: Graphify — AI Integration
 description: Wiring Graphify into Hermes, OpenCode, Claude Code, Obsidian, and the local :4000 OpenRouter failover proxy.
 resource: https://github.com/Graphify-Labs/graphify
 tags: [graphify, hermes, opencode, obsidian, openrouter, integration, mcp]
-timestamp: 2026-07-09T00:20:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:20:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:20:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: graphify-github-platforms-mcp-backends
+    resource: "https://github.com/Graphify-Labs/graphify"
+    title: "Graphify GitHub (platforms, MCP, backends)"
+    author: "site:github.com"
+  - id: graphifyy-pypi-hermes-platform-flags-openai-base-url
+    resource: "https://pypi.org/project/graphifyy/"
+    title: "graphifyy PyPI (Hermes/platform flags, OPENAI_BASE_URL)"
+    author: "site:pypi.org"
+  - id: searxng-graphify-loop-searxng-ai-integration
+    resource: "../../runtime/searxng/ai-integration.md"
+    title: "SearXNG → Graphify loop (SearXNG AI Integration)"
 ---
 
 # The role in your stack
@@ -97,9 +112,3 @@ graphify extract . --backend openai     # fold new nodes into the graph
 | Extraction fails (no key) | backend needs creds | set `OPENAI_BASE_URL=:4000/v1` + `OPENAI_API_KEY` |
 | MCP refused remotely | loopback-only default | add `--host 0.0.0.0 --api-key` to expose |
 | Obsidian clobbered my notes | shouldn't happen | use `--obsidian-dir` (non-destructive) |
-
-# Citations
-
-[1] [Graphify GitHub (platforms, MCP, backends)](https://github.com/Graphify-Labs/graphify)
-[2] [graphifyy PyPI (Hermes/platform flags, OPENAI_BASE_URL)](https://pypi.org/project/graphifyy/)
-[3] [SearXNG → Graphify loop (SearXNG AI Integration)](../../runtime/searxng/ai-integration.md)

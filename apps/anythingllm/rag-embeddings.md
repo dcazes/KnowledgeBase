@@ -4,7 +4,22 @@ title: AnythingLLM — RAG & Embeddings
 description: AnythingLLM's retrieval pipeline, vector database options, and embedding model choices (incl. local nomic-embed-text).
 resource: https://docs.anythingllm.com/embedder-configuration
 tags: [anythingllm, rag, embeddings, vector-db, lancedb, ingestion]
-timestamp: 2026-07-09T02:33:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:33:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:33:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: embedder-config
+    resource: "https://docs.anythingllm.com/embedder-configuration"
+    title: "Embedder config"
+    author: "site:docs.anythingllm.com"
+  - id: vector-db-options
+    resource: "https://docs.anythingllm.com/vector-databases"
+    title: "Vector DB options"
+    author: "site:docs.anythingllm.com"
+  - id: rag-notes-prior-grounding
+    resource: "/../../kb/anythingllm/embeddings.md"
+    title: "RAG notes (prior, grounding)"
 ---
 
 # Ingestion pipeline
@@ -56,9 +71,3 @@ In UI: **Settings → Embedding** (pick model + provider) and **Settings → Vec
 * Match embedding model to your vector store's expected dimensions.
 * Chunk size affects recall — smaller = finer, more calls.
 * Hybrid search (LanceDB) improves keyword-heavy queries.
-
-# Citations
-
-[1] [Embedder config](https://docs.anythingllm.com/embedder-configuration)
-[2] [Vector DB options](https://docs.anythingllm.com/vector-databases)
-[3] [RAG notes (prior, grounding)](/../../kb/anythingllm/embeddings.md)

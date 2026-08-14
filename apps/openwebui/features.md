@@ -4,7 +4,21 @@ title: OpenWebUI — Features (Plugins, Tools, Agents, Skills, MCP)
 description: OpenWebUI's extension model — Functions (Filters/Actions), Pipes, Tools, Skills, and MCP/OpenAPI tool servers.
 resource: https://docs.openwebui.com/features/plugin/
 tags: [openwebui, plugins, tools, skills, agents, mcp, pipes, functions]
-timestamp: 2026-07-09T02:04:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:04:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:04:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: plugin-features-docs
+    resource: "https://docs.openwebui.com/features/plugin/"
+    title: "Plugin/Features docs"
+    author: "site:docs.openwebui.com"
+  - id: overview-plugin-support
+    resource: "overview.md"
+    title: "Overview (plugin support)"
+  - id: firecrawl-mcp-integration
+    resource: "/../../firecrawl/ai-integration.md"
+    title: "Firecrawl MCP/integration"
 ---
 
 # Extension model
@@ -43,9 +57,3 @@ A built-in key-value storage API lets tools persist data (journals, trackers, le
 * Expose **Firecrawl** and **SearXNG** search as Tools/MCP so chats can pull live web context on demand.
 * Add a **Graphify** MCP server so a chat can query your knowledge graph.
 * Use a Pipe to route chats through the `:4000` proxy with fallback logic.
-
-# Citations
-
-[1] [Plugin/Features docs](https://docs.openwebui.com/features/plugin/)
-[2] [Overview (plugin support)](overview.md)
-[3] [Firecrawl MCP/integration](/../../firecrawl/ai-integration.md)

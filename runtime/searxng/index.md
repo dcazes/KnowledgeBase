@@ -4,7 +4,21 @@ title: SearXNG
 description: Privacy-focused, self-hosted metasearch engine — the web-search backbone for the AI stack on this machine.
 resource: https://docs.searxng.org
 tags: [searxng, search, metasearch, privacy, firecrawl]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: searxng-documentation
+    resource: "https://docs.searxng.org/"
+    title: "SearXNG documentation"
+    author: "site:docs.searxng.org"
+  - id: local-config-programs-firecrawl-firecrawl-searxng-config
+    resource: "/../../programs/firecrawl/firecrawl/searxng-config/"
+    title: "Local config - programs/firecrawl/firecrawl/searxng-config/"
+  - id: local-compose-searxng-embedded-in-firecrawl
+    resource: "/../../programs/firecrawl/firecrawl/docker-compose.yaml"
+    title: "Local compose (searxng embedded in firecrawl)"
 ---
 
 # SearXNG
@@ -43,9 +57,3 @@ Privacy-focused, self-hosted **metasearch engine** that aggregates results from 
 ## Last verified
 
 **2026-08-12** — Rolling release (2026.8.10 build); host port corrected to `8088` (verified against running `agent_searxng` container). Prior verification 2026-07-09 against local `programs/firecrawl/firecrawl/searxng-config/settings.yml` and upstream docs.searxng.org; re-pointed 2026-07-15 after SearXNG was merged into the Firecrawl compose.
-
-# Citations
-
-[1] [SearXNG documentation](https://docs.searxng.org/)
-[2] [Local config - programs/firecrawl/firecrawl/searxng-config/](/../../programs/firecrawl/firecrawl/searxng-config/)
-[3] [Local compose (searxng embedded in firecrawl)](/../../programs/firecrawl/firecrawl/docker-compose.yaml)

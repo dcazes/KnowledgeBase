@@ -4,7 +4,18 @@ title: Dify — RAG Pipeline
 description: How Dify ingests documents, chunks and embeds them, stores vectors, and retrieves context for generation.
 resource: https://docs.dify.ai/guides/knowledge-base
 tags: [dify, rag, retrieval, embedding, knowledge-base, indexing]
-timestamp: 2026-07-09T00:53:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:53:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:53:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: knowledge-base-guide-docs
+    resource: "https://docs.dify.ai/guides/knowledge-base"
+    title: "Knowledge Base guide (docs)"
+    author: "site:docs.dify.ai"
+  - id: architecture-vector-stores
+    resource: "architecture.md"
+    title: "Architecture — vector stores"
 ---
 
 # Pipeline stages
@@ -46,8 +57,3 @@ Query ──► embed ──► ANN search ──► top-k chunks ──► LLM 
 * Dify's RAG is **self-contained** — it does not require your SearXNG or Firecrawl, but you *could* feed scraped content (via Firecrawl) into a KB.
 * The vector store is selected at deploy time (see [Architecture](architecture.md)); switching later means re-indexing.
 * Embeddings can use your `:4000` proxy if it exposes an embeddings endpoint (set the embedding model provider accordingly).
-
-# Citations
-
-[1] [Knowledge Base guide (docs)](https://docs.dify.ai/guides/knowledge-base)
-[2] [Architecture — vector stores](architecture.md)

@@ -4,7 +4,19 @@ title: Supermemory Configuration
 description: Configure Supermemory — local credentials (api-key/auth-secret/instance-id), encrypted env, local embedding model, pglite persistence.
 resource: https://supermemory.ai
 tags: [supermemory, configuration, local-first]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: supermemory
+    resource: "https://supermemory.ai"
+    title: "Supermemory"
+    author: "site:supermemory.ai"
+  - id: supermemory-github
+    resource: "https://github.com/supermemoryai/supermemory"
+    title: "Supermemory GitHub"
+    author: "site:github.com"
 ---
 
 # Configuration
@@ -31,8 +43,3 @@ Supermemory is **local-first by design** — configuration lives under `.superme
 
 * Because env is encrypted and credentials are app-generated, there is **no hand-editable config file** — settings are managed in-app.
 * `retry-params/` indicates the app persists failed-sync/queue state across restarts.
-
-# Citations
-
-[1] [Supermemory](https://supermemory.ai)
-[2] [Supermemory GitHub](https://github.com/supermemoryai/supermemory)

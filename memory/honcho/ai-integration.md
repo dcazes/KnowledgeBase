@@ -4,7 +4,19 @@ title: Honcho AI Integration
 description: Wire Honcho into agents — peers/sessions/messages, query context via peer.chat, conclusions, Python/TS SDKs, vs Mem0/MemOS/Graphiti for user memory.
 resource: https://docs.honcho.dev
 tags: [honcho, integration, sdk, peers, agents]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: honcho-docs-quickstart
+    resource: "https://docs.honcho.dev"
+    title: "Honcho docs — quickstart"
+    author: "site:docs.honcho.dev"
+  - id: honcho-github
+    resource: "https://github.com/plastic-labs/honcho"
+    title: "Honcho GitHub"
+    author: "site:github.com"
 ---
 
 # AI Integration
@@ -57,8 +69,3 @@ const resp = await alice.chat("What did they ask?", { session });
 * Not deployed here (2026-08-13); fits alongside [Mem0](../mem0/index.md) (facts) and [MemOS](../memos/index.md) (memory OS) — Honcho adds **user modeling** (peers + derived conclusions) none of the others provide.
 * [Graphiti](../graphiti/index.md) covers temporal fact provenance; Honcho covers *who the user is*.
 * UI companion: [OpenConcho](../openconcho/index.md) (Honcho UI).
-
-# Citations
-
-[1] [Honcho docs — quickstart](https://docs.honcho.dev)
-[2] [Honcho GitHub](https://github.com/plastic-labs/honcho)

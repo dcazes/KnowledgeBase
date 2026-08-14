@@ -4,7 +4,27 @@ title: OpenWebUI — AI Integration
 description: Connecting OpenWebUI to your stack — Ollama/OpenAI-compatible :4000 endpoint, built-in RAG, SearXNG web search, and Firecrawl extraction.
 resource: https://docs.openwebui.com
 tags: [openwebui, integration, ollama, openai-compatible, rag, searxng, firecrawl]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: openwebui-docs
+    resource: "https://docs.openwebui.com"
+    title: "OpenWebUI docs"
+    author: "site:docs.openwebui.com"
+  - id: openwebui-openai-api-ollama-connection
+    resource: "https://docs.openwebui.com/getting-started/env-configuration"
+    title: "OpenWebUI OpenAI API / Ollama connection"
+    author: "site:docs.openwebui.com"
+  - id: searxng-api
+    resource: "https://docs.searxng.org/dev/search_api.html"
+    title: "SearXNG API"
+    author: "site:docs.searxng.org"
+  - id: firecrawl-api
+    resource: "https://docs.firecrawl.dev/api-reference"
+    title: "Firecrawl API"
+    author: "site:docs.firecrawl.dev"
 ---
 
 # Models via Ollama / OpenAI-compatible endpoint
@@ -23,10 +43,3 @@ OpenWebUI's **pipe functions** (Python) can wrap arbitrary stack endpoints — e
 # Deployment status
 
 Compose present at `programs/openwebui/docker-compose.yaml` (image `ghcr.io/open-webui/open-webui:main`, host port `3001` → container `8080`, upstream v0.11.0); **not currently running** as of 2026-08-12. See [Installation](installation.md).
-
-# Citations
-
-[1] [OpenWebUI docs](https://docs.openwebui.com)
-[2] [OpenWebUI OpenAI API / Ollama connection](https://docs.openwebui.com/getting-started/env-configuration)
-[3] [SearXNG API](https://docs.searxng.org/dev/search_api.html)
-[4] [Firecrawl API](https://docs.firecrawl.dev/api-reference)

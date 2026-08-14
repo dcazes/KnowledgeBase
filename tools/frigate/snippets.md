@@ -4,7 +4,20 @@ title: Frigate — Snippets & Cheat Sheet
 description: Deploy, ports, verify, and config notes for Frigate (secrets redacted).
 resource: https://docs.frigate.video/
 tags: [frigate, snippets, cheat-sheet, compose, ports, gpu]
-timestamp: 2026-07-09T04:21:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:21:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:21:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: installation
+    resource: "installation.md"
+    title: "Installation"
+  - id: configuration
+    resource: "configuration.md"
+    title: "Configuration"
+  - id: cameras
+    resource: "cameras.md"
+    title: "Cameras"
 ---
 
 # Deploy (from programs/frigate/)
@@ -46,9 +59,3 @@ Camera password (in `go2rtc` URLs) and `FRIGATE_RTSP_PASSWORD` are plaintext in 
 | UI down | container stopped | `docker start frigate` |
 | No detect | GPU/detector | verify `onnx` + `preset-nvidia` |
 | Cam offline | go2rtc/creds | check go2rtc streams (creds redacted) |
-
-# Citations
-
-[1] [Installation](installation.md)
-[2] [Configuration](configuration.md)
-[3] [Cameras](cameras.md)

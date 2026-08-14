@@ -4,7 +4,17 @@ title: Camofox — Snippets & Cheat Sheet
 description: Copy-paste commands to launch Camofox, verify ports, and the watch/login workflow.
 resource: https://github.com/daijro/camoufox
 tags: [camofox, snippets, cheat-sheet, launch, novnc, browser]
-timestamp: 2026-07-09T01:06:00Z
+generated: { by: "human:daniel", at: "2026-07-09T01:06:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T01:06:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: installation
+    resource: "installation.md"
+    title: "Installation"
+  - id: usage-api-vnc
+    resource: "usage.md"
+    title: "Usage (API + VNC)"
 ---
 
 # Launch
@@ -50,8 +60,3 @@ print(r.json())
 | VNC blank | :6080 not published | check container ports |
 | Build fails | Docker off | `systemctl --user start docker-desktop` |
 | sudo prompt | launcher uses sudo | run with sudo or join docker group |
-
-# Citations
-
-[1] [Installation](installation.md)
-[2] [Usage (API + VNC)](usage.md)

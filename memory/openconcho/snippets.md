@@ -4,7 +4,15 @@ title: OpenConcho Snippets
 description: OpenConcho cheat sheet — npx run, docker compose, add instance, fleet view, chat probe (v0.16.0).
 resource: https://github.com/offendingcommit/openconcho
 tags: [openconcho, snippets, cheat-sheet]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: openconcho-github
+    resource: "https://github.com/offendingcommit/openconcho"
+    title: "OpenConcho GitHub"
+    author: "site:github.com"
 ---
 
 # Snippets
@@ -45,7 +53,3 @@ Open chat → converse against the instance with full memory context
 curl -s http://localhost:8000/health      # Honcho itself (if deployed)
 # UI dashboard rendering counts = connection OK
 ```
-
-# Citations
-
-[1] [OpenConcho GitHub](https://github.com/offendingcommit/openconcho)

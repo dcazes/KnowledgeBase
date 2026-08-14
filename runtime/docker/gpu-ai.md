@@ -4,7 +4,29 @@ title: Docker — GPU & AI in Containers
 description: Run GPU-accelerated workloads (Frigate detection, LLM inference) in containers on the GTX 1060 via the NVIDIA Container Toolkit.
 resource: https://docs.docker.com/engine/containers/resource_constraints/#gpu
 tags: [docker, gpu, nvidia, ai, frigate, inference]
-timestamp: 2026-07-08T22:35:00Z
+generated: { by: "human:daniel", at: "2026-07-08T22:35:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-08T22:35:00Z" } ]
+status: stable
+stale_after: 2027-01-04
+sources:
+  - id: docker-gpu-access
+    resource: "https://docs.docker.com/engine/containers/resource_constraints/#gpu"
+    title: "Docker GPU access"
+    author: "site:docs.docker.com"
+  - id: nvidia-container-toolkit
+    resource: "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/"
+    title: "NVIDIA Container Toolkit"
+    author: "site:docs.nvidia.com"
+  - id: frigate-object-detectors-onnx
+    resource: "https://docs.frigate.video/configuration/object_detectors"
+    title: "Frigate object detectors (ONNX)"
+    author: "site:docs.frigate.video"
+  - id: local-frigate-compose-programs-frigate-docker-compose-yml
+    resource: "/../../programs/frigate/docker-compose.yml"
+    title: "Local Frigate compose - programs/frigate/docker-compose.yml"
+  - id: detected-gpu-nvidia-smi-on-host
+    resource: "/../../programs/"
+    title: "Detected GPU - nvidia-smi on host"
 ---
 
 # Overview
@@ -90,11 +112,3 @@ docker exec -it frigate nvidia-smi     # should show the GTX 1060
 | Container can't see GPU | Missing `deploy.resources.reservations.devices` / `--gpus` flag. |
 | Out of memory on GPU | 6 GB is small — reduce model size or detection resolution; bump `shm_size`. |
 | `privileged: true` needed | Frigate needs raw device access; only set for trusted images. |
-
-# Citations
-
-[1] [Docker GPU access](https://docs.docker.com/engine/containers/resource_constraints/#gpu)
-[2] [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/)
-[3] [Frigate object detectors (ONNX)](https://docs.frigate.video/configuration/object_detectors)
-[4] [Local Frigate compose - programs/frigate/docker-compose.yml](/../../programs/frigate/docker-compose.yml)
-[5] [Detected GPU - nvidia-smi on host](/../../programs/)

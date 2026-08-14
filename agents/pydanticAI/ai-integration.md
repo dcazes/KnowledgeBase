@@ -4,7 +4,19 @@ title: PydanticAI AI Integration
 description: Integrate PydanticAI into this stack — typed output contracts, tools/MCP, local Ollama models, dependencies, structured agents alongside the Agent Stack.
 resource: https://pydantic.dev/docs/ai/
 tags: [pydantic, ai, integration, agents, mcp]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: pydanticai-docs
+    resource: "https://pydantic.dev/docs/ai/"
+    title: "PydanticAI docs"
+    author: "site:pydantic.dev"
+  - id: pydanticai-github
+    resource: "https://github.com/pydantic/pydantic-ai"
+    title: "PydanticAI GitHub"
+    author: "site:github.com"
 ---
 
 # AI Integration
@@ -42,8 +54,3 @@ Use `ollama:` providers for a fully-local agent (see [Ollama](../../runtime/olla
 
 * Not a running service — the library to build structured agents from Python.
 * Schema reuse: define validation models once in Pydantic, reuse as agent result types.
-
-# Citations
-
-[1] [PydanticAI docs](https://pydantic.dev/docs/ai/)
-[2] [PydanticAI GitHub](https://github.com/pydantic/pydantic-ai)

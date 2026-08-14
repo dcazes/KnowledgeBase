@@ -4,7 +4,24 @@ title: Tailscale — AI Integration
 description: Using Tailscale to give your AI agents and other devices secure, private access to local services (proxy, OpenWebUI, SearXNG, Firecrawl).
 resource: https://tailscale.com/
 tags: [tailscale, ai, agents, secure-access, aperture, proxy, openwebui]
-timestamp: 2026-07-09T02:23:00Z
+generated: { by: "human:daniel", at: "2026-07-09T02:23:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T02:23:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: secure-ai-aperture
+    resource: "https://tailscale.com/"
+    title: "Secure AI / Aperture"
+    author: "site:tailscale.com"
+  - id: concepts-tailnet-funnel-acl
+    resource: "concepts.md"
+    title: "Concepts (tailnet, funnel, ACL)"
+  - id: openwebui-port
+    resource: "/../../openwebui/index.md"
+    title: "OpenWebUI port"
+  - id: searxng-port
+    resource: "/../../searxng/index.md"
+    title: "SearXNG port"
 ---
 
 # Secure access to your AI stack
@@ -54,10 +71,3 @@ Keep inference proxy (`:4000`) and Firecrawl (`:3002`) **tailnet-private** — n
 * Set **ACLs** so only your identity/device can reach `:4000`/`:3002`.
 * Don't Funnel sensitive services.
 * Treat tailnet access like LAN access + identity — still scope with ACLs.
-
-# Citations
-
-[1] [Secure AI / Aperture](https://tailscale.com/)
-[2] [Concepts (tailnet, funnel, ACL)](concepts.md)
-[3] [OpenWebUI port](/../../openwebui/index.md)
-[4] [SearXNG port](/../../searxng/index.md)

@@ -4,7 +4,42 @@ title: Agent Stack
 description: All-in-one Docker Compose prototype wiring the agentic stack (SearXNG, Firecrawl, Camofox, Frigate, Ollama, LiteLLM, Graphiti, Weaviate) on one agent-net network.
 resource: https://github.com/mendableai/firecrawl
 tags: [agent-stack, docker-compose, prototype, litellm, docling, mineru]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: firecrawl-repo
+    resource: "https://github.com/mendableai/firecrawl"
+    title: "Firecrawl repo"
+    author: "site:github.com"
+  - id: graphiti-mcp
+    resource: "https://github.com/getzep/graphiti/tree/main/mcp_server"
+    title: "Graphiti MCP"
+    author: "site:github.com"
+  - id: weaviate-install
+    resource: "https://weaviate.io/developers/weaviate/installation/docker-compose"
+    title: "Weaviate install"
+    author: "site:weaviate.io"
+  - id: searxng-docker
+    resource: "https://github.com/searxng/searxng-docker"
+    title: "SearXNG-docker"
+    author: "site:github.com"
+  - id: camofox
+    resource: "https://github.com/camofox/camofox"
+    title: "Camofox"
+    author: "site:github.com"
+  - id: ollama
+    resource: "https://github.com/ollama/ollama"
+    title: "Ollama"
+    author: "site:github.com"
+  - id: litellm
+    resource: "https://github.com/BerriAI/litellm"
+    title: "LiteLLM"
+    author: "site:github.com"
+  - id: blueprint
+    resource: "../../meta/architecture/agentic-system-blueprint.md"
+    title: "Blueprint"
 ---
 
 # Agent Stack
@@ -42,14 +77,3 @@ All-in-one prototype that wires the whole agentic stack into **one** Docker Comp
 ## Last verified
 
 **2026-08-12** — Version pins refreshed (LiteLLM v1.96.0, Docling v2.119.0, MinerU v3.1.0). Prototype compose, env, and integration docs originally verified 2026-07-09 against upstream (Firecrawl 6-svc, Graphiti MCP FalkorDB, Weaviate end-user, SearXNG-docker, Camofox, Ollama, LiteLLM). Flattened from `architecture/agent-stack/` into this top-level `agent-stack/` folder on 2026-07-16 to match the one-folder-per-program convention.
-
-# Citations
-
-[1] [Firecrawl repo](https://github.com/mendableai/firecrawl)
-[2] [Graphiti MCP](https://github.com/getzep/graphiti/tree/main/mcp_server)
-[3] [Weaviate install](https://weaviate.io/developers/weaviate/installation/docker-compose)
-[4] [SearXNG-docker](https://github.com/searxng/searxng-docker)
-[5] [Camofox](https://github.com/camofox/camofox)
-[6] [Ollama](https://github.com/ollama/ollama)
-[7] [LiteLLM](https://github.com/BerriAI/litellm)
-[8] [Blueprint](../../meta/architecture/agentic-system-blueprint.md)

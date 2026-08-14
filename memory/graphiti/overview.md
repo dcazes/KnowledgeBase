@@ -4,7 +4,27 @@ title: Graphiti — Overview
 description: Open-source framework (Zep/Neo4j) for building and querying temporal context graphs for AI agent memory — facts with validity windows, episode provenance, incremental updates.
 resource: https://github.com/getzep/graphiti
 tags: [graphiti, knowledge-graph, temporal, agent-memory, neo4j, zep, context-graph]
-timestamp: 2026-07-09T05:00:00Z
+generated: { by: "human:daniel", at: "2026-07-09T05:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T05:00:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: graphiti-github
+    resource: "https://github.com/getzep/graphiti"
+    title: "Graphiti GitHub"
+    author: "site:github.com"
+  - id: neo4j-graphiti
+    resource: "https://neo4j.com/blog/developer/graphiti-knowledge-graph-memory/"
+    title: "Neo4j — Graphiti"
+    author: "site:neo4j.com"
+  - id: graphiti-vs-graphrag-readme
+    resource: "https://github.com/getzep/graphiti#graphiti-vs-graphrag"
+    title: "Graphiti vs GraphRAG (README)"
+    author: "site:github.com"
+  - id: paper-arxiv-2501-13956
+    resource: "https://arxiv.org/abs/2501.13956"
+    title: "Paper (arXiv 2501.13956)"
+    author: "site:arxiv.org"
 ---
 
 # What Graphiti is
@@ -44,10 +64,3 @@ Graphify (see `/../../graphify/index.md`) compiles a **static, confidence-tagged
 | Chat/RAG | OpenWebUI / AnythingLLM |
 
 Graphiti can serve as the **memory** substrate for your agents; its MCP server exposes that memory to Claude/Cursor/your stack.
-
-# Citations
-
-[1] [Graphiti GitHub](https://github.com/getzep/graphiti)
-[2] [Neo4j — Graphiti](https://neo4j.com/blog/developer/graphiti-knowledge-graph-memory/)
-[3] [Graphiti vs GraphRAG (README)](https://github.com/getzep/graphiti#graphiti-vs-graphrag)
-[4] [Paper (arXiv 2501.13956)](https://arxiv.org/abs/2501.13956)

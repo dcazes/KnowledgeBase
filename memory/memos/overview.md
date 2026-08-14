@@ -4,7 +4,23 @@ title: MemOS — Overview
 description: Memory Operating System for LLM agents — unified store/retrieve/manage for long-term memory (textual, tree, preference, skill, KV-cache, LoRA) with scheduling, versioning, vector + graph storage.
 resource: https://memos-docs.openmem.net/home/overview/
 tags: [memos, memory, memory-os, agents, rag, mcp, llm]
-timestamp: 2026-07-16T00:00:00Z
+generated: { by: "human:daniel", at: "2026-07-16T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-16T00:00:00Z" } ]
+status: stable
+stale_after: 2027-01-12
+sources:
+  - id: memos-repo
+    resource: "https://github.com/MemTensor/MemOS"
+    title: "MemOS repo"
+    author: "site:github.com"
+  - id: memos-docs
+    resource: "https://memos-docs.openmem.net/home/overview/"
+    title: "MemOS docs"
+    author: "site:memos-docs.openmem.net"
+  - id: pypi-memoryos
+    resource: "https://pypi.org/project/MemoryOS/"
+    title: "PyPI — MemoryOS"
+    author: "site:pypi.org"
 ---
 
 # What MemOS is
@@ -40,9 +56,3 @@ MemOS is a Python package (`import memos`) with a top-level `MOS` entry that orc
 * Sits as the **general memory layer** alongside **Graphiti** (temporal context graph) — MemOS covers structured/textual/preference/skill memory; Graphiti covers time-aware episodes.
 * Exposed as an **MCP server** so Hermes / OpenCode / Cursor / Windsurf can use it as agent memory.
 * Official **Hermes Agent local plugin** and **OpenClaw plugin** exist (hybrid FTS5 + vector retrieval, local-first SQLite, skill evolution).
-
-# Citations
-
-[1] [MemOS repo](https://github.com/MemTensor/MemOS)
-[2] [MemOS docs](https://memos-docs.openmem.net/home/overview/)
-[3] [PyPI — MemoryOS](https://pypi.org/project/MemoryOS/)

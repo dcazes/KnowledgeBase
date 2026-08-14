@@ -4,7 +4,19 @@ title: Supermemory
 description: AI memory & knowledge companion (supermemory.ai) — saves browsing/snippets into a personal semantic memory with local-first data; app data present on this machine.
 resource: https://supermemory.ai
 tags: [supermemory, memory, knowledge, local-first, pglite]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: supermemory
+    resource: "https://supermemory.ai"
+    title: "Supermemory"
+    author: "site:supermemory.ai"
+  - id: supermemory-github
+    resource: "https://github.com/supermemoryai/supermemory"
+    title: "Supermemory GitHub"
+    author: "site:github.com"
 ---
 
 # Supermemory
@@ -25,11 +37,6 @@ Local state: `programs/supermemory/.supermemory/` — **app data only, no source
 
 * [MemOS](../memos/index.md), [Mem0](../mem0/index.md) — developer-facing memory platforms; Supermemory is an end-user app
 * [Obsidian](../../tools/obsidian/index.md) — personal knowledge base; Supermemory = AI-memory companion
-
-# Citations
-
-[1] [Supermemory](https://supermemory.ai)
-[2] [Supermemory GitHub](https://github.com/supermemoryai/supermemory)
 
 ## Last verified
 

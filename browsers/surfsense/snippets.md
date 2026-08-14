@@ -4,7 +4,15 @@ title: SurfSense Snippets
 description: SurfSense cheat sheet — compose status, container checks, port probes, logs, scraper verification, mcp wiring.
 resource: https://github.com/modsetter/surfsense
 tags: [surfsense, snippets, cheat-sheet]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: surfsense-github
+    resource: "https://github.com/modsetter/surfsense"
+    title: "SurfSense GitHub"
+    author: "site:github.com"
 ---
 
 # Snippets
@@ -60,7 +68,3 @@ docker compose exec searxng sh -c 'wget -qO- http://localhost:8080 | head -1'
 npm install && npm run build
 # then register as an MCP server for Hermes/OpenCode with the built command
 ```
-
-# Citations
-
-[1] [SurfSense GitHub](https://github.com/modsetter/surfsense)

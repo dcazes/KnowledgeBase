@@ -4,7 +4,22 @@ title: Docker — Snippets & Cheat Sheet
 description: Copy-paste commands and compose fragments covering the majority of daily Docker use cases on this machine.
 resource: https://docs.docker.com/reference/cli/docker/
 tags: [docker, snippets, cheat-sheet, reference]
-timestamp: 2026-07-08T22:35:00Z
+generated: { by: "human:daniel", at: "2026-07-08T22:35:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-08T22:35:00Z" } ]
+status: stable
+stale_after: 2027-01-04
+sources:
+  - id: docker-cli-reference
+    resource: "https://docs.docker.com/reference/cli/docker/"
+    title: "Docker CLI reference"
+    author: "site:docs.docker.com"
+  - id: compose-cli-reference
+    resource: "https://docs.docker.com/reference/cli/docker/compose/"
+    title: "Compose CLI reference"
+    author: "site:docs.docker.com"
+  - id: local-install-run-script-programs-docker
+    resource: "/../../programs/docker/"
+    title: "Local install / run script - programs/docker/"
 ---
 
 # Start / verify (your machine)
@@ -107,9 +122,3 @@ docker diff web                  # filesystem changes vs image
 nvidia-smi                                          # host
 docker exec -it frigate nvidia-smi                  # inside Frigate container
 ```
-
-# Citations
-
-[1] [Docker CLI reference](https://docs.docker.com/reference/cli/docker/)
-[2] [Compose CLI reference](https://docs.docker.com/reference/cli/docker/compose/)
-[3] [Local install / run script - programs/docker/](/../../programs/docker/)

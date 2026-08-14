@@ -4,7 +4,20 @@ title: Firecrawl — Snippets & Cheat Sheet
 description: Copy-paste commands for deploying the stack, calling the v2 API, using the CLI/SDK, and wiring SearXNG + the :4000 AI proxy.
 resource: https://github.com/firecrawl/firecrawl
 tags: [firecrawl, snippets, cheat-sheet, api, cli, self-hosting]
-timestamp: 2026-07-09T00:43:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:43:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:43:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: api-reference
+    resource: "api-reference.md"
+    title: "API Reference"
+  - id: self-hosting
+    resource: "self-hosting.md"
+    title: "Self-Hosting"
+  - id: cli-skills
+    resource: "cli.md"
+    title: "CLI & Skills"
 ---
 
 # Deploy the stack
@@ -93,9 +106,3 @@ NUQ_BACKEND=fdb docker compose up -d api foundationdb foundationdb-init
 | Search empty | SearXNG down | `docker compose up -d searxng` |
 | Extract 403 | no AI key | set `OPENAI_BASE_URL` + key |
 | Heavy build first run | `build:` images | let `up` compile api/playwright/nuq-postgres |
-
-# Citations
-
-[1] [API Reference](api-reference.md)
-[2] [Self-Hosting](self-hosting.md)
-[3] [CLI & Skills](cli.md)

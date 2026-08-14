@@ -4,7 +4,27 @@ title: Architecture
 description: Meta-documentation for scaling this knowledge base's search across text, code, and images — search backend (Vespa vs Weaviate), agent memory (Graphiti vs Mem0), and the agentic system blueprint.
 resource: https://vespa.ai/
 tags: [architecture, search, memory, graph, knowledge-base]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: vespa
+    resource: "https://vespa.ai/"
+    title: "Vespa"
+    author: "site:vespa.ai"
+  - id: weaviate
+    resource: "https://weaviate.io/"
+    title: "Weaviate"
+    author: "site:weaviate.io"
+  - id: graphiti
+    resource: "https://github.com/getzep/graphiti"
+    title: "Graphiti"
+    author: "site:github.com"
+  - id: mem0
+    resource: "https://mem0.ai/"
+    title: "Mem0"
+    author: "site:mem0.ai"
 ---
 
 # Architecture
@@ -45,10 +65,3 @@ Agents (Hermes / OpenCode) query the backend
 * **Memory:** Graphiti vs Mem0.
 
 Other engines (Qdrant, Milvus, pgvector, LanceDB) and parsers (Docling/Marker) are deferred — see each section's comparison for why these two were chosen first.
-
-# Citations
-
-[1] [Vespa](https://vespa.ai/)
-[2] [Weaviate](https://weaviate.io/)
-[3] [Graphiti](https://github.com/getzep/graphiti)
-[4] [Mem0](https://mem0.ai/)

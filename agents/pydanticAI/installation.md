@@ -4,7 +4,23 @@ title: PydanticAI Installation
 description: Install PydanticAI — uv add pydantic-ai / pip install; version v2.29.0, Python 3.10+, pin pydantic>=2.12; verify with a minimal agent.
 resource: https://pydantic.dev/docs/ai/overview/install/
 tags: [pydantic, ai, installation, pip, uv]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: pydanticai-install-guide
+    resource: "https://pydantic.dev/docs/ai/overview/install/"
+    title: "PydanticAI install guide"
+    author: "site:pydantic.dev"
+  - id: pydanticai-on-pypi
+    resource: "https://pypi.org/project/pydantic-ai/"
+    title: "PydanticAI on PyPI"
+    author: "site:pypi.org"
+  - id: pydanticai-github
+    resource: "https://github.com/pydantic/pydantic-ai"
+    title: "PydanticAI GitHub"
+    author: "site:github.com"
 ---
 
 # Installation
@@ -41,9 +57,3 @@ print(agent.run_sync("hi").output)
 ## Status here
 
 No dedicated checkout in `programs/` — PydanticAI is a library used from the `pydantic` program context (`programs/pydantic/.venv`, pydantic 2.13.4). Not a running service.
-
-# Citations
-
-[1] [PydanticAI install guide](https://pydantic.dev/docs/ai/overview/install/)
-[2] [PydanticAI on PyPI](https://pypi.org/project/pydantic-ai/)
-[3] [PydanticAI GitHub](https://github.com/pydantic/pydantic-ai)

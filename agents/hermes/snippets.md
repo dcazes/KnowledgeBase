@@ -4,7 +4,27 @@ title: Hermes — Snippets Cheat Sheet
 description: Copy-paste commands for launching Hermes, editing config, connecting the browser, listing cron jobs, locating skills, and managing toolsets.
 resource: https://hermes-agent.nousresearch.com
 tags: [hermes, snippets, cheat-sheet, cli, config, browser, cron, skills, toolsets]
-timestamp: 2026-07-09T03:27:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:27:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:27:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: hermes-setup-note-vault
+    resource: "/../../vault/03%20-%20Reference/Hermes%20Setup.md"
+    title: "Hermes — setup note (vault)"
+  - id: hermes-nous-research
+    resource: "https://hermes-agent.nousresearch.com"
+    title: "Hermes (Nous Research)"
+    author: "site:hermes-agent.nousresearch.com"
+  - id: configuration
+    resource: "configuration.md"
+    title: "Configuration"
+  - id: browser
+    resource: "browser.md"
+    title: "Browser"
+  - id: skills-plugins
+    resource: "skills-plugins.md"
+    title: "Skills & Plugins"
 ---
 
 # Launch
@@ -66,11 +86,3 @@ Enabled here: `browser, clarify, code_execution, computer_use, context_engine, c
 ```bash
 curl -s http://127.0.0.1:9222/json/version   # Chromium debugger up
 ```
-
-# Citations
-
-[1] [Hermes — setup note (vault)](/../../vault/03%20-%20Reference/Hermes%20Setup.md)
-[2] [Hermes (Nous Research)](https://hermes-agent.nousresearch.com)
-[3] [Configuration](configuration.md)
-[4] [Browser](browser.md)
-[5] [Skills & Plugins](skills-plugins.md)

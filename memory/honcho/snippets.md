@@ -4,7 +4,19 @@ title: Honcho Snippets
 description: Honcho cheat sheet — install SDK, peers/sessions/messages, query context via peer.chat, conclusions, TS SDK (@honcho-ai/sdk), server startup.
 resource: https://docs.honcho.dev
 tags: [honcho, snippets, cheat-sheet]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: honcho-docs-quickstart
+    resource: "https://docs.honcho.dev"
+    title: "Honcho docs — quickstart"
+    author: "site:docs.honcho.dev"
+  - id: honcho-github
+    resource: "https://github.com/plastic-labs/honcho"
+    title: "Honcho GitHub"
+    author: "site:github.com"
 ---
 
 # Snippets
@@ -69,8 +81,3 @@ session.addPeers([alice]);
 session.addMessages([alice.message("Hello!")]);
 const resp = await alice.chat("What did they say?", { session });
 ```
-
-# Citations
-
-[1] [Honcho docs — quickstart](https://docs.honcho.dev)
-[2] [Honcho GitHub](https://github.com/plastic-labs/honcho)

@@ -4,7 +4,19 @@ title: Ollama Overview
 description: What Ollama is — model registry pull/run, OpenAI-compatible REST API on :11434, embeddings endpoint, GPU/CPU support.
 resource: https://docs.ollama.com
 tags: [ollama, overview, llm, api]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: ollama-docs-api
+    resource: "https://docs.ollama.com/api"
+    title: "Ollama docs — API"
+    author: "site:docs.ollama.com"
+  - id: ollama-github
+    resource: "https://github.com/ollama/ollama"
+    title: "Ollama GitHub"
+    author: "site:github.com"
 ---
 
 # Overview
@@ -28,8 +40,3 @@ Ollama is the easiest way to run open-weight LLMs locally: `ollama pull llama3.1
 ## Why it fits this stack
 
 Single local inference point for [Mem0](../../memory/mem0/index.md), [LightRAG](../../memory/lightrag/index.md), [AnythingLLM](../../apps/anythingllm/index.md), [OpenWebUI](../../apps/openwebui/index.md), and the [agent stack](../../agents/agent-stack/index.md) (via LiteLLM proxy) — no cloud keys, `:11434` shared.
-
-# Citations
-
-[1] [Ollama docs — API](https://docs.ollama.com/api)
-[2] [Ollama GitHub](https://github.com/ollama/ollama)

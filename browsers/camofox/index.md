@@ -4,7 +4,18 @@ title: Camofox
 description: A local browser server built on Camoufox (anti-detection Firefox fork) that gives AI agents a headed, stealthy browser with a watchable UI and opt-in VNC.
 resource: https://github.com/daijro/camoufox
 tags: [camofox, camoufox, browser, anti-detection, automation, hermes]
-timestamp: 2026-08-12T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-08
+sources:
+  - id: camoufox-upstream
+    resource: "https://github.com/daijro/camoufox"
+    title: "Camoufox (upstream)"
+    author: "site:github.com"
+  - id: local-launcher-programs-camofox-launcher-desktop
+    resource: "/../../programs/Camofox%20Launcher.desktop"
+    title: "Local launcher - programs/Camofox Launcher.desktop"
 ---
 
 # Camofox
@@ -42,8 +53,3 @@ A **local browser server** powered by [Camoufox](https://github.com/daijro/camou
 ## Last verified
 
 **2026-08-12** — Launch command, image tag, ports, and Hermes integration verified against local launcher and upstream Camoufox docs. jo-inc v1.6.0; VNC opt-in via ENABLE_VNC=1; currently exited (crash).
-
-# Citations
-
-[1] [Camoufox (upstream)](https://github.com/daijro/camoufox)
-[2] [Local launcher - programs/Camofox Launcher.desktop](/../../programs/Camofox%20Launcher.desktop)

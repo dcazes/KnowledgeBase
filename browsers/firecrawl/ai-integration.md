@@ -4,7 +4,21 @@ title: Firecrawl — AI Integration
 description: How Firecrawl plugs into the agent stack — SearXNG as its search backend, and agents/MCP/Graphify consuming its API.
 resource: https://github.com/firecrawl/firecrawl
 tags: [firecrawl, integration, searxng, agents, mcp, graphify, ai]
-timestamp: 2026-07-09T00:41:00Z
+generated: { by: "human:daniel", at: "2026-07-09T00:41:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T00:41:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: searxng-ai-integration
+    resource: "../../runtime/searxng/ai-integration.md"
+    title: "SearXNG AI Integration"
+  - id: firecrawl-cli-skills
+    resource: "cli.md"
+    title: "Firecrawl CLI/skills"
+  - id: graphify-ai-integration
+    resource: "https://github.com/Graphify-Labs/graphify"
+    title: "Graphify AI Integration"
+    author: "site:github.com"
 ---
 
 # The search backend: SearXNG
@@ -67,9 +81,3 @@ This keeps extraction consistent with the rest of the stack (cloud inference, no
 | Search returns nothing | SearXNG down | `docker compose up -d searxng` |
 | Extract fails | no AI backend | set `OPENAI_BASE_URL` + key |
 | Agent 403 | auth on | set `USE_DB_AUTHENTICATION=false` for local |
-
-# Citations
-
-[1] [SearXNG AI Integration](../../runtime/searxng/ai-integration.md)
-[2] [Firecrawl CLI/skills](cli.md)
-[3] [Graphify AI Integration](https://github.com/Graphify-Labs/graphify)

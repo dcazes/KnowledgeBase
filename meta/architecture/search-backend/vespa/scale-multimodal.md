@@ -4,7 +4,26 @@ title: Vespa — Scale & Multimodal
 description: Vespa at billion-scale and how text, code, and image modalities are represented as vectors/fields for unified retrieval.
 resource: https://vespa.ai/vector-database/
 tags: [vespa, scale, billion, multimodal, text, code, image, embedding]
-timestamp: 2026-07-09T06:02:00Z
+generated: { by: "human:daniel", at: "2026-07-09T06:02:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T06:02:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: vespa-scale
+    resource: "https://vespa.ai/vector-database/"
+    title: "Vespa scale"
+    author: "site:vespa.ai"
+  - id: code-rag-ast-chunking
+    resource: "https://www.lancedb.com/blog/building-rag-on-codebases-part-2"
+    title: "Code RAG — AST chunking"
+    author: "site:www.lancedb.com"
+  - id: colpali-late-interaction
+    resource: "https://huggingface.co/blog/manu/colpali"
+    title: "ColPali late interaction"
+    author: "site:huggingface.co"
+  - id: architecture-overview
+    resource: "/../../index.md"
+    title: "Architecture overview"
 ---
 
 # Scale
@@ -26,10 +45,3 @@ Key point: **code must be chunked structurally** (function/class units via AST),
 # Unified query across modalities
 
 Because all signals are fields in one schema, a single query can rank text, code, and image hits together (weighted by your ranking function).
-
-# Citations
-
-[1] [Vespa scale](https://vespa.ai/vector-database/)
-[2] [Code RAG — AST chunking](https://www.lancedb.com/blog/building-rag-on-codebases-part-2)
-[3] [ColPali late interaction](https://huggingface.co/blog/manu/colpali)
-[4] [Architecture overview](/../../index.md)

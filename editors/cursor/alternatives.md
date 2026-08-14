@@ -4,7 +4,23 @@ title: Cursor Alternatives
 description: How Cursor compares to Windsurf, VSCode, OpenCode, Zed, and Claude Code — with a pros/cons breakdown.
 resource: https://cursor.com/
 tags: [cursor, alternatives, windsurf, vscode, opencode, zed, claude-code]
-timestamp: 2026-07-09T04:00:00Z
+generated: { by: "human:daniel", at: "2026-07-09T04:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T04:00:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: cursor
+    resource: "https://cursor.com/"
+    title: "Cursor"
+    author: "site:cursor.com"
+  - id: cursor-docs
+    resource: "https://docs.cursor.com/"
+    title: "Cursor Docs"
+    author: "site:docs.cursor.com"
+  - id: windsurf
+    resource: "https://windsurf.com/"
+    title: "Windsurf"
+    author: "site:windsurf.com"
 ---
 
 # Cursor Alternatives
@@ -54,9 +70,3 @@ Cursor sits in a crowded field of AI-assisted editors and coding agents. The tab
 - Want maximum control / local models / terminal workflow → **OpenCode** or **Claude Code**.
 - Want a neutral baseline editor → **VSCode**.
 - Want speed and minimalism → **Zed**.
-
-# Citations
-
-[1] [Cursor](https://cursor.com/)
-[2] [Cursor Docs](https://docs.cursor.com/)
-[3] [Windsurf](https://windsurf.com/)

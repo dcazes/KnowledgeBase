@@ -4,7 +4,19 @@ title: Supermemory Alternatives
 description: Supermemory vs Rewind, Recall, Mem0/MemOS, Obsidian — personal AI memory apps vs developer memory; fit for this machine.
 resource: https://supermemory.ai
 tags: [supermemory, alternatives, rewind, comparison]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: supermemory
+    resource: "https://supermemory.ai"
+    title: "Supermemory"
+    author: "site:supermemory.ai"
+  - id: supermemory-github
+    resource: "https://github.com/supermemoryai/supermemory"
+    title: "Supermemory GitHub"
+    author: "site:github.com"
 ---
 
 # Alternatives
@@ -24,8 +36,3 @@ timestamp: 2026-08-13T00:00:00Z
 * **Agent/developer memory** → Mem0/MemOS/Graphiti.
 * **Structured personal knowledge base** → Obsidian (this vault).
 * **Everything-captured (visual)** → Rewind.
-
-# Citations
-
-[1] [Supermemory](https://supermemory.ai)
-[2] [Supermemory GitHub](https://github.com/supermemoryai/supermemory)

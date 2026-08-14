@@ -4,7 +4,19 @@ title: LightRAG Configuration
 description: Configure LightRAG — working dir, LLM/embedding providers (Ollama/OpenAI/Claude), storage backends via env, chunking settings, query modes.
 resource: https://lightrag.readthedocs.io/en/latest/
 tags: [lightrag, configuration, env, ollama, storage]
-timestamp: 2026-08-13T00:00:00Z
+generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
+verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+status: stable
+stale_after: 2027-02-09
+sources:
+  - id: lightrag-docs-configuration
+    resource: "https://lightrag.readthedocs.io/en/latest/"
+    title: "LightRAG docs — configuration"
+    author: "site:lightrag.readthedocs.io"
+  - id: lightrag-github-env-example
+    resource: "https://github.com/HKUDS/LightRAG"
+    title: "LightRAG GitHub — .env.example"
+    author: "site:github.com"
 ---
 
 # Configuration
@@ -55,8 +67,3 @@ CHUNK_OVERLAP_TOKEN_SIZE = 100
 ## Query modes
 
 `mode` in the query API: `naive` (keyword only), `local` (low-level), `global` (high-level), `hybrid` (default, both).
-
-# Citations
-
-[1] [LightRAG docs — configuration](https://lightrag.readthedocs.io/en/latest/)
-[2] [LightRAG GitHub — .env.example](https://github.com/HKUDS/LightRAG)

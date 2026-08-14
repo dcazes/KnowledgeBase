@@ -4,7 +4,31 @@ title: OpenCode Alternatives
 description: Comparison of OpenCode against Hermes, Cursor, Windsurf, Aider, Claude Code, and Codex CLI — with a feature table and pros/cons.
 resource: https://opencode.ai/docs
 tags: [opencode, alternatives, cursor, windsurf, aider, claude-code, codex-cli, hermes]
-timestamp: 2026-07-09T03:25:00Z
+generated: { by: "human:daniel", at: "2026-07-09T03:25:00Z" }
+verified: [ { by: "human:daniel", at: "2026-07-09T03:25:00Z" } ]
+status: stable
+stale_after: 2027-01-05
+sources:
+  - id: opencode-documentation
+    resource: "https://opencode.ai/docs"
+    title: "OpenCode Documentation"
+    author: "site:opencode.ai"
+  - id: opencode-github-repository-anomalyco
+    resource: "https://github.com/anomalyco/opencode"
+    title: "OpenCode GitHub repository (anomalyco)"
+    author: "site:github.com"
+  - id: aider
+    resource: "https://aider.chat"
+    title: "Aider"
+    author: "site:aider.chat"
+  - id: claude-code
+    resource: "https://docs.anthropic.com/en/docs/claude-code"
+    title: "Claude Code"
+    author: "site:docs.anthropic.com"
+  - id: codex-cli
+    resource: "https://github.com/openai/codex"
+    title: "Codex CLI"
+    author: "site:github.com"
 ---
 
 # OpenCode Alternatives
@@ -52,10 +76,3 @@ A comparison of OpenCode with other AI coding agents.
 ## When to choose OpenCode
 
 Pick OpenCode when you want an open-source, terminal-native, supervised agent with full per-project config and local-model support — and you pair it with Hermes for background work.
-
-# Citations
-[1] [OpenCode Documentation](https://opencode.ai/docs)
-[2] [OpenCode GitHub repository (anomalyco)](https://github.com/anomalyco/opencode)
-[3] [Aider](https://aider.chat)
-[4] [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
-[5] [Codex CLI](https://github.com/openai/codex)
