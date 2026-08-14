@@ -39,7 +39,7 @@ This directory is the OKF knowledge base for the Antigravity 2.0 program. Conten
 - [Installation](installation.md) — downloading the desktop app, signing in, the Antigravity CLI
 - [Agents](agents.md) — agent orchestration model, Managed Agents API, isolated Linux sandbox, trust/verification model
 - [AI Integration](ai-integration.md) — Gemini models, Managed Agents API, how it relates to the rest of the user's stack
-- [Alternatives](alternatives.md) — comparison vs Cursor, Windsurf, OpenCode, Claude Code, Copilot/VS Code
+- [Alternatives](../alternatives.md) — comparison vs Cursor, Windsurf, OpenCode, Claude Code, Copilot/VS Code
 - [Snippets](snippets.md) — download/sign-in, CLI basics, migration-from-Gemini-CLI cheat sheet
 
 ## Instance facts

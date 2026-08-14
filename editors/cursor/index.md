@@ -31,7 +31,7 @@ This knowledge base section documents what Cursor is, how to install it, its cor
 - [Installation](installation.md) — download, sign in, and verify.
 - [Features](features.md) — Tab completion, Cmd-K, Chat, Agent mode, Background Agents, Bugbot, model support, Privacy Mode.
 - [AI Integration](ai-integration.md) — MCP support and the relationship to other stack agents/editors.
-- [Alternatives](alternatives.md) — Cursor vs Windsurf, VSCode, OpenCode, Zed, Claude Code.
+- [Alternatives](../alternatives.md) — Cursor vs Windsurf, VSCode, OpenCode, Zed, Claude Code.
 - [Snippets](snippets.md) — quick-start, Agent mode usage, MCP config, cheat sheet.
 
 ## Instance facts

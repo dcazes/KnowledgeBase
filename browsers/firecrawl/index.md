@@ -35,7 +35,7 @@ Open-source **web context API** to search, scrape, crawl, and extract the web in
 * [CLI](cli.md) - firecrawl-cli + firecrawl-skills
 * [Self-Hosting](self-hosting.md) - compose, env vars, SearXNG wiring, limitations
 * [AI Integration](ai-integration.md) - SearXNG search backend, agents/MCP
-* [Alternatives](alternatives.md) - ScraperAPI, Crawl4AI, Playwright, Apify, Jina AI
+* [Alternatives](../alternatives.md) - ScraperAPI, Crawl4AI, Playwright, Apify, Jina AI
 * [Snippets](snippets.md) - copy-paste cheat sheet
 
 ## Instance facts (from local compose + SELF_HOST.md)

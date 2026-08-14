@@ -36,7 +36,7 @@ Local checkout: `programs/hindsight` (git, vectorize-io, main, commit 2026-07-17
 * [Configuration](configuration.md) — control plane + API settings, model config, persistence
 * [AI Integration](ai-integration.md) — agent SDK/clients, skills, integrations, vs Graphiti/Mem0
 * [Snippets](snippets.md) — CLI, client calls, API probes cheat sheet
-* [Alternatives](alternatives.md) — Graphiti, Mem0, MemOS, Zep, LangMem vs Hindsight
+* [Alternatives](../alternatives.md) — Graphiti, Mem0, MemOS, Zep, LangMem vs Hindsight
 
 ## Related
 

@@ -28,7 +28,7 @@ A **Zero Trust, identity-based connectivity platform** that builds a private mes
 * [Installation](installation.md) - install the client, `tailscale up`, auth
 * [Concepts](concepts.md) - tailnet, WireGuard, MagicDNS, DERP, ACLs, exit nodes, funnel
 * [AI Integration](ai-integration.md) - secure access to your AI stack + Aperture
-* [Alternatives](alternatives.md) - WireGuard, Headscale, ZeroTier, OpenVPN, Cloudflare Tunnel
+* [Alternatives](../alternatives.md) - WireGuard, Headscale, ZeroTier, OpenVPN, Cloudflare Tunnel
 * [Snippets](snippets.md) - cheat sheet
 
 ## Instance facts

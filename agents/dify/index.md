@@ -35,7 +35,7 @@ Open-source **LLM application development platform** — visual AI workflows, RA
 * [Workflows & Agents](workflows-agents.md) - visual canvas, agent types, 50+ tools
 * [Model Providers](model-providers.md) - connecting LLMs (incl. your :4000 OpenRouter proxy)
 * [API](api.md) - Backend-as-a-Service endpoints + API keys
-* [Alternatives](alternatives.md) - Flowise, n8n, LangChain, AnythingLLM, OpenWebUI
+* [Alternatives](../alternatives.md) - Flowise, n8n, LangChain, AnythingLLM, OpenWebUI
 * [Snippets](snippets.md) - deploy + common tasks cheat sheet
 
 ## Instance facts (from local source)

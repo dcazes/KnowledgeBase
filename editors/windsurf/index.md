@@ -33,7 +33,7 @@ Windsurf (now **Devin Desktop**, rebranded by Cognition effective 2026-06-02) is
 * [Installation](installation.md) - download, login, verify
 * [Features](features.md) - Cascade, SWE-1, flows, command mode
 * [AI Integration](ai-integration.md) - MCP, your stack tools
-* [Alternatives](alternatives.md) - Cursor, VSCode, OpenCode, Zed
+* [Alternatives](../alternatives.md) - Cursor, VSCode, OpenCode, Zed
 * [Snippets](snippets.md) - cheat sheet
 
 ## Instance facts

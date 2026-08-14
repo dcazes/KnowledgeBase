@@ -31,7 +31,7 @@ Local state: `programs/supermemory/.supermemory/` — **app data only, no source
 * [Installation](installation.md) — desktop app install; what `.supermemory/` shows; no source checkout here
 * [Configuration](configuration.md) — api-key / auth-secret / env.enc, local embedding models, pglite storage
 * [AI Integration](ai-integration.md) — answering from memory, browser extension capture, vs local memory stack
-* [Alternatives](alternatives.md) — Rewind, Rewind.ai, Mem0/MemOS, Recall, vs Supermemory
+* [Alternatives](../alternatives.md) — Rewind, Rewind.ai, Mem0/MemOS, Recall, vs Supermemory
 
 ## Related
 

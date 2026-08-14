@@ -41,7 +41,7 @@ A **memory operating system** for LLM agents — unifies store / retrieve / mana
 * [Benchmarks](benchmarks.md) — OmniMemEval scores (LoCoMo 88.83, LongMemEval 89.20), small-model caveat, vs Mem0/Graphiti/EverOS
 * [AI Integration](ai-integration.md) — MCP server for Hermes/OpenCode/Cursor; pairs with Graphiti; official Hermes & OpenClaw local plugins
 * [Snippets](snippets.md) — install / serve / API calls / Python `MOS` usage cheat sheet
-* [Alternatives](alternatives.md) — Graphiti, Mem0, Zep, LangMem vs MemOS
+* [Alternatives](../alternatives.md) — Graphiti, Mem0, Zep, LangMem vs MemOS
 
 ## Instance facts (from config, not live state)
 

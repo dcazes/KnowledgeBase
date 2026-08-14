@@ -35,7 +35,7 @@ A Python library for **AI-oriented agent development** from the pydantic team. T
 * [Configuration](configuration.md) — model providers, `Agent(...)` setup, environment, tools
 * [AI Integration](ai-integration.md) — typed output contracts, tools/MCP, model-agnostic wiring for this stack
 * [Snippets](snippets.md) — agent definition, structured output, tool use, streaming cheat sheet
-* [Alternatives](alternatives.md) — LangChain/LangGraph, LlamaIndex, OpenAI Agents SDK, Instructor vs PydanticAI
+* [Alternatives](../alternatives.md) — LangChain/LangGraph, LlamaIndex, OpenAI Agents SDK, Instructor vs PydanticAI
 
 > **Note:** full 7-doc set completed 2026-08-13 (previously a 2-doc minimal stub).
 

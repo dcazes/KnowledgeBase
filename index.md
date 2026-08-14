@@ -1,7 +1,7 @@
 ---
 type: Hub
 title: Software Knowledge Base
-description: OKF (v0.1) bundle of 297 structured notes across 36 programs — the local `programs/` stack, editors, memory/graph engines, agent frameworks, and architecture meta-docs. Cross-linked index of every concept group.
+description: OKF v0.2 bundle of 272 structured notes across 36 programs — the local `programs/` stack, editors, memory/graph engines, agent frameworks, and architecture meta-docs. Cross-linked index of every concept group.
 resource: file:///home/daniel/Desktop/kbv2
 tags: [knowledge-base, okf, programs, index, hub]
 generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
@@ -62,44 +62,58 @@ An Open Knowledge Format (OKF v0.2) bundle of structured notes on the software i
 | Program | Docs | Status |
 |---------|------|--------|
 | Docker | 9 | ✅ |
-| SearXNG | 10 | ✅ |
+| SearXNG | 9 | ✅ |
 | Architecture | 15 | ✅ |
-| Graphify | 9 | ✅ |
-| Graphiti | 10 | ✅ |
-| MemOS | 8 | ✅ (NEW) |
-| Firecrawl | 16 | ✅ (per-subservice) |
-| Dify | 12 | ✅ |
-| Camofox | 8 | ✅ |
-| CloakBrowser | 7 | ✅ |
-| OpenWebUI | 10 | ✅ |
-| PydanticAI | 8 | ✅ (NEW) |
+| Graphify | 8 | ✅ |
+| Graphiti | 9 | ✅ |
+| MemOS | 7 | ✅ (NEW) |
+| Firecrawl | 15 | ✅ (per-subservice) |
+| Dify | 11 | ✅ |
+| Camofox | 7 | ✅ |
+| CloakBrowser | 6 | ✅ |
+| OpenWebUI | 9 | ✅ |
+| PydanticAI | 7 | ✅ (NEW) |
 | Agent Stack | 7 | ✅ (NEW) |
-| VSCode | 7 | ✅ |
-| Tailscale | 7 | ✅ |
-| AnythingLLM | 9 | ✅ |
-| Frigate | 9 | ✅ |
-| Obsidian | 8 | ✅ |
-| Antigravity | 7 | ✅ |
-| Cursor | 7 | ✅ |
-| Hermes | 9 | ✅ |
-| OpenClaw | 7 | ✅ |
-| OpenCode | 8 | ✅ |
-| Windsurf | 7 | ✅ |
-| Mem0 | 7 | ✅ (NEW, P3) |
-| LightRAG | 7 | ✅ (NEW, P3) |
-| Ollama | 7 | ✅ (NEW, P3) |
-| Cognee | 7 | ✅ (NEW, P3) |
-| Honcho | 7 | ✅ (NEW, P3) |
-| Supermemory | 6 | ✅ (NEW, P3) |
-| SurfSense | 7 | ✅ (NEW, P3, live) |
-| Hindsight | 7 | ✅ (NEW, P3) |
-| OpenConcho | 7 | ✅ (NEW, P3) |
-| Pydantic | 7 | ✅ (NEW, P3) |
-| Space Agent | 7 | ✅ (NEW, P3) |
+| VSCode | 6 | ✅ |
+| Tailscale | 6 | ✅ |
+| AnythingLLM | 8 | ✅ |
+| Frigate | 8 | ✅ |
+| Obsidian | 7 | ✅ |
+| Antigravity | 6 | ✅ |
+| Cursor | 6 | ✅ |
+| Hermes | 8 | ✅ |
+| OpenClaw | 6 | ✅ |
+| OpenCode | 7 | ✅ |
+| Windsurf | 6 | ✅ |
+| Mem0 | 6 | ✅ (NEW, P3) |
+| LightRAG | 6 | ✅ (NEW, P3) |
+| Ollama | 6 | ✅ (NEW, P3) |
+| Cognee | 6 | ✅ (NEW, P3) |
+| Honcho | 6 | ✅ (NEW, P3) |
+| Supermemory | 5 | ✅ (NEW, P3) |
+| SurfSense | 6 | ✅ (NEW, P3, live) |
+| Hindsight | 6 | ✅ (NEW, P3) |
+| OpenConcho | 6 | ✅ (NEW, P3) |
+| Pydantic | 6 | ✅ (NEW, P3) |
+| Space Agent | 6 | ✅ (NEW, P3) |
 | Philosophy | 3 | ✅ (NEW, P3 seed) |
 
-**Total: 293 program docs across 36 programs** (297 md files in the vault — the +4 are the root `index.md`, `IDEA.md`, `AGENTS.md`, and the `.slim/` refresh tracker, which are not program docs). Every concept doc carries OKF `type` frontmatter; every doc lists official/trusted sources in a `sources:` frontmatter block. Backlink audit (2026-08-13): 0 broken links, 0 duplicate basenames.
+**Total: 261 program docs across 36 programs** (272 md files in the vault — the +11 are 7 category-level `alternatives.md` comparison docs, the root `index.md`, `IDEA.md`, `AGENTS.md`, and the `.slim/` refresh tracker, none of which are program docs). Every concept doc carries OKF `type` frontmatter; every doc lists official/trusted sources in a `sources:` frontmatter block. Backlink audit (2026-08-13, post-alternatives-consolidation): 0 broken links.
 
+
+## Category alternatives
+
+Cross-program comparison docs — each consolidates the former per-program `alternatives.md` into one editorial comparison:
+
+* [Runtime](runtime/alternatives.md)
+* [Memory](memory/alternatives.md)
+* [Browsers](browsers/alternatives.md)
+* [Agents](agents/alternatives.md)
+* [Apps](apps/alternatives.md)
+* [Editors](editors/alternatives.md)
+* [Tools](tools/alternatives.md)
 ## Last verified
 
 **2026-08-13** — Root index rebuilt after the 2026-08-12 deep refresh (P1–P2) and Oracle gate-2 review: counts corrected, ports/ownership facts aligned (SearXNG 8088, OpenWebUI 3001, Antigravity cloud, Windsurf→Devin), MemOS/PydanticAI/Agent Stack rows added. **P3 (2026-08-13)**: 12 program folders added (Mem0, LightRAG, Ollama, Cognee, Honcho, Supermemory, SurfSense, Hindsight, OpenConcho, Pydantic, Space Agent, Philosophy), PydanticAI expanded 2→8; total 293 program docs across 36 programs. **Gate-3 fixes (2026-08-13)**: Honcho/OpenConcho/Hindsight install facts corrected to verified SDK/distribution reality; PydanticAI advisory + Python req + version corrected; Mem0 pinned to PyPI 2.0.18; SurfSense ports marked internal-vs-published.
+
+**Consolidation + graph pass (2026-08-13)**: 32 per-program `alternatives.md` merged into 7 category-level editorial comparison docs; 163 standard-doc H1 titles prefixed with program name for distinct Obsidian graph nodes; root build table + totals updated (261 program docs / 272 vault md).

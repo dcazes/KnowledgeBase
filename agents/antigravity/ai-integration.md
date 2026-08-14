@@ -64,5 +64,5 @@ The user's existing coding-agent stack is largely **local-first**, which is the 
 ## Related
 
 - [Agents](agents.md)
-- [Alternatives](alternatives.md)
+- [Alternatives](../alternatives.md)
 - Cross-program: [OpenCode](/../../opencode/index.md), [Hermes](/../../hermes/index.md)

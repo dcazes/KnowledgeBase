@@ -36,7 +36,7 @@ On this machine: system python has **pydantic 2.9.0**; the `programs/pydantic/.v
 * [Configuration](configuration.md) — model_config, Field constraints, validators, Settings
 * [AI Integration](ai-integration.md) — schemas as agent contracts with PydanticAI; template usage
 * [Snippets](snippets.md) — BaseModel, Field, validators, model_dump/validate, Settings cheat sheet
-* [Alternatives](alternatives.md) — attrs/cattrs, dataclasses, marshmallow, TypedDict vs Pydantic
+* [Alternatives](../alternatives.md) — attrs/cattrs, dataclasses, marshmallow, TypedDict vs Pydantic
 
 ## Related
 

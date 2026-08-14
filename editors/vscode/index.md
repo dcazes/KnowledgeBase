@@ -28,7 +28,7 @@ A free, **open-source AI code editor** (Microsoft's VS Code, built on the Code-O
 * [Installation](installation.md) - install + launch via `code`, CLI flags
 * [AI Features](ai-features.md) - Copilot, Agent Mode, chat, MCP
 * [Workflow](workflow.md) - editing programs/* repos and authoring agent skills
-* [Alternatives](alternatives.md) - Cursor, Neovim, JetBrains, Zed
+* [Alternatives](../alternatives.md) - Cursor, Neovim, JetBrains, Zed
 * [Snippets](snippets.md) - cheat sheet
 
 ## Instance facts (this machine)

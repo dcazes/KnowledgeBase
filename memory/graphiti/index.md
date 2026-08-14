@@ -40,7 +40,7 @@ A framework for building and querying **temporal context graphs** for AI agents 
 * [MCP Server](mcp-server.md) - MCP server (Docker) for Claude/Cursor
 * [Graphiti vs Graphify](vs-graphify.md) - explicit distinction
 * [AI Integration](ai-integration.md) - agent memory, your stack, :4000 proxy
-* [Alternatives](alternatives.md) - GraphRAG, Zep, Graphify, Mem0
+* [Alternatives](../alternatives.md) - GraphRAG, Zep, Graphify, Mem0
 * [Snippets](snippets.md) - cheat sheet
 
 ## Instance facts (this machine)

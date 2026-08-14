@@ -36,7 +36,7 @@ Local checkout: `programs/honcho` (git, plastic-labs, main, commit 2026-07-21) a
 * [Configuration](configuration.md) — API keys (Anthropic/OpenAI), workspace setup, session metadata
 * [AI Integration](ai-integration.md) — Python/TS SDK patterns, session init/message flow, agent wiring, vs Mem0/MemOS
 * [Snippets](snippets.md) — init session / send messages / get persona / state transitions cheat sheet
-* [Alternatives](alternatives.md) — Mem0, MemOS, Graphiti, Zep vs Honcho
+* [Alternatives](../alternatives.md) — Mem0, MemOS, Graphiti, Zep vs Honcho
 
 ## Related
 

@@ -31,7 +31,7 @@ Self-hosted AI chat platform (served on `:3001`); RAG + web search. Documented h
 * [RAG](rag.md) - document ingestion, chunking, retrieval
 * [Configuration](configuration.md) - env vars, auth, model config
 * [API](api.md) - REST endpoints, API keys
-* [Alternatives](alternatives.md) - AnythingLLM, LibreChat, ChatGPT-Next-Web
+* [Alternatives](../alternatives.md) - AnythingLLM, LibreChat, ChatGPT-Next-Web
 * [Snippets](snippets.md) - deploy + common tasks cheat sheet
 
 ## Instance facts (from local source)

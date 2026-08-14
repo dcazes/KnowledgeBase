@@ -31,7 +31,7 @@ All-in-one local-first RAG chat app with workspaces and agent skills. Documented
 * [RAG & Embeddings](rag-embeddings.md) - document ingestion, vector stores
 * [Agent Skills](agent-skills.md) - web-search, code, custom skills
 * [AI Integration](ai-integration.md) - SearXNG, Firecrawl, Graphify
-* [Alternatives](alternatives.md) - OpenWebUI, Dify, Chatbox
+* [Alternatives](../alternatives.md) - OpenWebUI, Dify, Chatbox
 * [Snippets](snippets.md) - cheat sheet
 
 ## Instance facts

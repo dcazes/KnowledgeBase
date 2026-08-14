@@ -29,7 +29,7 @@ A **local browser server** powered by [Camoufox](https://github.com/daijro/camou
 * [Usage](usage.md) - API on :9377, noVNC on :6080, driving the browser
 * [Anti-Detection](anti-detection.md) - fingerprint spoofing, captcha handling
 * [AI Integration](ai-integration.md) - Hermes browser backend, agent automation
-* [Alternatives](alternatives.md) - Playwright, Puppeteer, Camoufox raw, Undetected-Chromedriver
+* [Alternatives](../alternatives.md) - Playwright, Puppeteer, Camoufox raw, Undetected-Chromedriver
 * [Snippets](snippets.md) - copy-paste cheat sheet
 
 ## Instance facts (from local launcher + vault notes)

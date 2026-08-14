@@ -33,7 +33,7 @@ A **local-first Markdown knowledge-base / PKM app** (closed-source app, open `.m
 * [Vault Structure](vault-structure.md) - `vault/` layout + `.obsidian/` config
 * [Plugins & Features](plugins-features.md) - core plugins, graph view, links, dataview
 * [AI Integration](ai-integration.md) - Hermes reads vault, Graphify ingest, vs editors
-* [Alternatives](alternatives.md) - Logseq, Joplin, VSCode, Notion
+* [Alternatives](../alternatives.md) - Logseq, Joplin, VSCode, Notion
 * [Snippets](snippets.md) - cheat sheet
 
 ## Instance facts (this machine)

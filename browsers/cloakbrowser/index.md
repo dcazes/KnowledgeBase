@@ -27,7 +27,7 @@ A **stealth / automation browser tool** built on **Chromium** (not Brave). It is
 * [Installation](installation.md) - the desktop launcher / `npx` CLI, the Docker manager, ports
 * [Usage](usage.md) - driving via Playwright/Puppeteer, profiles, agent automation
 * [AI Integration](ai-integration.md) - agent browser backend, relation to Camofox & Firecrawl
-* [Alternatives](alternatives.md) - Camofox, Playwright, Puppeteer, Undetected-Chromedriver
+* [Alternatives](../alternatives.md) - Camofox, Playwright, Puppeteer, Undetected-Chromedriver
 * [Snippets](snippets.md) - copy-paste cheat sheet
 
 ## Instance facts (from local launcher + compose)

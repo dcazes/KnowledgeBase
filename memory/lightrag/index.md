@@ -40,7 +40,7 @@ Local checkout: `programs/LightRAG` (git, HKUDS, main, commit 2026-07-21) at **v
 * [Configuration](configuration.md) — working dir, LLM/embedding providers (Ollama/OpenAI), storage backends, chunk settings
 * [AI Integration](ai-integration.md) — Python API, REST server, MCP-ish wiring into Hermes/OpenCode, vs GraphRAG
 * [Snippets](snippets.md) — insert docs / query / incremental updates / server calls cheat sheet
-* [Alternatives](alternatives.md) — GraphRAG (Microsoft), LlamaIndex, Mem0/MemOS memory graphs, vs LightRAG
+* [Alternatives](../alternatives.md) — GraphRAG (Microsoft), LlamaIndex, Mem0/MemOS memory graphs, vs LightRAG
 
 ## Related
 

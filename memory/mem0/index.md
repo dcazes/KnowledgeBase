@@ -40,7 +40,7 @@ Local checkout: `programs/mem0` (git, mem0ai, main, commit 2026-07-20) at **v2.0
 * [Configuration](configuration.md) — `.env` provider keys, `config.json` vector store / graph store / embedding model, defaults
 * [AI Integration](ai-integration.md) — Python/JS SDKs, OpenMemory API, MCP-ish integration for Hermes/OpenCode, vs MemOS
 * [Snippets](snippets.md) — add / get / search / update memory, scoped searches, OpenMemory HTTP calls
-* [Alternatives](alternatives.md) — MemOS, Graphiti, Zep, LangMem, Mem0 vs each other
+* [Alternatives](../alternatives.md) — MemOS, Graphiti, Zep, LangMem, Mem0 vs each other
 
 ## Related
 

@@ -39,7 +39,7 @@ sources:
 
 * **Tailnet** — your private network of enrolled devices, addressable by stable IPs (`100.x.y.z`) and DNS names.
 * **WireGuard** — the encrypted, point-to-point tunnel protocol under every connection. Each device has a WireGuard key pair; Tailscale manages keys via the coordination server.
-* **Coordination server** — Tailscale's control plane: distributes device public keys, ACLs, and DNS config. (Can be self-hosted with Headscale — see [Alternatives](alternatives.md).)
+* **Coordination server** — Tailscale's control plane: distributes device public keys, ACLs, and DNS config. (Can be self-hosted with Headscale — see [Alternatives](../alternatives.md).)
 * **DERP** — Tailscale's relay servers used when a direct peer-to-peer connection can't be established (strict NAT/firewall). Encrypted; the relay can't read traffic.
 * **MagicDNS** — automatic DNS for tailnet devices (`<hostname>.<user>.ts.net` by default), so you use names, not IPs.
 * **ACLs** — the policy file (`acl` in the admin console) granting least-privilege access by identity/service. Default deny-friendly.

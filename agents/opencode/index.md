@@ -26,7 +26,7 @@ OpenCode terminal AI agent (v1.18.18); skills, tools, delegation. A lightweight 
 * [Configuration](configuration.md) - config.yaml, providers
 * [Hierarchical Structure](hierarchical-structure.md) - project/workspace organization
 * [AI Integration](ai-integration.md) - SearXNG, Graphify, Firecrawl
-* [Alternatives](alternatives.md) - Hermes, OpenClaw, Cursor, Windsurf
+* [Alternatives](../alternatives.md) - Hermes, OpenClaw, Cursor, Windsurf
 * [Snippets](snippets.md) - common tasks cheat sheet
 
 ## Instance facts

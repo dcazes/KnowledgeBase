@@ -31,7 +31,7 @@ Hermes Agent terminal AI (v0.20.0 / CalVer 2026.8.3 "Herald"); skills, tools, cr
 * [Skills & Plugins](skills-plugins.md) - built-in skills, custom skills, delegation
 * [Browser](browser.md) - web browsing capabilities
 * [AI Integration](ai-integration.md) - SearXNG, Graphify, Firecrawl, Obsidian vault
-* [Alternatives](alternatives.md) - OpenCode, OpenClaw, Cursor, Windsurf
+* [Alternatives](../alternatives.md) - OpenCode, OpenClaw, Cursor, Windsurf
 * [Snippets](snippets.md) - common tasks cheat sheet
 
 ## Instance facts (from local config)

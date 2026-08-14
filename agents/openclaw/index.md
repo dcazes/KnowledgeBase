@@ -33,7 +33,7 @@ An **open-source personal AI assistant** and self-hosted gateway (stable v2026.7
 * [Installation](installation.md) - `openclaw onboard`, Windows Hub
 * [Architecture](architecture.md) - gateway, channels, skills, agents
 * [AI Integration](ai-integration.md) - coding agents, MCP, your stack
-* [Alternatives](alternatives.md) - n8n, LangChain, Hermes, Dify
+* [Alternatives](../alternatives.md) - n8n, LangChain, Hermes, Dify
 * [Snippets](snippets.md) - cheat sheet
 
 ## Instance facts
@@ -47,7 +47,7 @@ An **open-source personal AI assistant** and self-hosted gateway (stable v2026.7
 * **Hermes** — can be driven via OpenClaw skills — see [Hermes AI Integration](../hermes/ai-integration.md)
 * **OpenCode** — can be driven via OpenClaw skills — see [OpenCode AI Integration](../opencode/ai-integration.md)
 * **Graphify** — OpenClaw can feed results to Graphify — see [Graphify AI Integration](../../memory/graphify/ai-integration.md)
-* **Dify / n8n** — alternative automation backends — see [Dify Alternatives](../dify/alternatives.md)
+* **Dify / n8n** — alternative automation backends — see [Dify Alternatives](../alternatives.md)
 
 ## Last verified
 

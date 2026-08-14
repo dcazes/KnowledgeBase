@@ -36,7 +36,7 @@ Local checkout: `programs/cognee` (git, topoteretes, main, commit 2026-07-17) at
 * [Configuration](configuration.md) — LLM/embedding providers, graph/vector/relational backends, data dir
 * [AI Integration](ai-integration.md) — Python API (`add/cognify/search`), REST server, agent wiring, vs LightRAG/Graphiti
 * [Snippets](snippets.md) — add data / cognify / search / prune cheat sheet
-* [Alternatives](alternatives.md) — LightRAG, GraphRAG, Graphiti, Mem0 vs Cognee
+* [Alternatives](../alternatives.md) — LightRAG, GraphRAG, Graphiti, Mem0 vs Cognee
 
 ## Related
 

@@ -32,7 +32,7 @@ Local checkout: `programs/openconcho` (git, offendingcommit, main, commit 2026-0
 * [Configuration](configuration.md) — Honcho connection URL(s), multiple instances, browser-only storage
 * [AI Integration](ai-integration.md) — pairing with Honcho, chat-with-memory UX, vs raw SDK
 * [Snippets](snippets.md) — run / add instance / probe cheat sheet
-* [Alternatives](alternatives.md) — Honcho UI-less SDK, OpenMemory (Mem0) UI, custom dashboards
+* [Alternatives](../alternatives.md) — Honcho UI-less SDK, OpenMemory (Mem0) UI, custom dashboards
 
 ## Related
 

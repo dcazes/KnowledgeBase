@@ -50,7 +50,7 @@ Compose at `programs/surfsense/docker-compose.yml` (+ `docker-compose.gpu.yml`, 
 * [Configuration](configuration.md) — `.env` (SURFSENSE_VERSION, keys), ports, volumes
 * [AI Integration](ai-integration.md) — chat + MCP server, agent wiring, querying personal knowledge
 * [Snippets](snippets.md) — status / logs / scrape checks / API probes cheat sheet
-* [Alternatives](alternatives.md) — Obsidian, Supermemory, Mem0/MemOS, Rewind vs SurfSense
+* [Alternatives](../alternatives.md) — Obsidian, Supermemory, Mem0/MemOS, Rewind vs SurfSense
 
 ## Related
 

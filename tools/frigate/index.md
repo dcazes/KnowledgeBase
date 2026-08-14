@@ -33,7 +33,7 @@ An open-source **NVR (Network Video Recorder)** designed for **real-time AI obje
 * [Configuration](configuration.md) - `config.yml` anatomy, go2rtc, detectors, redacted secrets
 * [Cameras](cameras.md) - Reolink camera, detect/record roles
 * [AI Integration](ai-integration.md) - object detection, how it differs from the LLM stack
-* [Alternatives](alternatives.md) - ZoneMinder, Shinobi, Blue Iris, MotionEye
+* [Alternatives](../alternatives.md) - ZoneMinder, Shinobi, Blue Iris, MotionEye
 * [Snippets](snippets.md) - compose/ports/verify cheat sheet
 
 ## Instance facts (this machine, from `programs/frigate/`)

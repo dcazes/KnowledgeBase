@@ -36,7 +36,7 @@ On this machine: only `programs/ollama/docker-compose.yaml` exists (image `ollam
 * [Configuration](configuration.md) — model defaults, OLLAMA_HOST/OLLAMA_MODELS, keep_alive, embeddings
 * [AI Integration](ai-integration.md) — OpenAI-compatible endpoint for LiteLLM/OpenWebUI/Mem0/LightRAG/AnythingLLM; Ollama embeddings
 * [Snippets](snippets.md) — pull / run / list / ps / curl / python cheat sheet
-* [Alternatives](alternatives.md) — llama.cpp, LM Studio, vLLM, GPT4All, LocalAI vs Ollama
+* [Alternatives](../alternatives.md) — llama.cpp, LM Studio, vLLM, GPT4All, LocalAI vs Ollama
 
 ## Related
 

@@ -32,7 +32,7 @@ On this machine: `programs/spaceagent/` is **EMPTY** (no files, no checkout — 
 * [Configuration](configuration.md) — user/groups, admin mode, CUSTOMWARE_PATH, supervised server
 * [AI Integration](ai-integration.md) — live UI/tool building, SKILL.md system, server mode for teams, agent wiring
 * [Snippets](snippets.md) — install / create user / serve / supervise cheat sheet
-* [Alternatives](alternatives.md) — OpenClaw, OpenCode, Hermes, HeyAgent vs Space Agent
+* [Alternatives](../alternatives.md) — OpenClaw, OpenCode, Hermes, HeyAgent vs Space Agent
 
 ## Related
 

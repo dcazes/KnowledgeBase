@@ -31,7 +31,7 @@ An AI coding-assistant **skill** that turns any folder of code, docs, papers, im
 * [MCP Server](mcp-server.md) - `python -m graphify.serve` stdio/http transport, host/port/api-key, agent wiring
 * [Confidence Tags](confidence-tags.md) - `EXTRACTED` / `INFERRED` / `AMBIGUOUS` edge semantics
 * [AI Integration](ai-integration.md) - Hermes, OpenCode, Claude Code, Obsidian vault, the `:4000` OpenRouter proxy tie-in
-* [Alternatives](alternatives.md) - Obsidian (vanilla), Mem0, LangChain graphs, code2flow — and why Graphify is different
+* [Alternatives](../alternatives.md) - Obsidian (vanilla), Mem0, LangChain graphs, code2flow — and why Graphify is different
 * [Snippets](snippets.md) - copy-paste cheat sheet
 
 ## Instance facts (from docs, not live state)

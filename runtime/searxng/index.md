@@ -33,7 +33,7 @@ Privacy-focused, self-hosted **metasearch engine** that aggregates results from 
 * [API](api.md) - JSON/CSV/RSS `/search` API: parameters, response schema, code examples
 * [Syntax](syntax.md) - `!engine` / `!category` / `!language` shortcuts, boolean operators, `site:`/`filetype:`, time filters
 * [AI Integration](ai-integration.md) - Firecrawl, AnythingLLM, Hermes/OpenCode/Graphify, custom scripts
-* [Alternatives](alternatives.md) - LibreX, SearX (upstream), Brave Search API, SerpAPI + pros/cons
+* [Alternatives](../alternatives.md) - LibreX, SearX (upstream), Brave Search API, SerpAPI + pros/cons
 * [Snippets](snippets.md) - deploy / query / config / troubleshoot cheat sheet
 
 ## Instance facts (from config, not live state)
