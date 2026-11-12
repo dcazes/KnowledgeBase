@@ -1,45 +1,42 @@
 ---
-type: Reference
-title: Camofox — Anti-Detection
-description: How Camoufox spoofs browser fingerprints to resist bot detection, and the limits (CAPTCHAs still need human/VNC help).
-resource: https://github.com/daijro/camoufox
-tags: [camofox, anti-detection, fingerprint, captcha, stealth, privacy]
-generated: { by: "human:daniel", at: "2026-07-09T01:03:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T01:03:00Z" } ]
+type: Concept
+title: Camofox Anti-Detection
+description: How Camoufox resists bot detection — spoofing navigator, WebGL, AudioContext, screen and WebRTC values inside Firefox's C++ code rather than with JavaScript stealth patches — plus limits and responsible use.
+resource: https://camoufox.com
+tags: [camofox, camoufox, anti-detection, fingerprinting]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: camoufox-anti-detection-github
+  - id: camoufox-github
     resource: "https://github.com/daijro/camoufox"
-    title: "Camoufox anti-detection (GitHub)"
+    title: "daijro/camoufox on GitHub"
     author: "site:github.com"
-  - id: local-launcher-programs-camofox-launcher-desktop
-    resource: "/../../programs/Camofox%20Launcher.desktop"
-    title: "Local launcher - programs/Camofox Launcher.desktop"
+  - id: camoufox-site
+    resource: "https://camoufox.com"
+    title: "Camoufox documentation"
+    author: "site:camoufox.com"
 ---
 
-# Camofox — The problem Camoufox solves
+# Camofox — Anti-Detection
 
-Automated browsers leak "bot-ness" through dozens of signals: a consistent UA string, missing/forged `navigator` properties, WebGL/Canvas fingerprints that never vary, automation flags (`navigator.webdriver`), and impossible timing. Sites (and their CAPTCHA providers) fingerprint these and block or challenge the client.
+## Why stealth plugins fail
 
-# How Camoufox helps
+Classic stealth plugins patch browser APIs from JavaScript after the page loads. Detection scripts can notice the patches themselves — "stealth plugins become the fingerprint".
 
-Camoufox is a **Firefox fork** with anti-detection patches:
+## Camoufox's approach
 
-* **Fingerprint spoofing** — randomized but internally-consistent fingerprints (screen, timezone, fonts, WebGL/Canvas, etc.) so the browser looks like a real user's.
-* **No automation flags** — removes/cleans the tells Playwright/ Selenium normally set (e.g. `navigator.webdriver`).
-* **Firefox base** — a different fingerprint surface than Chromium, widening coverage.
-* **Consistency** — within a session, the spoofed values stay coherent (no contradiction that betrays a bot).
+Camoufox modifies Firefox **at the C++ implementation level**, so spoofed values (`navigator.hardwareConcurrency`, WebGL renderer strings, AudioContext output, screen geometry, fonts, WebRTC addresses) are what the engine genuinely reports before any page JavaScript runs. Fingerprints are generated to be internally consistent and match real-world device distributions.
 
-# What it does NOT solve
+## Practical limits
 
-* **Hard CAPTCHAs** — when a site still challenges, a human steps in via **noVNC (:6080)** to solve it (see [Usage](usage.md)).
-* **Behavioral analysis** — super-fast/robotic interaction timing can still trip heuristics; pace actions.
-* **IP reputation** — Camofox spoofs the client, not your IP. Pair with a proxy if IP blocking is the issue (separate concern).
+* IP reputation still matters: datacentre IPs are flagged regardless of fingerprint; residential proxies with matching GeoIP help.
+* Behaviour matters: superhuman click speed and navigation patterns are detectable.
+* Firefox has a smaller market share than Chrome, which some systems weigh — [CloakBrowser](../cloakbrowser/index.md) applies the same idea to Chromium.
 
-# Best practices
+> Use anti-detection browsers only where you are allowed to automate: your own sites, sites whose terms permit it, or authorised testing. Bypassing access controls can breach terms of service or law.
 
-* Keep one session per "identity" — don't reuse a spoofed fingerprint across unrelated tasks.
-* Use the VNC view for any login that needs a human.
-* Don't crank speed; mimic human pacing.
-* Treat it as stealth, not invisibility.
+## Related
+
+[Camofox index](index.md) · [CloakBrowser](../cloakbrowser/index.md) · [Agent security](../../concepts/agent-security.md)

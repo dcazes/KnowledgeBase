@@ -1,48 +1,55 @@
 ---
-type: Reference
+type: Software
 title: Hindsight
-description: Agent memory system (vectorize-io) — agents that learn, not just remember; SOTA on LongMemEval; Deno/TypeScript monorepo with CLI, API, control plane, integrations.
+description: Agent memory system from Vectorize focused on agents that learn — memory banks of world facts, experiences, observations and mental models, with retain / recall / reflect operations, four-way hybrid retrieval and built-in MCP.
 resource: https://github.com/vectorize-io/hindsight
-tags: [hindsight, memory, agents, longmemeval, vectorize]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [hindsight, agent-memory, vectorize, mcp, python, postgres]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
   - id: hindsight-github
     resource: "https://github.com/vectorize-io/hindsight"
-    title: "Hindsight GitHub"
+    title: "vectorize-io/hindsight on GitHub"
     author: "site:github.com"
   - id: hindsight-docs
     resource: "https://hindsight.vectorize.io"
-    title: "Hindsight docs"
+    title: "Hindsight documentation"
     author: "site:hindsight.vectorize.io"
-  - id: paper-arxiv-2512-12818
+  - id: hindsight-paper
     resource: "https://arxiv.org/abs/2512.12818"
-    title: "Paper (arXiv 2512.12818)"
-    author: "site:arxiv.org"
+    title: "Hindsight is 20/20: Building Agent Memory that Retains, Recalls, and Reflects"
+    author: "arXiv 2512.12818"
+  - id: hindsight-benchmarks
+    resource: "https://benchmarks.hindsight.vectorize.io"
+    title: "Hindsight benchmark results"
+    author: "site:benchmarks.hindsight.vectorize.io"
 ---
 
 # Hindsight
 
-An **agent memory system** (by Vectorize) focused on making agents **learn over time, not just recall conversation history** — trained-away from RAG/knowledge-graph shortcomings for long-term memory. Reports **state-of-the-art results on LongMemEval** (per upstream as of Jan 2026). Monorepo: **uv Python workspace** (8 members: hindsight-all, hindsight-api, hindsight-api-slim, hindsight-all-slim, hindsight-dev, hindsight-mcp-server, hindsight-clients/python, hindsight-embed) + **Rust CLI** (`hindsight-cli`, bin `hindsight`) + **Next.js/TS control plane** (`@vectorize-io/hindsight-control-plane`).
+**Hindsight** is an agent memory server built around the idea that agents should *learn* from what they experience, not just recall chat history. Memories live in **banks**, are organised into human-memory-like types, and are retrieved with four strategies in parallel. It reports state-of-the-art LongMemEval results, independently reproduced by Virginia Tech researchers.
 
-Local checkout: `programs/hindsight` (git, vectorize-io, main, commit 2026-07-17) at **v0.8.4**. Sub-packages: `hindsight-cli`, `hindsight-api`, `hindsight-control-plane`, `hindsight-clients`, `hindsight-integrations`, `hindsight-embed`, `hindsight-tools`, `docker/`, `helm/`, `skills/`, `cookbook/`. **Not deployed** as of 2026-08-13.
+| | |
+|---|---|
+| Category | [Agent memory](../../concepts/agent-memory.md) |
+| License | MIT |
+| Language | Python server (`hindsight-api`); clients for Python, Node.js, Go, CLI |
+| Latest release | v1.2.1 (2026-11-10) |
+| Deployment | Docker (API `:8888`, UI `:9999`) · pip · Helm · embedded Python · Hindsight Cloud |
+| Storage | PostgreSQL (embedded `pg0` or external); Oracle AI Database for enterprise |
 
 ## Contents
 
-* [Overview](overview.md) — learn vs remember, memory architecture, benchmark position
-* [Installation](installation.md) — Rust CLI (`hindsight`), Python API (uv), npm `@vectorize-io/hindsight-all`, or control-plane deploy (Docker/Helm); verify
-* [Configuration](configuration.md) — control plane + API settings, model config, persistence
-* [AI Integration](ai-integration.md) — agent SDK/clients, skills, integrations, vs Graphiti/Mem0
-* [Snippets](snippets.md) — CLI, client calls, API probes cheat sheet
-* [Alternatives](../alternatives.md) — Graphiti, Mem0, MemOS, Zep, LangMem vs Hindsight
+* [Overview](overview.md) — memory types, retain/recall/reflect, observations, mental models
+* [Installation](installation.md) — Docker, external Postgres, pip, Helm, embedded
+* [Configuration](configuration.md) — LLM providers, storage, Hindsight models
+* [Snippets](snippets.md) — clients, LLM wrapper, MCP endpoint
+* [AI Integration](ai-integration.md) — coding agents, frameworks, no-code tools
 
 ## Related
 
-* [Graphiti](../graphiti/index.md), [Mem0](../mem0/index.md), [MemOS](../memos/index.md) — the other agent-memory systems in this vault
-* [Architecture → Memory comparison](../alternatives.md)
-
-## Last verified
-
-**2026-08-13** — Local checkout `programs/hindsight` v0.8.4 (git, vectorize-io, 2026-07-17); not deployed. Grounded on local checkout README/package versions + upstream docs.
+* Concepts: [Agent memory](../../concepts/agent-memory.md) · [RAG](../../concepts/rag.md) · [MCP](../../concepts/mcp.md) · [Evals](../../concepts/evals.md)
+* Peers: [Mem0](../mem0/index.md), [Zep](../zep/index.md), [Letta](../letta/index.md), [Honcho](../honcho/index.md), [Supermemory](../supermemory/index.md), [MemOS](../memos/index.md)
+* Comparison: [Memory alternatives](../alternatives.md)

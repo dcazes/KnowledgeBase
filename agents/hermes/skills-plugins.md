@@ -1,83 +1,36 @@
 ---
-type: Reference
-title: Hermes — Skills, Plugins, Cron, Memory
-description: How Hermes extends itself via skills (~/.hermes/skills, SKILL.md), plugins, scheduled cron jobs, and persistent memory (MEMORY.md / USER.md).
-resource: https://hermes-agent.nousresearch.com
-tags: [hermes, skills, plugins, cron, memory, procedural-memory]
-generated: { by: "human:daniel", at: "2026-07-09T03:23:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:23:00Z" } ]
+type: Concept
+title: Hermes Agent Skills & Plugins
+description: Hermes skills as procedural memory — automatic skill creation, the Skills Hub, invoking skills by slash command, sharing skills with other agent harnesses — and the plugin system including agent importers and memory providers.
+resource: https://hermes-agent.nousresearch.com/docs/user-guide/features/skills
+tags: [hermes, skills, plugins, skills-hub]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: hermes-skills-memory-setup-note-vault
-    resource: "/../../vault/03%20-%20Reference/Hermes%20Setup.md"
-    title: "Hermes skills/memory — setup note (vault)"
-  - id: hermes-nous-research
-    resource: "https://hermes-agent.nousresearch.com"
-    title: "Hermes (Nous Research)"
+  - id: hermes-docs
+    resource: "https://hermes-agent.nousresearch.com/docs/"
+    title: "Hermes Agent documentation"
     author: "site:hermes-agent.nousresearch.com"
-  - id: configuration
-    resource: "configuration.md"
-    title: "Configuration"
 ---
 
-# Hermes — Skills (procedural memory)
+# Hermes Agent — Skills & Plugins
 
-Skills are Hermes's **procedural memory** — reusable, step-by-step procedures for recurring task types. They live in `~/.hermes/skills/` in `SKILL.md` format.
+## Skills
 
-| Aspect | Detail |
-|--------|--------|
-| Location | `~/.hermes/skills/` |
-| Format | `SKILL.md` (YAML frontmatter + procedure body) |
-| Role | Procedural memory — the *how* for a task |
-| Scope | Active profile; profile-scoped skills under `~/.hermes/profiles/<name>/skills/` |
+A skill is a folder with a `SKILL.md` (name, description, instructions) and optional scripts or references. Hermes:
 
-A skill triggers on a task, then runs its numbered steps (often shell, file, or tool calls). Good skills carry a pitfalls section and verification steps.
+* **creates** skills from successful work and **improves** them when they fail;
+* lists them with `/skills` and runs one with `/<skill-name>`;
+* shares them through the **Skills Hub**, from which other harnesses can install too (e.g. `letta skills install <path>`).
 
-Example management (CLI):
+This follows the cross-tool [agent skills](../../concepts/agent-skills.md) convention also used by [Claude Code](../claude-code/index.md), [Codex](../codex/index.md), [OpenClaw](../openclaw/index.md) and [Letta](../../memory/letta/index.md).
 
-```bash
-hermes setup tools          # manage toolsets (skills tool must be enabled)
-```
+## Plugins
 
-# Plugins
+`hermes plugins install <name>` adds capabilities such as `agent-importers`. Memory providers ([Honcho](../../memory/honcho/index.md), [Supermemory](../../memory/supermemory/index.md), [MemOS](../../memory/memos/index.md)) plug in via `hermes memory setup`.
 
-Plugins extend Hermes beyond built-in skills — new tools, integrations, or capabilities. They live in `~/.hermes/plugins/` (and `~/.hermes/profiles/<name>/plugins/` for other profiles).
+## Related
 
-# Cron jobs
-
-Scheduled/background tasks run via the **cronjob** toolset. Jobs are stored under `~/.hermes/cron/`.
-
-```bash
-# From inside Hermes (cronjob tool):
-cronjob action='list'        # list scheduled jobs
-```
-
-This is what lets Hermes act as a **background daemon** rather than an interactive-only agent.
-
-# Memory (MEMORY.md / USER.md)
-
-Hermes keeps persistent memory as two files (profile-scoped under `~/.hermes/memories/`):
-
-| File | Purpose |
-|------|---------|
-| `MEMORY.md` | Agent knowledge / durable facts |
-| `USER.md` | User profile and preferences |
-
-Controlled by `memory.memory_enabled` and `memory.user_profile_enabled` in `config.yaml` (see [Configuration](configuration.md)).
-
-# Directory summary
-
-```
-~/.hermes/
-  skills/          # procedural memory (SKILL.md)
-  plugins/         # extensions / tools
-  cron/            # scheduled jobs
-  memories/        # MEMORY.md + USER.md (profile-scoped)
-```
-
-# Verify
-
-```bash
-ls ~/.hermes/skills/ ~/.hermes/plugins/ ~/.hermes/cron/ ~/.hermes/memories/
-```
+[Hermes index](index.md) · [Agent skills](../../concepts/agent-skills.md)

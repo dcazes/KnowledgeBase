@@ -1,131 +1,109 @@
 ---
-type: Reference
-title: "Memory — Alternatives"
-description: "Side-by-side comparison of the memory programs documented in this knowledge base — what each does, how they differ, and which alternatives each names."
-resource: "https://docs.mem0.ai"
-tags: [memory, alternatives, comparison]
-generated: { by: "agent:fixer", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "agent:fixer", at: "2026-08-13T00:00:00Z" } ]
-status: draft
-stale_after: 2027-02-09
+type: Comparison
+title: Memory & Knowledge Graph Alternatives
+description: Side-by-side comparison of the agent-memory, GraphRAG and knowledge-graph tools in this vault — Mem0, Zep, Graphiti, Letta, Honcho, Hindsight, MemOS, Supermemory, Cognee, LightRAG, Microsoft GraphRAG and Graphify — with a decision guide.
+resource: https://github.com/topics/agent-memory
+tags: [memory, comparison, alternatives, agent-memory, graphrag, knowledge-graph]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-05-11
 sources:
-  - id: s1
-    resource: "https://github.com/Graphify-Labs/graphify"
-    title: "Graphify — Alternatives"
-    author: human:daniel
-  - id: s2
+  - id: mem0
+    resource: "https://github.com/mem0ai/mem0"
+    title: "Mem0"
+    author: "site:github.com"
+  - id: graphiti
     resource: "https://github.com/getzep/graphiti"
-    title: "Graphiti — Alternatives"
-    author: human:daniel
-  - id: s3
-    resource: "https://memos-docs.openmem.net/home/overview/"
-    title: "MemOS — Alternatives"
-    author: human:daniel
-  - id: s4
-    resource: "https://docs.mem0.ai"
-    title: "Mem0 — Alternatives"
-    author: human:daniel
-  - id: s5
-    resource: "https://lightrag.readthedocs.io/en/latest/"
-    title: "LightRAG — Alternatives"
-    author: human:daniel
-  - id: s6
-    resource: "https://docs.cognee.ai"
-    title: "Cognee — Alternatives"
-    author: human:daniel
-  - id: s7
-    resource: "https://docs.honcho.dev"
-    title: "Honcho — Alternatives"
-    author: human:daniel
-  - id: s8
-    resource: "https://supermemory.ai"
-    title: "Supermemory — Alternatives"
-    author: human:daniel
-  - id: s9
-    resource: "https://hindsight.vectorize.io"
-    title: "Hindsight — Alternatives"
-    author: human:daniel
-  - id: s10
-    resource: "https://github.com/offendingcommit/openconcho"
-    title: "OpenConcho — Alternatives"
-    author: human:daniel
+    title: "Graphiti"
+    author: "site:github.com"
+  - id: zep
+    resource: "https://www.getzep.com"
+    title: "Zep"
+    author: "site:getzep.com"
+  - id: letta
+    resource: "https://github.com/letta-ai/letta-code"
+    title: "Letta Code"
+    author: "site:github.com"
+  - id: honcho
+    resource: "https://github.com/plastic-labs/honcho"
+    title: "Honcho"
+    author: "site:github.com"
+  - id: hindsight
+    resource: "https://github.com/vectorize-io/hindsight"
+    title: "Hindsight"
+    author: "site:github.com"
+  - id: memos
+    resource: "https://github.com/MemTensor/MemOS"
+    title: "MemOS"
+    author: "site:github.com"
+  - id: supermemory
+    resource: "https://github.com/supermemoryai/supermemory"
+    title: "Supermemory"
+    author: "site:github.com"
+  - id: cognee
+    resource: "https://github.com/topoteretes/cognee"
+    title: "Cognee"
+    author: "site:github.com"
+  - id: lightrag
+    resource: "https://github.com/HKUDS/LightRAG"
+    title: "LightRAG"
+    author: "site:github.com"
+  - id: graphrag
+    resource: "https://github.com/microsoft/graphrag"
+    title: "Microsoft GraphRAG"
+    author: "site:github.com"
+  - id: graphify
+    resource: "https://github.com/Graphify-Labs/graphify"
+    title: "Graphify"
+    author: "site:github.com"
 ---
 
-# Memory — Alternatives
+# Memory & Knowledge Graph Alternatives
 
-The programs documented under `memory/` are alternatives to one another: they all store or structure information for agents, but they approach it differently — some as graph stores, some as user-memory layers, some as full memory platforms, and some as UIs on top of those. This doc compares them side by side, based only on what each program's own alternatives doc states. Where a source is silent or thin, that is noted rather than filled in.
+Two related problems share this category:
 
-## Comparison matrix
+* **[Agent memory](../concepts/agent-memory.md)** — remember users, sessions and the agent's own experience across conversations.
+* **[GraphRAG](../concepts/graphrag.md) / [knowledge graphs](../concepts/knowledge-graphs.md)** — structure documents or code so retrieval can follow relationships.
 
-| Program | Primary purpose | Key differentiators | Best for | Notable alternatives |
+## At a glance
+
+| Tool | Core idea | Storage | Open source | Hosted option |
 |---|---|---|---|---|
-| **Graphify** | Confidence-tagged, queryable graph built from mixed inputs (code, docs, PDFs, papers, images, video, URLs) | Static compiled graph with confidence tags; no DB; Hermes client + MCP; can emit an Obsidian vault | Structured, honest codebase/document graphs; compiled reference graph queried via MCP | Obsidian (vanilla), Mem0, LangChain graph retrievers, code2flow/mermaid, repo visualizers |
-| **Graphiti** | Temporal context graph for evolving agent memory | Time-aware facts with provenance and episodes; self-hosted (Neo4j etc.); MCP-native; incremental | Evolving agent memory, time queries, auditable fact history | GraphRAG (batch), Zep (managed), Graphify (static), Mem0 (lightweight) |
-| **MemOS** | Memory as an OS, not just a store | Scheduling, versioning, multi-cube KB management, feedback/correction; broad taxonomy (textual/tree/preference/skill/KV-cache/LoRA parametric); local-first; multi-modal + tool traces + personas; MCP server | Full-featured self-hosted memory platform | Graphiti, Mem0, Zep, LangMem, raw vector store (Qdrant/Milvus) |
-| **Mem0** | Per-user agent memory layer (vector + graph) | Simple API, multi-tenant user memory, OpenMemory UI, many backends | Quick per-user chat memory | MemOS, Graphiti, Zep, LangMem |
-| **LightRAG** | Incremental knowledge graph + dual-level retrieval for document Q&A | Cheap to index, updates without rebuild, server or library mode, local LLMs | Local document-Q&A engine with frequent updates | Microsoft GraphRAG, LlamaIndex, RAGFlow, Graphify; Mem0/MemOS/Graphiti are complementary (agent memory, not corpus retrieval) |
-| **Cognee** | Knowledge-graph memory pipeline (extract → cognify → load) with semantic layers | Full memory engineering pipeline, frontend, graph-aware search | All-in-one graph memory pipeline | LightRAG, GraphRAG, Graphiti, Mem0/MemOS, LlamaIndex |
-| **Honcho** | User modeling: personas, state machine, insights/goals | Answers "who is the user"; stateful UX; the only program here that models the user | Personalized, stateful agent UX | Mem0, MemOS, Graphiti, Zep, LangMem |
-| **Supermemory** | Personal AI memory (save → semantic Q&A) | Simple end-user memory, local-first desktop | Save-and-forget personal memory with AI Q&A | Rewind, Recall (Windows), Mem0/MemOS, Obsidian, Notion/Anytype |
-| **Hindsight** | Learning-based agent memory (learning passes) | Agents learn and improve over time; SOTA LongMemEval | Agents that must improve over time | Graphiti, Mem0, MemOS, Zep, LangMem |
-| **OpenConcho** | UI for Honcho memory (web/desktop) | Browse + chat memory, multi-instance, privacy-first | Seeing and chatting with Honcho-backed agent memory | Honcho SDK only, OpenMemory (Mem0 UI), custom dashboard, MemOS MCP |
+| [Mem0](mem0/index.md) | ADD-only fact extraction, hybrid search | Vector store (Qdrant, pgvector…) | Apache-2.0 | Mem0 Platform |
+| [Graphiti](graphiti/index.md) | Bi-temporal context graph with provenance | Neo4j / FalkorDB / Neptune | Apache-2.0 | via Zep |
+| [Zep](zep/index.md) | Governed context graphs for enterprises | Managed | Examples only | Yes (core product) |
+| [Letta](letta/index.md) | Agent edits its own memory blocks; dreaming | Local or Letta Cloud | Apache-2.0 | Letta Cloud |
+| [Honcho](honcho/index.md) | Reasoned peer representations (theory of mind) | Postgres + pgvector | AGPL-3.0 | api.honcho.dev |
+| [Hindsight](hindsight/index.md) | Facts, experiences, observations, mental models; reflect | Postgres | MIT | Hindsight Cloud |
+| [MemOS](memos/index.md) | Memory OS with cubes and a scheduler | Neo4j + Qdrant / SQLite | Apache-2.0 | MemOS Cloud |
+| [Supermemory](supermemory/index.md) | Memory + RAG + profiles + connectors in one API | Managed / local binary | MIT | Yes |
+| [Cognee](cognee/index.md) | remember/recall/improve/forget over graph + vectors | Kuzu/Neo4j + LanceDB/Qdrant… | Apache-2.0 | Cognee Cloud |
+| [LightRAG](lightrag/index.md) | Dual-level graph + vector RAG, incremental | Files, Postgres, Neo4j, OpenSearch… | MIT | — |
+| [Microsoft GraphRAG](graphrag/index.md) | Communities + summaries for global questions | Parquet | MIT (maintenance) | — |
+| [Graphify](graphify/index.md) | Deterministic code/doc graph for coding agents | `graph.json` (+ Neo4j export) | Apache-2.0 | Graphify Cloud |
+| [OpenConcho](openconcho/index.md) | UI for inspecting Honcho memory | — | MIT | — |
 
-## Graphify
+## Decision guide
 
-Graphify is positioned as a confidence-tagged, queryable graph built from mixed inputs (code, docs, papers, media) with an agent/MCP surface. Its source compares it against four kinds of alternatives: **Obsidian (vanilla)** — manual `[[links]]`, no automatic extraction, no confidence semantics, no agent query API, but zero inference cost and a complement rather than a replacement (Graphify can emit an Obsidian vault); **Mem0** — purpose-built conversational/episodic memory with a simple API, but not a structured entity-relationship graph and without source-confidence tagging; **LangChain graph retrievers** — fully programmable graph + vector RAG, but you build and maintain extraction yourself; and **code2flow/mermaid/static visualizers** — instant, no-LLM diagrams, but static-only with no semantic cross-file reasoning or query layer. The source's decision guide says Graphify is what this machine uses for extracting structure from a mixed corpus.
+| You need… | Start with |
+|---|---|
+| Simple per-user personalisation with any model | [Mem0](mem0/index.md) or [Supermemory](supermemory/index.md) |
+| Facts that change over time, with history and provenance | [Graphiti](graphiti/index.md) (self-host) or [Zep](zep/index.md) (managed) |
+| An agent that curates its own memory and improves | [Letta](letta/index.md), [Hindsight](hindsight/index.md) or [MemOS](memos/index.md) |
+| Deep models of users and multi-agent perspectives | [Honcho](honcho/index.md) |
+| Q&A over a growing document collection | [LightRAG](lightrag/index.md) or [Cognee](cognee/index.md) |
+| Themes across a fixed corpus | [Microsoft GraphRAG](graphrag/index.md) |
+| A coding agent that understands a repository | [Graphify](graphify/index.md) |
+| Memory for Claude Code / Codex / OpenCode right now | Plugins from [Honcho](honcho/ai-integration.md), [Supermemory](supermemory/ai-integration.md), [Hindsight](hindsight/ai-integration.md), [Cognee](cognee/ai-integration.md), [Mem0](mem0/ai-integration.md) |
 
-See also: [Graphify index](./graphify/index.md)
+## Trends (late 2026)
 
-## Graphiti
+* **Memory plugins for coding agents** are now standard: nearly every vendor ships Claude Code, Codex, Cursor, OpenCode, OpenClaw and Hermes integrations, plus [MCP](../concepts/mcp.md) servers and [skills](../concepts/agent-skills.md).
+* **Hybrid retrieval** (semantic + BM25 + entity/graph) has replaced pure vector search almost everywhere.
+* **Memory that learns** — reflection, dreaming, observations, skill crystallisation — is the new frontier beyond fact recall.
+* **Benchmark inflation**: LoCoMo and LongMemEval scores above 90 are common; compare only under identical models and budgets ([Evals](../concepts/evals.md)).
 
-Graphiti is an open-source, temporal context graph for agent memory that you self-host (Neo4j etc.). Its source compares it against **GraphRAG (Microsoft)** — batch entity graph with community summaries, good for static corpora but not incremental, slower queries, no real temporality; **Zep** — a managed version of Graphiti's engine, turnkey and governed with sub-200ms claims at scale, but a vendor dependency and not self-hosted-free; **Graphify** — a static, confidence-tagged compiled graph, light with no DB, but not temporal (snapshot only); and **Mem0** — a lightweight memory layer, simple and fast, but less graph-native with weaker relational/temporal modeling. The decision guide also points to MemOS, Honcho, LightRAG, and Cognee as related systems.
+## Related
 
-See also: [Graphiti index](./graphiti/index.md)
-
-## MemOS
-
-MemOS is described as "memory as an OS" rather than just a store: scheduling, versioning, multi-cube KB management, feedback/correction, a broad memory taxonomy (textual, tree, preference, skill, KV-cache, LoRA parametric), local-first operation, and multi-modal + tool traces + personas in one space. Its source compares it against **Graphiti** (temporal context graph with episodes and provenance — graph-centric, less of a full OS), **Mem0** (layered memory, simple API, popular, hosted + OSS — less explicit scheduling/parametric memory), **Zep / Graphiti-like** (strong developer ergonomics, but a separate stack to operate), **LangMem** (LangChain memory abstraction, tied to that ecosystem), and a **raw vector store (Qdrant/Milvus)** (fast and simple, but black-box with no structured/inspectable memory or scheduling). The source notes you might pick something else for a quick semantic store, time-aware relational reasoning (Graphiti), per-user modeling (Honcho), lightweight RAG-style memory (Mem0 or Supermemory), or schema-native incremental graphs (LightRAG/Cognee).
-
-See also: [MemOS index](./memos/index.md)
-
-## Mem0
-
-Mem0 is a vector + graph memory layer with per-user scoping, a simple API, multi-tenant user memory, an OpenMemory UI, and many backends. Its source compares it against **MemOS** (richest feature set, MCP server, benchmarked — the deployed-via-pip option on this machine), **Graphiti** (temporal context graph with fact provenance, episodes, change tracking — best when memory must be auditable over time), **Zep** (temporal knowledge graph, cloud-hosted alternative to Graphiti), and **LangMem** (LangGraph memory SDK — only if already on LangChain). The source notes Mem0 is a good default for per-user chat memory but is **not deployed locally** (checkout only), and that Mem0's graph store (Neo4j) covers light graph needs while Graphiti is the heavy graph engine.
-
-See also: [Mem0 index](./mem0/index.md)
-
-## LightRAG
-
-LightRAG is an incremental knowledge graph with dual-level retrieval: cheap to index, updates without rebuild, server or library mode, and works with local LLMs. Its source compares it against **Microsoft GraphRAG** (batch global + local search, best for corpus-level global understanding, but heavier index cost and overkill for small corpora), **LlamaIndex** (pluggable indexes with a huge ecosystem, but more assembly required), **RAGFlow** (deep-document RAG with layouts, good for PDFs/structured docs, but a heavier stack with more services), and **Graphify** (a static folder→graph compiler — a different job: build once, query via MCP). Mem0/MemOS/Graphiti are called complementary rather than competitors because they handle agent memory across sessions, not corpus retrieval. The source notes LightRAG is not yet deployed here.
-
-See also: [LightRAG index](./lightrag/index.md)
-
-## Cognee
-
-Cognee is described as a full knowledge-graph memory pipeline (extract → cognify → load) with semantic layers, a frontend, and graph-aware search. Its source compares it against **LightRAG** (lighter, cheaper to index, server mode — quick graph RAG without a full pipeline), **GraphRAG (Microsoft)** (batch global/local graph search with heavy index cost and batch rebuilds), **Graphiti** (temporal context graph for session/fact memory — a different job), **Mem0/MemOS** (per-user/agent memory with a quick API — user memory, not corpus knowledge engineering), and **LlamaIndex** (a general pluggable RAG framework with more assembly). The source notes Cognee is not deployed here.
-
-See also: [Cognee index](./cognee/index.md)
-
-## Honcho
-
-Honcho is user modeling rather than a memory store: personas, a state machine, insights/goals — it answers "who is the user" and enables stateful UX. Its source says this is unique among the compared tools: none of the others model the user. It compares Honcho against **Mem0** (per-user facts with a simple API, but no user-model layer), **MemOS** (memory OS with scheduling and KV — a memory store without persona modeling), **Graphiti** (temporal context graph — fact history, not a user model), **Zep** (hosted graph memory, cloud alternative to Graphiti), and **LangMem** (LangGraph memory SDK, only on LangChain). The source suggests combos: Honcho for the user model, Graphiti for provenance, Mem0/MemOS for bulk storage.
-
-See also: [Honcho index](./honcho/index.md)
-
-## Supermemory
-
-Supermemory is a personal AI memory app (save → semantic Q&A), simple end-user memory with a local-first desktop. Its source compares it against **Rewind** (screen-recording memory that captures everything visually — heavy, with a privacy trade-off), **Recall (Windows)** (timeline screenshots + local AI, OS-integrated but Windows-only), **Mem0/MemOS** (developer memory platforms with APIs/MCP — the agent-stack choice here), **Obsidian** (local-first PKM, full control, plugins — the main knowledge base here), and **Notion/Anytype** (notes + databases, collaborative/docs, cloud or different philosophy). The source notes Supermemory is installed (app data present 2026-07) but idle.
-
-See also: [Supermemory index](./supermemory/index.md)
-
-## Hindsight
-
-Hindsight is learning-based agent memory: learning passes let agents improve over time, with SOTA LongMemEval claims. Its source compares it against **Graphiti** (temporal context graph — auditable fact history), **Mem0** (vector + graph user memory — quick user-fact memory), **MemOS** (memory OS with scheduling and MCP — full-featured memory platform), **Zep** (temporal knowledge graph — cloud option), and **LangMem** (LangGraph memory — only on LangChain). The source frames Hindsight's learning passes as the unique offering and suggests a combo of Hindsight (learning) + Graphiti (provenance). It notes Hindsight is not deployed here.
-
-See also: [Hindsight index](./hindsight/index.md)
-
-## OpenConcho
-
-OpenConcho is a UI for Honcho memory (web/desktop): browse + chat memory, multi-instance, privacy-first. Its source compares it against **Honcho SDK only** (no UI, least moving parts — when agents only need programmatic memory), **OpenMemory** (the Mem0 UI — if you choose Mem0 rather than Honcho), a **custom dashboard** (exact fit but overkill, duplicates OpenConcho), and **MemOS MCP** (a full memory platform with its own UI/MCP — a different backend, no Honcho). The source notes OpenConcho is the companion UI when Honcho is the memory backend, and is not deployed here yet.
-
-See also: [OpenConcho index](./openconcho/index.md)
+[Agent memory](../concepts/agent-memory.md) · [GraphRAG](../concepts/graphrag.md) · [Databases alternatives](../databases/alternatives.md) · [AI landscape](../landscape.md)

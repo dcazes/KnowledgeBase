@@ -1,118 +1,52 @@
 ---
 type: Playbook
-title: Graphify — Installation
-description: Install the graphifyy package, register the skill into your agent (incl. Hermes), handle PATH on Linux, and pick a backend.
-resource: https://github.com/Graphify-Labs/graphify#install
-tags: [graphify, install, setup, hermes, cli, python]
-generated: { by: "human:daniel", at: "2026-07-09T00:12:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T00:12:00Z" } ]
+title: Graphify Installation
+description: Install the graphifyy package with uv or pipx, register the skill with your coding assistant (user or project scope), and add optional extras for MCP, watch mode, Neo4j and SVG export.
+resource: https://docs.graphify.com/quickstart
+tags: [graphify, installation, uv, pipx, agent-skills]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: install-docs-github
-    resource: "https://github.com/Graphify-Labs/graphify#install"
-    title: "Install docs (GitHub)"
+  - id: graphify-github
+    resource: "https://github.com/Graphify-Labs/graphify"
+    title: "Graphify-Labs/graphify on GitHub"
     author: "site:github.com"
-  - id: graphifyy-pypi
+  - id: graphify-pypi
     resource: "https://pypi.org/project/graphifyy/"
-    title: "graphifyy PyPI"
-    author: "site:pypi.org"
-  - id: hermes-platform-support-pypi-description
-    resource: "https://pypi.org/project/graphifyy/"
-    title: "Hermes platform support (PyPI description)"
+    title: "graphifyy on PyPI"
     author: "site:pypi.org"
 ---
 
-# Graphify — Requirements
+# Graphify — Installation
 
-* **Python 3.10+**
-* A package manager: `pip`, `pipx`, or `uv` (uv recommended).
-
-# Install the package
+Requires Python 3.10+ and uv (recommended) or pipx.
 
 ```bash
-# pip (most common)
-pip install graphifyy
-
-# pipx (isolated, handles PATH automatically)
-pipx install graphifyy
-
-# uv (recommended) — installs the `graphify` command into ~/.local/bin
-uv tool install graphifyy
+uv tool install graphifyy          # or: pipx install graphifyy
+graphify install                   # detects your assistant and registers the /graphify skill
+graphify install --project                    # install the skill into this repo instead of your profile
+graphify install --project --platform codex   # target a specific assistant
 ```
 
-> The PyPI project is named **`graphifyy`** (extra y) while the `graphify` name is being reclaimed. The command it provides is **`graphify`**. So `uvx graphify …` fails — use `uvx --from graphifyy graphify …`.
+> The official package is **`graphifyy`**. Other `graphify*` packages on PyPI are unaffiliated — a classic typosquatting risk, see [Agent security](../../concepts/agent-security.md).
 
-# Register the skill into your agent
+If `graphify` is not on PATH after a uv install, run `uv tool update-shell`.
+
+## Extras
+
+| Extra | Adds |
+|---|---|
+| `mcp` | MCP stdio server |
+| `watch` | `graphify watch` auto-rebuild on file changes |
+| `neo4j` | Push the graph to [Neo4j](../../databases/neo4j/index.md) |
+| `svg` | SVG graph export |
 
 ```bash
-# Auto-detects Claude Code, or pick a platform explicitly:
-graphify install                       # auto-detect
-graphify install --platform hermes     # ✅ Hermes (your assistant)
-graphify install --platform opencode   # OpenCode
-graphify install --platform claude     # Claude Code
-graphify install --platform gemini     # Gemini CLI
-graphify install --platform agents     # cross-framework Agent Skills (~/.agents/skills/)
-
-# Project-scoped install (writes per-project config):
-graphify install --project
-graphify install --project --platform codex
+uv tool install "graphifyy[mcp,watch]"
 ```
 
-This writes a config telling the assistant to consult `graphify-out/GRAPH_REPORT.md` before answering architecture/codebase questions, and installs the `/graphify` skill.
+## Related
 
-# Linux PATH note
-
-After `pip`/`uv tool install`, the `graphify` binary may not be on `PATH`:
-
-```bash
-# uv:
-uv tool update-shell && exec $SHELL    # then reopen terminal
-
-# pip (Linux user bin):
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc   # or ~/.zshrc
-source ~/.bashrc
-
-# verify
-graphify --version
-```
-
-# Choose a backend
-
-Graphify needs an LLM for extraction + query. Set it via `--backend` or env vars. For this machine (no heavy local models; cloud inference via the `:4000` failover proxy):
-
-```bash
-# OpenRouter / NIM through the local proxy on :4000
-export OPENAI_BASE_URL=http://localhost:4000/v1
-export OPENAI_API_KEY=sk-...            # any non-empty value for the proxy
-graphify extract ./docs --backend openai
-```
-
-Other backends:
-
-```bash
-graphify extract ./docs --backend claude       # ANTHROPIC_API_KEY
-graphify extract ./docs --backend gemini       # GEMINI_API_KEY / GOOGLE_API_KEY
-graphify extract ./docs --backend ollama       # local, OLLAMA_BASE_URL (no key)
-graphify extract ./docs --backend bedrock      # AWS IAM, no key
-```
-
-Backend env vars: `ANTHROPIC_API_KEY`, `ANTHROPIC_BASE_URL`, `ANTHROPIC_MODEL`, `OPENAI_API_KEY`, `OPENAI_BASE_URL`, `OPENAI_MODEL`, `GEMINI_API_KEY`, `DEEPSEEK_API_KEY`, `AZURE_OPENAI_API_KEY`/`_ENDPOINT`, `OLLAMA_BASE_URL`/`OLLAMA_MODEL`, `MOONSHOT_API_KEY` (kimi).
-
-# Uninstall
-
-```bash
-graphify uninstall                 # remove from all platforms
-graphify uninstall --purge         # also delete graphify-out/
-graphify claude uninstall          # per-platform
-```
-
-# Verify
-
-```bash
-graphify --version
-# try a tiny graph:
-mkdir -p /tmp/gf-test && echo "# Note\nGraphify turns folders into graphs." > /tmp/gf-test/note.md
-graphify extract /tmp/gf-test --backend openai
-ls /tmp/gf-test/graphify-out/      # expect GRAPH_REPORT.md + graph.json
-```
+[Graphify index](index.md) · [Usage](usage.md) · [MCP server](mcp-server.md)

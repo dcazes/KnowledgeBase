@@ -1,57 +1,28 @@
 ---
-type: Reference
-title: VSCode — Workflow (programs/* & Agent Skills)
-description: Using VS Code to edit the local programs/* repos and to author agent skills (Graphify/Hermes/OpenCode).
+type: Playbook
+title: VS Code AI Workflow
+description: A practical AI workflow in VS Code — combining Copilot agent mode with Claude Code or Codex extensions, MCP tools, instructions files, dev containers for isolation, and reviewing agent changes.
 resource: https://code.visualstudio.com/docs
-tags: [vscode, workflow, programs, agent-skills, graphify, hermes, opencode]
-generated: { by: "human:daniel", at: "2026-07-09T02:13:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T02:13:00Z" } ]
+tags: [vscode, workflow, agents, dev-containers]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: vs-code-docs
-    resource: "https://code.visualstudio.com/docs"
-    title: "VS Code docs"
+  - id: vscode-site
+    resource: "https://code.visualstudio.com"
+    title: "Visual Studio Code"
     author: "site:code.visualstudio.com"
-  - id: ai-features-mcp
-    resource: "ai-features.md"
-    title: "AI Features (MCP)"
-  - id: graphify-skills
-    resource: "/../../graphify/ai-integration.md"
-    title: "Graphify skills"
 ---
 
-# VSCode — Editing the programs/* repos
+# VS Code — AI Workflow
 
-Your stack's source lives under `/home/daniel/Desktop/programs/`. Open a repo directly:
+1. **Context first.** Keep an `AGENTS.md` (and Copilot instructions) describing build, test and conventions — shared by most agents ([Context engineering](../../concepts/context-engineering.md)).
+2. **Pick the agent per task.** Copilot agent mode for quick edits; [Claude Code](../../agents/claude-code/index.md) or [Codex](../../agents/codex/index.md) extensions for longer autonomous work.
+3. **Add tools via MCP.** [Playwright MCP](../../browsers/playwright-mcp/index.md) for UI checks, [Graphify](../../memory/graphify/index.md) for structure, a memory server for continuity.
+4. **Isolate.** Run agents in a dev container or remote environment when they execute commands ([Agent security](../../concepts/agent-security.md)).
+5. **Review.** Use the diff view and source control panel; keep commits small.
 
-```bash
-code programs/firecrawl/firecrawl
-code programs/dify/dify
-code programs/firecrawl/firecrawl
-```
+## Related
 
-Recommended per-project setup (`.vscode/` in each repo):
-* `settings.json` — Docker/Python/TS defaults, formatter on save.
-* `launch.json` — debug configs (Node/Python).
-* `tasks.json` — `docker compose up`, `make`, `npm` tasks.
-* `mcp.json` — register Graphify/Firecrawl MCP servers for Agent Mode.
-
-# Authoring agent skills
-
-VS Code is where you write the **agent skills** this KB documents:
-* **Graphify packs** — `graphify add` content, then edit the generated graph/skill files.
-* **Hermes / OpenCode skills** — markdown/code skills the agents load (Python helpers, web-search wrappers, etc.).
-* **Firecrawl skills** — `firecrawl-cli` task scripts.
-
-Workflow:
-1. Open the skill folder in VS Code.
-2. Edit the markdown/code.
-3. Test by invoking the skill from the agent (Hermes/OpenCode) or running the snippet.
-4. Commit via the built-in Git UI.
-
-# Tips
-
-* Use **multi-root workspaces** to keep several `programs/*` repos open at once.
-* Enable **Settings Sync** (or commit `.vscode/`) to share config across machines.
-* For Docker-heavy repos, install the **Docker** extension for Compose-aware editing.
+[VS Code index](index.md) · [Snippets](snippets.md)

@@ -1,159 +1,52 @@
 ---
-type: Playbook
-title: SearXNG — Snippets & Cheat Sheet
-description: Copy-paste commands covering the majority of SearXNG use cases — deploy, query the API, edit config, integrate with the AI stack, troubleshoot.
-resource: https://docs.searxng.org/
-tags: [searxng, snippets, cheat-sheet, deploy, api, troubleshoot]
-generated: { by: "human:daniel", at: "2026-07-09T00:02:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T00:02:00Z" } ]
+type: Reference
+title: SearXNG Snippets
+description: SearXNG snippets — curl queries with jq, a Python search helper suitable as an agent tool, and container maintenance commands.
+resource: https://docs.searxng.org
+tags: [searxng, snippets, curl, python, cheat-sheet]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
   - id: searxng-docs
-    resource: "https://docs.searxng.org/"
-    title: "SearXNG docs"
+    resource: "https://docs.searxng.org"
+    title: "SearXNG documentation"
     author: "site:docs.searxng.org"
-  - id: search-api
-    resource: "https://docs.searxng.org/dev/search_api.html"
-    title: "Search API"
-    author: "site:docs.searxng.org"
-  - id: deployment-installation-md
-    resource: "installation.md"
-    title: "Deployment - installation.md"
-  - id: api-contract-api-md
-    resource: "api.md"
-    title: "API contract - api.md"
 ---
 
-# SearXNG — Deploy / run (canonical = combined Firecrawl compose)
+# SearXNG — Snippets
+
+## curl
 
 ```bash
-# Start just SearXNG (host :8088, on backend network)
-cd programs/firecrawl/firecrawl
-docker compose up -d searxng
-docker compose ps
-docker compose logs -f searxng
-docker compose down searxng     # stop (keeps image)
+curl -s "http://localhost:8080/search?q=vector+databases&format=json" | jq '.results[:5][] | {title, url}'
+curl -s "http://localhost:8080/search?q=llm+agents&format=json&categories=science&time_range=month" | jq '.results | length'
 ```
 
-> **Path note:** the working compose is at `programs/firecrawl/firecrawl/docker-compose.yaml`. The command above assumes you `cd` into that directory. The `firecrawl` typo in the comment is illustrative only — use the real path `programs/firecrawl/firecrawl`.
-
-```bash
-# Whole stack (SearXNG + Firecrawl)
-cd programs/firecrawl/firecrawl
-docker compose up -d
-```
-
-# Verify it is up
-
-```bash
-curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:8088/
-curl -s "http://127.0.0.1:8088/search?q=test&format=json" \
-  | python3 -c "import sys,json; print('results:', json.load(sys.stdin).get('number_of_results'))"
-```
-
-# Query the API (JSON)
-
-```bash
-# Basic
-curl "http://127.0.0.1:8088/search?q=docker+permissions&format=json"
-
-# Code category, English
-curl "http://127.0.0.1:8088/search?q=graphify+mcp&format=json&categories=code"
-
-# Time-filtered news
-curl "http://127.0.0.1:8088/search?q=AI+regulation&format=json&categories=news&time_range=day"
-
-# POST form
-curl -X POST "http://127.0.0.1:8088/search" -d "q=docker&format=json"
-```
-
-```bash
-# Which engines answered?
-curl -s "http://127.0.0.1:8088/search?q=test&format=json" \
-  | python3 -c "import sys,json; print(set(r['engine'] for r in json.load(sys.stdin)['results']))"
-```
-
-# Python helper (reusable)
+## Python tool
 
 ```python
-import requests
+import httpx
 
-def searxng_search(query, categories=None, max_results=10,
-                    base="http://127.0.0.1:8088/search"):
-    params = {"q": query, "format": "json", "pageno": 1}
-    if categories:
-        params["categories"] = ",".join(categories)
-    r = requests.get(base, params=params, timeout=10)
+def web_search(query: str, n: int = 5, base: str = "http://localhost:8080") -> list[dict]:
+    """Search the web via SearXNG and return title/url/snippet dicts."""
+    r = httpx.get(f"{base}/search", params={"q": query, "format": "json"}, timeout=15)
     r.raise_for_status()
-    data = r.json()
-    return {"query": data.get("query"),
-            "total": data.get("number_of_results"),
-            "results": [
-                {"title": x.get("title"), "url": x.get("url"),
-                 "content": x.get("content", "")[:300], "engine": x.get("engine")}
-                for x in data.get("results", [])[:max_results]
-            ]}
+    return [{"title": x["title"], "url": x["url"], "snippet": x.get("content", "")}
+            for x in r.json()["results"][:n]]
 ```
 
-# Edit config & reload
+Register this as a [tool](../../concepts/tool-calling.md) in [PydanticAI](../../agents/pydanticAI/index.md), [LangGraph](../../agents/langgraph/index.md) or [CrewAI](../../agents/crewai/index.md).
+
+## Container maintenance
 
 ```bash
-# Config lives at:
-#   programs/firecrawl/firecrawl/searxng-config/settings.yml
-# (mounted into the container via ./searxng-config/settings.yml)
-
-# After editing, restart just SearXNG:
-cd programs/firecrawl/firecrawl
-docker compose restart searxng
-
-# Confirm the mount resolved (not falling back to defaults):
-docker inspect agent_searxng --format '{{json .Mounts}}'
-
-# Confirm formats/engines took effect:
-curl -s "http://127.0.0.1:8088/config" | python3 -m json.tool
-curl -s -o /dev/null -w "%{http_code}\n" "http://127.0.0.1:8088/search?q=test&format=json"   # 200 = ok
+docker compose pull && docker compose up -d
+docker compose logs -f core
+docker compose exec -it --user root core /bin/sh -l
 ```
 
-# Enable / disable an engine (settings.yml snippet)
+## Related
 
-```yaml
-use_default_settings: true
-
-engines:
-  - name: google
-    disabled: true     # turn off (avoid CAPTCHAs)
-  - name: duckduckgo
-    disabled: false    # keep (default)
-```
-
-> Remember: any `format` you request (json/csv/rss) MUST be listed under `search.formats`. Your instance enables `html, json, csv` — **not** rss.
-
-# Firecrawl wiring (in-network)
-
-```bash
-# Firecrawl api reaches SearXNG at:
-SEARXNG_ENDPOINT=http://searxng:8080     # default, on backend network
-# verify from the api container:
-docker exec firecrawl-api-1 env | grep SEARXNG_ENDPOINT
-```
-
-# Graphify ingestion (one-liner)
-
-```bash
-Q="Graphify knowledge graph documentation"
-urls=$(curl -s "http://127.0.0.1:8088/search?q=$Q&format=json" \
-  | python3 -c "import sys,json; print('\n'.join(r['url'] for r in json.load(sys.stdin)['results'][:5]))")
-for u in $urls; do graphify add "$u"; done
-```
-
-# Troubleshooting
-
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| `403` on `format=json` | format not in `search.formats` | add `json` under `search.formats` |
-| Config ignored | wrong mount path | `docker inspect agent_searxng --format '{{json .Mounts}}'` |
-| Connection refused | instance down | `docker compose up -d searxng` |
-| Empty results | engines disabled / no egress | check `/preferences`; test outbound |
-| Slow (>5s) | too many engines | narrow `categories` |
-| Google CAPTCHA | over-querying | disable Google in config |
+[SearXNG index](index.md) · [API](api.md)

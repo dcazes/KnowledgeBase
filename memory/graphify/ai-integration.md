@@ -1,114 +1,37 @@
 ---
-type: Reference
-title: Graphify — AI Integration
-description: Wiring Graphify into Hermes, OpenCode, Claude Code, Obsidian, and the local :4000 OpenRouter failover proxy.
+type: Playbook
+title: Graphify AI Integration
+description: Making coding agents use a Graphify graph — the installed skill steers assistants to scoped graph queries, MCP for shared access, and pairing it with memory systems.
 resource: https://github.com/Graphify-Labs/graphify
-tags: [graphify, hermes, opencode, obsidian, openrouter, integration, mcp]
-generated: { by: "human:daniel", at: "2026-07-09T00:20:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T00:20:00Z" } ]
+tags: [graphify, integration, coding-agents, claude-code, codex, context-engineering]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: graphify-github-platforms-mcp-backends
+  - id: graphify-github
     resource: "https://github.com/Graphify-Labs/graphify"
-    title: "Graphify GitHub (platforms, MCP, backends)"
+    title: "Graphify-Labs/graphify on GitHub"
     author: "site:github.com"
-  - id: graphifyy-pypi-hermes-platform-flags-openai-base-url
-    resource: "https://pypi.org/project/graphifyy/"
-    title: "graphifyy PyPI (Hermes/platform flags, OPENAI_BASE_URL)"
-    author: "site:pypi.org"
-  - id: searxng-graphify-loop-searxng-ai-integration
-    resource: "../../runtime/searxng/ai-integration.md"
-    title: "SearXNG → Graphify loop (SearXNG AI Integration)"
 ---
 
-# Graphify — The role in your stack
+# Graphify — AI Integration
 
-Graphify is the **structuring layer**: it turns ingested material (AnythingLLM/RAG, SearXNG web results, your own notes) into a confidence-tagged graph that agents query instead of re-reading raw files. The KB plan runs inference through a cloud failover proxy on `:4000` (no heavy local models on the GTX 1060).
+## Why agents benefit
 
-# 1. Hermes (first-class client)
+Coding agents burn context re-reading files to rediscover structure. A graph lets them ask narrow questions ("what calls this?", "path from A to B") and load only the relevant subgraph — classic [context engineering](../../concepts/context-engineering.md).
 
-Hermes is explicitly supported:
+`graphify install` writes a small config that tells the assistant to consult the graph for codebase questions, preferring scoped `graphify query` calls over reading the whole report or grepping.
 
-```bash
-graphify install --platform hermes
-```
+## Supported assistants
 
-This drops the skill into Hermes's skill dir and tells Hermes to consult `graphify-out/GRAPH_REPORT.md` before answering codebase/architecture questions. From a Hermes session you can then:
+[Claude Code](../../agents/claude-code/index.md), [Codex](../../agents/codex/index.md), [Cursor](../../editors/cursor/index.md), Gemini CLI, GitHub Copilot, [OpenCode](../../agents/opencode/index.md), [Hermes](../../agents/hermes/index.md), [Aider](../../agents/aider/index.md) via shell, and 20+ others. The skill format follows the shared [agent skills](../../concepts/agent-skills.md) convention.
 
-```
-/graphify ./kbv2          # build a graph of the KB
-/graphify query "which programs integrate with SearXNG?"
-```
+## Pairing with other tools
 
-Hermes can also consume the **MCP server** (see below) at `http://127.0.0.1:8080/mcp`.
+* **Structure + memory:** Graphify for code structure, [Graphiti](../graphiti/index.md) / [Mem0](../mem0/index.md) / [Hindsight](../hindsight/index.md) for what happened over time.
+* **Graph database:** push to [Neo4j](../../databases/neo4j/index.md) with the `neo4j` extra for Cypher queries and dashboards.
 
-# 2. The `:4000` OpenRouter/NIM proxy (backend)
+## Related
 
-Graphify's `--backend openai` accepts any OpenAI-compatible endpoint. Point it at your local proxy:
-
-```bash
-export OPENAI_BASE_URL=http://localhost:4000/v1
-export OPENAI_API_KEY=sk-any-nonempty      # the proxy accepts any value
-graphify extract ./docs --backend openai
-```
-
-This routes Graphify's extraction/query through the same free-cloud inference path as the rest of the stack (NVIDIA NIM / OpenRouter Free). With a cloud gateway, prefer `--backend openai` + `OPENAI_BASE_URL` over the Ollama shim.
-
-# 3. OpenCode
-
-```bash
-graphify install --platform opencode
-```
-OpenCode then gets the `/graphify` skill and the `GRAPH_REPORT.md` consult hook.
-
-# 4. Claude Code (and other agents)
-
-```bash
-graphify install                 # auto-detects Claude Code
-graphify install --platform claude
-```
-For coding agents in general, the pattern is identical: install the skill, and the agent prefers scoped `graphify query "<q>"` over reading the full repo.
-
-# 5. Obsidian vault output
-
-Graphify can emit a navigable Obsidian vault from a graph:
-
-```bash
-graphify extract ./docs --obsidian
-graphify extract ./docs --obsidian --obsidian-dir ~/vault   # into an EXISTING vault
-```
-
-The `--obsidian-dir` form **never overwrites your own notes or `.obsidian` config** — safe to point at your `~/Desktop/vault`.
-
-# 6. MCP server for live querying
-
-Build once, serve, and let any MCP client query:
-
-```bash
-graphify extract ./docs --backend openai
-python -m graphify.serve graphify-out/graph.json --transport http --port 8080
-```
-
-Then register `http://127.0.0.1:8080/mcp` in the agent's MCP config. Keep it loopback (`127.0.0.1`) unless you add `--api-key` + `--host 0.0.0.0`.
-
-# 7. SearXNG → Graphify ingestion loop
-
-A practical pipeline tying two KB programs together:
-
-```bash
-Q="Graphify knowledge graph documentation"
-urls=$(curl -s "http://127.0.0.1:8080/search?q=$Q&format=json" \
-  | python3 -c "import sys,json; print('\n'.join(r['url'] for r in json.load(sys.stdin)['results'][:5]))")
-for u in $urls; do graphify add "$u"; done
-graphify extract . --backend openai     # fold new nodes into the graph
-```
-
-# Troubleshooting
-
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| Hermes doesn't see `/graphify` | skill not installed | `graphify install --platform hermes` |
-| Extraction fails (no key) | backend needs creds | set `OPENAI_BASE_URL=:4000/v1` + `OPENAI_API_KEY` |
-| MCP refused remotely | loopback-only default | add `--host 0.0.0.0 --api-key` to expose |
-| Obsidian clobbered my notes | shouldn't happen | use `--obsidian-dir` (non-destructive) |
+[Graphify index](index.md) · [Coding agents](../../concepts/coding-agents.md) · [MCP server](mcp-server.md)

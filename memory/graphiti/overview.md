@@ -1,66 +1,67 @@
 ---
-type: Software
-title: Graphiti — Overview
-description: Open-source framework (Zep/Neo4j) for building and querying temporal context graphs for AI agent memory — facts with validity windows, episode provenance, incremental updates.
+type: Concept
+title: Graphiti Overview
+description: What Graphiti's temporal context graphs are, the problems they solve compared with chunk-based RAG, and how Graphiti differs from Microsoft GraphRAG and from Zep.
 resource: https://github.com/getzep/graphiti
-tags: [graphiti, knowledge-graph, temporal, agent-memory, neo4j, zep, context-graph]
-generated: { by: "human:daniel", at: "2026-07-09T05:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T05:00:00Z" } ]
+tags: [graphiti, overview, temporal, graphrag, knowledge-graph]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
   - id: graphiti-github
     resource: "https://github.com/getzep/graphiti"
-    title: "Graphiti GitHub"
+    title: "getzep/graphiti on GitHub"
     author: "site:github.com"
-  - id: neo4j-graphiti
-    resource: "https://neo4j.com/blog/developer/graphiti-knowledge-graph-memory/"
-    title: "Neo4j — Graphiti"
-    author: "site:neo4j.com"
-  - id: graphiti-vs-graphrag-readme
-    resource: "https://github.com/getzep/graphiti#graphiti-vs-graphrag"
-    title: "Graphiti vs GraphRAG (README)"
-    author: "site:github.com"
-  - id: paper-arxiv-2501-13956
+  - id: zep-paper
     resource: "https://arxiv.org/abs/2501.13956"
-    title: "Paper (arXiv 2501.13956)"
-    author: "site:arxiv.org"
+    title: "Zep: A Temporal Knowledge Graph Architecture for Agent Memory"
+    author: "Rasmussen et al., arXiv 2501.13956"
 ---
 
-# What Graphiti is
+# Graphiti — Overview
 
-Graphiti is a framework for building and querying **temporal context graphs** for AI agents. Unlike static knowledge graphs, its context graphs track **how facts change over time**, maintain **provenance** to source data, and support both prescribed and learned ontologies — purpose-built for agents on evolving, real-world data.
+Classic [RAG](../../concepts/rag.md) retrieves document chunks; it has no notion that a fact can stop being true. Graphiti targets agents that work on **changing** data — conversations, tickets, CRM records — where "what is true now" and "what was true in March" are different questions.
 
-Per the official README: *"Unlike static knowledge graphs, Graphiti's context graphs track how facts change over time… making them purpose-built for agents operating on evolving, real-world data."*
+## What a context graph holds
 
-# Why it matters
+| Component | Stores |
+|---|---|
+| Entities (nodes) | People, products, policies, concepts — with summaries that evolve |
+| Facts (edges) | Entity → relationship → entity triplets, each with a validity window |
+| Episodes | The raw data as ingested; every derived fact links back here (provenance) |
+| Custom types | Entity and edge types you define as [Pydantic](../../tools/pydantic/index.md) models |
 
-* **Temporal fact management** — facts have validity windows; when info changes, old facts are *invalidated, not deleted*. Query what's true now or what was true at any time.
-* **Episodes & provenance** — every entity/relationship traces back to the **episode** (raw data) that produced it. Full lineage.
-* **Incremental construction** — new data integrates immediately; no batch recomputation. Real-time as agents interact.
-* **Hybrid retrieval** — semantic embeddings + keyword (BM25) + graph traversal, typically **sub-second**, with **no LLM-in-the-loop reranking**.
-* **Custom ontology** — define entity/edge types via Pydantic models, or let structure emerge (learned), or mix both.
+See [Concepts](concepts.md) for details.
 
-# Graphiti vs GraphRAG (key contrast)
+## Key properties
 
-| | GraphRAG | Graphiti |
-|--|----------|----------|
-| Data | Batch/static | Continuous/incremental |
-| Time | Basic timestamps | Bi-temporal, auto-invalidation |
-| Queries | LLM summarization | Hybrid search, sub-second |
-| Custom types | No | Yes (Pydantic) |
+* **Bi-temporal facts.** Each edge records when it was true in the world and when the system learned it. New contradicting information *invalidates* old facts instead of deleting them, so history stays queryable.
+* **Incremental construction.** Episodes are integrated as they arrive; there is no batch re-index of the whole corpus.
+* **Hybrid retrieval.** Semantic embeddings + BM25 keyword search + graph traversal, with rerankers such as reciprocal rank fusion or graph-distance from a centre node. Queries do not need an LLM summarisation step, so latency is typically sub-second.
+* **Prescribed or learned ontology.** Define types up front, or let structure emerge and add types later.
 
-# How it differs from Graphify (in this KB)
+## Graphiti vs Microsoft GraphRAG
 
-Graphify (see `/../../graphify/index.md`) compiles a **static, confidence-tagged** graph from a folder (EXTRACTED/INFERRED/AMBIGUOUS tags, Hermes client, MCP serve). Graphiti is a **live temporal memory engine** with episode provenance and validity windows, backed by Neo4j/FalkorDB. Different tools, similar "graph from data" goal. See [Graphiti vs Graphify](vs-graphify.md).
+| | [GraphRAG](../graphrag/index.md) | Graphiti |
+|---|---|---|
+| Primary use | Summarising a static document corpus | Evolving, temporal knowledge |
+| Updates | Batch indexing | Continuous, incremental |
+| Structure | Entity clusters + community summaries | Entities, temporal facts, episodes, communities |
+| Retrieval | LLM summarisation over communities | Hybrid search, no LLM at query time |
+| Contradictions | Resolved in summaries | Automatic fact invalidation with history |
 
-# How it fits your stack
+Both are forms of [GraphRAG](../../concepts/graphrag.md) in the broad sense; they suit different data.
 
-| Layer | Tool |
-|-------|------|
-| Static compiled graph | Graphify |
-| Temporal agent memory | **Graphiti** |
-| Agent runtime | Hermes / OpenCode |
-| Chat/RAG | OpenWebUI / AnythingLLM |
+## Graphiti vs Zep
 
-Graphiti can serve as the **memory** substrate for your agents; its MCP server exposes that memory to Claude/Cursor/your stack.
+Graphiti is a **framework**: you bring the graph database, LLM and embedder, and you build ingestion, tenancy and access control. [Zep](../zep/index.md) is the managed context platform built on Graphiti, with its own graph store, users/threads, dashboards and SLAs. The architecture is described in the Zep paper (arXiv 2501.13956).
+
+## Caveats
+
+* Ingestion makes several LLM calls per episode and works best with models that support [structured output](../../concepts/structured-output.md). Small local models can produce malformed extractions.
+* `SEMAPHORE_LIMIT` (default 10) caps concurrency to avoid provider 429s; raise it for faster ingestion if your provider allows.
+
+## Related
+
+[Graphiti index](index.md) · [Knowledge graphs](../../concepts/knowledge-graphs.md) · [GraphRAG](../../concepts/graphrag.md) · [Memory alternatives](../alternatives.md)

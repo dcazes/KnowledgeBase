@@ -1,17 +1,21 @@
 ---
-type: CheatSheet
+type: Reference
 title: Ollama Snippets
-description: Ollama cheat sheet — pull/run/list/ps, Modelfile, /api calls, OpenAI-compatible curl, python client, embeddings.
-resource: https://docs.ollama.com
-tags: [ollama, snippets, cheat-sheet]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Ollama cheat sheet — CLI model management, native REST chat and embeddings, structured output, the OpenAI-compatible endpoint, and the Python and JavaScript libraries.
+resource: https://docs.ollama.com/api
+tags: [ollama, snippets, cli, rest, python, cheat-sheet]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
+  - id: ollama-github
+    resource: "https://github.com/ollama/ollama"
+    title: "ollama/ollama on GitHub"
+    author: "site:github.com"
   - id: ollama-docs
     resource: "https://docs.ollama.com"
-    title: "Ollama docs"
+    title: "Ollama documentation"
     author: "site:docs.ollama.com"
 ---
 
@@ -20,54 +24,53 @@ sources:
 ## CLI
 
 ```bash
-ollama pull llama3.1              # download model
-ollama run llama3.1               # interactive chat
-ollama list                       # local models
-ollama ps                         # currently loaded
-ollama rm qwen2.5:7b              # delete
-ollama show llama3.1              # details (params, context, modelfile)
+ollama run gemma4                 # pull if needed, then chat
+ollama pull qwen3:8b
+ollama ls ; ollama ps             # installed / loaded models
+ollama show qwen3:8b              # template, parameters, capabilities
+ollama stop qwen3:8b ; ollama rm qwen3:8b
 ```
 
-## Serve
+## REST
 
 ```bash
-ollama serve                      # :11434 (default bind 127.0.0.1)
-docker compose up -d              # local checkout's compose
+curl http://localhost:11434/api/chat -d '{
+  "model": "gemma4", "stream": false,
+  "messages": [{"role": "user", "content": "Why is the sky blue?"}]}'
+
+curl http://localhost:11434/api/embed -d '{"model": "nomic-embed-text", "input": ["hello world"]}'
 ```
 
-## Raw API
+## Structured output
 
 ```bash
-curl http://localhost:11434/api/generate -d '{"model":"llama3.1","prompt":"Hi","stream":false}'
-curl http://localhost:11434/api/chat -d '{"model":"llama3.1","messages":[{"role":"user","content":"Hi"}]}'
-curl http://localhost:11434/api/tags                  # model list
+curl http://localhost:11434/api/chat -d '{
+  "model": "qwen3:8b", "stream": false,
+  "messages": [{"role": "user", "content": "Extract: Alice is 31 and lives in Lisbon"}],
+  "format": {"type":"object","properties":{"name":{"type":"string"},"age":{"type":"integer"},"city":{"type":"string"}},"required":["name","age","city"]}}'
 ```
 
-## OpenAI-compatible
-
-```bash
-curl http://localhost:11434/v1/chat/completions -H "Content-Type: application/json" \
-  -d '{"model":"llama3.1","messages":[{"role":"user","content":"Hi"}]}'
-curl http://localhost:11434/v1/embeddings -H "Content-Type: application/json" \
-  -d '{"model":"nomic-embed-text","input":"embed me"}'
-```
-
-## Python (openai SDK)
+## OpenAI-compatible client
 
 ```python
 from openai import OpenAI
-c = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
-print(c.chat.completions.create(model="llama3.1", messages=[{"role":"user","content":"Hi"}]).choices[0].message.content)
+client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")   # key is ignored
+print(client.chat.completions.create(model="gemma4",
+      messages=[{"role": "user", "content": "Hi"}]).choices[0].message.content)
 ```
 
-## Modelfile (bake defaults)
+## Python and JavaScript
 
-```
-FROM llama3.1
-PARAMETER temperature 0.7
-PARAMETER num_ctx 8192
+```python
+from ollama import chat
+print(chat(model="gemma4", messages=[{"role": "user", "content": "Hi"}]).message.content)
 ```
 
-```bash
-ollama create mymodel -f Modelfile
+```javascript
+import ollama from "ollama";
+const r = await ollama.chat({ model: "gemma4", messages: [{ role: "user", content: "Hi" }] });
 ```
+
+## Related
+
+[Ollama index](index.md) · [Configuration](configuration.md) · [OpenAI-compatible API](../../concepts/openai-compatible-api.md)

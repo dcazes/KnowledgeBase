@@ -1,77 +1,30 @@
 ---
-type: Reference
-title: Hermes — Browser
-description: Local agent-browser mode, the /browser connect workflow (desktop Chromium at :9222), Camofox anti-detect backend, and computer_use.
-resource: https://hermes-agent.nousresearch.com
-tags: [hermes, browser, agent-browser, chromium, remote-debugging, camofox, computer-use]
-generated: { by: "human:daniel", at: "2026-07-09T03:24:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:24:00Z" } ]
+type: Concept
+title: Hermes Agent Browser
+description: Web capabilities in Hermes — search and page extraction tools, a cloud browser via the Nous tool gateway, local browser options, and MCP browser servers.
+resource: https://hermes-agent.nousresearch.com/docs/user-guide/features/tools
+tags: [hermes, browser, web, tools]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: hermes-browser-setup-note-vault
-    resource: "/../../vault/03%20-%20Reference/Hermes%20Setup.md"
-    title: "Hermes browser — setup note (vault)"
-  - id: hermes-nous-research
-    resource: "https://hermes-agent.nousresearch.com"
-    title: "Hermes (Nous Research)"
+  - id: hermes-docs
+    resource: "https://hermes-agent.nousresearch.com/docs/"
+    title: "Hermes Agent documentation"
     author: "site:hermes-agent.nousresearch.com"
-  - id: camofox
-    resource: "/../../camofox/index.md"
-    title: "Camofox"
-  - id: configuration
-    resource: "configuration.md"
-    title: "Configuration"
 ---
 
-# Hermes — Local agent-browser mode
+# Hermes Agent — Browser
 
-Hermes runs the browser in **local** mode (`browser.cloud_provider: local` in `config.yaml`). All `browser_*` tools then operate inside a real desktop browser window you control.
+Hermes reaches the web in layers (see [Browser automation](../../concepts/browser-automation.md)):
 
-# /browser connect workflow
+* **Web search and extract** tools for quick research, which can be backed by providers or a self-hosted [SearXNG](../../runtime/searxng/index.md) and [Firecrawl](../../browsers/firecrawl/index.md).
+* **Browser tools** for interactive pages — a cloud browser through the Nous Portal tool gateway (Browser Use), or a local browser.
+* **MCP browser servers** such as [Playwright MCP](../../browsers/playwright-mcp/index.md) or [Camofox](../../browsers/camofox/index.md).
 
-1. **Start Chromium with remote debugging:**
+Web content is untrusted: keep command approval on when the agent browses ([Agent security](../../concepts/agent-security.md)).
 
-```bash
-chromium --remote-debugging-port=9222 \
-         --user-data-dir=$HOME/.hermes/chrome-debug
-```
+## Related
 
-2. **Connect from the Hermes CLI:**
-
-```bash
-/browser connect      # auto-connects to http://127.0.0.1:9222
-/browser status       # confirm connection
-/browser disconnect    # release the window
-```
-
-After `connect`, every `browser_*` tool (navigate, snapshot, click, type, …) drives that Chromium window.
-
-# Browser environment flags
-
-These live in `~/.hermes/.env` (secrets/flags only, never in `config.yaml`):
-
-| Env var | Purpose |
-|---------|---------|
-| `BROWSERBASE_PROXIES` | Proxy configuration |
-| `BROWSERBASE_ADVANCED_STEALTH` | Stealth/anti-detection flags |
-| `BROWSER_SESSION_TIMEOUT` | Session timeout (e.g. `300`) |
-| `BROWSER_INACTIVITY_TIMEOUT` | Inactivity timeout (e.g. `120`) |
-| `CHROME_DESKTOP` | Desktop entry name (e.g. `Hermes.desktop`) |
-
-# Camofox backend (anti-detect)
-
-Hermes can use **Camofox** as an anti-detect browser backend instead of plain Chromium. Camofox is documented in its own KB section:
-
-* [Camofox](/../../camofox/index.md)
-
-# computer_use (background desktop control)
-
-Beyond the browser, Hermes's **computer_use** toolset drives the whole Linux desktop in the background — clicking, typing, scrolling — without stealing the user's cursor or focus. It complements `/browser connect` for full-OS automation.
-
-# Verify
-
-```bash
-curl -s http://127.0.0.1:9222/json/version   # Chromium debugger reachable
-/browser status                               # from inside Hermes CLI
-```
+[Hermes index](index.md) · [Browser & web alternatives](../../browsers/alternatives.md)

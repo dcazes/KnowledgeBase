@@ -1,54 +1,57 @@
 ---
-type: HowTo
+type: Playbook
 title: OpenConcho Installation
-description: Install OpenConcho — GitHub release binaries (v0.16.1) or build from source (pnpm), docker-compose/Helm from checkout; verify against a Honcho URL.
+description: Install OpenConcho from release binaries, run the web app with pnpm, build the Tauri desktop app, or deploy the web image with Docker Compose or Helm.
 resource: https://github.com/offendingcommit/openconcho
-tags: [openconcho, installation, releases, docker, helm]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [openconcho, installation, docker, helm, tauri]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: openconcho-github-readme
+  - id: openconcho-github
     resource: "https://github.com/offendingcommit/openconcho"
-    title: "OpenConcho GitHub — README"
-    author: "site:github.com"
-  - id: openconcho-github-releases
-    resource: "https://github.com/offendingcommit/openconcho/releases"
-    title: "OpenConcho GitHub Releases"
+    title: "offendingcommit/openconcho on GitHub"
     author: "site:github.com"
 ---
 
 # OpenConcho — Installation
 
-There is **no npm package** (`openconcho` 404s on the npm registry — verified 2026-08-13). Distribution is via GitHub Releases (desktop binaries), building from source, or Docker/Helm.
+## Binaries
 
-## 1. Desktop (release binaries)
+Each GitHub release ships `.dmg` (Apple Silicon and Intel), `.deb` / `.AppImage` / `.rpm` and Windows `.exe` / `.msi`.
 
-Grab the latest release (**v0.16.1** as of 2026-08-13) from GitHub Releases — macOS / Linux / Windows binaries per the README "Latest release" badge.
+## Web app from source
 
-## 2. From source (pnpm)
-
-```bash
-cd programs/openconcho        # v0.16.0 checkout
-pnpm install && pnpm dev      # web UI in dev mode
-```
-
-## 3. Docker / Helm
-
-The checkout ships `docker-compose.yml` (+ `charts/` for Helm, published at `ghcr.io/offendingcommit/charts`):
+Needs Node.js 22+ and pnpm 10 (`corepack enable`).
 
 ```bash
-cd programs/openconcho
-docker compose up -d          # serves the web UI
+git clone https://github.com/offendingcommit/openconcho.git && cd openconcho
+pnpm install
+pnpm dev                                   # http://localhost:5173
+pnpm --filter @openconcho/desktop dev      # desktop (needs Rust + Tauri prerequisites)
 ```
 
-## Verify
+## Docker
 
-1. Launch the app.
-2. Add your Honcho connection (URL + keys) under *Instances*.
-3. Dashboard shows workspace count + queue status (auto-refresh 10 s) — success means it reached Honcho.
+The container serves the SPA and reverse-proxies the Honcho API under its own origin, so there is no CORS to configure.
 
-## Status on this machine
+```bash
+OPENCONCHO_DEFAULT_HONCHO_URL=https://honcho.example.net make prod    # pull the published image
+OPENCONCHO_DEFAULT_HONCHO_URL=https://honcho.example.net make up      # build locally
+make down                                                             # → http://localhost:8080
+```
 
-* `programs/openconcho` checkout present (v0.16.0) — **not deployed** (recon 2026-08-12); [Honcho](../honcho/index.md) is also not running, so there's nothing to connect to yet.
+## Helm
+
+```bash
+helm install openconcho oci://ghcr.io/offendingcommit/charts/openconcho \
+  --create-namespace --namespace openconcho \
+  --set honcho.defaultUrl=https://honcho.example.com
+```
+
+Add `ingress.*` values for an Ingress with TLS.
+
+## Related
+
+[OpenConcho index](index.md) · [Configuration](configuration.md) · [Honcho installation](../honcho/installation.md)

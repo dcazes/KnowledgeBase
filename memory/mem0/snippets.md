@@ -1,79 +1,85 @@
 ---
-type: CheatSheet
+type: Reference
 title: Mem0 Snippets
-description: Mem0 cheat sheet — pip install, Memory.from_config, add/search/get/update/delete, scoped queries, OpenMemory HTTP calls, Docker.
+description: Copy-paste Mem0 snippets for the 2026 API — add conversations, filtered search, list and delete memories, async usage, Node SDK, and the CLI.
 resource: https://docs.mem0.ai
-tags: [mem0, snippets, cheat-sheet, memory, api]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [mem0, snippets, cheat-sheet, python, typescript]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: mem0-docs-quickstart
-    resource: "https://docs.mem0.ai/quickstart"
-    title: "Mem0 docs — quickstart"
-    author: "site:docs.mem0.ai"
-  - id: mem0-github
+  - id: mem0-readme
     resource: "https://github.com/mem0ai/mem0"
-    title: "Mem0 GitHub"
+    title: "Mem0 README — Basic Usage"
     author: "site:github.com"
+  - id: mem0-migration-v3
+    resource: "https://docs.mem0.ai/migration/oss-v2-to-v3"
+    title: "Open Source: Migrating to the New Memory Algorithm"
+    author: "site:docs.mem0.ai"
 ---
 
 # Mem0 — Snippets
 
-## Install
-
-```bash
-pip install mem0ai                    # latest (2.0.18)
-python -c "import mem0; print(mem0.__version__)"   # 2.0.12 on local checkout
-```
-
-## Basic memory loop
+## Add and search (Python)
 
 ```python
 from mem0 import Memory
-m = Memory.from_config()
+m = Memory()
 
-m.add("The sky is blue", user_id="alice")
-r = m.search("what color is the sky", user_id="alice")
-print(r)                              # [{memory: "The sky is blue", ...}]
+messages = [
+    {"role": "user", "content": "I'm vegetarian and allergic to peanuts."},
+    {"role": "assistant", "content": "Noted, I'll avoid those in recipes."},
+]
+m.add(messages, user_id="alice")                       # entity ids: top-level on add()
+
+hits = m.search("dietary restrictions", filters={"user_id": "alice"}, top_k=5)
+for h in hits["results"]:
+    print(h["memory"], h.get("score"))
 ```
 
-## CRUD
+## Scope to an agent and a session
 
 ```python
-mid = m.get_all(user_id="alice")[0]["id"]
-m.update(memory_id=mid, data="The sky is cyan today", user_id="alice")
-m.delete(memory_id=mid, user_id="alice")
+m.add("Deploys go through the staging branch first.", agent_id="release-bot", run_id="2026-11-12")
+m.search("deploy process", filters={"agent_id": "release-bot"})
 ```
 
-## Scoped search + filters
+## List and delete
 
 ```python
-m.search("project context", user_id="alice", agent_id="planner")
-m.search("anything", metadata_filter={"team": "infra"})   # requires stored metadata
+all_mem = m.get_all(filters={"user_id": "alice"})
+m.delete(memory_id=all_mem["results"][0]["id"])
+m.delete_all(user_id="alice")
 ```
 
-## Ollama-local config (no cloud)
+## Async and context manager
 
 ```python
-from mem0 import Memory
-m = Memory.from_config({"llm": {"provider": "ollama", "config": {"model": "llama3.1"}},
-                        "embedder": {"provider": "ollama", "config": {"model": "nomic-embed-text"}},
-                        "vector_store": {"provider": "qdrant", "config": {"on_disk": True}}})
+from mem0 import AsyncMemory
+
+async with AsyncMemory() as m:
+    await m.add("Uses Neovim", user_id="bob")
+    print(await m.search("editor", filters={"user_id": "bob"}))
 ```
 
-## OpenMemory REST
+## Node.js
+
+```ts
+import { Memory } from "mem0ai/oss";
+
+const memory = new Memory();
+await memory.add("Prefers TypeScript over JavaScript", { userId: "alice" });
+const res = await memory.search("language preference", { filters: { userId: "alice" }, topK: 5 });
+```
+
+## CLI
 
 ```bash
-curl -X POST http://localhost:3000/api/memories -H "Authorization: Bearer $MEM0_API_KEY" \
-  -H "Content-Type: application/json" -d '{"text":"remember this","user_id":"alice"}'
-curl "http://localhost:3000/api/memories/search?query=this&user_id=alice" -H "Authorization: Bearer $MEM0_API_KEY"
+mem0 add "Works in UTC+1" --user-id alice
+mem0 search "timezone" --user-id alice
 ```
 
-## Docker (OpenMemory app)
+## Related
 
-```bash
-git clone https://github.com/mem0ai/OpenMemory && cd OpenMemory
-docker compose up -d        # UI :3000
-```
+[Mem0 index](index.md) · [Configuration](configuration.md) · [AI Integration](ai-integration.md)

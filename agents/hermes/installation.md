@@ -1,58 +1,56 @@
 ---
 type: Playbook
-title: Hermes — Installation & Runtime
-description: Running Hermes (desktop GUI / TUI), its home directory, and where config/secrets/skills live.
-resource: https://hermes-agent.nousresearch.com
-tags: [hermes, install, runtime, desktop, tui, home-dir]
-generated: { by: "human:daniel", at: "2026-07-09T03:21:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:21:00Z" } ]
+title: Hermes Agent Installation
+description: Install Hermes Agent with the official installers on Linux, macOS, WSL2, Windows or Termux, run the setup wizard, optionally connect Nous Portal, and import settings from OpenClaw, Claude Code, Codex or Cursor.
+resource: https://hermes-agent.nousresearch.com/docs/getting-started/installation
+tags: [hermes, installation, setup]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: setup-note-config-files
-    resource: "/../../vault/03%20-%20Reference/Hermes%20Setup.md"
-    title: "Setup note — config files"
-  - id: overview
-    resource: "overview.md"
-    title: "Overview"
+  - id: hermes-github
+    resource: "https://github.com/NousResearch/hermes-agent"
+    title: "NousResearch/hermes-agent on GitHub"
+    author: "site:github.com"
+  - id: hermes-docs
+    resource: "https://hermes-agent.nousresearch.com/docs/"
+    title: "Hermes Agent documentation"
+    author: "site:hermes-agent.nousresearch.com"
 ---
 
-# Hermes — Runtime
-
-Hermes runs as a **desktop GUI** and/or **TUI**:
+# Hermes Agent — Installation
 
 ```bash
-hermes            # launch TUI/CLI
-# or open the desktop GUI application
+curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash        # Linux, macOS, WSL2
 ```
 
-# Home directory
+```powershell
+iex (irm https://hermes-agent.nousresearch.com/install.ps1)                # native Windows
+```
 
-Everything lives under `~/.hermes/`:
-
-| Path | Purpose |
-|------|---------|
-| `~/.hermes/config.yaml` | Main config — model, agent limits, toolsets, browser |
-| `~/.hermes/.env` | Secrets only (API keys, tokens, timeouts, flags) |
-| `~/.hermes/auth.json` | Authentication state |
-| `~/.hermes/skills/` | User-installed skills |
-| `~/.hermes/plugins/` | User-installed plugins |
-| `~/.hermes/cron/` | Scheduled cron jobs |
-| `~/.hermes/memories/` | Profile-scoped memory |
-
-> **Rule:** `.env` is for secrets (API keys, tokens). All behavioral settings belong in `config.yaml`.
-
-# Verify
+An MSIX package exists for Windows and a signed APT repository for Android/Termux. Review install scripts before piping them to a shell.
 
 ```bash
-ls -la ~/.hermes/
-hermes --help          # if available
+source ~/.bashrc
+hermes setup              # full wizard: provider, model, tools, gateway
+hermes setup --portal     # or log in to Nous Portal for models + tool gateway
+hermes doctor             # diagnose problems
+hermes update
 ```
 
-# Troubleshooting
+## Migrating from another agent
 
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| `hermes: command not found` | not on PATH | install/relink the binary |
-| Model errors | bad key in `.env` | check `~/.hermes/.env` |
-| Toolset missing | disabled in config | `hermes setup tools` |
+`hermes setup` offers to import from `~/.openclaw`, `~/.claude`, `~/.codex` or `~/.cursor`. Later:
+
+```bash
+hermes plugins install agent-importers
+hermes import-agent openclaw --dry-run
+hermes import-agent claude-code
+```
+
+OpenClaw imports bring SOUL.md, memories, skills, command allowlists, messaging settings and (only with `--migrate-secrets`) allowlisted API keys.
+
+## Related
+
+[Hermes index](index.md) · [Configuration](configuration.md)

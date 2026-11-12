@@ -1,52 +1,33 @@
 ---
 type: Playbook
-title: Obsidian — Installation & Launch
-description: Launching Obsidian on this machine via the desktop launcher and the vault location.
-resource: https://help.obsidian.md/Getting+started/Install+Obsidian
-tags: [obsidian, install, launch, setsid, vault, desktop]
-generated: { by: "human:daniel", at: "2026-07-09T04:06:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T04:06:00Z" } ]
+title: Obsidian Installation
+description: Install Obsidian on desktop and mobile, open a folder as a vault, and clone a Git-hosted vault such as this one.
+resource: https://obsidian.md/download
+tags: [obsidian, installation, git]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: install-obsidian
-    resource: "https://help.obsidian.md/Getting+started/Install+Obsidian"
-    title: "Install Obsidian"
-    author: "site:help.obsidian.md"
-  - id: local-launcher
-    resource: "/../../programs/Obsidian.desktop"
-    title: "Local launcher"
+  - id: obsidian-site
+    resource: "https://obsidian.md"
+    title: "Obsidian"
+    author: "site:obsidian.md"
 ---
 
-# Obsidian — Launch (this machine)
+# Obsidian — Installation
 
-The launcher at `programs/Obsidian.desktop` runs:
-```bash
-setsid obsidian
-```
-`setsid` detaches it from the terminal session. (Terminal=true in the launcher.)
+1. Download Obsidian for macOS, Windows or Linux (AppImage, deb, Flatpak, Snap) or install from mobile app stores.
+2. **Open folder as vault** and choose a directory of Markdown files.
 
-Or simply run `obsidian` from a shell / app menu.
-
-# Vault location
-
-Your vault is at **`~/Desktop/vault/`** (the folder opened in Obsidian). It contains your notes and the `.obsidian/` config directory.
-
-# First run / open a vault
-
-On launch, Obsidian either opens the last vault or prompts you to **Open folder as vault** → select `~/Desktop/vault`.
-
-# Verify
+To explore this knowledge base:
 
 ```bash
-which obsidian            # binary present?
-ls ~/Desktop/vault/.obsidian/   # config dir exists
+git clone https://github.com/<owner>/<repo>.git ai-knowledge-base
 ```
 
-# Troubleshooting
+Then open the folder as a vault and press the graph-view button.
 
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| Launcher does nothing | `obsidian` not on PATH | run `obsidian` from menu; check install |
-| Vault empty | wrong folder opened | Open Folder as Vault → `~/Desktop/vault` |
-| Config lost | `.obsidian` deleted | restore from backup; it's regenerated minimally |
+## Related
+
+[Obsidian index](index.md) · [Vault structure](vault-structure.md)

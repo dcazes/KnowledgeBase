@@ -1,58 +1,44 @@
 ---
-type: Software
-title: MemOS — Overview
-description: Memory Operating System for LLM agents — unified store/retrieve/manage for long-term memory (textual, tree, preference, skill, KV-cache, LoRA) with scheduling, versioning, vector + graph storage.
-resource: https://memos-docs.openmem.net/home/overview/
-tags: [memos, memory, memory-os, agents, rag, mcp, llm]
-generated: { by: "human:daniel", at: "2026-07-16T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-16T00:00:00Z" } ]
+type: Concept
+title: MemOS Overview
+description: MemOS concepts — the memory-OS framing, memory cubes for isolation and sharing, graph-structured multi-modal memory, the asynchronous MemScheduler, natural-language feedback and correction, and the local plugin's trace-policy-world-model-skill tiers.
+resource: https://memos-docs.openmem.net
+tags: [memos, overview, memory-cubes, scheduler]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-12
+stale_after: 2027-05-11
 sources:
-  - id: memos-repo
+  - id: memos-github
     resource: "https://github.com/MemTensor/MemOS"
-    title: "MemOS repo"
+    title: "MemTensor/MemOS on GitHub"
     author: "site:github.com"
-  - id: memos-docs
-    resource: "https://memos-docs.openmem.net/home/overview/"
-    title: "MemOS docs"
-    author: "site:memos-docs.openmem.net"
-  - id: pypi-memoryos
-    resource: "https://pypi.org/project/MemoryOS/"
-    title: "PyPI — MemoryOS"
-    author: "site:pypi.org"
+  - id: memos-paper
+    resource: "https://arxiv.org/abs/2507.03724"
+    title: "MemOS: A Memory OS for AI System"
+    author: "Li et al., arXiv 2507.03724"
 ---
 
-# What MemOS is
+# MemOS — Overview
 
-**MemOS** (MemoryOS) is a **Memory Operating System** for LLMs and AI agents. It unifies **store / retrieve / manage** for long-term memory so agents get context-aware, personalized, evolving memory — covering KB, multi-modal, tool, and persona memory. Unlike a black-box embedding store, memory is structured as an inspectable, editable graph.
+## Memory as an OS resource
 
-Key features (from upstream README):
-* **Unified Memory API** — one API to add / retrieve / edit / delete memory.
-* **Multi-Modal Memory** — text, images, tool traces, personas retrieved together.
-* **Multi-Cube KB management** — multiple knowledge bases as composable *memory cubes* (isolation, sharing, dynamic composition).
-* **Async ingestion via MemScheduler** — millisecond-latency memory ops under concurrency.
-* **Memory feedback & correction** — refine memory with natural-language feedback over time.
+The MemOS paper (arXiv 2507.03724) argues that LLM memory should be scheduled, versioned and governed like memory in an operating system. In practice MemOS offers:
 
-# Memory types
+* **A unified memory API** — add, retrieve, edit, delete — over memories stored as a graph you can inspect and edit, not an opaque embedding store.
+* **Multi-modal memory** — text, images, tool traces and personas retrieved together.
+* **Memory cubes** — composable knowledge bases. Each cube can belong to a user, project or agent; agents read from some cubes and write to others, which gives isolation and controlled sharing in multi-agent setups.
+* **MemScheduler** — asynchronous ingestion so writes do not block the conversation, built for high concurrency.
+* **Feedback and correction** — natural-language feedback corrects, supplements or replaces existing memories.
 
-| Type | What it stores |
-|------|----------------|
-| Textual | `naive_text` / `general_text` / `tree_text` / `simple_tree_text` |
-| Preference | `pref_text` / `simple_pref_text` |
-| Activation (parametric) | `kv_cache` / `vllm_kv_cache` / `lora` |
-| Skill | reusable agent behaviors (skill-mem extra) |
+## The local plugin's tiers
 
-# How it works
+The `memos-local-plugin` 2.0 for [Hermes](../../agents/hermes/index.md) and [OpenClaw](../../agents/openclaw/index.md) organises self-evolving memory into **L1 traces** (raw experience), **L2 policies**, **L3 world models** and crystallised **[skills](../../concepts/agent-skills.md)**, stored locally with hybrid retrieval (SQLite FTS5 + vectors), deduplication and multi-agent collaboration.
 
-MemOS is a Python package (`import memos`) with a top-level `MOS` entry that orchestrates **memory cubes** (`GeneralMemCube`) aggregating multiple memory types, a **scheduler** (`GeneralScheduler`) for async ops, user/tenant management, and provider plug-ins (LLM, embedder, vector DB, graph DB, chunker, parser, reranker) wired through factory registries.
+## How it compares
 
-* **LLM / embedder:** OpenAI, Azure, Ollama, vLLM, Qwen, DeepSeek, HuggingFace; embedders Ollama / sentence-transformers / universal_api.
-* **Vector DB:** Qdrant, Milvus. **Graph DB:** Neo4j, Postgres, Nebula, Neo4j-community.
-* **API:** FastAPI (`memos.api.server_api:app`) on `:8000`, routers `admin_/product_/server_`, plus an **MCP server**.
+MemOS is closer to [Hindsight](../hindsight/index.md) and [Letta](../letta/index.md) (memory that learns and becomes skills) than to [Mem0](../mem0/index.md)'s flat fact store. The cube model is its most distinctive idea for multi-tenant and multi-agent use.
 
-# How it fits your stack
+## Related
 
-* Sits as the **general memory layer** alongside **Graphiti** (temporal context graph) — MemOS covers structured/textual/preference/skill memory; Graphiti covers time-aware episodes.
-* Exposed as an **MCP server** so Hermes / OpenCode / Cursor / Windsurf can use it as agent memory.
-* Official **Hermes Agent local plugin** and **OpenClaw plugin** exist (hybrid FTS5 + vector retrieval, local-first SQLite, skill evolution).
+[MemOS index](index.md) · [Benchmarks](benchmarks.md) · [Agent memory](../../concepts/agent-memory.md)

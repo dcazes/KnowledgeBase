@@ -1,51 +1,58 @@
 ---
 type: Concept
 title: Honcho Overview
-description: How Honcho works — peers, sessions, messages and derived conclusions; workspace/peer/session scoping, semantic user memory.
-resource: https://docs.honcho.dev
-tags: [honcho, overview, peers, sessions, user-modeling]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Honcho's data model and reasoning loop — workspaces, peers, sessions, scopes and messages; conclusions, representations, peer cards and session context; observer/observed collections and dream consolidation.
+resource: https://honcho.dev/docs/v3
+tags: [honcho, overview, peers, representations, conclusions]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: honcho-docs-concepts
-    resource: "https://docs.honcho.dev"
-    title: "Honcho docs — concepts"
-    author: "site:docs.honcho.dev"
   - id: honcho-github
     resource: "https://github.com/plastic-labs/honcho"
-    title: "Honcho GitHub"
+    title: "plastic-labs/honcho on GitHub"
     author: "site:github.com"
+  - id: honcho-docs
+    resource: "https://honcho.dev/docs/v3"
+    title: "Honcho documentation (v3)"
+    author: "site:honcho.dev"
 ---
 
 # Honcho — Overview
 
-Honcho answers "what does this user need / want / believe?" — it maintains a **living model of each user** that agents can query, instead of bolting raw transcripts onto a vector store. It is a conversational memory platform for multi-party interactions.
+## The loop
 
-## Core concepts (v3 API)
+1. **Store** conversations, events, documents or tool traces as messages on a session.
+2. **Reason** — Honcho processes a queue in the background and updates peer representations.
+3. **Query** — ask for context, search results, representations or a natural-language answer (the chat / "dialectic" endpoint).
+4. **Inject** — put the result into any LLM call or agent framework.
 
-* **Workspace** — top-level tenant; isolates a deployment's data.
-* **Peer** — an entity in a conversation (a user or an agent); created via `client.peer("id")`.
-* **Session** — a conversation thread that groups peers; created via `client.session("id")`, peers added with `session.add_peers([...])`.
-* **Message** — a turn in a session (`peer.message("text")`, batched via `session.add_messages([...])`).
-* **Conclusion** — Honcho's derived, semantic understanding of a peer (or pair) from the conversation, retrievable via `peer.chat(...)` context and `honcho conclusion` CLI commands.
-* **Deriver** — the server-side pipeline that processes messages and updates derived state (queue/status via `honcho workspace queue-status`).
+## Data model
 
-## What Honcho derives
+| Concept | Meaning |
+|---|---|
+| Workspace | Top-level container that isolates data (formerly "App") |
+| Peer | Any participant — human or AI agent (formerly "User") |
+| Session | A conversation; many-to-many with peers |
+| Scope | A named group of sessions that bounds recall |
+| Message | An atomic unit: a chat message or an ingested document chunk |
 
-From messages, Honcho produces **conclusions** (semantic summaries/observations about peers) rather than static "persona/goal" snapshots. Query context through `peer.chat("question", session=session)` — the model gets Honcho's memory of that peer as grounding.
+Treating agents as peers too enables multi-agent sessions and **multi-peer perspective**: Honcho can model what one peer knows about another, keyed by `(observer, observed)` pairs.
 
-## Flow
+## What you get back
 
-1. Create peers: `alice = client.peer("alice")`, `bob = client.peer("bob")`.
-2. Create a session and add peers: `session = client.session("conv-1")`, `session.add_peers([alice, bob])`.
-3. Post messages: `session.add_messages([alice.message("..."), bob.message("...")])`.
-4. Query: `response = alice.chat("What did Bob say?", session=session)`.
+* **Conclusions** — deductive and inductive statements Honcho has drawn about a peer.
+* **Representations** — fast snapshots of what Honcho knows about a peer, optionally session-scoped.
+* **Peer cards** — compact identity summaries.
+* **Session context and summaries** — prompt-ready bundles for long conversations.
 
-Async equivalents via `client.aio.*`.
+Background **dream** passes consolidate memories over time (viewable in [OpenConcho](../openconcho/index.md)).
 
-## Design notes
+## Why it is different
 
-* SDKs (Python `honcho-ai`, TypeScript `@honcho-ai/sdk`) wrap the Honcho server API; the server does the LLM-derived modeling (OpenAI/Anthropic/Gemini key configured in `config.toml`, server-side).
-* Differentiation: Honcho models the **user** (via peers/conclusions), not just stores the conversation.
+Honcho focuses on *understanding people* — preferences, beliefs, learning styles — a theory-of-mind angle rather than fact lookup. Plastic Labs publishes results on LongMemEval and LoCoMo on its evals page.
+
+## Related
+
+[Honcho index](index.md) · [Snippets](snippets.md) · [Agent memory](../../concepts/agent-memory.md)

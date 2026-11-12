@@ -1,55 +1,50 @@
 ---
-type: Reference
-title: Hermes
-description: Agent runtime (v0.20.0 / CalVer 2026.8.3 "Herald") with desktop GUI/TUI, A2A v1.0, voice/TTS, signed webhooks, and cron-based background tasks.
+type: Software
+title: Hermes Agent
+description: Self-improving open-source AI agent from Nous Research — terminal UI and messaging gateway (Telegram, Discord, Slack, WhatsApp, Signal, email), a learning loop that writes skills from experience, persistent memory, 40+ tools, MCP, cron jobs, and any model provider.
 resource: https://hermes-agent.nousresearch.com
-tags: [hermes, agent, runtime, automation, gui, tui, toolsets, a2a, voice, tts]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+tags: [hermes, nous-research, agents, agent-skills, mcp, python, personal-assistant]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
   - id: hermes-github
-    resource: "https://github.com/nous-research/hermes-agent"
-    title: "Hermes GitHub"
+    resource: "https://github.com/NousResearch/hermes-agent"
+    title: "NousResearch/hermes-agent on GitHub"
     author: "site:github.com"
   - id: hermes-docs
-    resource: "https://hermes-agent.nousresearch.com/"
-    title: "Hermes docs"
+    resource: "https://hermes-agent.nousresearch.com/docs/"
+    title: "Hermes Agent documentation"
     author: "site:hermes-agent.nousresearch.com"
 ---
 
-# Hermes
+# Hermes Agent
 
-Hermes Agent terminal AI (v0.20.0 / CalVer 2026.8.3 "Herald"); skills, tools, cron, delegation. Your primary local agent interface. Supports A2A v1.0 agent-to-agent, real-time voice/TTS, and signed webhooks.
+**Hermes Agent** is a general-purpose personal agent from Nous Research that you run on your own machine and talk to from a terminal or a chat app. Its distinguishing idea is a built-in **learning loop**: after completing tasks it writes and refines [skills](../../concepts/agent-skills.md) — procedural memory — so it gets better at recurring work. It is one of the most-starred agent projects of 2026.
+
+| | |
+|---|---|
+| Category | [Agent frameworks](../../concepts/agent-frameworks.md) · personal agents |
+| License | MIT |
+| Language | Python |
+| Latest release | v0.23.1 (2026-11-10) |
+| Platforms | Linux, macOS, WSL2, native Windows, Android (Termux) |
+| Models | Any — Nous Portal, OpenRouter, OpenAI, Anthropic, local [OpenAI-compatible](../../concepts/openai-compatible-api.md) endpoints |
 
 ## Contents
 
-* [Overview](overview.md) - what Hermes is, architecture, skills system
-* [Installation](installation.md) - setup, config, profiles
-* [Configuration](configuration.md) - config.yaml, providers, models
-* [Skills & Plugins](skills-plugins.md) - built-in skills, custom skills, delegation
-* [Browser](browser.md) - web browsing capabilities
-* [AI Integration](ai-integration.md) - SearXNG, Graphify, Firecrawl, Obsidian vault
-* [Alternatives](../alternatives.md) - OpenCode, OpenClaw, Cursor, Windsurf
-* [Snippets](snippets.md) - common tasks cheat sheet
+* [Overview](overview.md) — learning loop, tools, memory, gateway, cron
+* [Installation](installation.md) — installers, setup wizard, Nous Portal
+* [Configuration](configuration.md) — providers, toolsets, security
+* [Skills & plugins](skills-plugins.md) — skills hub, plugins, importing from other agents
+* [Browser](browser.md) — web and browser tools
+* [Snippets](snippets.md) — CLI and slash commands
+* [AI Integration](ai-integration.md) — MCP, memory providers, local models
 
-## Instance facts (from local config)
+## Related
 
-* **Config:** `~/.hermes/config.yaml`
-* **Providers:** OpenRouter, NVIDIA NIM, local (Ollama)
-* **Skills dir:** `~/.hermes/skills/`
-* **Cron jobs:** defined in config, delivered via gateway
-
-## Cross-references
-
-* **SearXNG** — Hermes can query SearXNG for grounded web lookups — see [SearXNG AI Integration](../../runtime/searxng/ai-integration.md)
-* **Graphify** — first-class Graphify client; `graphify install --platform hermes` — see [Graphify AI Integration](../../memory/graphify/ai-integration.md)
-* **Firecrawl** — can call Firecrawl for web extraction — see [Firecrawl AI Integration](../../browsers/firecrawl/ai-integration.md)
-* **Obsidian** — can read vault notes — see [Obsidian AI Integration](../../tools/obsidian/ai-integration.md)
-* **AnythingLLM** — can use as RAG backend — see [AnythingLLM AI Integration](../../apps/anythingllm/ai-integration.md)
-* **OpenCode / OpenClaw / Cursor / Windsurf** — fellow agent tools — see their respective docs
-
-## Last verified
-
-**2026-08-12** — Config, skills, and integration docs verified against local `~/.hermes/` and upstream Hermes docs. v0.20.0 / CalVer 2026.8.3 "Herald"; A2A v1.0, voice/TTS, signed webhooks.
+* Concepts: [Agent skills](../../concepts/agent-skills.md) · [Agent memory](../../concepts/agent-memory.md) · [MCP](../../concepts/mcp.md) · [Agent security](../../concepts/agent-security.md)
+* Peers: [OpenClaw](../openclaw/index.md), [Letta](../../memory/letta/index.md), [Claude Code](../claude-code/index.md), [OpenCode](../opencode/index.md)
+* Memory plugins: [Honcho](../../memory/honcho/index.md), [Supermemory](../../memory/supermemory/index.md), [MemOS](../../memory/memos/index.md)
+* Comparison: [Agents alternatives](../alternatives.md)

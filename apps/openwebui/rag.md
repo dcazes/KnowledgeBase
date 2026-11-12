@@ -1,68 +1,32 @@
 ---
-type: Reference
-title: OpenWebUI — RAG & Web Search
-description: Built-in local RAG (9 vector DBs, hybrid search, reranking) and wiring SearXNG + Firecrawl as web-search-for-RAG providers.
-resource: https://docs.openwebui.com/features/rag/
-tags: [openwebui, rag, web-search, searxng, firecrawl, vector-db, retrieval]
-generated: { by: "human:daniel", at: "2026-07-09T02:03:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T02:03:00Z" } ]
+type: Concept
+title: Open WebUI RAG
+description: Open WebUI's retrieval pipeline — document extraction engines (default, Tika, Docling), chunking, embedding models, vector stores, hybrid search with rerankers, full-context mode, and web search as retrieval.
+resource: https://docs.openwebui.com/features/rag
+tags: [open-webui, rag, docling, embeddings, hybrid-search]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: rag-features-docs
-    resource: "https://docs.openwebui.com/features/rag/"
-    title: "RAG features (docs)"
+  - id: openwebui-docs
+    resource: "https://docs.openwebui.com"
+    title: "Open WebUI documentation"
     author: "site:docs.openwebui.com"
-  - id: web-search-providers-readme
-    resource: "https://github.com/open-webui/open-webui#-web-search-for-rag"
-    title: "Web search providers (README)"
-    author: "site:github.com"
-  - id: searxng-endpoint
-    resource: "/../../searxng/index.md"
-    title: "SearXNG endpoint"
-  - id: firecrawl-endpoint
-    resource: "/../../firecrawl/index.md"
-    title: "Firecrawl endpoint"
 ---
 
-# OpenWebUI — Built-in RAG
+# Open WebUI — RAG
 
-OpenWebUI has a built-in RAG engine:
-* **9 vector databases** supported (chroma is common default).
-* **Content extraction** via Tika, Docling, Document Intelligence, Mistral OCR, PaddleOCR-vl, external loaders.
-* **Hybrid search** — BM25 (keyword) + vector, with **reranking** and a **full-context mode**.
-* Documents load into chat or a library (reference them with the `#` command).
+1. **Extract** text from uploads using the built-in extractor, Apache Tika, or [Docling](../../ingestion/docling/index.md) for complex PDFs ([Document parsing](../../concepts/document-parsing.md)).
+2. **Chunk** by characters or tokens with configurable size and overlap.
+3. **Embed** with a local SentenceTransformers model, Ollama, or an OpenAI-compatible embedding endpoint.
+4. **Store** in the configured [vector database](../../concepts/vector-databases.md).
+5. **Retrieve** with vector or **hybrid** (BM25 + vector) search and an optional reranker, then answer with citations.
 
-# Web Search for RAG
+Options include *full context mode* (send entire documents when they fit — often better with long-context models), per-knowledge-base settings, and a custom RAG prompt template. Web search results go through the same pipeline.
 
-OpenWebUI can **search the web and inject results into the conversation**. This stack wires two self-hosted providers (set their endpoints as below):
-* **SearXNG** — metasearch; set the endpoint to `http://searxng:8080` (or `http://localhost:8088`).
-* **Firecrawl** — web context API; set the endpoint to `http://localhost:3002` with your Firecrawl API key.
+For graph-based retrieval, connect [LightRAG](../../memory/lightrag/ai-integration.md) as a model through its Ollama-compatible endpoint.
 
-Other providers (Brave, Tavily, Perplexity, DuckDuckGo, SerpApi, Bing, Jina, Exa, …) are available if you have keys.
+## Related
 
-# Wiring SearXNG
-
-In **Admin Settings → Web Search**:
-```
-Enable:        on
-Provider:      SearXNG
-SearXNG URL:   http://searxng:8080      # or http://localhost:8088 from host
-```
-Then SearXNG results are pulled into RAG/chat. This is the same SearXNG instance built earlier in this KB.
-
-# Wiring Firecrawl
-
-```
-Provider:   Firecrawl
-Base URL:   http://localhost:3002
-API Key:    <FIRECRAWL_API_KEY>
-```
-Firecrawl returns clean Markdown/JSON for the agent to ingest.
-
-# Local vs web RAG
-
-* **Local RAG** — your uploaded documents (vector store), private.
-* **Web RAG** — live web via SearXNG/Firecrawl, for current info.
-
-Both feed the same retrieval pipeline (hybrid + rerank).
+[Open WebUI index](index.md) · [RAG](../../concepts/rag.md)

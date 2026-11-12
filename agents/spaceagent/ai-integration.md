@@ -1,44 +1,26 @@
 ---
-type: Concept
+type: Playbook
 title: Space Agent AI Integration
-description: Integrate Space Agent — live workspace reshaping (UI/tools/widgets), SKILL.md capabilities, server API for agents, vs terminal agents.
+description: Using Space Agent with hosted or local models, porting SKILL.md capabilities to and from other harnesses, and how its self-extending workspace compares with OpenClaw, Hermes and low-code builders.
 resource: https://github.com/agent0ai/space-agent
-tags: [space-agent, integration, skills, agents]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [space-agent, integration, skills, comparison]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
   - id: space-agent-github
     resource: "https://github.com/agent0ai/space-agent"
-    title: "Space Agent GitHub"
+    title: "agent0ai/space-agent on GitHub"
     author: "site:github.com"
 ---
 
 # Space Agent — AI Integration
 
-Space Agent is unique among this vault's agents: it doesn't just call tools — **it builds them into the workspace live**.
+* **Models:** configure a hosted provider or an [OpenAI-compatible](../../concepts/openai-compatible-api.md) local server such as [Ollama](../../runtime/ollama/index.md) or [LiteLLM](../../runtime/litellm/index.md). Generating working UI code needs a strong coding model.
+* **Skills:** `SKILL.md` files follow the same convention as [Hermes](../hermes/skills-plugins.md), [OpenClaw](../openclaw/overview.md) and [Claude Code](../claude-code/configuration.md), so procedures can move between them.
+* **Compared with:** [OpenClaw](../openclaw/index.md) and [Hermes](../hermes/index.md) (chat-first assistants), [Dify](../dify/index.md) and [n8n](../../apps/n8n/index.md) (humans build the workflows). Space Agent's agent builds the app itself.
 
-## Live reshaping
+## Related
 
-While you work, the agent can construct new **pages, tools, widgets, and workflows** directly in the running workspace (browser/desktop runtime). The workspace's capability surface grows with use.
-
-## SKILL.md system
-
-* Capabilities = plain-text `SKILL.md` files the agent authors and extends itself.
-* This is the integration surface for other agents too: adding a `SKILL.md` to the space grants the agent that skill (same convention as Hermes/OpenCode skills).
-
-## Server mode
-
-`node space serve` exposes the workspace server-side (port 3000) — enables **team/hierarchical** usage and programmatic access for external tooling.
-
-## vs the other agents here
-
-| Agent | Runtime | Model |
-|---|---|---|
-| **Space Agent** | browser/desktop (frontend runtime) | reshapes UI/tools live |
-| [OpenClaw](../openclaw/index.md) | local daemon | orchestration, skills, memory |
-| [OpenCode](../opencode/index.md) | terminal | code agent, delegation |
-| [Hermes](../hermes/index.md) | terminal | skills, tools, cron |
-
-Complementary: Space Agent for in-workspace UI/tool building; the terminal agents for code/dev workflows.
+[Space Agent index](index.md) · [Agents alternatives](../alternatives.md)

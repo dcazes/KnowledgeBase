@@ -1,54 +1,48 @@
 ---
-type: Reference
+type: Software
 title: AnythingLLM
-description: All-in-one local-first RAG chat app with workspaces and agent skills — documented as reference, not deployed on this machine.
+description: All-in-one, local-first AI application for chatting with documents and running agents — desktop and Docker editions, workspaces, built-in LLM engine, model routing, memories, scheduled tasks, no-code agent flows, MCP, multi-user permissions and an embeddable chat widget.
 resource: https://github.com/Mintplex-Labs/anything-llm
-tags: [anythingllm, rag, chat, local-ai]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+tags: [anythingllm, rag, chat-ui, agents, desktop, local-first]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
   - id: anythingllm-github
     resource: "https://github.com/Mintplex-Labs/anything-llm"
-    title: "AnythingLLM GitHub"
+    title: "Mintplex-Labs/anything-llm on GitHub"
     author: "site:github.com"
   - id: anythingllm-docs
-    resource: "https://docs.anythingllm.com/"
-    title: "AnythingLLM docs"
+    resource: "https://docs.anythingllm.com"
+    title: "AnythingLLM documentation"
     author: "site:docs.anythingllm.com"
 ---
 
 # AnythingLLM
 
-All-in-one local-first RAG chat app with workspaces and agent skills. Documented here as a **reference / available-to-deploy** app — not currently running on this machine (no deployment directory present).
+**AnythingLLM** packages a private ChatGPT with document RAG and agents into one app that works out of the box: install the desktop app (or run the Docker server for teams), drop in documents, pick a local or cloud model, and start chatting. Its built-in defaults — local LLM engine, embedder and vector store — mean no separate infrastructure is required.
+
+| | |
+|---|---|
+| Category | [RAG](../../concepts/rag.md) app · chat UI · agents |
+| License | MIT |
+| Language | JavaScript (Node server, React front end) |
+| Latest release | v1.19.0 (2026-10-26) |
+| Editions | Desktop (macOS, Windows, Linux) · Docker (multi-user) · Android app · hosted |
 
 ## Contents
 
-* [Overview](overview.md) - what AnythingLLM is, features
-* [Installation](installation.md) - Docker deploy, setup
-* [Workspaces](workspaces.md) - multi-workspace management
-* [RAG & Embeddings](rag-embeddings.md) - document ingestion, vector stores
-* [Agent Skills](agent-skills.md) - web-search, code, custom skills
-* [AI Integration](ai-integration.md) - SearXNG, Firecrawl, Graphify
-* [Alternatives](../alternatives.md) - OpenWebUI, Dify, Chatbox
-* [Snippets](snippets.md) - cheat sheet
+* [Overview](overview.md) — editions, architecture, defaults
+* [Workspaces](workspaces.md) — isolation, chat modes, memories
+* [RAG & embeddings](rag-embeddings.md) — ingestion, embedders, vector stores
+* [Agent skills](agent-skills.md) — agents, flows, MCP, scheduled tasks
+* [Installation](installation.md) — desktop and Docker
+* [Snippets](snippets.md) — developer API
+* [AI Integration](ai-integration.md) — models, routing, the wider stack
 
-## Instance facts
+## Related
 
-* **Status:** documented for reference; **not deployed** on this machine (no `programs/anythingllm/` directory, no running container).
-* **URL (if deployed):** `http://localhost:3001` (or configured port)
-* **Workspaces:** multiple (each with own RAG)
-* **Skills:** web-search (SearXNG), code, API
-
-## Cross-references
-
-* **SearXNG** — web-search skill calls SearXNG — see [SearXNG AI Integration](../../runtime/searxng/ai-integration.md)
-* **Firecrawl** — can use Firecrawl for extraction — see [Firecrawl AI Integration](../../browsers/firecrawl/ai-integration.md)
-* **Graphify** — workspace docs can be graphed — see [Graphify AI Integration](../../memory/graphify/ai-integration.md)
-* **Dify** — more advanced workflow platform — see [Dify AI Integration](../../agents/dify/ai-integration.md)
-* **OpenWebUI** — lighter chat UI — see [OpenWebUI AI Integration](../openwebui/ai-integration.md)
-
-## Last verified
-
-**2026-08-12** — **v1.15.0** (2026-06-25, latest as of Aug 2026). Deployment, skills, and integration docs originally verified 2026-07-09.
+* Concepts: [RAG](../../concepts/rag.md) · [Vector databases](../../concepts/vector-databases.md) · [MCP](../../concepts/mcp.md)
+* Peers: [Open WebUI](../openwebui/index.md), [SurfSense](../../browsers/surfsense/index.md), [Dify](../../agents/dify/index.md)
+* Comparison: [Apps alternatives](../alternatives.md)

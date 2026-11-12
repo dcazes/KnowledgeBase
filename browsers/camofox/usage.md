@@ -1,65 +1,42 @@
 ---
-type: Reference
-title: Camofox — Usage
-description: Driving the Camofox browser server via its API on :9377 and watching it via noVNC on :6080.
-resource: https://github.com/daijro/camoufox
-tags: [camofox, usage, api, novnc, browser-automation]
-generated: { by: "human:daniel", at: "2026-07-09T01:02:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T01:02:00Z" } ]
+type: Playbook
+title: Camofox Usage
+description: Working with Camofox — creating tabs, navigating, reading accessibility snapshots, acting on element refs, search macros, sessions and cookies, extraction and paging through large pages.
+resource: https://github.com/jo-inc/camofox-browser
+tags: [camofox, usage, workflow, browser-automation]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: camoufox-playwright-compatible
-    resource: "https://github.com/daijro/camoufox"
-    title: "Camoufox (Playwright-compatible)"
+  - id: camofox-github
+    resource: "https://github.com/jo-inc/camofox-browser"
+    title: "jo-inc/camofox-browser on GitHub"
     author: "site:github.com"
-  - id: installation-ports
-    resource: "installation.md"
-    title: "Installation / ports"
 ---
 
-# Two faces of Camofox
+# Camofox — Usage
 
-| Surface | Port | Use |
-|---------|------|-----|
-| **API** | `9377` | Agents drive the browser programmatically (navigate, click, read DOM). |
-| **noVNC** | `6080` | A human watches/controls the live browser in a web VNC client. **Opt-in** (`ENABLE_VNC=1`). |
+## The loop
 
-# API (port 9377)
+1. **Create a tab** (optionally in a named session with its own cookies).
+2. **Navigate** to a URL or run a search macro such as `@google_search`.
+3. **Snapshot** the page — an accessibility tree where interactive elements carry refs (`e1`, `e2`…).
+4. **Act** on refs: click, type, press, select, scroll, drag, upload.
+5. **Snapshot again** and repeat; use offsets to page through large snapshots.
+6. **Extract** structured data with a JSON Schema mapped to refs, or take a screenshot.
 
-The server exposes a browser-control API (Camoufox/Camofox server contract). Typical operations an agent performs:
+## Tool groups (MCP / OpenClaw)
 
-* **New session / page** — open a headed Firefox instance.
-* **Navigate** — go to a URL.
-* **Interact** — click, type, scroll, wait.
-* **Read** — extract DOM/text/screenshot.
+* Tabs and navigation: `camofox_create_tab`, `camofox_navigate`, `camofox_back`, `camofox_refresh`…
+* Reading: `camofox_snapshot`, `camofox_links`, `camofox_table_rows`, `camofox_extract`, `camofox_screenshot`
+* Interacting: `camofox_click`, `camofox_type`, `camofox_press`, `camofox_select`, `camofox_scroll`, `camofox_upload`
+* State: `camofox_import_cookies`, `camofox_export_storage_state`, `camofox_evaluate`
 
-Exact endpoints depend on the Camofox server build; the key fact is the agent talks to `http://localhost:9377/`. From Hermes or a script:
+## Authenticated sites
 
-```python
-# conceptual shape (confirm against the running server's API)
-import requests
-BASE = "http://localhost:9377"
-r = requests.post(f"{BASE}/session", json={"url": "https://example.com"})
-print(r.json())
-```
+Log in once through the noVNC view, export storage state, and import it into the agent's session — the agent never sees the password. See [Agent security](../../concepts/agent-security.md).
 
-> For precise endpoints, inspect the running server or the Camoufox docs; the API surface follows Playwright/CDP-style primitives since Camoufox is Playwright-compatible.
+## Related
 
-# Watching via noVNC (port 6080)
-
-Open in a browser:
-```
-http://localhost:6080/
-```
-You'll see the live Firefox desktop. Useful for:
-* **Visual logins** — OAuth/Google screens that need a human (or a watched click).
-* **Debugging** — see exactly what the agent sees.
-* **CAPTCHA solving** — a human can step in when anti-detection isn't enough.
-
-# Typical flow
-
-1. `make up` (server + VNC start).
-2. Agent opens a session via `:9377`, navigates, interacts.
-3. If a login/CAPTCHA appears, you open `:6080` and complete it.
-4. Agent continues and reads results.
+[Camofox index](index.md) · [Snippets](snippets.md)

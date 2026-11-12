@@ -1,167 +1,87 @@
 ---
 type: Reference
-title: Docker — Compose
-description: Multi-container apps defined in docker-compose.yml; the primary way the AI stack on this machine is run.
+title: Docker Compose
+description: Docker Compose for multi-container AI stacks — file anatomy, common commands, profiles, health-checked dependencies, the models element for Model Runner, include, and watch.
 resource: https://docs.docker.com/compose/
-tags: [docker, compose, multi-container, services]
-generated: { by: "human:daniel", at: "2026-07-08T22:35:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-08T22:35:00Z" } ]
+tags: [docker, compose, yaml, profiles, model-runner]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-04
+stale_after: 2027-05-11
 sources:
-  - id: docker-compose-overview
-    resource: "https://docs.docker.com/compose/"
-    title: "Docker Compose overview"
-    author: "site:docs.docker.com"
-  - id: compose-file-reference
-    resource: "https://docs.docker.com/compose/compose-file/"
-    title: "Compose file reference"
-    author: "site:docs.docker.com"
-  - id: local-searxng-config-programs-firecrawl-firecrawl-searxng-config
-    resource: "/../../programs/firecrawl/firecrawl/searxng-config/"
-    title: "Local SearXNG config - programs/firecrawl/firecrawl/searxng-config/"
-  - id: local-frigate-compose-programs-frigate-docker-compose-yml
-    resource: "/../../programs/frigate/docker-compose.yml"
-    title: "Local Frigate compose - programs/frigate/docker-compose.yml"
+  - id: compose-github
+    resource: "https://github.com/docker/compose"
+    title: "docker/compose on GitHub"
+    author: "site:github.com"
+  - id: compose-spec
+    resource: "https://compose-spec.io"
+    title: "Compose Specification"
+    author: "site:compose-spec.io"
 ---
 
-# Docker — What Compose is
+# Docker — Compose
 
-Compose lets you define a **multi-container app** in a single `docker-compose.yml`. Instead of typing long `docker run` commands, you describe services, networks, and volumes declaratively and manage them as a group. Almost every program in this KB uses Compose (SearXNG, Frigate, Firecrawl, AnythingLLM, Dify).
+Compose describes an application as services, networks, volumes and (since 2025) **models** in one YAML file. Compose v5 is the current major version.
 
-# Anatomy of a compose file
-
-```yaml
-services:
-  app:
-    image: nginx:alpine          # or build: .  (path to a Dockerfile)
-    container_name: my_app
-    ports:
-      - "8080:80"                # HOST:CONTAINER
-    volumes:
-      - ./data:/app/data         # bind mount
-      - app_data:/app/persist    # named volume
-    environment:
-      - TZ=UTC
-    networks:
-      - app_net
-    depends_on:
-      - db
-    restart: unless-stopped
-
-networks:
-  app_net:
-    driver: bridge
-
-volumes:
-  app_data:
-```
-
-Key fields: `image` vs `build`, `ports` (HOST:CONTAINER), `volumes`, `environment`, `depends_on`, `restart`, `networks`.
-
-# Common commands
-
-```bash
-docker compose up -d          # build (if needed) + start in background
-docker compose ps            # status of services
-docker compose logs -f app   # follow logs for one service
-docker compose down          # stop + remove containers/networks
-docker compose down -v       # also remove named volumes (DESTRUCTIVE)
-docker compose pull          # refresh images
-docker compose restart app   # restart a single service
-```
-
-# Real example from this machine — Firecrawl (embeds SearXNG + subservices)
-
-This is the actual `programs/firecrawl/firecrawl/docker-compose.yaml`. Note the patterns: a shared `backend` network, a host-port mapping (`8080:8080` for SearXNG), and `depends_on` so Firecrawl starts after its dependencies.
-
-```yaml
-version: '3.8'
-
-services:
-  searxng:
-    image: searxng/searxng:latest
-    container_name: agent_searxng
-    volumes:
-      - ./searxng/settings.yml:/etc/searxng/settings.yml:ro
-    ports:
-      - "8080:8080"            # host 8080 -> container 8080 (example service)
-    networks:
-      - agent_network
-    restart: always
-
-  cloakbrowser-manager:
-    image: cloakhq/cloakbrowser-manager:latest
-    container_name: agent_cloakbrowser
-    ports:
-      - "8080:8080"
-    volumes:
-      - cloak_profiles:/data
-    networks:
-      - agent_network
-    restart: always
-
-  firecrawl:
-    image: mendableai/firecrawl:latest
-    container_name: agent_firecrawl
-    ports:
-      - "3002:3002"
-    environment:
-      - SEARXNG_URL=http://searxng:8080   # internal container name resolves on the bridge
-    networks:
-      - agent_network
-    depends_on:
-      - searxng
-      - cloakbrowser-manager
-
-networks:
-  agent_network:
-    driver: bridge
-
-volumes:
-  cloak_profiles:
-```
-
-# Real example — Frigate (GPU reservation)
-
-From `programs/frigate/docker-compose.yml`. Notice `privileged: true` for hardware access, `shm_size` for detection buffers, a `tmpfs` RAM cache to reduce drive wear, and the **NVIDIA device reservation** under `deploy.resources` (see [GPU & AI](gpu-ai.md)):
+## Example: a small local RAG stack
 
 ```yaml
 services:
-  frigate:
-    container_name: frigate
-    privileged: true
-    restart: unless-stopped
-    image: ghcr.io/blakeblackshear/frigate:stable
-    shm_size: "256mb"
-    volumes:
-      - /home/daniel/Desktop/programs/frigate/config.yml:/config/config.yml
-      - "/media/daniel/New Volume/frigate:/media/frigate"
-      - /etc/localtime:/etc/localtime:ro
-      - type: tmpfs
-        target: /tmp/cache
-        tmpfs:
-          size: 1000000000
-    ports:
-      - "8971:8971"
-      - "5000:5000"
-      - "8554:8554"
-      - "8555:8555/tcp"
-      - "8555:8555/udp"
-    environment:
-      - FRIGATE_RTSP_PASSWORD=Sept142025!
+  qdrant:
+    image: qdrant/qdrant
+    volumes: [qdrant_data:/qdrant/storage]
+    healthcheck:
+      test: ["CMD", "bash", "-c", "exec 3<>/dev/tcp/localhost/6333"]
+      interval: 10s
+
+  ollama:
+    image: ollama/ollama
+    volumes: [ollama:/root/.ollama]
     deploy:
       resources:
         reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
+          devices: [{ driver: nvidia, count: all, capabilities: [gpu] }]
+
+  webui:
+    image: ghcr.io/open-webui/open-webui:main
+    ports: ["3000:8080"]
+    environment:
+      OLLAMA_BASE_URL: http://ollama:11434
+      VECTOR_DB: qdrant
+      QDRANT_URI: http://qdrant:6333
+    depends_on:
+      qdrant: { condition: service_healthy }
+      ollama: { condition: service_started }
+    profiles: ["ui"]
+
+volumes: { qdrant_data: {}, ollama: {} }
 ```
 
-# Tips
+Services reach each other by service name (`http://ollama:11434`) on the default network. See [Ollama](../ollama/index.md), [Qdrant](../../databases/qdrant/index.md), [Open WebUI](../../apps/openwebui/index.md).
 
-* Use `:ro` on bind mounts you don't want the container to write (e.g. config files).
-* Give services a `container_name` so logs/`docker exec` are easy to target.
-* Prefer `restart: unless-stopped` over `always` for services you may want to keep down during maintenance.
-* Internal service-to-service traffic uses the **service name** as the hostname (e.g. `http://searxng:8080`), never the host port.
+## Commands
+
+```bash
+docker compose up -d                 # start
+docker compose --profile ui up -d    # include profile-gated services
+docker compose ps / logs -f / down
+docker compose pull && docker compose up -d   # update images
+docker compose watch                 # rebuild/sync on file changes (dev)
+docker compose config                # render the merged file
+```
+
+## AI-specific features
+
+* **`models:`** top-level element declares models served by [Docker Model Runner](gpu-ai.md#docker-model-runner) and injects their endpoint into services.
+* **`include:`** composes several Compose files (e.g. one per tool) into one stack.
+* **Jobs** (partial support since v5.6): manually triggered one-off tasks.
+
+## Tips
+
+* Pin image tags in production; `latest` changes under you.
+* Bind ports to `127.0.0.1:` for services that should not be reachable from the network.
+* Keep secrets in `.env` (excluded from git) or Compose `secrets:`.
+
+## Related
+
+[Docker index](index.md) · [Volumes & networks](volumes-networks.md) · [GPU & AI](gpu-ai.md)

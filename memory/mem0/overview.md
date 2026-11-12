@@ -1,64 +1,68 @@
 ---
 type: Concept
 title: Mem0 Overview
-description: How Mem0 works — memory pipeline (ADD/UPDATE/DELETE/GET/SEARCH), storage backends (vector + graph), per-user/per-agent scoping, OpenMemory app vs library.
+description: How Mem0 works in 2026 — single-pass ADD-only fact extraction, multi-signal hybrid retrieval (semantic + BM25 + entity), memory scoping by user/agent/run, and how the library, server and platform differ.
 resource: https://docs.mem0.ai
-tags: [mem0, memory, agents, pipeline, vector, graph]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [mem0, agent-memory, hybrid-search, entity-linking, architecture]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: mem0-docs-overview
-    resource: "https://docs.mem0.ai"
-    title: "Mem0 docs — overview"
-    author: "site:docs.mem0.ai"
-  - id: mem0-github
+  - id: mem0-readme
     resource: "https://github.com/mem0ai/mem0"
-    title: "Mem0 GitHub"
+    title: "Mem0 README — New Memory Algorithm (April 2026)"
     author: "site:github.com"
-  - id: openmemory
-    resource: "https://github.com/mem0ai/OpenMemory"
-    title: "OpenMemory"
+  - id: mem0-migration-v3
+    resource: "https://docs.mem0.ai/migration/oss-v2-to-v3"
+    title: "Open Source: Migrating to the New Memory Algorithm"
+    author: "site:docs.mem0.ai"
+  - id: mem0-benchmarks
+    resource: "https://github.com/mem0ai/memory-benchmarks"
+    title: "mem0ai/memory-benchmarks"
     author: "site:github.com"
 ---
 
 # Mem0 — Overview
 
-Mem0 is a **memory layer for LLM agents**: it turns raw conversation/context into structured, persistent, queryable memory that agents can reuse across sessions. It is "MemGPT-style" memory management made self-hostable — the PyPI package `mem0ai` (import `mem0`).
+Mem0 turns conversations into a store of short, self-contained **memories** ("prefers dark mode", "is migrating the API to Postgres") and returns the relevant ones when the agent needs context. It is a practical take on [agent memory](../../concepts/agent-memory.md): rather than stuffing whole transcripts into the prompt, it keeps a compact, searchable fact store — a form of [context engineering](../../concepts/context-engineering.md).
 
-## Memory pipeline
+## The memory algorithm (April 2026 redesign)
 
-The core API is five operations (mirroring a database):
+Mem0 replaced its earlier extract-then-reconcile pipeline (where an LLM decided to ADD, UPDATE or DELETE each fact) with a simpler, faster design:
 
-* **ADD** — store a new memory about a user/agent/run (text + metadata + embeddings).
-* **UPDATE** — replace an existing memory (with conflict resolution on `memory_id`).
-* **DELETE** — remove a memory by `memory_id`.
-* **GET** — list all memories for a user/agent (optionally filtered).
-* **SEARCH** — semantic search over memory, scoped by user/agent/run or globally, with optional filters.
+* **Single-pass, ADD-only extraction.** One LLM call per `add()` extracts facts. Memories accumulate; nothing is overwritten, so history is never lost to a bad merge. `add()` now only returns `ADD` events.
+* **Agent facts are first-class.** When an agent confirms an action, that is stored with the same weight as what the user said.
+* **Entity linking.** Entities are extracted, embedded and linked across memories.
+* **Multi-signal retrieval.** Semantic similarity, BM25 keyword match and entity match are scored in parallel and fused — a [hybrid search](../../concepts/rag.md) approach.
+* **Temporal reasoning.** Retrieval is time-aware, so "where does Alice live now?" prefers the latest dated fact.
 
-Conflicts: when ADD collides with an existing similar memory, Mem0 merges/updates rather than duplicating (configurable `on_conflict: "replace" | "keep"`).
+Mem0 reports LoCoMo 92.5 and LongMemEval 94.4 for its managed platform with this algorithm (versus 71.4 / 67.8 before). The evaluation harness is open source, but note the published numbers are for the platform, which includes optimisations not in the open-source library.
 
-## Storage backends
+## Graph memory moved to the platform
 
-Configured in `config.json` under `vector_store` and `graph_store`:
-
-| Backend | Kind | Notes |
-|---|---|---|
-| Qdrant (default) | vector | embedded/docker; also Milvus, Pinecone, Weaviate, Chroma, FAISS, pgvector |
-| Neo4j / FalkorDB | graph | entity/fact graph memory via LLM extraction |
-
-Embedding models: OpenAI (default), Ollama, HuggingFace, Gemini, Bedrock, etc.
+Older open-source releases could write an entity graph to [Neo4j](../../databases/neo4j/index.md) or [FalkorDB](../../databases/falkordb/index.md) (`enable_graph` + `graph_store`). That integration was **removed from open source** in the redesign; graph memory is now a built-in feature of the managed Mem0 Platform. For self-hosted graph memory, look at [Graphiti](../graphiti/index.md), [Cognee](../cognee/index.md) or [LightRAG](../lightrag/index.md).
 
 ## Scoping
 
-Memory is namespaced by `user_id` / `agent_id` / `run_id` — pass the same scopes on ADD and SEARCH to isolate per-user or per-agent memory (the standard multi-tenant pattern).
+Every memory belongs to one or more entities: `user_id`, `agent_id`, `run_id` (session). Since the redesign:
 
-## OpenMemory vs library
+* `add()` and `delete_all()` take entity ids as top-level arguments.
+* `search()` and `get_all()` take them inside `filters={...}` — passing them top-level raises `ValueError`.
 
-Two ways to run:
+## Three ways to run it
 
-1. **Library** — `from mem0 import Memory`; call `memory.add / search / get / update / delete` in-process. Simple, no server.
-2. **OpenMemory app** — self-hosted FastAPI server + web UI (`docker compose up` on :3000) exposing the same operations over REST with per-user keys.
+| Mode | What you get | Typical use |
+|---|---|---|
+| Library (`pip install mem0ai` / `npm install mem0ai`) | `Memory` object in your process; default local [Qdrant](../../databases/qdrant/index.md) on Python, in-memory store on Node | Prototypes, single-service apps |
+| Self-hosted server (`server/` in the repo) | REST API + dashboard, API keys and auth on by default | Teams on their own infrastructure |
+| Mem0 Platform (managed) | Graph memory, user profiles, advanced retrieval | Zero-ops production |
 
-Local checkout `programs/mem0` v2.0.12 is the library; the app is the `OpenMemory` companion repo (not checked out here).
+## Strengths and trade-offs
+
+* **Strengths:** small API, many provider integrations, strong benchmark results, works with any [OpenAI-compatible](../../concepts/openai-compatible-api.md) or local model.
+* **Trade-offs:** extraction quality depends on the LLM you configure; ADD-only means stale facts linger (retrieval ranks them down rather than deleting them); graph features are platform-only.
+
+## Related
+
+[Mem0 index](index.md) · [Configuration](configuration.md) · [Agent memory](../../concepts/agent-memory.md) · [Memory alternatives](../alternatives.md)

@@ -1,84 +1,86 @@
 ---
-type: CheatSheet
-title: PydanticAI Snippets
-description: PydanticAI cheat sheet — agent definition, structured output, tools, RunContext deps, streaming, local Ollama models.
+type: Reference
+title: Pydantic AI Snippets
+description: Pydantic AI snippets — typed extraction, tools with dependency injection, MCP servers as toolsets, streaming, and a coding agent from the Harness.
 resource: https://pydantic.dev/docs/ai/
-tags: [pydantic, ai, snippets, cheat-sheet]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [pydantic-ai, snippets, python, cheat-sheet]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: pydanticai-docs
+  - id: pydantic-ai-docs
     resource: "https://pydantic.dev/docs/ai/"
-    title: "PydanticAI docs"
+    title: "Pydantic AI documentation"
     author: "site:pydantic.dev"
+  - id: pydantic-ai-github
+    resource: "https://github.com/pydantic/pydantic-ai"
+    title: "pydantic/pydantic-ai on GitHub"
+    author: "site:github.com"
 ---
 
 # Pydantic AI — Snippets
 
-## Minimal agent
-
-```python
-from pydantic_ai import Agent
-
-agent = Agent("openai:gpt-4o-mini", instructions="Say hello.")
-print(agent.run_sync("hi").output)
-```
-
-## Structured output (typed)
+## Typed extraction
 
 ```python
 from pydantic import BaseModel
 from pydantic_ai import Agent
 
-class Response(BaseModel):
-    reply: str
-    confidence: float
+class Person(BaseModel):
+    name: str
+    age: int
+    city: str
 
-agent = Agent("openai:gpt-4o-mini", result_type=Response)
-out = agent.run_sync("weather?").output
-print(out.reply, out.confidence)
+agent = Agent("openai:gpt-5-mini", output_type=Person)
+print(agent.run_sync("Alice is 31 and lives in Lisbon").output)
 ```
 
-## Tool
+## Tools with dependencies
 
 ```python
+from dataclasses import dataclass
+from pydantic_ai import Agent, RunContext
+
+@dataclass
+class Deps:
+    user_id: str
+
+agent = Agent("anthropic:claude-sonnet-4-5", deps_type=Deps,
+              instructions="Answer using the user's orders.")
+
 @agent.tool
-async def get_weather(city: str) -> str:
-    """Look up weather for a city."""
-    return f"sunny in {city}"
+def recent_orders(ctx: RunContext[Deps], limit: int = 5) -> list[str]:
+    """Return the user's most recent orders."""
+    return fetch_orders(ctx.deps.user_id, limit)    # your code
+
+agent.run_sync("What did I order last?", deps=Deps(user_id="u-42"))
 ```
 
-## Dependencies
+## MCP server as a toolset
 
 ```python
-from pydantic_ai import RunContext
-
-@agent.tool
-async def lookup(ctx: RunContext[MyDeps], q: str) -> str:
-    return ctx.deps.api.call(q)
-
-res = await agent.run("search", deps=MyDeps())
-```
-
-## Local model (Ollama)
-
-```python
-agent = Agent("ollama:gemma3:12b")
+from pydantic_ai.mcp import MCPServerStdio
+browser = MCPServerStdio("npx", args=["@playwright/mcp@latest", "--headless"])
+agent = Agent("openai:gpt-5-mini", toolsets=[browser])
 ```
 
 ## Streaming
 
 ```python
-async with agent.run_stream("story") as stream:
-    async for chunk in stream:
+async with agent.run_stream("Summarise RAG in 3 bullets") as result:
+    async for chunk in result.stream_text():
         print(chunk, end="")
 ```
 
-## Cost/usage
+## Coding agent from the Harness
 
 ```python
-result = agent.run_sync("hi")
-print(result.cost())   # request tokens, model, etc.
+from pydantic_ai import Agent
+from pydantic_ai_harness import Coder
+Agent("anthropic:claude-sonnet-4-5", capabilities=[Coder()]).to_cli_sync()
 ```
+
+## Related
+
+[Pydantic AI index](index.md) · [Core concepts](pydantic_ai.md)

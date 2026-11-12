@@ -1,49 +1,34 @@
 ---
-type: Reference
-title: AnythingLLM — Workspaces
-description: Isolated knowledge domains in AnythingLLM — each with its own vector store, prompts, agent skills, and chat history.
-resource: https://docs.anythingllm.com/workspaces
-tags: [anythingllm, workspaces, knowledge, isolation, multi-user]
-generated: { by: "human:daniel", at: "2026-07-09T02:32:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T02:32:00Z" } ]
+type: Concept
+title: AnythingLLM Workspaces
+description: AnythingLLM workspaces — isolated containers of documents, settings and chat history, per-workspace models and prompts, chat versus query modes, memories, and user access.
+resource: https://docs.anythingllm.com
+tags: [anythingllm, workspaces, chat-modes]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: workspaces-docs
-    resource: "https://docs.anythingllm.com/workspaces"
-    title: "Workspaces docs"
+  - id: anythingllm-docs
+    resource: "https://docs.anythingllm.com"
+    title: "AnythingLLM documentation"
     author: "site:docs.anythingllm.com"
-  - id: overview
-    resource: "overview.md"
-    title: "Overview"
 ---
 
-# AnythingLLM — What a workspace is
+# AnythingLLM — Workspaces
 
-A **workspace** is an isolated knowledge domain. Each one keeps its own:
-* **Vector index** (default LanceDB) — documents uploaded there stay separate.
-* **System prompt** — workspace-specific instructions.
-* **Agent skills** — which tools the agent may use.
-* **Chat history** — separate per workspace.
+A **workspace** is like a project: its own documents, embeddings, system prompt, model choice and chat history. Documents can be shared across workspaces without re-embedding.
 
-This lets you separate, e.g., a "personal notes" workspace from a "project codebase" workspace from a "team docs" workspace, without cross-contamination.
+| Setting | Effect |
+|---|---|
+| Chat mode | Uses the model's knowledge plus retrieved documents |
+| Query mode | Answers only from documents; says so when nothing is found — reduces hallucination |
+| Model override | Different LLM per workspace (or via model routing) |
+| Similarity threshold, top-N | Retrieval tuning |
+| Memories | Facts the assistant keeps about you or the workspace |
 
-# Creating a workspace
+In the Docker edition, admins assign users to workspaces.
 
-In the UI: **New Workspace** → name it → upload documents / set prompt / enable skills. Each workspace shows in the sidebar; switch to scope the chat to that knowledge.
+## Related
 
-# Multi-user
-
-In Docker/multi-user mode, workspaces can be:
-* **Private** — only you.
-* **Shared** — visible to specific users/teams (admin-configured).
-
-# Why it matters here
-
-You can mirror parts of your `kbv2/` or `vault/` into a workspace for RAG chat, while keeping a separate workspace for, say, the `programs/*` source. SearXNG web search (see [AI Integration](ai-integration.md)) can augment any workspace.
-
-# Tips
-
-* Keep one workspace per distinct knowledge domain (don't dump everything into one).
-* Set a tight system prompt per workspace for better answers.
-* Enable only the agent skills a workspace needs (least privilege).
+[AnythingLLM index](index.md) · [RAG & embeddings](rag-embeddings.md)

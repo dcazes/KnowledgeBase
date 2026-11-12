@@ -1,48 +1,42 @@
 ---
-type: Software
-title: CloakBrowser — Overview
-description: A Brave/Chromium-based stealth and automation browser driven via CDP (port 9222), available as a Node CLI and a Docker manager service.
-resource: https://github.com/cloakhq/cloakbrowser
-tags: [cloakbrowser, browser, automation, cdp, brave, stealth, anti-detection]
-generated: { by: "human:daniel", at: "2026-07-09T01:10:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T01:10:00Z" } ]
+type: Concept
+title: CloakBrowser Overview
+description: How CloakBrowser works — source-level Chromium fingerprint patches, humanized input, proxy signal removal, WebRTC IP spoofing, GeoIP matching, and the licence-key model introduced in 2026.
+resource: https://github.com/CloakHQ/CloakBrowser
+tags: [cloakbrowser, overview, fingerprinting, humanize]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: cloakbrowser-cloakhq
-    resource: "https://github.com/cloakhq/cloakbrowser"
-    title: "CloakBrowser (cloakhq)"
+  - id: cloakbrowser-github
+    resource: "https://github.com/CloakHQ/CloakBrowser"
+    title: "CloakHQ/CloakBrowser on GitHub"
     author: "site:github.com"
-  - id: local-launcher
-    resource: "/../../programs/CloakBrowser.desktop"
-    title: "Local launcher"
-  - id: cloakbrowser-manager-service-historical-former-combined-searxng-compose-now-defunct
-    resource: "/../../programs/searxng/docker-compose.yml"
-    title: "CloakBrowser manager service (historical — former combined SearXNG compose, now defunct)"
 ---
 
-# What CloakBrowser is
+# CloakBrowser — Overview
 
-CloakBrowser is a **browser automation / stealth tool** built on **Brave** (a Chromium fork). It exposes the **Chrome DevTools Protocol (CDP)** so agents and scripts can drive a real browser — navigate, click, read the DOM, take screenshots — while benefiting from Brave's privacy/anti-tracking defaults.
+## What is patched
 
-Two forms exist on this machine:
+Canvas, WebGL, audio, fonts, GPU and screen parameters, WebRTC, network timing, automation signals and CDP input behaviour — inside Chromium's C++ source, so detection scripts see a consistent, ordinary browser. On Windows, real GPU values are passed through rather than spoofed.
 
-1. **Node CLI** — `npx cloakbrowser --remote-debugging-port=9222 --headless=false` (runs a local Brave instance with CDP on :9222).
-2. **Docker manager** — `cloakhq/cloakbrowser-manager:latest` (a server form on :8080, with a `cloak_profiles` volume for persistent profiles).
+## Behaviour
 
-# How it differs from Camofox
+`humanize=True` adds human-like mouse curves, typing rhythm and scrolling, and waits for elements to be visible and stable before acting. Per-call `human_config` overrides tune it.
 
-| | CloakBrowser | Camofox |
-|--|--------------|---------|
-| Browser base | **Brave / Chromium** | **Firefox / Camoufox** |
-| Protocol | CDP (Chrome DevTools) | Playwright-compatible |
-| Stealth approach | Brave anti-tracking + CDP control | Camoufox fingerprint spoofing |
-| Watchable | headed (`--headless=false`) | headed + noVNC |
+## Network
 
-They're complementary: CloakBrowser for Chromium-based automation, Camofox for Firefox-based anti-detection.
+* HTTP (with inline credentials) and native SOCKS5 proxies, including QUIC over SOCKS5.
+* Proxy tell-tales removed (timing, cache headers, `Proxy-Connection`).
+* `geoip=True` matches timezone and locale to the proxy's exit IP and spoofs WebRTC ICE candidates accordingly.
 
-# Where it fits
+## Licensing
 
-* Agent **browser backend** for Chromium-flavored automation.
-* In the SearXNG compose it appeared as `cloakbrowser-manager` — a managed browser service other stack pieces can call.
-* Good for tasks where a Chromium engine is required (site compatibility, CDP tooling).
+Since 2026 every launch needs a licence key: a free key by email, or a paid Pro key for the newest builds and higher scale. The first interactive launch prompts for one; set it via `license_key` / the environment for automation. Factor this into self-hosted, offline or CI use.
+
+> Use anti-detection browsers only where you are allowed to automate: your own sites, sites whose terms permit it, or authorised testing. Bypassing access controls can breach terms of service or law.
+
+## Related
+
+[CloakBrowser index](index.md) · [Usage](usage.md) · [Camofox anti-detection](../camofox/anti-detection.md)

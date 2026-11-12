@@ -1,51 +1,27 @@
 ---
-type: Software
-title: VSCode — Overview
-description: Free open-source AI code editor (VS Code / Code-OSS) — architecture, editions, and its role editing your programs/* repos and agent skills.
-resource: https://code.visualstudio.com/
-tags: [vscode, editor, ide, code-oss, ai, copilot, development]
-generated: { by: "human:daniel", at: "2026-07-09T02:10:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T02:10:00Z" } ]
+type: Concept
+title: VS Code Overview
+description: VS Code's architecture and strengths — Electron editor, extension host, language servers, remote development (SSH, containers, WSL, tunnels), dev containers, and why it became the base for AI editors.
+resource: https://code.visualstudio.com/docs
+tags: [vscode, overview, extensions, remote-development]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: vs-code-official
-    resource: "https://code.visualstudio.com/"
-    title: "VS Code official"
+  - id: vscode-site
+    resource: "https://code.visualstudio.com"
+    title: "Visual Studio Code"
     author: "site:code.visualstudio.com"
-  - id: vscodium-code-oss-build
-    resource: "https://vscodium.com/"
-    title: "VSCodium (Code-OSS build)"
-    author: "site:vscodium.com"
-  - id: local-launcher
-    resource: "/../../programs/VSCode.desktop"
-    title: "Local launcher"
 ---
 
-# What VSCode is
+# VS Code — Overview
 
-**Visual Studio Code** is a free, open-source AI code editor from Microsoft, built on the open-source **Code - OSS** core (Electron + TypeScript). It's the most common editor for working across language stacks and, increasingly, for AI-assisted and agent-driven development.
+* **Extensions** run in a separate host process; the Marketplace (and Open VSX for forks) holds tens of thousands.
+* **Language Server Protocol** — VS Code introduced LSP, now used by almost every editor and by coding agents such as [OpenCode](../../agents/opencode/index.md) for diagnostics.
+* **Remote development** — edit over SSH, inside containers, WSL or tunnels; **dev containers** give reproducible environments, which also make safer sandboxes for agents ([Agent security](../../concepts/agent-security.md)).
+* **Open core** — Code-OSS is MIT; [Cursor](../cursor/index.md) and [Windsurf](../windsurf/index.md) build on it.
 
-# Architecture
+## Related
 
-* **Core:** Code-OSS (MIT-licensed). Microsoft's download bundles proprietary extras (telemetry, some icons/fonts).
-* **Runtime:** Electron (Chromium + Node.js). Language servers run out-of-process.
-* **Extensions:** a massive marketplace extends languages, debuggers, and AI features. Extensions are JS/TS and run in extension hosts.
-* **Settings:** `settings.json` (user + workspace/folder scope), `keybindings.json`, and `.vscode/` per-project config.
-
-# Editions
-
-| | License | Notes |
-|--|---------|-------|
-| **Code - OSS** | MIT | Pure open source; no MS telemetry/branding |
-| **VS Code** (download) | MS EULA | Adds telemetry, proprietary assets |
-| **VSCodium** | MIT | Code-OSS build, telemetry stripped |
-
-# Role in this stack
-
-VSCode is the **editor** for:
-* Your `programs/*` source repos — Dify, Firecrawl, SearXNG, Camofox, CloakBrowser, etc.
-* **Agent skills** you author (Graphify packs, Hermes/OpenCode skills).
-* General notes/config in the vault and `kbv2/`.
-
-It is *not* a runtime itself — it launches the tools (Docker, Node, Git) that actually build/run the stack.
+[VS Code index](index.md) · [AI features](ai-features.md)

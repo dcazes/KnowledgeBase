@@ -1,66 +1,60 @@
 ---
-type: HowTo
+type: Reference
 title: Cognee Configuration
-description: Configure Cognee — LLM/embedding providers via cognee.config or .env, graph/vector/relational backends, data dir, pipeline options.
+description: Configure Cognee's LLM and embedding providers (OpenAI by default, Ollama and others), graph, vector and relational storage backends, and access control via environment variables.
 resource: https://docs.cognee.ai
-tags: [cognee, configuration, env, backends]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [cognee, configuration, ollama, neo4j, pgvector, env]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: cognee-docs-configuration
+  - id: cognee-docs
     resource: "https://docs.cognee.ai"
-    title: "Cognee docs — configuration"
+    title: "Cognee documentation"
     author: "site:docs.cognee.ai"
-  - id: cognee-github-config
-    resource: "https://github.com/topoteretes/cognee"
-    title: "Cognee GitHub — config"
+  - id: cognee-env
+    resource: "https://github.com/topoteretes/cognee/blob/main/.env.template"
+    title: "Cognee .env.template"
     author: "site:github.com"
 ---
 
 # Cognee — Configuration
 
-## Provider config (Python or .env)
+Configuration is environment-driven; start from `.env.template` in the repository.
 
-```python
-import cognee
-from cognee.infrastructure.databases.vector.embeddings import EmbeddingConfig
+## Models
 
-cognee.llm.set_llm_provider("openai", api_key="sk-...", model="gpt-4o")
-cognee.llm.set_embedding_provider("openai", api_key="sk-...", model="text-embedding-3-small")
+```bash
+LLM_API_KEY=...                 # with only this set, Cognee uses OpenAI for the LLM and embeddings
+LLM_PROVIDER=ollama             # or openai, anthropic, gemini, custom (OpenAI-compatible)
+LLM_MODEL=qwen3:14b
+LLM_ENDPOINT=http://localhost:11434/v1
+EMBEDDING_PROVIDER=ollama
+EMBEDDING_MODEL=nomic-embed-text
+EMBEDDING_DIMENSIONS=768
 ```
 
-Or `.env`:
+Note that the upstream Kuzu project is no longer maintained; for long-lived deployments prefer Neo4j or another supported graph store.
 
-```env
-LLM_PROVIDER=openai            # openai | anthropic | ollama | azure_openai | gemini
-LLM_MODEL=gpt-4o
-LLM_API_KEY=sk-...
-EMBEDDING_PROVIDER=openai
-EMBEDDING_MODEL=text-embedding-3-small
-EMBEDDING_API_KEY=sk-...
-```
+The official guide covers fully local operation with [Ollama](../../runtime/ollama/index.md); any [OpenAI-compatible](../../concepts/openai-compatible-api.md) endpoint such as [vLLM](../../runtime/vllm/index.md) or [LiteLLM](../../runtime/litellm/index.md) also works.
 
-Local via Ollama: `LLM_PROVIDER=ollama`, `LLM_MODEL=llama3.1`, `OLLAMA_API_BASE=http://localhost:11434`.
+## Storage
 
-## Storage backends
+Cognee separates three stores, each pluggable:
 
-```env
-RELATIONAL_DB_PROVIDER=postgres     # postgres | sqlite
-RELATIONAL_DB_HOST=localhost
-RELATIONAL_DB_PORT=5432
-RELATIONAL_DB_USER=cognee
-RELATIONAL_DB_PASSWORD=cognee
-RELATIONAL_DB_NAME=cognee
-VECTOR_DB_PROVIDER=lancedb            # lancedb | qdrant | weaviate | milvus
-GRAPH_DB_PROVIDER=networkx            # networkx | neo4j
-```
+| Store | Defaults | Alternatives |
+|---|---|---|
+| Graph | Kuzu, embedded (`GRAPH_DATABASE_PROVIDER=kuzu`) | [Neo4j](../../databases/neo4j/index.md), remote Kuzu, Turso; [FalkorDB](../../databases/falkordb/index.md), Neptune, Memgraph via adapters |
+| Vector | LanceDB, embedded (`VECTOR_DB_PROVIDER=lancedb`) | [Qdrant](../../databases/qdrant/index.md), [pgvector](../../databases/pgvector/index.md), Weaviate, Milvus, Chroma |
+| Relational | SQLite (`DB_PROVIDER=sqlite`) | PostgreSQL, Turso |
 
-## Data directory
+Embedded defaults need no services, which is why the library works out of the box. Community adapters live in `topoteretes/cognee-community`.
 
-`DATA_ROOT_DIR` (default `~/.cognee`) holds cached data, logs, and the embedded LanceDB.
+## Access control
 
-## Pipeline options
+`ENABLE_BACKEND_ACCESS_CONTROL` toggles multi-tenant mode with per-user datasets and permissions. Leave it on for shared deployments.
 
-`cognee.add(...)` accepts `dataset_name`, `chunk_size`, `overwrite`, and output flags; `cognify` supports `graph_model` / `include_metadata` / `cognify_pipeline` choices.
+## Related
+
+[Cognee index](index.md) · [Installation](installation.md) · [Vector databases](../../concepts/vector-databases.md)

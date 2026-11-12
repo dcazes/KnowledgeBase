@@ -1,70 +1,45 @@
 ---
-type: Reference
-title: CloakBrowser — Usage
-description: Driving CloakBrowser over CDP (port 9222), connecting Playwright/agent clients, and using persistent profiles.
-resource: https://github.com/cloakhq/cloakbrowser
-tags: [cloakbrowser, usage, cdp, playwright, automation, agent]
-generated: { by: "human:daniel", at: "2026-07-09T01:12:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T01:12:00Z" } ]
+type: Playbook
+title: CloakBrowser Usage
+description: CloakBrowser launch options — proxy, geoip, headless versus headed, humanize, extensions — migrating from Playwright, and troubleshooting tougher anti-bot systems.
+resource: https://github.com/CloakHQ/CloakBrowser
+tags: [cloakbrowser, usage, proxy, humanize]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: installation-ports
-    resource: "installation.md"
-    title: "Installation / ports"
-  - id: chrome-devtools-protocol
-    resource: "https://chromedevtools.github.io/devtools-protocol/"
-    title: "Chrome DevTools Protocol"
-    author: "site:chromedevtools.github.io"
+  - id: cloakbrowser-github
+    resource: "https://github.com/CloakHQ/CloakBrowser"
+    title: "CloakHQ/CloakBrowser on GitHub"
+    author: "site:github.com"
 ---
 
-# CloakBrowser — CDP endpoint (port 9222)
+# CloakBrowser — Usage
 
-With the CLI running (`--remote-debugging-port=9222`), the browser is controllable via the **Chrome DevTools Protocol**:
+## Migrating from Playwright
 
-```
-http://localhost:9222/json/version     # browser version + webSocketDebuggerUrl
-http://localhost:9222/json             # list open targets (tabs)
-http://localhost:9222/json/new?...    # open a new tab
-```
-
-# Driving it from code
-
-Because CDP is standard, any CDP client works — including **Playwright** (which speaks CDP under the hood) and **Puppeteer**.
-
-```python
-# Playwright can connect to an existing CDP browser:
-from playwright.sync_api import sync_playwright
-
-with sync_playwright() as p:
-    browser = p.chromium.connect_over_cdp("http://localhost:9222")
-    page = browser.new_page()
-    page.goto("https://example.com")
-    print(page.title())
-    browser.close()
+```diff
+- from playwright.sync_api import sync_playwright
+- browser = sync_playwright().start().chromium.launch()
++ from cloakbrowser import launch
++ browser = launch()
 ```
 
-```javascript
-// Puppeteer connecting over CDP:
-const puppeteer = require('puppeteer-core');
-const browser = await puppeteer.connect({ browserURL: 'http://localhost:9222' });
-const page = await browser.newPage();
-await page.goto('https://example.com');
-console.log(await page.title());
-```
+Everything after `launch()` is ordinary Playwright.
 
-# Persistent profiles (Docker manager)
+## Options for protected sites
 
-The Docker `cloakbrowser-manager` stores profiles in the `cloak_profiles` volume, so logins/sessions survive restarts — useful for sites that need a stable identity.
+| Option | Purpose |
+|---|---|
+| `proxy="http://user:pass@host:port"` or `socks5://…` | Residential IPs; datacentre IPs are flagged regardless of fingerprint |
+| `geoip=True` | Match timezone, locale and WebRTC IP to the proxy |
+| `headless=False` | Some systems still detect headless mode |
+| `humanize=True` | Human-like input timing |
+| `extension_paths=[...]` | Load Chrome extensions |
 
-# Headless vs headed
+The project README has site-specific troubleshooting for Kasada, Akamai and reCAPTCHA.
 
-* `--headless=false` (launcher default) → visible Brave window you can watch.
-* Omit/flip for headless automation (no UI).
+## Related
 
-# Typical agent flow
-
-1. Launch `npx cloakbrowser --remote-debugging-port=9222 --headless=false`.
-2. Agent connects via CDP (Playwright/Puppeteer) on :9222.
-3. Navigate, interact, extract.
-4. For logins, watch the visible window or use the Docker manager's persistent profile.
+[CloakBrowser index](index.md) · [Snippets](snippets.md)

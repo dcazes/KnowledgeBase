@@ -1,55 +1,32 @@
 ---
-type: Reference
-title: CloakBrowser — AI Integration
-description: CloakBrowser as a Chromium-based agent browser backend, and how it relates to Camofox and Firecrawl.
-resource: https://github.com/cloakhq/cloakbrowser
-tags: [cloakbrowser, integration, agents, cdp, camofox, firecrawl]
-generated: { by: "human:daniel", at: "2026-07-09T01:13:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T01:13:00Z" } ]
+type: Playbook
+title: CloakBrowser AI Integration
+description: Using CloakBrowser as the browser under AI agents and scrapers — plugging it into Playwright-based tools such as browser-use and Crawl4AI, composable launch helpers, and safety considerations.
+resource: https://github.com/CloakHQ/CloakBrowser
+tags: [cloakbrowser, integration, agents, browser-use, crawl4ai]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: overview
-    resource: "overview.md"
-    title: "Overview"
-  - id: usage-cdp
-    resource: "usage.md"
-    title: "Usage (CDP)"
-  - id: camofox-contrast
-    resource: "/../../camofox/index.md"
-    title: "Camofox (contrast)"
-  - id: firecrawl-contrast
-    resource: "/../../firecrawl/index.md"
-    title: "Firecrawl (contrast)"
+  - id: cloakbrowser-github
+    resource: "https://github.com/CloakHQ/CloakBrowser"
+    title: "CloakHQ/CloakBrowser on GitHub"
+    author: "site:github.com"
 ---
 
-# CloakBrowser — Agent browser backend (Chromium side)
+# CloakBrowser — AI Integration
 
-CloakBrowser gives agents a **Brave/Chromium** browser they drive over CDP. When a task needs a Chromium engine (site compatibility, CDP tooling, persistent profiles), CloakBrowser is the pick — complementing **Camofox** (Firefox/Camoufox) and **Firecrawl** (Playwright-based bulk extraction).
+Because CloakBrowser *is* Playwright (or Puppeteer) underneath, any agent or scraper that accepts a Playwright browser, a Chromium executable path or a CDP endpoint can run on it:
 
-```
-Agent  ──CDP (:9222)──►  CloakBrowser (Brave)
-                            │
-                            ├─ headed window (watchable)
-                            └─ persistent profiles (Docker manager)
-```
+* [browser-use](../browser-use/index.md) and [Crawl4AI](../crawl4ai/index.md) — point them at the CloakBrowser binary or an already-launched browser.
+* Custom [PydanticAI](../../agents/pydanticAI/index.md) / [LangGraph](../../agents/langgraph/index.md) tools that wrap Playwright pages.
+* JS helpers `buildLaunchOptions()` and `humanizeBrowser()` compose with your own Playwright setup.
 
-# Relationship to the other browsers
+It is a library, not a server: if you want an HTTP or MCP browser service for agents, see [Camofox](../camofox/index.md) or [Playwright MCP](../playwright-mcp/index.md).
 
-| Need | Tool |
-|------|------|
-| Chromium automation, CDP, persistent profiles | **CloakBrowser** |
-| Firefox anti-detection, watchable + VNC | **Camofox** |
-| Bulk scrape/extract (Playwright render) | **Firecrawl** |
+> Use anti-detection browsers only where you are allowed to automate: your own sites, sites whose terms permit it, or authorised testing. Bypassing access controls can breach terms of service or law.
 
-They're not redundant — each covers a different browser engine / stealth strategy.
+## Related
 
-# In the stack
-
-The SearXNG compose listed `cloakbrowser-manager` as a service, signaling CloakBrowser is intended as a shared browser service other components can call (e.g. Firecrawl could use it for renders, though Firecrawl's own `playwright-service` is the default).
-
-# Usage pattern
-
-1. Launch `npx cloakbrowser --remote-debugging-port=9222 --headless=false`.
-2. Agent connects via Playwright/Puppeteer on :9222.
-3. For logins, use the visible window or the Docker manager's `cloak_profiles`.
+[CloakBrowser index](index.md) · [Browser automation](../../concepts/browser-automation.md) · [Agent security](../../concepts/agent-security.md)

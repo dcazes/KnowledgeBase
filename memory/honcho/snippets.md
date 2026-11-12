@@ -1,83 +1,61 @@
 ---
-type: CheatSheet
+type: Reference
 title: Honcho Snippets
-description: Honcho cheat sheet — install SDK, peers/sessions/messages, query context via peer.chat, conclusions, TS SDK (@honcho-ai/sdk), server startup.
-resource: https://docs.honcho.dev
-tags: [honcho, snippets, cheat-sheet]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Honcho SDK snippets — create peers and sessions, add messages, ask the chat endpoint about a peer, and fetch token-budgeted session context in OpenAI message format (Python and TypeScript).
+resource: https://github.com/plastic-labs/honcho
+tags: [honcho, snippets, python, typescript, cheat-sheet]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: honcho-docs-quickstart
-    resource: "https://docs.honcho.dev"
-    title: "Honcho docs — quickstart"
-    author: "site:docs.honcho.dev"
   - id: honcho-github
     resource: "https://github.com/plastic-labs/honcho"
-    title: "Honcho GitHub"
+    title: "plastic-labs/honcho on GitHub"
     author: "site:github.com"
 ---
 
 # Honcho — Snippets
 
-## Install + server
-
-```bash
-pip install honcho-ai                    # SDK 2.3.0
-cd programs/honcho && docker compose up -d          # server (API + workers) on :8000
-# or run the FastAPI app directly:
-cd programs/honcho && fastapi run --host 0.0.0.0 --port 8000 src/main.py
-```
-
-## Peer/session lifecycle (v3 SDK API)
+## Python
 
 ```python
+import os
 from honcho import Honcho
+from openai import OpenAI
 
-client = Honcho(api_key="your-api-key")
-
-alice = client.peer("alice")
-bob = client.peer("bob")
-
-session = client.session("conversation-1")
-session.add_peers([alice, bob])
+honcho = Honcho(workspace_id="tutoring", api_key=os.environ["HONCHO_API_KEY"])
+alice, tutor = honcho.peer("alice"), honcho.peer("tutor")
+session = honcho.session("session-1")
 
 session.add_messages([
-    alice.message("Hello, Bob!"),
-    bob.message("Hi Alice, how are you?"),
+    alice.message("Can you help me with my math homework?"),
+    tutor.message("Absolutely. Send me your first problem!"),
 ])
 
-# query Honcho's memory of this peer within the session
-response = alice.chat("What did Bob say to me?", session=session)
-print(response.message)
-```
+print(alice.chat("What learning styles does the user respond to best?"))   # natural-language answer
 
-## Async
-
-```python
-peer = await client.aio.peer("user-123")
-resp = await peer.aio.chat("query", session=session)
-async for p in client.aio.peers():
-    print(p.id)
-```
-
-## Conclusions
-
-```bash
-honcho conclusion list                  # derived conclusions (filter --observer/--observed)
-honcho conclusion search "query"        # semantic search
-honcho workspace queue-status           # deriver queue
+context = session.context(summary=True, tokens=10_000)
+reply = OpenAI().chat.completions.create(model="gpt-5-mini",
+                                         messages=context.to_openai(assistant=tutor))
 ```
 
 ## TypeScript
 
-```ts
+```typescript
 import { Honcho } from "@honcho-ai/sdk";
-const client = new Honcho({ apiKey: "..." });
-const alice = client.peer("alice");
-const session = client.session("conversation-1");
-session.addPeers([alice]);
-session.addMessages([alice.message("Hello!")]);
-const resp = await alice.chat("What did they say?", { session });
+
+const honcho = new Honcho({ workspaceId: "tutoring", apiKey: process.env.HONCHO_API_KEY });
+const alice = await honcho.peer("alice");
+const tutor = await honcho.peer("tutor");
+const session = await honcho.session("session-1");
+
+await session.addMessages([alice.message("Explain fractions please"), tutor.message("Sure!")]);
+const answer = await alice.chat("How confident is the user with fractions?");
+const context = await session.context({ summary: true, tokens: 10_000 });
+const messages = context.toOpenAI({ assistant: tutor });
 ```
+
+## Related
+
+[Honcho index](index.md) · [AI Integration](ai-integration.md)

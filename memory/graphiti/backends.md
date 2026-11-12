@@ -1,64 +1,54 @@
 ---
 type: Reference
-title: Graphiti — Backends
-description: Graphiti's pluggable graph backends — Neo4j, FalkorDB, Amazon Neptune, and deprecated Kuzu — and their install extras.
-resource: https://github.com/getzep/graphiti#installation
-tags: [graphiti, backend, neo4j, falkordb, neptune, kuzu, driver]
-generated: { by: "human:daniel", at: "2026-07-09T05:03:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T05:03:00Z" } ]
+title: Graphiti Backends
+description: Graph databases supported by Graphiti — Neo4j, FalkorDB (including embedded FalkorDBLite), Amazon Neptune with OpenSearch, and the deprecated Kuzu driver.
+resource: https://github.com/getzep/graphiti
+tags: [graphiti, neo4j, falkordb, neptune, kuzu, graph-database]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: installation-backends-readme
-    resource: "https://github.com/getzep/graphiti#installation"
-    title: "Installation / backends (README)"
+  - id: graphiti-github
+    resource: "https://github.com/getzep/graphiti"
+    title: "getzep/graphiti on GitHub"
     author: "site:github.com"
-  - id: neo4j
-    resource: "https://neo4j.com/"
-    title: "Neo4j"
+  - id: neo4j-docs
+    resource: "https://neo4j.com/docs/"
+    title: "Neo4j documentation"
     author: "site:neo4j.com"
-  - id: falkordb
-    resource: "https://falkordb.com/"
-    title: "FalkorDB"
-    author: "site:falkordb.com"
+  - id: falkordb-docs
+    resource: "https://docs.falkordb.com"
+    title: "FalkorDB documentation"
+    author: "site:docs.falkordb.com"
 ---
 
-# Graphiti — Supported backends
+# Graphiti — Backends
 
-Graphiti uses a pluggable driver layer. Requirements (from README):
+| Backend | Install extra | Notes |
+|---|---|---|
+| [Neo4j](../../databases/neo4j/index.md) 5.26+ | (default) | Most mature driver; Neo4j Desktop or the `neo4j` Docker image |
+| [FalkorDB](../../databases/falkordb/index.md) | `graphiti-core[falkordb]` | Redis-protocol graph DB; default backend of the MCP server |
+| FalkorDBLite | `graphiti-core[falkordblite]` | Embedded FalkorDB, Python 3.12+, no server needed |
+| Amazon Neptune | `graphiti-core[neptune]` | Neptune Database or Neptune Analytics plus OpenSearch Serverless for full-text search |
+| Kuzu | `graphiti-core[kuzu]` | **Deprecated**: upstream Kuzu is unmaintained; emits a `DeprecationWarning` |
 
-| Backend | Version | Notes |
-|---------|---------|-------|
-| **Neo4j** | 5.26 | Default; Docker or Neo4j Desktop |
-| **FalkorDB** | 1.1.2 | `pip install graphiti-core[falkordb]`; embedded `falkordblite` (Py 3.12+) |
-| **Amazon Neptune** | Database Cluster or Neptune Analytics + OpenSearch | `pip install graphiti-core[neptune]` |
-| **Kuzu** | 0.11.2 | **Deprecated** — upstream unmaintained; emits DeprecationWarning |
+## Choosing
 
-# Neo4j (recommended)
+* **Neo4j** — best tooling (Browser, Bloom, Cypher ecosystem) and the most tested path.
+* **FalkorDB** — lightweight, fast, one container; a good default for local development and the MCP server.
+* **Neptune** — when you are already on AWS and want a managed service.
+* Avoid **Kuzu** for new projects.
 
-```bash
-docker run -d --name neo4j -p 7474:7474 -p 7687:7687 \
-  -e NEO4J_AUTH=neo4j/<STRONG_PASSWORD> neo4j:5.26
-```
-Database name defaults to `neo4j` (hardcoded in `Neo4jDriver`); as of v0.17.0 you can pass a custom driver:
-```python
-from graphiti_core.driver.neo4j_driver import Neo4jDriver
-driver = Neo4jDriver(user="neo4j", password="...", db="my_db", uri="bolt://localhost:7687")
-```
-
-# FalkorDB
+## Quick start containers
 
 ```bash
-pip install graphiti-core[falkordb]
+docker run -p 7474:7474 -p 7687:7687 -e NEO4J_AUTH=neo4j/password neo4j:5.26
 docker run -p 6379:6379 -p 3000:3000 -it --rm falkordb/falkordb:latest
 ```
 
-# Kuzu (avoid for new projects)
+The repo's own `docker compose up` starts Neo4j; `docker compose --profile falkordb up` starts FalkorDB.
 
-Deprecated; use Neo4j/FalkorDB instead.
+## Related
 
-# Tips
-
-* Neo4j is the most battle-tested for Graphiti.
-* Neptune only makes sense if you're already on AWS.
-* Match the install extra to your backend or the driver won't load.
+[Graphiti index](index.md) · [Installation](installation.md) · [Knowledge graphs](../../concepts/knowledge-graphs.md) · [Neo4j](../../databases/neo4j/index.md) · [FalkorDB](../../databases/falkordb/index.md)

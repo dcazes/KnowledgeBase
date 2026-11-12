@@ -1,57 +1,38 @@
 ---
-type: Reference
-title: VSCode — AI Features
-description: VS Code's AI capabilities — GitHub Copilot, Agent Mode, chat, and MCP server integration.
+type: Concept
+title: VS Code AI Features
+description: AI in VS Code — GitHub Copilot completions and next-edit suggestions, chat with ask/edit/agent modes, MCP servers, custom instructions and prompt files, custom agents, language-model tools for extensions, and bring-your-own models.
 resource: https://code.visualstudio.com/docs/copilot/overview
-tags: [vscode, ai, copilot, agent-mode, chat, mcp]
-generated: { by: "human:daniel", at: "2026-07-09T02:12:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T02:12:00Z" } ]
+tags: [vscode, copilot, agent-mode, mcp]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: copilot-overview-docs
-    resource: "https://code.visualstudio.com/docs/copilot/overview"
-    title: "Copilot overview (docs)"
+  - id: vscode-site
+    resource: "https://code.visualstudio.com"
+    title: "Visual Studio Code"
     author: "site:code.visualstudio.com"
-  - id: vs-code-mcp
-    resource: "https://code.visualstudio.com/docs/copilot/chat/mcp-servers"
-    title: "VS Code + MCP"
-    author: "site:code.visualstudio.com"
-  - id: official-site-ai-editor
-    resource: "https://code.visualstudio.com/"
-    title: "Official site (AI editor)"
+  - id: vscode-updates
+    resource: "https://code.visualstudio.com/updates"
+    title: "VS Code release notes"
     author: "site:code.visualstudio.com"
 ---
 
-# AI in VS Code
+# VS Code — AI Features
 
-VS Code has become an **AI-first editor**. Core AI surfaces:
+| Feature | Notes |
+|---|---|
+| Completions & next-edit suggestions | Inline predictions, including where to edit next |
+| Chat modes | Ask, edit and **agent** (autonomous multi-step work with terminal and tools) |
+| [MCP](../../concepts/mcp.md) | Configure servers in `.vscode/mcp.json` or user settings; tools appear in agent mode |
+| Instructions | `.github/copilot-instructions.md`, `*.instructions.md`, `AGENTS.md`; prompt files (`*.prompt.md`) |
+| Custom agents | Markdown-defined agents with their own tools and instructions |
+| Models | Copilot-provided models; bring your own keys, including Ollama and OpenAI-compatible endpoints |
+| Extension APIs | Language Model and Tools APIs let extensions contribute tools and use models |
 
-* **GitHub Copilot** — inline completions, chat, and edits (requires a Copilot subscription/key).
-* **Agent Mode** — the model plans and executes multi-step edits across files, runs terminals, and iterates. Manage **multi-agent workflows** across environments (per the official site).
-* **Copilot Chat** — ask about code, generate, explain, fix.
-* **Edits / Apply** — apply diffs the model proposes.
+The Copilot chat extension's source is open, so forks and extensions can build on the same agent loop.
 
-# MCP integration
+## Related
 
-VS Code can connect to **MCP servers** (the same protocol used by Firecrawl/Graphify in this KB). Configure via `.vscode/mcp.json` or user settings:
-
-```json
-{
-  "servers": {
-    "graphify": { "type": "stdio", "command": "python", "args": ["-m", "graphify.serve"] }
-  }
-}
-```
-Once registered, the agent/model can call those tools from chat/agent mode.
-
-# Why it matters here
-
-* You can drive **Graphify** (build a knowledge graph from a repo) and **Firecrawl** (scrape) directly from the editor via MCP.
-* Agent Mode + your `programs/*` repos = an AI pair-programmer that edits Dify/Firecrawl/SearXNG code with context.
-
-# Notes
-
-* Copilot needs a GitHub account + license; the *editor* itself is free/OSS.
-* MCP tool availability depends on what servers you register.
-* Telemetry: VS Code (MS build) sends usage data; VSCodium/Code-OSS do not.
+[VS Code index](index.md) · [Workflow](workflow.md) · [Coding agents](../../concepts/coding-agents.md)

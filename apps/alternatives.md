@@ -1,61 +1,51 @@
 ---
-type: Reference
-title: "Apps — Alternatives"
-description: "Side-by-side comparison of the self-hosted chat/RAG apps documented under apps/ (OpenWebUI, AnythingLLM, and the alternatives their docs cite)."
-resource: https://github.com/open-webui/open-webui
-tags: [apps, alternatives, comparison]
-generated: { by: "agent:fixer", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "agent:fixer", at: "2026-08-13T00:00:00Z" } ]
-status: draft
-stale_after: 2027-02-09
+type: Comparison
+title: Apps Alternatives
+description: Comparison of end-user AI applications — Open WebUI, AnythingLLM and n8n — alongside related apps elsewhere in the vault (SurfSense, Dify, LM Studio), with a decision guide.
+resource: https://github.com/topics/llm-ui
+tags: [apps, comparison, alternatives, chat-ui, workflow-automation]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
+status: stable
+stale_after: 2027-05-11
 sources:
-  - id: s1
+  - id: openwebui
     resource: "https://github.com/open-webui/open-webui"
-    title: "OpenWebUI — Alternatives"
-    author: human:daniel
-  - id: s2
+    title: "Open WebUI"
+    author: "site:github.com"
+  - id: anythingllm
     resource: "https://github.com/Mintplex-Labs/anything-llm"
-    title: "AnythingLLM — Alternatives"
-    author: human:daniel
+    title: "AnythingLLM"
+    author: "site:github.com"
+  - id: n8n
+    resource: "https://github.com/n8n-io/n8n"
+    title: "n8n"
+    author: "site:github.com"
 ---
 
-# Apps — Alternatives
+# Apps Alternatives
 
-The self-hosted apps documented under `apps/` are alternatives to one another: they all expose LLM chat/RAG capabilities, but with different tradeoffs. This doc compares them side by side, based solely on the alternatives docs of the two source programs. Dify, LibreChat, and PrivateGPT appear here only as named alternatives — they are not yet documented as separate programs in this folder.
+| | [Open WebUI](openwebui/index.md) | [AnythingLLM](anythingllm/index.md) | [n8n](n8n/index.md) | [SurfSense](../browsers/surfsense/index.md) | [Dify](../agents/dify/index.md) |
+|---|---|---|---|---|---|
+| What | Multi-user chat platform | All-in-one RAG + agents app | Workflow automation with AI agents | Private research/editing agent | LLM app builder |
+| Primary user | Teams, households | Individuals, small teams | Ops / automation builders | Knowledge workers | Product teams |
+| RAG | Built in (hybrid, rerank) | Built in (workspaces) | Vector store nodes | Built in (many formats) | Knowledge pipelines |
+| Agents / tools | Tools, functions, MCP, pipelines | @agent, flows, MCP, schedules | AI Agent node, 1,500+ integrations, MCP | Agent edits documents, MCP plugins | Workflows, sandboxed agents |
+| Licence | Open WebUI License | MIT | Sustainable Use (fair-code) | Apache-2.0 | Dify Open Source License |
+| Desktop app | No (PWA) | Yes | No | Yes | No |
 
-## Comparison matrix
+Desktop-first alternatives: [LM Studio](../runtime/lmstudio/index.md), Jan, Msty. Other self-hosted chat UIs: LibreChat, LobeChat.
 
-| Program | Primary purpose | Key differentiators | Best for | Notable alternatives |
-|---------|-----------------|---------------------|----------|----------------------|
-| OpenWebUI | Full-featured self-hosted chat UI with RAG, agents, plugins, MCP, and broad model support | Rich chat UX; plugin/agent/MCP ecosystem | A single chat front-end for everything, including agents/plugins | AnythingLLM, Dify, LibreChat |
-| AnythingLLM | Turnkey all-in-one private RAG chat | Workspace model, agent skills, near-zero setup; RAG is "batteries-included" | Chatting with private documents fast, minimal setup | OpenWebUI, Dify, LibreChat, PrivateGPT |
-| Dify | Visual LLM app/workflow builder | Composes custom apps/workflows; LLMOps | Building a product/app rather than just chatting | OpenWebUI, AnythingLLM |
-| LibreChat | Open-source ChatGPT-style multi-provider chat UI | Clean multi-provider chat, presets, artifacts | Simple multi-model chat without extra machinery | OpenWebUI, AnythingLLM |
-| PrivateGPT | Minimal private RAG chat | Bare-bones, simplest possible private RAG | Bare-bones doc chat | AnythingLLM (only source that cites it) |
+## Decision guide
 
-## OpenWebUI
+| Want | Choose |
+|---|---|
+| A private ChatGPT for several people | [Open WebUI](openwebui/index.md) |
+| Zero-setup document chat on a laptop | [AnythingLLM](anythingllm/index.md) desktop |
+| Agents that act on business systems | [n8n](n8n/index.md) |
+| Edit and transform your own files with AI, offline | [SurfSense](../browsers/surfsense/index.md) |
+| Build and ship LLM apps with APIs | [Dify](../agents/dify/index.md) |
 
-Both sources describe OpenWebUI as the full-featured chat front-end: rich chat UI plus RAG, plugins, agents, and MCP. The OpenWebUI source positions it as the primary chat front-end in the stack; the AnythingLLM source notes its RAG setup is slightly less "batteries-included" than AnythingLLM's workspace model.
+## Related
 
-Stated alternatives and their tradeoffs:
-
-- **AnythingLLM** — turnkey RAG chatbot for private-docs chat with minimal setup and a workspace model; less plugin/agent depth than OpenWebUI, and not an app builder.
-- **Dify** — visual app/workflow builder with LLMOps; heavier and more "build" than "chat".
-- **LibreChat** — open-source ChatGPT replacement with clean multi-provider chat, presets, and artifacts; thinner RAG/agent/plugin ecosystem.
-
-Note: the two sources disagree on the port OpenWebUI is served on — the OpenWebUI alternatives doc says `:3001`, the AnythingLLM doc says `:3000`. The discrepancy is unresolved in these sources.
-
-See also: [./openwebui/index.md](./openwebui/index.md)
-
-## AnythingLLM
-
-Both sources describe AnythingLLM as a turnkey, all-in-one private RAG chat with workspaces and agent skills, suited to chatting with documents quickly. Its main tradeoff versus OpenWebUI is less plugin/agent depth.
-
-Stated alternatives and their tradeoffs:
-
-- **OpenWebUI** — richer chat UX with a plugin/agent/MCP ecosystem and broad model support; RAG setup slightly less "batteries-included" than AnythingLLM's workspace model.
-- **Dify** — builds custom apps/workflows with LLMOps; heavier and more "build" than "chat with docs".
-- **LibreChat** — clean multi-provider chat with presets; thinner RAG/agent ecosystem.
-- **PrivateGPT** — minimal, private doc chat with fewer features (no workspace/agent breadth).
-
-See also: [./anythingllm/index.md](./anythingllm/index.md)
+[Workflow automation](../concepts/workflow-automation.md) · [RAG](../concepts/rag.md) · [AI landscape](../landscape.md)

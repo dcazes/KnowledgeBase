@@ -1,49 +1,45 @@
 ---
 type: Concept
-title: PydanticAI Overview
-description: What PydanticAI is — structured-output-first agent loop, typed results, model-agnostic (OpenAI/Anthropic/Ollama/Gemini), tools, MCP support; v2.29.0.
+title: Pydantic AI Overview
+description: Pydantic AI's building blocks — Agent, typed output, dependency injection with RunContext, tools and toolsets, capabilities from the Harness, multi-agent delegation, and how it compares with other frameworks.
 resource: https://pydantic.dev/docs/ai/
-tags: [pydantic, ai, agents, overview]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [pydantic-ai, overview, agents, typing]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: pydanticai-docs
+  - id: pydantic-ai-docs
     resource: "https://pydantic.dev/docs/ai/"
-    title: "PydanticAI docs"
+    title: "Pydantic AI documentation"
     author: "site:pydantic.dev"
-  - id: pydanticai-github
+  - id: pydantic-ai-github
     resource: "https://github.com/pydantic/pydantic-ai"
-    title: "PydanticAI GitHub"
+    title: "pydantic/pydantic-ai on GitHub"
     author: "site:github.com"
 ---
 
 # Pydantic AI — Overview
 
-PydanticAI is the **Python agent framework from the pydantic team** — designed around structured, validated output as the core primitive rather than free-form text.
+| Concept | What it does |
+|---|---|
+| `Agent` | Model + instructions + tools + output type; run with `run`, `run_sync`, `run_stream` |
+| Output type | A Pydantic model, dataclass, union or plain type; responses are validated and retried on failure — [structured output](../../concepts/structured-output.md) |
+| Dependencies | Typed objects (DB clients, user info) injected into tools and instructions via `RunContext` |
+| Tools / toolsets | Python functions with typed parameters become [tools](../../concepts/tool-calling.md); toolsets group them, including [MCP](../../concepts/mcp.md) servers |
+| Capabilities | Snap-on behaviours: web search, file system, shell, sub-agents, context management (`ClearToolResults`, `ToolOutputLimits`) |
+| Harness | Ready-made capability bundles such as `Coder` for coding agents |
 
-## The agent loop
+## Why teams pick it
 
-1. `Agent` bundles a **model**, **instructions** (system prompt), **tools**, and **result type**.
-2. Run it → the model responds, tools are called/validated, and the final output is **parsed into a Pydantic model** (your contract) or a plain string.
-3. Outputs are validated with the same rigor as any Pydantic schema — structured by default.
+* Type checking and IDE completion all the way through the agent.
+* Every major provider plus local [OpenAI-compatible](../../concepts/openai-compatible-api.md) servers, with one interface.
+* First-class testing (`TestModel`, `FunctionModel`), [evals](../../concepts/evals.md) and [observability](../../concepts/llm-observability.md) via OpenTelemetry/Logfire.
 
-## Why structured-output-first
+## Compared with others
 
-* Result types are **Pydantic models** — guaranteed shape, validated at the boundary.
-* Tools are typed functions (`@agent.tool`) whose args are schema-validated.
-* Native support for **streaming**, **usage/cost tracking**, **dependencies** (context via `RunContext`).
+[LangGraph](../langgraph/index.md) gives explicit graph control and durable state; [CrewAI](../crewai/index.md) gives role-based crews; Pydantic AI is the most "plain Python" of the three and includes its own graph library for state machines when needed. See [Agent frameworks](../../concepts/agent-frameworks.md).
 
-## Model-agnostic
+## Related
 
-Supported providers include OpenAI, Anthropic, Gemini, and local models — e.g. Ollama (`ollama/gemma3:12b`) for offline agents in this stack. (v2 uses Responses-API-style model names; see [v2 doc](pydantic_ai.md).)
-
-## Tools & MCP
-
-* `@agent.tool` / `@agent.tool_plain` for function tools.
-* **MCP toolset** support (v2): connect MCP servers as capabilities.
-
-## In this stack
-
-The natural framework for structured-output agents alongside [Pydantic](../../tools/pydantic/index.md) (its foundation, >=2.12 required). Complements the Agent Stack and CLI agents ([Hermes](../hermes/index.md), [OpenCode](../opencode/index.md)). Not yet deployed as a running service here — documented from upstream.
+[Pydantic AI index](index.md) · [Core concepts](pydantic_ai.md)

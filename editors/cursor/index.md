@@ -1,54 +1,50 @@
 ---
-type: Reference
+type: Software
 title: Cursor
-description: AI-first code editor by Anysphere — a VS Code fork with inline chat, Agent mode, Background Agents, and MCP support. Closed-source SaaS (docs repo only).
-resource: https://cursor.com/
-tags: [cursor, editor, ai, vscode-fork, anysphere]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+description: AI-first code editor from Anysphere, built on VS Code — Tab completion, inline edit, agent mode with tools and MCP, background/cloud agents, codebase indexing, rules, and its own and third-party models.
+resource: https://cursor.com
+tags: [cursor, ai-editor, vscode-fork, coding-agents, mcp]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
-  - id: cursor
-    resource: "https://cursor.com/"
-    title: "Cursor"
+  - id: cursor-site
+    resource: "https://cursor.com"
+    title: "Cursor — official site"
     author: "site:cursor.com"
   - id: cursor-docs
-    resource: "https://docs.cursor.com/"
-    title: "Cursor Docs"
-    author: "site:docs.cursor.com"
+    resource: "https://cursor.com/docs"
+    title: "Cursor documentation"
+    author: "site:cursor.com"
+  - id: cursor-changelog
+    resource: "https://cursor.com/changelog"
+    title: "Cursor changelog"
+    author: "site:cursor.com"
 ---
 
 # Cursor
 
-Cursor is an AI-first code editor built by Anysphere. It is a fork of VS Code (Code-OSS heritage), which means the familiar extensions, themes, and keybindings carry over, but the editor is rebuilt around AI assistance: inline chat, context-aware autocomplete, an autonomous Agent mode, and cloud-based Background Agents. Cursor is a closed-source SaaS product (docs repo only); releases are changelog-dated with no public numeric versioning.
+**Cursor** is the editor that made "AI-native IDE" mainstream. It is a fork of VS Code — extensions, themes and keybindings carry over — rebuilt around AI: predictive multi-line **Tab**, inline edits (Cmd/Ctrl+K), a chat **Agent** that edits across files and runs commands, and **cloud agents** that work on branches in the background and open pull requests.
 
-This knowledge base section documents what Cursor is, how to install it, its core features, how it integrates with AI models and the Model Context Protocol (MCP), how it compares to alternatives, and practical snippets for daily use.
+| | |
+|---|---|
+| Category | AI editors · [Coding agents](../../concepts/coding-agents.md) |
+| License | Proprietary (free tier, paid plans) |
+| Base | VS Code (Code-OSS) |
+| Releases | Continuous; see the changelog |
+| Models | Cursor's own models plus Anthropic, OpenAI, Google and others; bring-your-own keys |
 
 ## Contents
 
-- [Overview](overview.md) — what Cursor is, why it matters, and how it fits the local stack.
-- [Installation](installation.md) — download, sign in, and verify.
-- [Features](features.md) — Tab completion, Cmd-K, Chat, Agent mode, Background Agents, Bugbot, model support, Privacy Mode.
-- [AI Integration](ai-integration.md) — MCP support and the relationship to other stack agents/editors.
-- [Alternatives](../alternatives.md) — Cursor vs Windsurf, VSCode, OpenCode, Zed, Claude Code.
-- [Snippets](snippets.md) — quick-start, Agent mode usage, MCP config, cheat sheet.
+* [Overview](overview.md) — modes, indexing, rules, cloud agents
+* [Features](features.md) — Tab, inline edit, agent, bugbot, MCP, rules
+* [Installation](installation.md) — download, import from VS Code
+* [Snippets](snippets.md) — shortcuts, rules files, MCP config
+* [AI Integration](ai-integration.md) — models, MCP servers, memory plugins
 
-## Instance facts
+## Related
 
-- **Locally installed:** No. No launcher was found in the machine's programs list. This section is documented from upstream sources, not a live local instance.
-- **Architecture:** A fork of VS Code (Code-OSS heritage). Extensions and keybindings carry over.
-- **Models:** Cloud-hosted. Supports Claude, GPT-4o/mini, and custom/OpenAI-compatible endpoints.
-- **Companions in this stack:** documented alongside [VSCode](../vscode/index.md), [OpenCode](../../agents/opencode/index.md), [Windsurf](../windsurf/index.md), [Hermes](../../agents/hermes/index.md), and the [Graphify MCP server](../../memory/graphify/mcp-server.md).
-
-## Cross-references
-
-* **VSCode** — Cursor's upstream; similar extension ecosystem — see [VSCode Overview](../vscode/overview.md)
-* **Windsurf (now Devin Desktop)** — Cognition's AI editor with Devin Local agent — see [Windsurf Overview](../windsurf/overview.md)
-* **OpenCode** — terminal-native agent; different UX paradigm — see [OpenCode Overview](../../agents/opencode/overview.md)
-* **Graphify** — Cursor can use Graphify MCP server — see [Graphify MCP Server](../../memory/graphify/mcp-server.md)
-* **Hermes** — terminal agent that can share context — see [Hermes Overview](../../agents/hermes/overview.md)
-
-## Last verified
-
-**2026-08-12** — All feature descriptions and integration notes verified against upstream docs.cursor.com and Cursor changelog. Recent: Cursor Router (07-22), Cursor Start India plan (07-28), iPad + PR review (07-29), Google Workspace plugins (08-03).
+* Concepts: [Coding agents](../../concepts/coding-agents.md) · [MCP](../../concepts/mcp.md) · [Context engineering](../../concepts/context-engineering.md)
+* Peers: [VS Code](../vscode/index.md), [Windsurf](../windsurf/index.md), [Zed](../zed/index.md), [Claude Code](../../agents/claude-code/index.md)
+* Comparison: [Editors alternatives](../alternatives.md)

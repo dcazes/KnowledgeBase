@@ -1,50 +1,41 @@
 ---
-type: Reference
-title: Camofox — AI Integration
-description: Camofox as Hermes's headed/anti-bot browser backend, and how it complements Firecrawl and CloakBrowser.
-resource: https://github.com/daijro/camoufox
-tags: [camofox, hermes, integration, browser, automation, agent]
-generated: { by: "human:daniel", at: "2026-07-09T01:04:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T01:04:00Z" } ]
+type: Playbook
+title: Camofox AI Integration
+description: Giving agents a browser with Camofox — MCP and OpenClaw tools with full HTTP parity, the snapshot-act loop for LLMs, pairing with search and scraping tools, and safety practices.
+resource: https://github.com/jo-inc/camofox-browser
+tags: [camofox, integration, mcp, openclaw, agents]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: camofox-overview
-    resource: "overview.md"
-    title: "Camofox overview"
-  - id: usage-api-vnc
-    resource: "usage.md"
-    title: "Usage (API + VNC)"
-  - id: firecrawl-contrast
-    resource: "/../../firecrawl/index.md"
-    title: "Firecrawl (contrast)"
+  - id: camofox-github
+    resource: "https://github.com/jo-inc/camofox-browser"
+    title: "jo-inc/camofox-browser on GitHub"
+    author: "site:github.com"
 ---
 
-# Camofox — Hermes browser backend
+# Camofox — AI Integration
 
-Camofox is wired as **Hermes's headed/anti-bot browser backend**. When Hermes needs to browse a site that blocks headless scrapers, it drives Camofox instead of a plain Playwright browser — gaining fingerprint spoofing and a watchable window.
+## Tools for agents
 
-```
-Hermes  ──drives──►  Camofox API (:9377)
-                        │
-                        ├─ headed Firefox (spoofed fingerprint)
-                        └─ noVNC (:6080)  ← you watch / solve CAPTCHAs
-```
+Every Camofox HTTP action is defined once and exposed as an [MCP](../../concepts/mcp.md) and [OpenClaw](../../agents/openclaw/index.md) tool, so [Hermes](../../agents/hermes/index.md), [Claude Code](../../agents/claude-code/index.md) and other MCP clients get the same capabilities as REST callers.
 
-# Why not just Firecrawl?
+## When to use it
 
-* **Firecrawl** uses Playwright for rendering and is great for bulk scrape/extract — but a plain Playwright browser is more detectable and has no live human-view window.
-* **Camofox** is the stealthy, watchable option for flows that need to *look human* or require a visual login.
+* Sites that block ordinary headless browsers, where [Playwright MCP](../playwright-mcp/index.md) or [browser-use](../browser-use/index.md) get stopped.
+* Long-running agents on small machines (low idle memory).
+* Workflows that need a human to log in once (VNC) and an agent to continue.
 
-They're complementary: Firecrawl for scale/extract, Camofox for fragile/anti-bot sessions.
+For static pages, cheaper tools — [Firecrawl](../firecrawl/index.md), [Crawl4AI](../crawl4ai/index.md), or [SearXNG](../../runtime/searxng/index.md) plus a fetch — are usually enough. See [Browser automation](../../concepts/browser-automation.md).
 
-# Relationship to CloakBrowser
+## Safety
 
-**CloakBrowser** is a separate stealth browser server in your stack (its own KB page). Camofox and CloakBrowser are distinct tools; both provide browser-stealth capabilities but are independent services. In the earlier SearXNG compose, `cloakbrowser-manager` appeared as a service — that's CloakBrowser, not Camofox.
+* Treat everything a page says as untrusted; pages can carry prompt injections aimed at agents ([Agent security](../../concepts/agent-security.md)).
+* Isolate sessions per task; do not give the agent your main browser profile.
 
-# Usage pattern
+> Use anti-detection browsers only where you are allowed to automate: your own sites, sites whose terms permit it, or authorised testing. Bypassing access controls can breach terms of service or law.
 
-1. `make up` Camofox.
-2. Hermes opens a Camofox session via `:9377`, navigates, interacts.
-3. On a login/CAPTCHA, you open `:6080` and complete it.
-4. Hermes reads the result and continues.
+## Related
+
+[Camofox index](index.md) · [Browser & web alternatives](../alternatives.md)

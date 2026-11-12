@@ -1,84 +1,47 @@
 ---
-type: HowTo
-title: PydanticAI Configuration
-description: Configure PydanticAI agents — model selection, Agent(...) args (instructions/result_type/tools), deps via RunContext, environment/provider keys, v2 capabilities.
+type: Reference
+title: Pydantic AI Configuration
+description: Choosing models in Pydantic AI — provider-prefixed model strings, explicit model and provider objects for local or gateway endpoints, fallback models, and model settings such as temperature and token limits.
 resource: https://pydantic.dev/docs/ai/
-tags: [pydantic, ai, configuration, agents, models]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [pydantic-ai, configuration, models, providers, ollama]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: pydanticai-docs-agents
-    resource: "https://pydantic.dev/docs/ai/agents/"
-    title: "PydanticAI docs — agents"
-    author: "site:pydantic.dev"
-  - id: pydanticai-docs-models
-    resource: "https://pydantic.dev/docs/ai/models/"
-    title: "PydanticAI docs — models"
+  - id: pydantic-ai-docs
+    resource: "https://pydantic.dev/docs/ai/"
+    title: "Pydantic AI documentation"
     author: "site:pydantic.dev"
 ---
 
 # Pydantic AI — Configuration
 
-## Model selection
+## Model strings
+
+`"openai:gpt-5-mini"`, `"anthropic:claude-sonnet-4-5"`, `"google-gla:gemini-2.5-flash"`, `"groq:llama-3.3-70b-versatile"`, `"bedrock:…"` — the prefix selects the provider. Model names here are examples.
+
+## Local and gateway endpoints
 
 ```python
 from pydantic_ai import Agent
+from pydantic_ai.models.openai import OpenAIChatModel
+from pydantic_ai.providers.ollama import OllamaProvider
 
-Agent("openai:gpt-4o-mini")            # OpenAI (OPENAI_API_KEY env)
-Agent("anthropic:claude-opus-4-7")     # Anthropic (ANTHROPIC_API_KEY env)
-Agent("ollama:gemma3:12b")             # local — Ollama at http://localhost:11434
-Agent("gemini-1.5-flash")              # Gemini
+model = OpenAIChatModel("qwen3:8b", provider=OllamaProvider(base_url="http://localhost:11434/v1"))
+agent = Agent(model)
 ```
 
-v2 uses Responses-API-style model names (`openai-chat:`, `openai:` …). Provider keys come from standard env vars.
+Use `OpenAIProvider(base_url=...)` for [vLLM](../../runtime/vllm/index.md), [LM Studio](../../runtime/lmstudio/index.md) or a [LiteLLM](../../runtime/litellm/index.md) gateway.
 
-## Agent(...) options
+## Fallback and settings
 
 ```python
-agent = Agent(
-    "openai:gpt-4o-mini",
-    system_prompt="You are a helpful assistant.",
-    result_type=MyModel,        # structured output contract
-    deps_type=MyDeps,           # typed run context
-    tools=[...],                # or @agent.tool decorators
-)
+from pydantic_ai.models.fallback import FallbackModel
+agent = Agent(FallbackModel("openai:gpt-5-mini", "anthropic:claude-haiku-4-5"),
+              model_settings={"temperature": 0.2, "max_tokens": 2000})
 ```
 
-## Dependencies (RunContext)
+## Related
 
-```python
-from dataclasses import dataclass
-from pydantic_ai import Agent, RunContext
-
-@dataclass
-class Deps:
-    api_key: str
-
-@agent.tool
-async def get_data(ctx: RunContext[Deps], query: str) -> str:
-    return f"key={ctx.deps.api_key} q={query}"
-
-result = await agent.run("query the data", deps=Deps(api_key="..."))
-```
-
-## v2 capabilities (optional, loaded on demand)
-
-```python
-from pydantic_ai.capabilities import Thinking, WebSearch, Capability
-from pydantic_ai.mcp import MCPToolset
-
-agent = Agent(
-    "anthropic:claude-opus-4-7",
-    capabilities=[
-        Thinking(effort="high"),
-        WebSearch(),
-        Capability(id="github", toolset=MCPToolset("https://mcp.example.com/github"), defer_loading=True),
-    ],
-)
-```
-
-## Env for local models
-
-Set `OLLAMA_HOST` (default `http://localhost:11434`) when using `ollama:` providers; see [Ollama](../../runtime/ollama/index.md).
+[Pydantic AI index](index.md) · [Snippets](snippets.md) · [Local inference](../../concepts/local-inference.md)

@@ -1,45 +1,47 @@
 ---
 type: Reference
-title: Obsidian — Plugins & Features
-description: Obsidian's core features — bidirectional links, backlinks, graph view, core plugins, and community extensions (Dataview, Templates, Canvas).
-resource: https://help.obsidian.md/
-tags: [obsidian, plugins, features, graph-view, backlinks, dataview, canvas]
-generated: { by: "human:daniel", at: "2026-07-09T04:08:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T04:08:00Z" } ]
+title: Obsidian Plugins & Features
+description: Useful Obsidian core and community plugins for a technical knowledge base — graph, backlinks, Bases, Canvas, templates, Dataview, Excalidraw, Git, Smart Connections and other AI plugins — plus Web Clipper, Sync and Publish.
+resource: https://obsidian.md/plugins
+tags: [obsidian, plugins, dataview, git, ai-plugins]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: help-core-plugins
-    resource: "https://help.obsidian.md/"
-    title: "Help — Core plugins"
+  - id: obsidian-help
+    resource: "https://help.obsidian.md"
+    title: "Obsidian Help"
     author: "site:help.obsidian.md"
-  - id: graph-view
-    resource: "https://help.obsidian.md/Plugins/Graph+view"
-    title: "Graph view"
-    author: "site:help.obsidian.md"
+  - id: obsidian-plugins
+    resource: "https://obsidian.md/plugins"
+    title: "Obsidian community plugins"
+    author: "site:obsidian.md"
 ---
 
-# Obsidian — Core features
+# Obsidian — Plugins & Features
 
-* **Bidirectional links** — `[[Note]]` creates a link; the target shows **backlinks** automatically.
-* **Tags** — `#tag` for lightweight categorization (drives search/filters).
-* **Graph view** — visual network of notes (config in `.obsidian/graph.json`).
-* **Search** — full-text across the vault.
-* **Canvas** — free-form boards to map ideas.
-* **Daily notes / Templates** — quick capture.
+## Core plugins
 
-# Core plugins
+Graph view, backlinks and outgoing links, Bases, Canvas, templates, daily notes, search, properties view, page preview, Web viewer.
 
-Enabled via `.obsidian/core-plugins.json`. Common built-ins: Backlinks, Outline, Tag pane, Graph, Canvas, Templates, Daily notes, Note composer, Workspaces.
+## Community plugins worth knowing
 
-# Community plugins
+| Plugin | Use |
+|---|---|
+| Dataview | Query notes like a database (Bases covers many cases natively now) |
+| Obsidian Git | Commit and push the vault — how this vault syncs to GitHub |
+| Excalidraw | Diagrams inside notes |
+| Smart Connections, Copilot and similar | Semantic search and chat over the vault with local or hosted models |
+| Local REST API / MCP bridges | Let external agents read and write notes |
 
-Installed separately (bridge, dataview, etc.). Notable:
-* **Dataview** — query notes as a database (YAML frontmatter → tables).
-* **Templates** — insert reusable snippets.
-* **Obsidian Git** — version-control the vault.
+Community plugins run with full access to the vault — install from trusted authors.
 
-# Why it helps the stack
+## Services
 
-* Structured, linkable notes = a great knowledge source for **Graphify** (ingest → graph) and for **Hermes** to read.
-* Frontmatter (like OKF `type:`) makes notes queryable via Dataview.
+* **Web Clipper** — save web pages as Markdown notes.
+* **Sync** — end-to-end encrypted sync (paid). **Publish** — host notes as a website (paid).
+
+## Related
+
+[Obsidian index](index.md) · [AI Integration](ai-integration.md)

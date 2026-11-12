@@ -1,65 +1,60 @@
 ---
-type: Playbook
-title: VSCode — Snippets & Cheat Sheet
-description: Copy-paste VS Code commands for launching, editing programs/* repos, and registering MCP servers.
+type: Reference
+title: VS Code Snippets
+description: VS Code AI snippets — MCP server configuration in .vscode/mcp.json, a Copilot instructions file, a prompt file, and useful CLI commands.
 resource: https://code.visualstudio.com/docs
-tags: [vscode, snippets, cheat-sheet, cli, mcp, workflow]
-generated: { by: "human:daniel", at: "2026-07-09T02:15:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T02:15:00Z" } ]
+tags: [vscode, snippets, mcp, cheat-sheet]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: installation
-    resource: "installation.md"
-    title: "Installation"
-  - id: ai-features-mcp
-    resource: "ai-features.md"
-    title: "AI Features (MCP)"
-  - id: workflow
-    resource: "workflow.md"
-    title: "Workflow"
+  - id: vscode-site
+    resource: "https://code.visualstudio.com"
+    title: "Visual Studio Code"
+    author: "site:code.visualstudio.com"
 ---
 
-# VSCode — Launch / open
+# VS Code — Snippets
 
-```bash
-code                              # editor only
-code .                            # current folder
-code programs/firecrawl/firecrawl
-code --goto main.py:42:10        # open at line:col
-code --diff a.py b.py            # diff
-code --list-extensions           # list installed
-code --status                    # install status
-```
-
-# Register an MCP server (`.vscode/mcp.json`)
+## `.vscode/mcp.json`
 
 ```json
 {
   "servers": {
-    "graphify": { "type": "stdio", "command": "python", "args": ["-m", "graphify.serve"] },
-    "firecrawl": { "type": "sse", "url": "http://localhost:3002/mcp" }
+    "playwright": { "command": "npx", "args": ["@playwright/mcp@latest"] },
+    "graphiti":   { "type": "http", "url": "http://localhost:8000/mcp/" }
   }
 }
 ```
 
-# Per-project config (`.vscode/`)
+## `.github/copilot-instructions.md`
 
-* `settings.json` — formatter, Docker/Py/TS defaults
-* `launch.json` — debug
-* `tasks.json` — `docker compose up`, `make`, `npm`
-
-# Verify
-
-```bash
-code --version
-code --list-extensions
+```markdown
+- Use pnpm, not npm.
+- Run `pnpm test` after changes; fix failures before finishing.
+- Follow the error-handling pattern in src/lib/errors.ts.
 ```
 
-# Troubleshooting
+## Prompt file (`.github/prompts/review.prompt.md`)
 
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| `code` not found | not installed | install .deb / flatpak |
-| MCP tools missing | server not registered | add to mcp.json, reload |
-| Copilot off | no license | sign in to GitHub Copilot |
+```markdown
+---
+mode: agent
+description: Review the current diff for security issues
+---
+Review the staged changes for injection, auth and secrets problems. List findings with file and line.
+```
+
+## CLI
+
+```bash
+code .                       # open folder
+code --install-extension anthropic.claude-code
+code --list-extensions
+code tunnel                  # remote access via a tunnel
+```
+
+## Related
+
+[VS Code index](index.md) · [AI features](ai-features.md)

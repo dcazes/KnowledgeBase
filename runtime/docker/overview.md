@@ -1,59 +1,57 @@
 ---
-type: Software
-title: Docker — Overview
-description: Containerization platform that packages apps and dependencies into portable, isolated containers sharing the host kernel.
+type: Concept
+title: Docker Overview
+description: How Docker works — client, daemon, containerd and runc; images, layers, containers, volumes, networks and registries; and when containers are the right tool.
 resource: https://docs.docker.com/get-started/docker-overview/
-tags: [docker, containers, infrastructure, devops]
-generated: { by: "human:daniel", at: "2026-07-08T22:35:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-08T22:35:00Z" } ]
+tags: [docker, overview, architecture, containers]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-04
+stale_after: 2027-05-11
 sources:
-  - id: docker-overview
-    resource: "https://docs.docker.com/get-started/docker-overview/"
-    title: "Docker overview"
+  - id: docker-docs
+    resource: "https://docs.docker.com"
+    title: "Docker documentation"
     author: "site:docs.docker.com"
-  - id: docker-architecture
-    resource: "https://docs.docker.com/get-started/docker-overview/#docker-architecture"
-    title: "Docker architecture"
-    author: "site:docs.docker.com"
-  - id: oci-image-spec
-    resource: "https://github.com/opencontainers/image-spec"
-    title: "OCI image spec"
+  - id: moby-github
+    resource: "https://github.com/moby/moby"
+    title: "moby/moby (Docker Engine)"
     author: "site:github.com"
 ---
 
-# What Docker is
+# Docker — Overview
 
-Docker is a platform for building, shipping, and running applications in **containers** — lightweight, isolated environments that bundle an app with everything it needs (code, runtime, libraries, config). Containers share the host OS kernel but get their own filesystem, process space, and network stack, making them far lighter than virtual machines.
-
-On this machine Docker is the **foundation layer**: SearXNG, Frigate, Firecrawl, AnythingLLM, and Dify all run as containers (see [Compose](compose.md) for the real configs).
-
-# Architecture
-
-Docker is a client/server system:
-
-| Component | Role |
-|-----------|------|
-| **Docker CLI** (`docker`) | Client you type commands into. |
-| **Docker daemon** (`dockerd`) | Server that builds, runs, and manages containers, images, networks, and volumes. Listens on a Unix socket (`/var/run/docker.sock`). |
-| **containerd** | Core container runtime that the daemon uses to manage the container lifecycle. |
-| **runc** | Low-level OCI runtime that actually creates/spawns container processes. |
-| **OCI images** | Images follow the **Open Container Initiative** spec, so any OCI-compliant runtime can run them. |
+## Architecture
 
 ```
-docker CLI  ──>  dockerd (daemon)  ──>  containerd  ──>  runc  ──>  container
+docker CLI ──REST──▶ dockerd ──▶ containerd ──▶ runc ──▶ container process
+                       │
+                       └─ images, volumes, networks, build cache (BuildKit)
 ```
 
-# Key concepts
+* **Client** (`docker`) sends commands to the **daemon** (`dockerd`) over a socket.
+* The daemon delegates container lifecycle to **containerd**, which uses **runc** to create Linux namespaces and cgroups.
+* **Docker Desktop** runs the same engine in a lightweight VM on macOS and Windows (and optionally Linux) and adds a GUI, extensions, Model Runner and the MCP Toolkit.
 
-* **Image** — an immutable, layered template used to create containers (think "class" vs instance).
-* **Container** — a running instance of an image.
-* **Layer** — each Dockerfile instruction creates a read-only layer; layers are cached and shared.
-* **Registry** — a store for images (Docker Hub by default; see [Registry](registry.md)).
-* **Volume / Network** — persistent storage and connectivity primitives (see [Volumes & Networks](volumes-networks.md)).
+## Key concepts
 
-# When to use Docker
+| Concept | Meaning |
+|---|---|
+| Image | Read-only, layered filesystem + metadata, built from a Dockerfile |
+| Container | A running (or stopped) instance of an image with a writable layer |
+| Volume | Persistent storage that outlives containers |
+| Network | Virtual network; containers on the same user-defined network resolve each other by name |
+| Registry | Stores and distributes images (Docker Hub, GHCR, private registries) |
+| Compose | Declarative multi-container applications in YAML |
 
-* **Use it** when you want reproducible environments, isolation, easy cleanup, or to run services (like your AI stack) without polluting the host.
-* **It is not** a substitute for a VM when you need a different kernel, or for heavy local LLM inference where you'd rather talk to cloud endpoints (your setup routes inference through OpenRouter/NIM per the KB plan).
+## When to use it
+
+* Running third-party services (vector databases, chat UIs, search engines) without polluting the host.
+* Reproducible environments and one-command stacks with [Compose](compose.md).
+* GPU workloads with the NVIDIA Container Toolkit ([GPU & AI](gpu-ai.md)).
+
+Containers share the host kernel: they isolate processes, but are not a strong security boundary for untrusted code. For running agent-generated code, see sandboxing in [Agent security](../../concepts/agent-security.md).
+
+## Related
+
+[Docker index](index.md) · [Images & containers](images-containers.md) · [Self-hosting](../../concepts/self-hosting.md)

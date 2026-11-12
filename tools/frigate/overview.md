@@ -1,54 +1,49 @@
 ---
-type: Software
-title: Frigate — Overview
-description: Open-source NVR with real-time AI object detection for IP cameras — go2rtc ingest, ONNX detector, GPU-accelerated.
-resource: https://frigate.video/
-tags: [frigate, nvr, surveillance, object-detection, camera, ai, onnx]
-generated: { by: "human:daniel", at: "2026-07-09T04:15:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T04:15:00Z" } ]
+type: Concept
+title: Frigate Overview
+description: How Frigate works — motion detection gating object detection, tracked objects and events, recording retention, review items and alerts, semantic search with embeddings, generative AI descriptions and chat, face and license-plate recognition, and supported detectors.
+resource: https://docs.frigate.video
+tags: [frigate, overview, object-detection, semantic-search]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: frigate
-    resource: "https://frigate.video/"
-    title: "Frigate"
-    author: "site:frigate.video"
-  - id: docs-architecture
-    resource: "https://docs.frigate.video/"
-    title: "Docs — Architecture"
+  - id: frigate-docs
+    resource: "https://docs.frigate.video"
+    title: "Frigate documentation"
     author: "site:docs.frigate.video"
-  - id: local-config
-    resource: "/../../programs/frigate/config.yml"
-    title: "Local config"
+  - id: frigate-018
+    resource: "https://github.com/blakeblackshear/frigate/releases/tag/v0.18.0"
+    title: "Frigate 0.18.0 release notes"
+    author: "site:github.com"
 ---
 
-# What Frigate is
+# Frigate — Overview
 
-Frigate is an open-source **NVR (Network Video Recorder)** designed for **real-time AI object detection** on IP cameras. It ingests camera streams (often via `go2rtc`), detects objects (people, vehicles, etc.) on-device, records, and serves a web UI — all self-hosted.
+## Pipeline
 
-# How it works
+1. Decode camera streams (FFmpeg, hardware-accelerated).
+2. **Motion detection** finds changed regions cheaply.
+3. **Object detection** runs only on those regions with a detector model.
+4. Objects are **tracked** across frames; events and review items (alerts, detections) are created.
+5. Recordings and snapshots are stored per retention rules.
 
-```
-Camera (RTSP/HTTP-FLV)
-   │  go2rtc (restream/stabilize)
-   ▼
-Frigate ── detector (ONNX) ── objects
-   ├─ record (continuous/events)
-       ├─ snapshots
-       └─ Web UI (:8971 authenticated, TLS via reverse proxy) + RTSP restream (:8554) + WebRTC (:8555)
-```
+## Detectors
 
-# Why it matters
+Google Coral (Edge TPU), Intel OpenVINO (CPU/iGPU/NPU), NVIDIA TensorRT, AMD ROCm, Hailo, Rockchip RKNN, Apple Silicon and ONNX models such as YOLO variants. DeGirum was removed in 0.18; DeepStack is deprecated.
 
-* **Local & private** — your footage never leaves your hardware.
-* **AI detection** — runs inference on CPU/GPU (here: NVIDIA + ONNX).* **go2rtc** — stabilizes flaky camera streams (Reolink over HTTP-FLV).
-* **Rich UI** — live view, events, recordings, masks/zones.
+## AI features beyond detection
 
-# How it fits your stack
+| Feature | What it does |
+|---|---|
+| Semantic search | Embeds thumbnails and descriptions so you can search "red car in the driveway" — [Embeddings](../../concepts/embeddings.md) |
+| GenAI descriptions | A vision-language model describes tracked objects and review items |
+| GenAI chat (0.18) | Ask questions about camera activity |
+| Remote embeddings (0.18) | Offload embedding models to another server |
+| Face recognition, LPR, bird classification | Specialised enrichments |
+| Motion search (0.18) | Find periods of motion in a drawn region |
 
-Frigate is the **surveillance** layer — separate from the LLM/agent tools, but part of `programs/`. It's not an LLM; it's computer-vision object detection. (You could later feed detections into agents, but that's not wired here.)
+## Related
 
-# Notes
-
-* Camera credentials live in `config.yml` **in plaintext** — never copy them into this KB.
-* GPU helps detection/decoding throughput.
+[Frigate index](index.md) · [Configuration](configuration.md) · [AI Integration](ai-integration.md)

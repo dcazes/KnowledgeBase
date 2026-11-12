@@ -1,69 +1,63 @@
 ---
-type: HowTo
+type: Reference
 title: LightRAG Configuration
-description: Configure LightRAG — working dir, LLM/embedding providers (Ollama/OpenAI/Claude), storage backends via env, chunking settings, query modes.
-resource: https://lightrag.readthedocs.io/en/latest/
-tags: [lightrag, configuration, env, ollama, storage]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Key LightRAG .env settings — LLM and embedding bindings, role-specific models, reranker, storage backends (JSON, PostgreSQL, Neo4j, MongoDB, Redis, Milvus, Qdrant, OpenSearch) and chunking.
+resource: https://github.com/HKUDS/LightRAG/blob/main/env.example
+tags: [lightrag, configuration, env, storage, ollama]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: lightrag-docs-configuration
-    resource: "https://lightrag.readthedocs.io/en/latest/"
-    title: "LightRAG docs — configuration"
-    author: "site:lightrag.readthedocs.io"
-  - id: lightrag-github-env-example
+  - id: lightrag-github
     resource: "https://github.com/HKUDS/LightRAG"
-    title: "LightRAG GitHub — .env.example"
+    title: "HKUDS/LightRAG on GitHub"
+    author: "site:github.com"
+  - id: lightrag-env
+    resource: "https://github.com/HKUDS/LightRAG/blob/main/env.example"
+    title: "LightRAG env.example"
     author: "site:github.com"
 ---
 
 # LightRAG — Configuration
 
-## Working directory
+`env.example` works out of the box with local file-based storage, no reranker and the built-in parser; only model settings need attention.
 
-All state (graph JSON, vector DB, docs) lands in `WORKING_DIR` (default `./rag_storage`). Point at a persistent volume for deployments.
+## Models
 
-## Providers (env)
-
-```env
-LLM_BINDING_HOST=0.0.0.0
-LLM_BINDING_PORT=9621
-LLM_MODEL=gpt-4o-mini
-LLM_API_KEY=sk-...
-# or local via Ollama:
-LLM_BINDING=ollama
-LLM_MODEL=llama3.1
-OLLAMA_HOST=http://localhost:11434
-# embeddings:
-EMBEDDING_BINDING=ollama
-EMBEDDING_MODEL=nomic-embed-text
-OLLAMA_EMBEDDING_HOST=http://localhost:11434
+```bash
+LLM_BINDING=openai                     # keep "openai" for any OpenAI-compatible API
+LLM_BINDING_HOST=http://localhost:11434/v1
+LLM_MODEL=qwen3:30b-a3b
+LLM_BINDING_API_KEY=...
+EMBEDDING_BINDING=openai
+EMBEDDING_BINDING_HOST=http://localhost:11434/v1
+EMBEDDING_MODEL=bge-m3
+EMBEDDING_DIM=1024                     # must match the model; fix before the first upload
 ```
 
-`LLM_BINDING` selects provider (`openai`, `ollama`, `anthropic`, `azure_openai`, `gemini`, …); `EMBEDDING_BINDING` similarly.
+Native bindings also exist for Ollama, Azure OpenAI, Gemini and AWS Bedrock. With reasoning models, keep reasoning effort low for extraction — it is one call per chunk.
 
-## Storage (env)
+**Role-specific models:** EXTRACT, QUERY, KEYWORDS and VLM can each use a different model, e.g. a cheap model for extraction and a strong one for answers.
 
-```env
-KV_STORAGE=JsonKVStorage            # JsonKVStorage | RedisKVStorage
-VECTOR_STORAGE=NanoVectorDBStorage  # NanoVectorDBStorage | MilvusStorage | PGVectorStorage | QdrantStorage
-GRAPH_STORAGE=NetworkXStorage       # NetworkXStorage | Neo4JStorage | MemgraphStorage
-```
+## Storage
 
-Server env prefix `LIGHTRAG_` is not required for CLI/library usage; env is read directly.
+LightRAG uses four storage roles — KV, vector, graph and document status — each with selectable backends:
 
-## Chunking
+| Backend | Roles |
+|---|---|
+| JSON / NanoVectorDB / NetworkX (default) | All four, file-based |
+| PostgreSQL (+ [pgvector](../../databases/pgvector/index.md), Apache AGE) | All four |
+| OpenSearch | All four |
+| MongoDB | All four |
+| [Neo4j](../../databases/neo4j/index.md), Memgraph | Graph |
+| [Qdrant](../../databases/qdrant/index.md), Milvus, Faiss | Vector |
+| Redis | KV, doc status |
 
-```python
-INSERT_BATCH_SIZE = 10          # docs per batch
-MAX_PARALLEL_INSERT = 4
-CHUNK_TOKEN_SIZE = 1200         # token budget per chunk
-CHUNK_OVERLAP_TOKEN_SIZE = 100
-```
-(These live as module constants / server settings; for server, `LIGHTRAG_*` env or query params.)
+## Retrieval
 
-## Query modes
+Configure a reranker (Cohere, Jina or a local model) to enable `mix` mode as the default. Pick a chunking strategy (`Fix`, `Recursive`, `Vector`, `Paragraph`) per your documents.
 
-`mode` in the query API: `naive` (keyword only), `local` (low-level), `global` (high-level), `hybrid` (default, both).
+## Related
+
+[LightRAG index](index.md) · [Installation](installation.md) · [Embeddings](../../concepts/embeddings.md) · [Vector databases](../../concepts/vector-databases.md)

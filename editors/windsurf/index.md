@@ -1,55 +1,46 @@
 ---
-type: Reference
-title: Windsurf (now Devin Desktop)
-description: AI-native code editor by Cognition (formerly Codeium's Windsurf, now Devin Desktop) — with Devin Local agent replacing Cascade.
-resource: https://docs.devin.ai/
-tags: [windsurf, devin-desktop, codeium, ai-editor, cascade, devin-local, agentic-coding]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+type: Software
+title: Windsurf (Devin Desktop)
+description: AI-native VS Code-based editor originally from Codeium, acquired by Cognition and rebranded Devin Desktop in 2026 — agentic coding with Devin Local (successor to Cascade), SWE-1 models, Tab completions, rules, memories and MCP.
+resource: https://docs.devin.ai
+tags: [windsurf, devin, cognition, ai-editor, coding-agents]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
-  - id: windsurf-now-devin-desktop
-    resource: "https://devin.ai/blog/windsurf-is-now-devin-desktop"
-    title: "Windsurf (now Devin Desktop)"
-    author: "site:devin.ai"
-  - id: docs
-    resource: "https://docs.devin.ai/"
-    title: "Docs"
+  - id: devin-docs
+    resource: "https://docs.devin.ai"
+    title: "Devin documentation"
     author: "site:docs.devin.ai"
-  - id: cognition
-    resource: "https://www.cognition.ai/"
-    title: "Cognition"
-    author: "site:www.cognition.ai"
+  - id: windsurf-site
+    resource: "https://windsurf.com"
+    title: "Windsurf website"
+    author: "site:windsurf.com"
 ---
 
-# Windsurf (now Devin Desktop)
+# Windsurf (Devin Desktop)
 
-Windsurf (now **Devin Desktop**, rebranded by Cognition effective 2026-06-02) is an AI-native code editor built around an agentic coding assistant ("Devin Local", which replaced the retired Cascade agent after Jul 2026) and purpose-built models ("SWE-1"). It's a strong Cursor alternative: chat-driven, flow-based multi-file edits with deep codebase awareness. On this machine it complements VSCode (general editor) and OpenCode (terminal agent) for AI-assisted coding.
+**Windsurf** began as Codeium's AI editor, a VS Code fork centred on an agent called *Cascade*. After Cognition (maker of the Devin agent) acquired it in 2025, it was rebranded **Devin Desktop** (June 2026), and Cascade was replaced by **Devin Local**, tying the editor to Devin's cloud agent.
+
+| | |
+|---|---|
+| Category | AI editors · [Coding agents](../../concepts/coding-agents.md) |
+| License | Proprietary |
+| Base | VS Code (Code-OSS) |
+| Owner | Cognition |
+| Models | SWE-1 family plus third-party frontier models |
 
 ## Contents
 
-* [Overview](overview.md) - what Windsurf is, agentic model
-* [Installation](installation.md) - download, login, verify
-* [Features](features.md) - Cascade, SWE-1, flows, command mode
-* [AI Integration](ai-integration.md) - MCP, your stack tools
-* [Alternatives](../alternatives.md) - Cursor, VSCode, OpenCode, Zed
-* [Snippets](snippets.md) - cheat sheet
+* [Overview](overview.md) — history, Devin Local, flows
+* [Features](features.md) — agent, Tab, rules, memories, MCP
+* [Installation](installation.md)
+* [Snippets](snippets.md) — rules and MCP config
+* [AI Integration](ai-integration.md) — Devin cloud, MCP, comparisons
 
-## Instance facts
+## Related
 
-* **Local:** no launcher in `programs/`; documented from upstream (docs.devin.ai, verified 2026-08-12).
-* **Role here:** optional AI editor for `programs/*` repos; pairs with OpenCode/Hermes.
-* **Upstream:** Devin Desktop by Cognition (formerly Codeium's Windsurf) — docs at docs.devin.ai.
-
-## Cross-references
-
-* **Cursor** — Anysphere's AI editor; similar agent paradigm — see [Cursor Overview](../cursor/overview.md)
-* **VSCode** — general-purpose editor; Windsurf is a fork — see [VSCode Overview](../vscode/overview.md)
-* **OpenCode** — terminal-native agent; different UX — see [OpenCode Overview](../../agents/opencode/overview.md)
-* **Graphify** — Windsurf can use Graphify MCP server — see [Graphify MCP Server](../../memory/graphify/mcp-server.md)
-* **Hermes** — terminal agent that can share context — see [Hermes Overview](../../agents/hermes/overview.md)
-
-## Last verified
-
-**2026-08-12** — All feature descriptions and integration notes verified against upstream docs.devin.ai. Windsurf rebranded to Devin Desktop (Cognition, 2026-06-02); Cascade retired → Devin Local.
+* Peers: [Cursor](../cursor/index.md), [VS Code](../vscode/index.md), [Zed](../zed/index.md), [Antigravity](../../agents/antigravity/index.md)
+* Concepts: [Coding agents](../../concepts/coding-agents.md) · [MCP](../../concepts/mcp.md)
+* Comparison: [Editors alternatives](../alternatives.md)

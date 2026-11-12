@@ -1,67 +1,58 @@
 ---
-type: Software
-title: Antigravity 2.0 Overview
-description: What Google Antigravity 2.0 is — an agent-first desktop platform for orchestrating parallel autonomous agents on cloud Gemini models, and how it differs from an AI-assisted IDE.
-resource: Antigravity 2.0
-tags: [google, antigravity, agents, gemini, ide, cloud]
-generated: { by: "human:daniel", at: "2026-07-09T03:28:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:28:00Z" } ]
+type: Concept
+title: Antigravity Overview
+description: Antigravity's agent-first idea, the desktop app versus the agy CLI on a shared agent engine, the Gemini default model, and the June 2026 transition from Gemini CLI and Gemini Code Assist.
+resource: https://antigravity.google
+tags: [antigravity, overview, gemini-cli, agent-first]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: antigravity-2-0-product-page
+  - id: antigravity-2
     resource: "https://antigravity.google/product/antigravity-2"
     title: "Antigravity 2.0 product page"
     author: "site:antigravity.google"
-  - id: google-i-o-2026-developer-highlights
-    resource: "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/"
-    title: "Google I/O 2026 developer highlights"
-    author: "site:blog.google"
-  - id: transitioning-gemini-cli-to-antigravity-cli
+  - id: agy-github
+    resource: "https://github.com/google-antigravity/antigravity-cli"
+    title: "google-antigravity/antigravity-cli"
+    author: "site:github.com"
+  - id: gemini-cli-transition
     resource: "https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/"
     title: "Transitioning Gemini CLI to Antigravity CLI"
     author: "site:developers.googleblog.com"
-  - id: antigravity-official-site
-    resource: "https://antigravity.google/"
-    title: "Antigravity — official site"
-    author: "site:antigravity.google"
 ---
 
-# Antigravity 2.0 Overview
+# Antigravity — Overview
 
-Antigravity 2.0 is a **new desktop application** (launched around Google I/O 2026) described by Google as *"your dedicated platform to work with agents. Orchestrate multiple autonomous agents working in parallel across independent projects."* It is built for the **agent-first era** and aimed at both professional developers and hobbyist "vibe-coders" who need to trust the agents they run.
+## Agent-first
 
-## Agent-first, not IDE-with-AI
+| | IDE with AI | Antigravity |
+|---|---|---|
+| Unit of work | The editor and its files | The autonomous agent |
+| Your role | Drive, accept suggestions | Assign tasks, review and verify results |
+| Concurrency | One session | Several agents across independent projects |
 
-The central idea is a shift in framing:
+The first Antigravity (late 2025) was an agent-first IDE; **2.0** became a dedicated desktop app for orchestrating agents.
 
-| Mental model | Old ("IDE with AI") | Antigravity 2.0 ("agent-first") |
-| --- | --- | --- |
-| Primary unit | The editor / project | The autonomous agent |
-| AI role | Assists you while you drive | Runs independently across projects |
-| Execution | You step through changes | Multiple agents run in parallel |
-| Trust | You review inline diffs | Built around a user-trust / verification model |
+## Desktop and CLI
 
-Antigravity is positioned as a *platform for orchestrating agents* rather than a code editor that happens to call a model.
+| | Antigravity CLI (`agy`) | Antigravity 2.0 |
+|---|---|---|
+| Focus | Speed, keyboard, SSH/remote | Visual orchestration, project management |
+| Interface | Terminal UI | Rich GUI |
+| Engine | Shared core agent engine | Shared core agent engine |
 
-## Default model: Gemini 3.5 Flash
+Settings and permissions sync both ways, and CLI sessions can be exported to the desktop app.
 
-Antigravity 2.0 defaults to **Gemini 3.5 Flash**, which Google states outperforms Gemini 3.1 Pro on almost all benchmarks at roughly 4× the speed. Related capabilities include **Managed Agents** in the Gemini API and native Android "vibe coding" in Google AI Studio.
+## Gemini CLI transition
 
-## Managed Agents API + isolated sandbox
+On 18 June 2026 Gemini CLI and Gemini Code Assist IDE extensions stopped serving Google AI Pro/Ultra and free individual Code Assist users, who moved to Antigravity. Gemini CLI itself remains published for other access paths.
 
-A key building block is the **Managed Agents** API, which provides a **persistent, isolated Linux sandbox** for agents to work inside. Agents operate in their own sandboxed environment rather than directly on the user's machine, supporting the trust/verification model and parallel, independent execution across projects.
+## Models
 
-## The Gemini CLI → Antigravity CLI transition
+Gemini models run in Google's cloud; at launch the default was Gemini 3.5 Flash. Local hardware does not affect agent quality.
 
-On **June 18, 2026**, Gemini CLI and the Gemini Code Assist IDE extensions stopped serving requests for:
+## Related
 
-- Google AI Pro / Ultra
-- Free Gemini Code Assist for individuals
-
-Users are directed to migrate to **Antigravity CLI** and **Antigravity 2.0**. This is the bridge between Google's earlier CLI tooling and the new agent-first platform.
-
-## Caveats
-
-- Antigravity is a newer product. Do not assert live runtime state; use the verify steps in [installation.md](installation.md) and the official sources.
-- The user runs Linux and has a local GTX 1060 — neither matters here, because model inference is cloud-side on Gemini.
+[Antigravity index](index.md) · [Agents](agents.md)

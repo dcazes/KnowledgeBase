@@ -1,58 +1,57 @@
 ---
-type: Playbook
-title: Obsidian — Snippets & Cheat Sheet
-description: Launch, vault location, link/graph syntax, and Graphify ingest for Obsidian.
-resource: https://help.obsidian.md/
-tags: [obsidian, snippets, cheat-sheet, wikilinks, graph, graphify]
-generated: { by: "human:daniel", at: "2026-07-09T04:11:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T04:11:00Z" } ]
+type: Reference
+title: Obsidian Snippets
+description: Obsidian syntax and tooling snippets — wikilinks and Markdown links with headings and blocks, embeds, callouts, properties, a Base definition, graph search filters, and URI/CLI commands.
+resource: https://help.obsidian.md
+tags: [obsidian, snippets, syntax, cheat-sheet]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: installation
-    resource: "installation.md"
-    title: "Installation"
-  - id: vault-structure
-    resource: "vault-structure.md"
-    title: "Vault Structure"
-  - id: ai-integration
-    resource: "ai-integration.md"
-    title: "AI Integration"
+  - id: obsidian-help
+    resource: "https://help.obsidian.md"
+    title: "Obsidian Help"
+    author: "site:help.obsidian.md"
 ---
 
-# Obsidian — Launch
+# Obsidian — Snippets
 
-```bash
-setsid obsidian          # via programs/Obsidian.desktop
-# or just: obsidian
+```markdown
+[[Note]]  [[Note#Heading]]  [[Note|alias]]  ![[image.png]]  ![[Note#Section]]
+[Text](folder/note.md)       # standard Markdown link — used throughout this vault
+
+> [!tip] Callout title
+> Callout body
 ```
 
-# Vault
+## Properties
 
-Root: `~/Desktop/vault/` (config in `vault/.obsidian/`).
-
-# Markdown syntax
-
-```md
-[[Note]]            # wikilink (creates backlink)
-#tag                # tag
-![[Embedded Note]]  # embed
+```yaml
+---
+type: Software
+tags: [rag, vector-search]
+status: stable
+---
 ```
 
-# Graph view
+## Graph view filters
 
-Open via the Graph core plugin; settings in `vault/.obsidian/graph.json`.
-
-# Ingest into Graphify
-
-```bash
-graphify add ~/Desktop/vault
-python -m graphify.serve
+```
+path:memory/              -file:alternatives      tag:#mcp
 ```
 
-# Troubleshooting
+Use **Groups** with queries like `path:agents/` to colour categories.
 
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| Launcher dead | binary missing | install obsidian; run `obsidian` |
-| Wrong vault | folder not opened | Open Folder as Vault → `~/Desktop/vault` |
+## URI and CLI
+
+```
+obsidian://open?vault=kb&file=concepts/rag
+obsidian://new?vault=kb&name=Inbox/idea&content=...
+```
+
+Obsidian 1.15 added URI and CLI commands for appending content under a heading — handy for scripts and agents that log into a vault.
+
+## Related
+
+[Obsidian index](index.md) · [Overview](overview.md)

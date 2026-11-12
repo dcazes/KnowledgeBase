@@ -1,56 +1,50 @@
 ---
-type: Reference
-title: Graphiti — AI Integration
-description: Using Graphiti as temporal memory for agents (Hermes/OpenCode), its MCP server, and how it relates to the rest of your stack (incl. the :4000 proxy).
+type: Playbook
+title: Graphiti AI Integration
+description: How to use Graphiti as agent memory — ingest each turn as an episode, retrieve facts before responding, scope by group id, and expose it over MCP or as framework tools.
 resource: https://github.com/getzep/graphiti
-tags: [graphiti, integration, agents, hermes, opencode, mcp, memory, openai-compatible]
-generated: { by: "human:daniel", at: "2026-07-09T05:06:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T05:06:00Z" } ]
+tags: [graphiti, agent-memory, integration, mcp, langgraph]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: mcp-server
-    resource: "mcp-server.md"
-    title: "MCP server"
-  - id: vs-graphify
-    resource: "vs-graphify.md"
-    title: "vs Graphify"
-  - id: hermes
-    resource: "/../../hermes/index.md"
-    title: "Hermes"
-  - id: opencode
-    resource: "/../../opencode/index.md"
-    title: "OpenCode"
+  - id: graphiti-github
+    resource: "https://github.com/getzep/graphiti"
+    title: "getzep/graphiti on GitHub"
+    author: "site:github.com"
+  - id: zep-paper
+    resource: "https://arxiv.org/abs/2501.13956"
+    title: "Zep: A Temporal Knowledge Graph Architecture for Agent Memory"
+    author: "Rasmussen et al., arXiv 2501.13956"
 ---
 
-# Graphiti — Agent memory
+# Graphiti — AI Integration
 
-Graphiti's primary use is **agent memory**: ingest interactions/episodes, query what's true now or historically. In your stack:
+## As agent memory
 
-* **Hermes** (`~/.hermes/`) — could use Graphiti as a memory backend via the MCP server, or a custom skill calling `graphiti_core`.
-* **OpenCode** (`.opencode.json`) — register the Graphiti MCP server as an `mcpServers` entry.
-* **Claude / Cursor / Windsurf** — any MCP client can consume Graphiti memory.
+1. **Ingest** — after each turn (or batch of turns), `add_episode(... source=EpisodeType.message, group_id=user_id)`. Do it in the background: ingestion makes several LLM calls.
+2. **Retrieve** — before responding, `search(query, group_ids=[user_id])` and put the returned facts, with their dates, into the prompt.
+3. **Reason over time** — because facts carry validity windows, the agent can answer "what changed?" questions that flat [vector memory](../../concepts/vector-databases.md) cannot.
 
-# LLM / embeddings provider
+This is the pattern the Zep paper benchmarks on LongMemEval and Deep Memory Retrieval. Compared with [Mem0](../mem0/index.md)'s flat fact list, Graphiti costs more at ingestion and gives you relationships, provenance and history.
 
-Graphiti defaults to **OpenAI** for LLM + embeddings. It supports Anthropic/Gemini/Groq and **OpenAI-compatible endpoints** — so you could point it at your local **`:4000` proxy** (OpenRouter/NIM failover) instead of OpenAI, provided the model supports Structured Output.
+## Through MCP
 
-```python
-from graphiti_core import Graphiti
-from graphiti_core.llm import LLMClient  # configure your OpenAI-compatible endpoint
-```
+The quickest way to give a coding agent or chat client graph memory is the [MCP server](mcp-server.md): `add_memory` after meaningful events, `search_memory_facts` / `search_nodes` before acting.
 
-# Versus the rest of the stack
+## In agent frameworks
 
-| Layer | Tool |
-|-------|------|
-| Temporal memory | **Graphiti** |
-| Static graph | Graphify (`/../../graphify/index.md`) |
-| Agent runtime | Hermes (`/../../hermes/index.md`), OpenCode (`/../../opencode/index.md`) |
-| Chat/RAG | OpenWebUI (`/../../openwebui/index.md`), AnythingLLM (`/../../anythingllm/index.md`) |
-| Search | SearXNG (`/../../searxng/index.md`), Firecrawl (`/../../firecrawl/index.md`) |
+* [LangGraph](../../agents/langgraph/index.md): add a retrieval node before the model and an ingestion node after it; keep `group_id` in graph state.
+* [PydanticAI](../../agents/pydanticAI/index.md): register `search` as a typed tool; Graphiti's custom types are Pydantic models too.
+* [CrewAI](../../agents/crewai/index.md) / [Letta](../letta/index.md): expose search as a tool for the memory-managing agent.
 
-# Notes
+## Good practice
 
-* Graphiti needs a graph DB (Neo4j) — heavier than Graphify's file-based approach.
-* MCP server is the cleanest integration path for your agents.
+* One `group_id` per user or tenant; enforce the mapping in your service.
+* Prefer models with reliable [structured output](../../concepts/structured-output.md) for ingestion; a smaller model is fine for embeddings and reranking.
+* Treat ingested content as untrusted: it is sent to the LLM unfiltered ([Agent security](../../concepts/agent-security.md)).
+
+## Related
+
+[Graphiti index](index.md) · [Agent memory](../../concepts/agent-memory.md) · [Context engineering](../../concepts/context-engineering.md)

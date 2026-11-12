@@ -1,48 +1,46 @@
 ---
-type: Software
-title: OpenClaw — Overview
-description: Open-source personal AI assistant and self-hosted gateway connecting chat channels to models, coding agents, and skills.
-resource: https://openclaw.ai/
-tags: [openclaw, ai-assistant, gateway, agents, skills, automation, self-hosted]
-generated: { by: "human:daniel", at: "2026-07-09T03:10:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:10:00Z" } ]
+type: Concept
+title: OpenClaw Overview
+description: What OpenClaw does — a local-first assistant reachable from your chat apps, swappable model providers and harnesses, tools, skills from ClawHub, plugins, voice and device actions, and its security model.
+resource: https://docs.openclaw.ai
+tags: [openclaw, overview, skills, clawhub, channels]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: openclaw-official
-    resource: "https://openclaw.ai/"
-    title: "OpenClaw official"
-    author: "site:openclaw.ai"
-  - id: github
-    resource: "https://github.com/openclaw/openclaw"
-    title: "GitHub"
-    author: "site:github.com"
-  - id: docs-what-is-openclaw
-    resource: "https://docs.openclaw.ai/"
-    title: "Docs — what is OpenClaw"
+  - id: openclaw-docs
+    resource: "https://docs.openclaw.ai"
+    title: "OpenClaw documentation"
     author: "site:docs.openclaw.ai"
+  - id: openclaw-github
+    resource: "https://github.com/openclaw/openclaw"
+    title: "openclaw/openclaw on GitHub"
+    author: "site:github.com"
 ---
 
-# What OpenClaw is
+# OpenClaw — Overview
 
-OpenClaw is an **open-source personal AI assistant** — a self-hosted gateway that connects your favorite chat apps to AI models and **coding agents**. It's described as "your own personal AI assistant. Any OS. Any Platform." and is positioned as a personal/company/family/team assistant.
+## Local-first assistant
 
-# Why it matters
+You install OpenClaw on a computer you control. It connects to messaging services so you can ask it to do things from your phone — research, manage files, run commands, act on devices — and it keeps memory and persona files (such as `SOUL.md`, `MEMORY.md`, `USER.md`) on that machine.
 
-* **Multi-channel** — one assistant reachable from Discord, Telegram, WhatsApp, Slack, Signal, Matrix, MS Teams, iMessage, Zalo, and 30+ platforms via channel plugins.
-* **Agent-capable** — can connect to AI coding agents (not just chat).
-* **Skills** — a growing community builds reusable skills for automation.
-* **Self-hosted** — you run the gateway; your data stays with you.
-* **Cross-platform** — macOS, Linux, Windows.
+## Models and harnesses
 
-# How it relates to your stack
+Hosted and local model providers are configurable; agent harnesses (Claude, Codex, local models) are plugins. `ollama launch openclaw` pairs it with local [Ollama](../../runtime/ollama/index.md) models.
 
-OpenClaw is the **conversational front-end / orchestrator** layer:
-* It can receive requests from chat and hand them to **Hermes** or **OpenCode** (coding agents).
-* It can call your tools via **MCP** (e.g. Graphify, Firecrawl, SearXNG).
-* Distinct from **Dify** (app builder) and **Hermes** (the agent runtime itself).
+## Skills, plugins and tools
 
-# Editions
+* **Skills** in the shared `SKILL.md` format, distributed through **ClawHub** (`openclaw skills install <slug>`) — the same format [Hermes](../hermes/index.md), [Letta](../../memory/letta/index.md) and [Claude Code](../claude-code/index.md) use. See [Agent skills](../../concepts/agent-skills.md).
+* **Plugins** (`openclaw plugins install …`) add memory backends, browsers and harnesses.
+* **Tools** for files, shell, web and device actions; slash commands in chat.
 
-* **Gateway** — the core, set up via `openclaw onboard`.
-* **Windows Hub** — native Windows companion app for setup, tray status, chat, node mode, and local MCP mode.
+## Security model
+
+* Treat inbound messages as untrusted. DM-capable channels **pair** unknown senders by default (`openclaw pairing approve <channel> <code>`).
+* Tools run on the host for the main session unless sandboxing is configured.
+* Skills and plugins from public hubs are code you run with your permissions — review them, and never expose the Gateway publicly. See [Agent security](../../concepts/agent-security.md).
+
+## Related
+
+[OpenClaw index](index.md) · [Architecture](architecture.md)

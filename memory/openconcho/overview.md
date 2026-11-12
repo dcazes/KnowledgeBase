@@ -1,40 +1,38 @@
 ---
 type: Concept
 title: OpenConcho Overview
-description: "What OpenConcho is — Honcho UI features: dashboard, fleet dashboard, workspaces, peers/representations, sessions, chat with memory context."
+description: What OpenConcho shows — dashboard and queue status, peers and peer cards, sessions, conclusions search, dream viewer, dialectic playground, chat, webhooks, and demo mode.
 resource: https://github.com/offendingcommit/openconcho
-tags: [openconcho, overview, honcho, ui]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [openconcho, overview, honcho, features]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: openconcho-github-readme
+  - id: openconcho-github
     resource: "https://github.com/offendingcommit/openconcho"
-    title: "OpenConcho GitHub — README"
+    title: "offendingcommit/openconcho on GitHub"
     author: "site:github.com"
 ---
 
 # OpenConcho — Overview
 
-OpenConcho is the **reference UI for Honcho** — you point it at your self-hosted Honcho server and get visual + conversational access to the user models Honcho maintains.
-
-## Feature surface (from README)
-
-| Feature | What it does |
+| Area | What you can do |
 |---|---|
-| **Dashboard** | workspace count + queue status, auto-refresh every 10 s |
-| **Multiple instances** | add/switch several Honcho connections |
-| **Fleet dashboard** | cross-instance observability — workspaces/sessions/queue side-by-side with per-instance badges |
-| **Workspaces** | paginated list with per-workspace navigation |
-| **Peers** | browse peers, view representations, context, peer cards |
-| **Sessions / memories / conclusions** | inspect what Honcho derived |
-| **Chat** | chat with full memory context against your instance |
+| Dashboard | Workspace count and deriver queue status, refreshed every 10 s |
+| Instances | Save and switch between several Honcho servers |
+| Peers | Browse peers, representations, context and peer cards; set friendly display names |
+| Peer card seed kits | Reusable peer-card templates applied across instances |
+| Sessions | Paginated message history with summaries and context |
+| Conclusions | Semantic search with observer/subject shown |
+| Dream viewer | Consolidation bursts as a recursive premise tree; trigger a dream on demand |
+| Dialectic playground | Run one query across all reasoning levels side by side |
+| Chat | Talk through Honcho's chat endpoint with memory context |
+| Webhooks | Manage and trigger per workspace |
+| Demo mode | Mask identifiers and content for screenshots |
 
-## Privacy model
+It is the closest thing to an [observability](../../concepts/llm-observability.md) console for Honcho's memory: you can see *why* an agent believes something about a user.
 
-Connection details (URLs/keys) stay **in the browser** — nothing is sent anywhere except to the Honcho URL you configure. That's the "privacy-first" claim: no telemetry/cloud middleman.
+## Related
 
-## Position
-
-OpenConcho = Honcho's visibility layer; Honcho = the memory engine. If [Honcho](../honcho/index.md) is the memory backend, OpenConcho is how you watch/chat with it.
+[OpenConcho index](index.md) · [Honcho overview](../honcho/overview.md)

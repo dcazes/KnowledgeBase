@@ -1,45 +1,24 @@
 ---
 type: Reference
-title: Firecrawl Subservice — Redis
-description: The redis container — cache and rate-limit store used by the Firecrawl api (REDIS_URL / REDIS_RATE_LIMIT_URL).
+title: Firecrawl Redis
+description: Redis in a self-hosted Firecrawl stack — rate limiting, caching and coordination between API and workers.
 resource: https://github.com/firecrawl/firecrawl
-tags: [firecrawl, redis, subservice, cache, rate-limit]
-generated: { by: "human:daniel", at: "2026-07-09T00:34:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T00:34:00Z" } ]
+tags: [firecrawl, redis, subservice]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: local-compose-redis-service
-    resource: "/../../programs/firecrawl/firecrawl/docker-compose.yaml"
-    title: "Local compose (redis service)"
+  - id: firecrawl-selfhost
+    resource: "https://github.com/firecrawl/firecrawl/blob/main/SELF_HOST.md"
+    title: "Self-hosting Firecrawl"
+    author: "site:github.com"
 ---
 
-# Firecrawl — Role
+# Firecrawl — Redis
 
-Redis backs two things in the Firecrawl stack:
-1. **General cache** (`REDIS_URL`) — short-term caching of scrape/search results.
-2. **Rate limiting** (`REDIS_RATE_LIMIT_URL`) — throttling per key/IP.
+Redis holds short-lived shared state: rate-limit counters, caches, locks and coordination data used by the API and workers. Data is mostly ephemeral; losing it interrupts in-flight jobs but not durable results. Keep it on the internal Compose network with no published port.
 
-It is a standard `redis:alpine` container; no custom build.
+## Related
 
-# Configuration (api env)
-
-```
-REDIS_URL=redis://redis:6379
-REDIS_RATE_LIMIT_URL=redis://redis:6379
-```
-
-Both point at the `redis` service on the `backend` network (port 6379).
-
-# Notes
-
-* The api falls back to image defaults if these aren't set, but the compose wires them explicitly.
-* Rate limiting without Redis would fail — Redis must be up for the api to start cleanly.
-* Valkey is mentioned as an (untested) alternative in compose comments.
-
-# Troubleshooting
-
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| API errors on rate limit | redis down | `docker compose restart redis` |
-| Cache misses / slow | redis evicting | check memory; increase if needed |
+[Subservices](index.md) · [Docker volumes & networks](../../../runtime/docker/volumes-networks.md)

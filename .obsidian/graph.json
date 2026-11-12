@@ -1,0 +1,100 @@
+{
+  "collapse-filter": false,
+  "search": "-file:secrets -file:README_TOCONTINUE",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": true,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:concepts/",
+      "color": {
+        "a": 1,
+        "rgb": 15227148
+      }
+    },
+    {
+      "query": "path:runtime/",
+      "color": {
+        "a": 1,
+        "rgb": 1667522
+      }
+    },
+    {
+      "query": "path:memory/",
+      "color": {
+        "a": 1,
+        "rgb": 7358696
+      }
+    },
+    {
+      "query": "path:databases/",
+      "color": {
+        "a": 1,
+        "rgb": 820633
+      }
+    },
+    {
+      "query": "path:agents/",
+      "color": {
+        "a": 1,
+        "rgb": 14692657
+      }
+    },
+    {
+      "query": "path:browsers/",
+      "color": {
+        "a": 1,
+        "rgb": 3120708
+      }
+    },
+    {
+      "query": "path:ingestion/",
+      "color": {
+        "a": 1,
+        "rgb": 6727695
+      }
+    },
+    {
+      "query": "path:apps/",
+      "color": {
+        "a": 1,
+        "rgb": 15764480
+      }
+    },
+    {
+      "query": "path:editors/",
+      "color": {
+        "a": 1,
+        "rgb": 12723548
+      }
+    },
+    {
+      "query": "path:observability/",
+      "color": {
+        "a": 1,
+        "rgb": 10237621
+      }
+    },
+    {
+      "query": "path:tools/",
+      "color": {
+        "a": 1,
+        "rgb": 8818326
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": false,
+  "centerStrength": 0.433238217061891,
+  "repelStrength": 15.2465442541778,
+  "linkStrength": 1,
+  "linkDistance": 190,
+  "scale": 0.25,
+  "close": true
+}

@@ -1,77 +1,38 @@
 ---
 type: Playbook
-title: Dify — Installation
-description: Deploy Dify Community Edition via Docker Compose from the local docker/ directory and reach the setup dashboard.
-resource: https://docs.dify.ai/getting-started/install-self-hosted
-tags: [dify, install, docker, compose, self-hosted, deployment]
-generated: { by: "human:daniel", at: "2026-07-09T00:51:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T00:51:00Z" } ]
+title: Dify Installation
+description: Self-host Dify with Docker Compose — prepare .env including the agent sandbox token, start the stack, run the setup wizard, and upgrade safely.
+resource: https://github.com/langgenius/dify
+tags: [dify, installation, docker-compose, upgrade]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: install-self-hosted
-    resource: "https://docs.dify.ai/getting-started/install-self-hosted"
-    title: "Install self-hosted"
-    author: "site:docs.dify.ai"
-  - id: local-docker-dir-programs-archive-dify-docker
-    resource: "/../../programs/archive/dify/docker/"
-    title: "Local docker dir - programs/archive/dify/docker/"
-  - id: readme-quick-start
-    resource: "/../../programs/archive/dify/README.md"
-    title: "README quick start"
+  - id: dify-github
+    resource: "https://github.com/langgenius/dify"
+    title: "langgenius/dify on GitHub"
+    author: "site:github.com"
 ---
 
-# Dify — Requirements
+# Dify — Installation
 
-* Docker + Docker Compose.
-* CPU ≥ 2 cores, RAM ≥ 4 GiB (more for heavier workloads).
-* Pick **one** vector database (Weaviate is the default in the compose).
-
-# Deploy (from local source)
+Requirements: Docker with Compose, at least 2 CPU cores and 4 GB RAM.
 
 ```bash
-cd programs/archive/dify/docker
-cp .env.example .env         # required before first launch
+git clone https://github.com/langgenius/dify.git && cd dify/docker
+cp .env.example .env
+openssl rand -hex 32           # paste into DIFY_AGENT_LOCAL_SANDBOX_AUTH_TOKEN in .env
 docker compose up -d
+docker compose ps --all
 ```
 
-This starts the full stack (api, worker, web, db, redis, sandbox, plugin_daemon, ssrf_proxy, nginx, and a vector store).
+Open `http://localhost/install` to create the admin account.
 
-# First launch
+## Upgrading
 
-Open the setup page in a browser:
+Keep your `.env`, read the release's upgrade notes (some releases need staged steps, e.g. the Weaviate jump in 1.17.1), back up PostgreSQL and the vector store, then pull and restart.
 
-```
-http://localhost/install
-```
+## Related
 
-Complete the initialization (admin account, model provider). After that, the app is at `http://localhost/`.
-
-> The compose publishes nginx on **:80**. If something else uses :80, edit `docker/.env` / the compose port mapping.
-
-# Configuration
-
-* Edit `docker/.env` for core settings; advanced vars are split under `docker/envs/` by theme.
-* After changes: `docker compose up -d` from the `docker` directory.
-* Full env reference: https://docs.dify.ai/getting-started/install-self-hosted/environments
-
-# Choose a vector store
-
-The compose includes many (weaviate, qdrant, pgvector, chroma, milvus, oceanbase, opensearch, couchbase, iris, oracle, vastbase, pgvecto-rs). Default is **Weaviate**. To switch, enable the relevant service in the compose and set `VECTOR_STORE` in `.env`.
-
-# Verify
-
-```bash
-docker compose ps          # all services healthy
-curl -s -o /dev/null -w "%{http_code}\n" http://localhost/install
-docker compose logs -f api
-```
-
-# Troubleshooting
-
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| :80 already in use | port clash | change nginx port in compose/.env |
-| Worker not processing | Redis down | `docker compose restart redis` |
-| Plugins missing | plugin_daemon down | `docker compose restart plugin_daemon` |
-| Migration errors | db not ready | wait; re-run `docker compose up -d` |
+[Dify index](index.md) · [Architecture](architecture.md) · [Docker Compose](../../runtime/docker/compose.md)

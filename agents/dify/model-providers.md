@@ -1,61 +1,32 @@
 ---
 type: Reference
-title: Dify — Model Providers
-description: Connecting LLMs to Dify, including OpenAI-API-compatible endpoints like your local :4000 OpenRouter/NIM failover proxy.
-resource: https://docs.dify.ai/guides/model-configuration
-tags: [dify, models, openai-compatible, openrouter, providers, configuration]
-generated: { by: "human:daniel", at: "2026-07-09T00:55:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T00:55:00Z" } ]
+title: Dify Model Providers
+description: How Dify connects to models — provider plugins for OpenAI, Anthropic, Gemini and others, local models through Ollama, vLLM, LM Studio or any OpenAI-compatible API, gateways like LiteLLM, and system default models.
+resource: https://docs.dify.ai
+tags: [dify, model-providers, ollama, openai-compatible]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: model-configuration-docs
-    resource: "https://docs.dify.ai/guides/model-configuration"
-    title: "Model configuration (docs)"
+  - id: dify-docs
+    resource: "https://docs.dify.ai"
+    title: "Dify documentation"
     author: "site:docs.dify.ai"
-  - id: supported-providers
-    resource: "https://docs.dify.ai/getting-started/readme/model-providers"
-    title: "Supported providers"
-    author: "site:docs.dify.ai"
-  - id: architecture-proxy-fit
-    resource: "model-providers.md"
-    title: "Architecture / proxy fit"
 ---
 
-# Dify — Model support
+# Dify — Model Providers
 
-Dify integrates **hundreds** of proprietary/open LLMs from dozens of providers, plus **any OpenAI-API-compatible model** (GPT, Mistral, Llama3, local servers, proxies).
+Model providers are **plugins** installed from the marketplace. Configure them in *Settings → Model Provider*.
 
-# Adding a provider
+| Type | Examples |
+|---|---|
+| Hosted | OpenAI, Anthropic, Google Gemini, Azure OpenAI, Bedrock, Mistral, DeepSeek, OpenRouter |
+| Local | [Ollama](../../runtime/ollama/index.md) (`http://host.docker.internal:11434` from Docker), [vLLM](../../runtime/vllm/index.md), [LM Studio](../../runtime/lmstudio/index.md), Xinference, LocalAI |
+| Generic | "OpenAI-API-compatible" provider for any [compatible endpoint](../../concepts/openai-compatible-api.md), including a [LiteLLM](../../runtime/litellm/index.md) gateway |
 
-In the UI: **Settings → Model Provider → Add**. Two common paths:
+Set **system default models** for reasoning, embeddings, reranking and speech; knowledge bases need an embedding model (see [Embeddings](../../concepts/embeddings.md)).
 
-1. **Hosted provider** (OpenAI, Anthropic, etc.) — enter API key.
-2. **OpenAI-API-compatible** — point at a base URL. **This is how you use your `:4000` proxy.**
+## Related
 
-# Using your `:4000` OpenRouter/NIM proxy
-
-Your stack routes inference through a local failover proxy on `:4000` (per the KB plan). Add it as an OpenAI-compatible endpoint:
-
-```
-Provider type: OpenAI-API-compatible
-Base URL:      http://localhost:4000/v1
-API Key:       <any non-empty value the proxy accepts>
-Model:         <model name exposed by the proxy, e.g. a free model>
-```
-
-Set the same in `docker/.env` if you want it as a default, or configure per-app in the UI. Both chat and **embedding** models can be pointed at compatible endpoints (needed for [RAG Pipeline](rag-pipeline.md)).
-
-# Provider categories
-
-* **LLM** — chat/completion models.
-* **Embedding** — vectorization for RAG.
-* **Rerank** — reorders retrieved chunks (improves relevance).
-* **Text-to-speech / Speech-to-text** — optional modalities.
-* **Moderation** — content filtering.
-
-# Tips
-
-* Match embedding model dimensions to your vector store.
-* For heavy local use, prefer cloud endpoints via the proxy (your GTX 1060 can't run big models well).
-* System models (OpenAI-compatible) are the simplest to wire to the proxy.
+[Dify index](index.md) · [RAG pipeline](rag-pipeline.md)

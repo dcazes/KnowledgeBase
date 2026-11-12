@@ -1,87 +1,48 @@
 ---
-type: Software
-title: Graphify — Overview
-description: AI coding-assistant skill that builds a queryable, confidence-tagged knowledge graph from any folder of code, docs, papers, images, or videos.
-resource: https://github.com/Graphify-Labs/graphify
-tags: [graphify, knowledge-graph, ai, code-assistant, rag, hermes, obsidian]
-generated: { by: "human:daniel", at: "2026-07-09T00:10:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T00:10:00Z" } ]
+type: Concept
+title: Graphify Overview
+description: How Graphify works — deterministic tree-sitter parsing for ~40 languages, an optional semantic pass for docs and media, Leiden communities, god nodes, rationale nodes, and why it is a graph rather than a vector index.
+resource: https://docs.graphify.com/concepts/architecture
+tags: [graphify, overview, tree-sitter, leiden, code-graph]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
   - id: graphify-github
     resource: "https://github.com/Graphify-Labs/graphify"
-    title: "Graphify GitHub"
+    title: "Graphify-Labs/graphify on GitHub"
     author: "site:github.com"
-  - id: graphifyy-pypi
-    resource: "https://pypi.org/project/graphifyy/"
-    title: "graphifyy PyPI"
-    author: "site:pypi.org"
-  - id: architecture-md-upstream
-    resource: "https://github.com/Graphify-Labs/graphify/blob/main/ARCHITECTURE.md"
-    title: "ARCHITECTURE.md (upstream)"
-    author: "site:github.com"
+  - id: graphify-docs
+    resource: "https://docs.graphify.com"
+    title: "Graphify documentation"
+    author: "site:docs.graphify.com"
 ---
 
-# What Graphify is
+# Graphify — Overview
 
-Graphify is an **AI coding-assistant skill** (a Claude Code–style slash command + CLI) that reads a folder of mixed inputs — code, docs, PDFs, papers, images, even videos/tweets — and constructs a **knowledge graph**: entities as nodes, relationships as edges. You then query it in natural language instead of re-reading everything.
+## What it builds
 
-The pitch: Andrej Karpathy keeps a `/raw` folder of papers, tweets, screenshots, and notes; Graphify is "the answer to that problem" — it gives you structure you didn't know was there, **persistent across sessions**, and **honest about what it found vs. guessed**.
+| Capability | Detail |
+|---|---|
+| Cross-file links | `calls`, `imports`, `inherits`, `mixes_in` resolved across ~40 languages via tree-sitter AST |
+| Communities | The graph split into subsystems with Leiden clustering, labelled without an LLM |
+| God nodes | The most-connected concepts — what everything flows through |
+| Rationale nodes | `# NOTE:` / `# WHY:` comments and ADR/RFC citations become nodes linked to the code |
+| Beyond code | Docs, PDFs, images and audio/video join the same graph via a semantic pass |
 
-# The headline number
+## Local-first by design
 
-On a mixed corpus (repos + papers + images), Graphify reports **71.5× fewer tokens per query** versus reading the raw files. The token reduction scales with corpus size:
+Code is parsed **deterministically** with tree-sitter: no LLM, nothing leaves the machine, no token cost. Only the semantic pass over docs and media calls a model — your assistant's model or a configured API key.
 
-* 6 files → graph value is *structural clarity*, not compression (fits in context anyway).
-* 52 files (code + papers + images) → **71×+** reduction.
+## Not a vector index
 
-Each `worked/` example in the repo ships the raw input + actual output (`GRAPH_REPORT.md`, `graph.json`) so you can reproduce and verify the numbers.
+There are no embeddings and no vector store. Graphify gives you a graph to traverse: ask a question, find the shortest path between two symbols, or explain one concept and its neighbours. This is the [GraphRAG](../../concepts/graphrag.md) idea applied to code, contrasting with embedding-based codebase search in editors like [Cursor](../../editors/cursor/index.md).
 
-# How it works (pipeline)
+## Benchmarks (self-reported)
 
-```
-input folder (code / docs / papers / images / video)
-        │
-        ▼
-   EXTRACT  ── per file: AST / semantic chunking → entities + raw relationships
-        │        every edge gets a confidence tag (EXTRACTED / INFERRED / AMBIGUOUS)
-        ▼
-   CLUSTER  ── community detection (Louvain-style) → named communities
-        │
-        ▼
-   OUTPUT   ── graphify-out/:  GRAPH_REPORT.md + graph.json + obsidian/ vault (+ optional wiki/svg/neo4j)
-        │
-        ▼
-   QUERY    ── natural-language question → scoped graph traversal → answer w/ citations
-```
+On LoCoMo (n=300) Graphify reports recall@10 of 0.497 versus 0.149 for Supermemory and 0.048 for Mem0, with 45.3% QA accuracy; on LongMemEval-S (n=50) 76% QA accuracy, tied with dense RAG; all with zero LLM credits for graph building. These are the vendor's numbers on its own harness — treat them as indicative. See [Evals](../../concepts/evals.md).
 
-The confidence tags are the differentiator: an edge marked `EXTRACTED` was explicit in the source; `INFERRED` was derived by resolution (e.g. linking a function call to its definition); `AMBIGUOUS` is uncertain. See [Confidence Tags](confidence-tags.md).
+## Related
 
-# Supported clients (agents)
-
-Graphify installs a skill into many agents via `graphify install --platform <name>`:
-
-| Platform | Flag |
-|----------|------|
-| **Hermes** | `--platform hermes` |
-| Claude Code | (auto-detected) / `--platform claude` |
-| OpenCode | `--platform opencode` |
-| Codex | `--platform codex` |
-| Gemini CLI | `--platform gemini` |
-| Cursor / Kilo / Trae / Aider / Copilot CLI / Devin / Kimi / Pi / Factory Droid / CodeBuddy / OpenClaw | respective flags |
-| Cross-framework Agent Skills | `--platform agents` (alias `--platform skills`) → `~/.agents/skills/` |
-
-It also exposes an **MCP server** (stdio or HTTP) so any MCP-capable client can query the graph — see [MCP Server](mcp-server.md).
-
-# Backends
-
-Extraction/query uses an LLM. Graphify supports multiple backends via `--backend` (or env vars):
-
-`claude` · `openai` (any OpenAI-compatible, incl. your `:4000` OpenRouter proxy) · `gemini` · `ollama` (local) · `bedrock` · `azure` · `deepseek` · `kimi` · `claude-cli` (routes through Claude Code CLI, no API key).
-
-For this machine's "no heavy local models" plan, the natural choice is `--backend openai` with `OPENAI_BASE_URL=http://localhost:4000/v1` (the failover proxy) — see [AI Integration](ai-integration.md).
-
-# Why it matters here
-
-Your KB plan already positions Graphify as the **structuring layer** that turns ingested material (via AnythingLLM/RAG and web results from SearXNG) into a navigable graph. It pairs with Obsidian (it can emit an Obsidian vault) and with Hermes directly (first-class client).
+[Graphify index](index.md) · [Usage](usage.md) · [Confidence tags](confidence-tags.md)

@@ -1,39 +1,33 @@
 ---
 type: Reference
-title: Windsurf — Features
-description: Windsurf (now Devin Desktop) agentic coding features — Cascade assistant (retired Jul 2026 → Devin Local), SWE-1 models, flows, command mode, and multi-file edits.
-resource: https://docs.windsurf.com/
-tags: [windsurf, cascade, swe-1, flows, agentic, features]
-generated: { by: "human:daniel", at: "2026-07-09T03:32:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:32:00Z" } ]
+title: Windsurf Features
+description: Devin Desktop / Windsurf features — Devin Local agent with terminal and multi-file edits, Tab completions, codebase indexing, rules and memories, workflows, MCP servers, previews and deploys.
+resource: https://docs.devin.ai
+tags: [windsurf, features]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: windsurf-features-docs
-    resource: "https://docs.windsurf.com/"
-    title: "Windsurf features/docs"
-    author: "site:docs.windsurf.com"
-  - id: overview
-    resource: "overview.md"
-    title: "Overview"
+  - id: devin-docs
+    resource: "https://docs.devin.ai"
+    title: "Devin documentation"
+    author: "site:docs.devin.ai"
 ---
 
-# Windsurf (now Devin Desktop) — Core features
+# Windsurf — Features
 
-* **Cascade** (retired Jul 2026; now **Devin Local**) — the agentic assistant. Chat with it to plan and apply changes; it can read the codebase, run commands, and make coordinated multi-file edits. Operates in a "write" or "chat" mode and can take autonomous steps within guardrails.
-* **SWE-1 models** — Codeium's software-engineering models, tuned for coding reasoning and edits (vs. general chat models). Used by Cascade for agentic flows.
-* **Flows** — combine a command + AI into a reusable action, so repetitive workflows (e.g. "add a test for this function") become one-step operations.
-* **Command mode** — drive edits with natural-language commands; Windsurf applies them in-place.
-* **Codebase indexing** — Cascade builds awareness of your project so suggestions/edits fit existing structure.
-* **Multi-file coordination** — edits span several files coherently (not just single-file snippets).
+| Feature | Notes |
+|---|---|
+| Devin Local | Agent that plans, edits multiple files, runs commands and iterates |
+| Tab | Fast completions and next-edit predictions |
+| Indexing | Whole-repo context retrieval |
+| Rules | Global and workspace rules (`.windsurf/rules`), `AGENTS.md` |
+| Memories | Auto-generated and user memories across sessions |
+| Workflows | Saved multi-step procedures invoked by slash command — similar to [skills](../../concepts/agent-skills.md) |
+| [MCP](../../concepts/mcp.md) | External tools via `mcp_config.json` |
+| Hand-off | Send tasks to cloud Devin |
 
-# Typical workflow
+## Related
 
-1. Open a repo (e.g. `programs/firecrawl/firecrawl`).
-2. Ask Cascade: "Refactor the API client to use the new endpoint."
-3. Review the multi-file diff; accept/iterate.
-4. Save a Flow for the recurring pattern.
-
-# Notes
-
-Verify current Cascade/SWE-1 capabilities against docs.windsurf.com — model names and feature specifics evolve quickly.
+[Windsurf index](index.md) · [Snippets](snippets.md)

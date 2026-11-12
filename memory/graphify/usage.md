@@ -1,146 +1,77 @@
 ---
-type: Reference
-title: Graphify — Usage
-description: Core Graphify commands — add, extract, query, update, cluster-only, export, obsidian/wiki output, and the git hook — with the most useful flags.
-resource: https://github.com/Graphify-Labs/graphify#usage
-tags: [graphify, usage, cli, commands, extract, query, export]
-generated: { by: "human:daniel", at: "2026-07-09T00:14:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T00:14:00Z" } ]
+type: Playbook
+title: Graphify Usage
+description: Day-to-day Graphify workflow — building a graph, the three output files, querying from the assistant or CLI, ignore rules, git hooks for automatic rebuilds, PR review commands and graph merging.
+resource: https://docs.graphify.com/guides/querying
+tags: [graphify, usage, workflow, git-hooks, pr-review]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: usage-github-readme
-    resource: "https://github.com/Graphify-Labs/graphify#usage"
-    title: "Usage (GitHub README)"
+  - id: graphify-github
+    resource: "https://github.com/Graphify-Labs/graphify"
+    title: "Graphify-Labs/graphify on GitHub"
     author: "site:github.com"
-  - id: graphifyy-pypi-command-reference
-    resource: "https://pypi.org/project/graphifyy/"
-    title: "graphifyy PyPI (command reference)"
-    author: "site:pypi.org"
+  - id: graphify-docs
+    resource: "https://docs.graphify.com"
+    title: "Graphify documentation"
+    author: "site:docs.graphify.com"
 ---
 
-# Graphify — Two entry points
+# Graphify — Usage
 
-* **Slash command** (inside a supported agent like Hermes/Claude Code): `/graphify ./raw`
-* **CLI** (terminal, any agent): `graphify <subcommand> <args>`
+## Build
 
-Both build into `graphify-out/` in the target project.
+In your assistant: `/graphify .`. Output lands in `graphify-out/`:
 
-# Ingest: `add` (fetch remote content)
-
-Pulls a URL into the graph — papers, tweets, videos, web pages:
-
-```bash
-graphify add https://arxiv.org/abs/1706.03762     # a paper
-graphify add https://x.com/karpathy/status/...    # a tweet
-graphify add <youtube-url>                         # transcribe + add a video
-graphify add https://... --author "Name" --contributor "Name"
+```
+graphify-out/
+├── graph.html        interactive graph: click nodes, filter, search
+├── GRAPH_REPORT.md   key concepts, surprising connections, suggested questions
+└── graph.json        the full graph, with schema and graphify version fields
 ```
 
-# Build: `extract`
+Graphify honours `.gitignore`, a project `.graphifyignore` and `--exclude` patterns.
 
-The main graph builder over a local path:
+## Query
 
-```bash
-graphify extract ./docs                  # default extraction + clustering
-graphify extract ./docs --mode deep     # richer semantic extraction (extended prompt)
-graphify extract ./docs --update        # re-extract only changed files
-graphify extract ./docs --force         # overwrite even if fewer nodes (after refactors)
-graphify extract ./docs --no-cluster    # raw extraction only, skip clustering
-graphify extract ./docs --directed      # preserve edge direction
-graphify extract ./docs --obsidian      # also emit an Obsidian vault
-graphify extract ./docs --wiki          # build an agent-crawlable markdown wiki
-graphify extract ./docs --no-viz        # skip the HTML visualization
-graphify extract ./docs --token-budget 30000   # smaller chunks for small/local models
-graphify extract ./docs --max-concurrency 2     # fewer parallel LLM calls (local inference)
-graphify extract ./docs --api-timeout 900       # longer timeout for slow models
-graphify extract ./docs --backend openai        # explicit backend
-```
-
-Optional inputs/introspection:
-```bash
-graphify extract --postgres "postgresql://user:pass@host/db"   # introspect a live DB schema
-graphify extract ./my-workspace --cargo                        # Rust Cargo workspace deps
-graphify extract ./docs --google-workspace                     # .gdoc/.gsheet/.gslides (needs gws auth)
-graphify extract ./docs --global --as myrepo                  # register into the cross-project global graph
-```
-
-# Query
+From the assistant or the shell:
 
 ```bash
-graphify query "what connects attention to the optimizer?"
-graphify query "show the auth flow"
-graphify query "..." --dfs --budget 1500        # depth-first traversal w/ token budget
-graphify query "..." --graph graphify-out/graph.json
+graphify query "what connects auth to the database?"   # scoped subgraph, default budget 2000, depth 2
+graphify path "UserService" "DatabasePool"             # shortest path between two nodes
+graphify explain "RateLimiter"                          # one node, its community and connections
 ```
 
-# Rebuild pieces: `cluster-only` / `update`
+An ambiguous name is refused with the candidate list instead of guessed.
+
+## Keep it fresh
 
 ```bash
-graphify update ./src --no-cluster        # raw AST graph only
-graphify update ./src --force
-graphify cluster-only ./my-project         # rerun clustering on existing graph
-graphify cluster-only ./my-project --resolution 1.5      # more, smaller communities
-graphify cluster-only ./my-project --exclude-hubs 99     # suppress super-hubs from rankings
-graphify cluster-only ./my-project --no-label            # keep "Community N" placeholders
-graphify cluster-only ./my-project --backend=gemini      # backend for community naming
+graphify hook install     # rebuild on commit and branch checkout
+graphify update .         # after git pull
+graphify watch            # rebuild on file changes (watch extra)
 ```
 
-# Export
+## Review pull requests
 
 ```bash
-graphify export callflow-html                      # Mermaid arch/call-flow HTML
-graphify export callflow-html --output docs/arch.html
-graphify export callflow-html --max-sections 8
-graphify . --svg                  # graph.svg
-graphify . --graphml             # for Gephi / yEd
-graphify . --neo4j               # cypher.txt for Neo4j
-graphify . --neo4j-push bolt://localhost:7687
-graphify . --falkordb            # cypher.txt for FalkorDB
-graphify . --falkordb-push falkordb://localhost:6379
+graphify prs              # dashboard: CI state, review status, worktrees
+graphify prs 42           # graph impact of PR #42
+graphify prs --conflicts  # PRs touching the same communities: merge-order risk
+graphify prs --triage     # AI-ranked review queue
 ```
 
-# Git hook (auto-rebuild)
+## Combine and export
 
 ```bash
-graphify hook install     # post-commit hook rebuilds the graph on every commit
-```
-No background process; triggers once per commit; safe alongside existing hooks.
-
-# PR triage (GitHub)
-
-```bash
-graphify prs --triage       # AI ranks your review queue
-graphify prs --conflicts    # PRs sharing graph communities (merge-order risk)
-graphify prs --worktrees
-graphify prs --base main
-graphify prs --repo owner/repo
+graphify merge-graphs a.json b.json
+graphify export callflow-html     # Mermaid call-flow HTML
 ```
 
-# Global graph (cross-project)
+Queries are logged to `~/.cache/graphify-queries.log` (JSON Lines).
 
-```bash
-graphify global add graphify-out/graph.json --as myrepo   # register a project graph
-```
+## Related
 
-# Useful env vars
-
-| Var | Effect |
-|-----|--------|
-| `GRAPHIFY_MAX_WORKERS` | AST parallelism thread count |
-| `GRAPHIFY_MAX_OUTPUT_TOKENS` | Raise output cap for dense corpora |
-| `GRAPHIFY_API_TIMEOUT` | Per-call timeout (default 600s) |
-| `GRAPHIFY_FORCE` | Force rebuild even with fewer nodes |
-| `GRAPHIFY_OLLAMA_NUM_CTX` | KV-cache window for Ollama |
-| `GRAPHIFY_OLLAMA_KEEP_ALIVE` | Unload model after chunk (VRAM saving) |
-| `GRAPHIFY_TRIAGE_BACKEND` | Backend for `prs --triage` |
-
-# Troubleshooting
-
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| `No solution found` on `uvx graphify` | `graphify` ≠ package `graphifyy` | use `uvx --from graphifyy graphify …` |
-| `command not found` after pip/uv | not on PATH | add `~/.local/bin`; `uv tool update-shell` |
-| Graph lost nodes after refactor | stale nodes linger | `graphify extract . --force` |
-| Output truncated mid-string | model hit output-token limit | `GRAPHIFY_MAX_OUTPUT_TOKENS=32768` |
-| Slow on local model | default timeouts/concurrency | `--api-timeout 900 --max-concurrency 2` |
+[Graphify index](index.md) · [Snippets](snippets.md) · [Confidence tags](confidence-tags.md)

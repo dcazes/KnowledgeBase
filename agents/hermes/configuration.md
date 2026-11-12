@@ -1,128 +1,42 @@
 ---
 type: Reference
-title: Hermes — Configuration
-description: Anatomy of ~/.hermes/config.yaml (model, agent, terminal, browser, memory sections), the .env secrets rule, and profile scoping.
-resource: https://hermes-agent.nousresearch.com
-tags: [hermes, config, config.yaml, env, model, agent, browser, memory, profiles]
-generated: { by: "human:daniel", at: "2026-07-09T03:22:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:22:00Z" } ]
+title: Hermes Agent Configuration
+description: Configuring Hermes — choosing providers and models, enabling toolsets, messaging gateway setup, command approval, DM pairing and container isolation.
+resource: https://hermes-agent.nousresearch.com/docs/user-guide/configuration
+tags: [hermes, configuration, security, providers]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: hermes-config-setup-note-vault
-    resource: "/../../vault/03%20-%20Reference/Hermes%20Setup.md"
-    title: "Hermes config — setup note (vault)"
-  - id: hermes-nous-research
-    resource: "https://hermes-agent.nousresearch.com"
-    title: "Hermes (Nous Research)"
+  - id: hermes-docs
+    resource: "https://hermes-agent.nousresearch.com/docs/"
+    title: "Hermes Agent documentation"
     author: "site:hermes-agent.nousresearch.com"
-  - id: installation-runtime
-    resource: "installation.md"
-    title: "Installation & runtime"
 ---
 
-# Hermes — Where configuration lives
-
-Hermes reads two files from `~/.hermes/`:
-
-| File | Contents |
-|------|----------|
-| `~/.hermes/config.yaml` | All behavioral settings — model, agent limits, terminal, browser, memory, toolsets |
-| `~/.hermes/.env` | **Secrets only** — API keys, tokens, timeout flags, stealth env vars |
-
-> **Rule:** `.env` holds secrets (API keys, tokens). Every behavioral setting goes in `config.yaml`. Do not put model names or agent limits in `.env`.
-
-# config.yaml anatomy
-
-## model
-
-```yaml
-model:
-  default: stepfun-ai/step-3.7-flash
-  provider: nvidia
-  base_url: https://integrate.api.nvidia.com/v1
-```
-
-| Key | Meaning |
-|-----|---------|
-| `model.default` | Model id sent to the provider |
-| `model.provider` | Provider name (e.g. `nvidia`) |
-| `model.base_url` | OpenAI-compatible endpoint |
-
-## agent
-
-```yaml
-agent:
-  max_turns: 150
-  verbose: false
-  reasoning_effort: medium
-  service_tier: normal
-```
-
-| Key | Meaning |
-|-----|---------|
-| `agent.max_turns` | Cap on agent reasoning/turn loop |
-| `agent.verbose` | Verbose logging toggle |
-| `agent.reasoning_effort` | Effort level (`low`/`medium`/`high`) |
-| `agent.service_tier` | Provider service tier |
-
-## terminal
-
-```yaml
-terminal:
-  backend: local
-  timeout: 180
-```
-
-## browser
-
-```yaml
-browser:
-  inactivity_timeout: 120
-  cloud_provider: local
-  use_gateway: false
-```
-
-`cloud_provider: local` selects the local **agent-browser** mode (see [Browser](browser.md)).
-
-## memory
-
-```yaml
-memory:
-  memory_enabled: true
-  user_profile_enabled: true
-```
-
-# .env secrets
-
-`.env` carries only secrets and low-level flags (never behavioral config). Browser-related env vars live here too:
+# Hermes Agent — Configuration
 
 ```bash
-# ~/.hermes/.env — secrets + browser flags only
-BROWSERBASE_PROXIES=...
-BROWSERBASE_ADVANCED_STEALTH=...
-BROWSER_SESSION_TIMEOUT=300
-BROWSER_INACTIVITY_TIMEOUT=120
-CHROME_DESKTOP=Hermes.desktop
-# API keys / tokens for providers and tools
+hermes model                 # choose provider and model
+hermes tools                 # enable / disable toolsets
+hermes config set <key> <value>
+hermes config get <key>
+hermes gateway setup         # connect Telegram, Discord, Slack, WhatsApp, Signal, email
 ```
 
-# Profiles
+## Models
 
-Hermes supports multiple profiles. The active one is `default`. Each profile gets its own subtree with separate skills, plugins, cron, and memories:
+Any provider: Nous Portal, OpenRouter, OpenAI, Anthropic, or a custom [OpenAI-compatible](../../concepts/openai-compatible-api.md) endpoint such as [Ollama](../../runtime/ollama/index.md), [vLLM](../../runtime/vllm/index.md) or a [LiteLLM](../../runtime/litellm/index.md) gateway. Switch mid-conversation with `/model provider:model`.
 
-```
-~/.hermes/profiles/<name>/
-  skills/
-  plugins/
-  cron/
-  memories/
-```
+## Security settings
 
-# Verify
+* **Command approval** — terminal commands need approval unless they match an allowlist.
+* **DM pairing** — unknown senders on messaging platforms must be approved.
+* **Container isolation** — run terminal tools in Docker or another backend rather than on the host.
 
-```bash
-cat ~/.hermes/config.yaml        # inspect behavioral settings
-test -f ~/.hermes/.env && echo ".env present"
-ls ~/.hermes/profiles/          # list non-default profiles, if any
-```
+An agent with a shell and a public chat interface is a high-value target; keep approval on and isolate execution. See [Agent security](../../concepts/agent-security.md).
+
+## Related
+
+[Hermes index](index.md) · [Snippets](snippets.md)

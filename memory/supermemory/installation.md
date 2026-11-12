@@ -1,45 +1,43 @@
 ---
-type: HowTo
+type: Playbook
 title: Supermemory Installation
-description: Install Supermemory — desktop app from supermemory.ai; what the local .supermemory/ layout tells us; no source checkout on this machine.
-resource: https://supermemory.ai
-tags: [supermemory, installation, desktop]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Use Supermemory through the hosted API and SDKs, install Supermemory Local as a single binary with optional Ollama for offline use, or add the hosted MCP server to an assistant.
+resource: https://supermemory.ai/docs
+tags: [supermemory, installation, local, sdk]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: supermemory
-    resource: "https://supermemory.ai"
-    title: "Supermemory"
-    author: "site:supermemory.ai"
   - id: supermemory-github
     resource: "https://github.com/supermemoryai/supermemory"
-    title: "Supermemory GitHub"
+    title: "supermemoryai/supermemory on GitHub"
     author: "site:github.com"
 ---
 
 # Supermemory — Installation
 
-## Desktop app
+## Hosted API
 
-Download the app for your OS from [supermemory.ai](https://supermemory.ai) (Windows/macOS/Linux builds) and run the installer. First launch provisions the local data directory.
+Create an API key in the Supermemory console, then:
 
-## What the local `.supermemory/` shows
+```bash
+npm install supermemory      # or: pip install supermemory
+export SUPERMEMORY_API_KEY=...
+```
 
-`programs/supermemory/.supermemory/` (permissions `drwx------`, created 2026-07-19, data written 2026-07-20):
+## Supermemory Local
 
-| Entry | Meaning |
-|---|---|
-| `api-key`, `auth-secret` | local auth credentials (0600) |
-| `instance-id` | unique install id |
-| `env.enc` | encrypted environment blob |
-| `models/Xenova/` | bundled local embedding model (Xenova/transformers.js) |
-| `runtime/pglite/` | embedded Postgres (PGlite) data dir |
-| `runtime/ort-web`, `ort-native/` | ONNX Runtime (web + native) — local inference engine |
-| `data` | ~4.3 MB memory store blob |
-| `retry-params/` | retry state from a prior run |
+```bash
+curl -fsSL https://supermemory.ai/install | bash
+```
 
-## Status on this machine
+One binary, zero config. Bring any model through a provider key, or run fully offline with [Ollama](../../runtime/ollama/index.md). Review install scripts before piping them to a shell.
 
-* Installed + run 2026-07-19/20; **no source checkout** (unlike the git-checkout programs), **not currently running** (no process/container observed in recon 2026-08-12).
+## MCP only
+
+Add `https://mcp.supermemory.ai/mcp` to your client's MCP config — see [Snippets](snippets.md#mcp).
+
+## Related
+
+[Supermemory index](index.md) · [Configuration](configuration.md) · [Local inference](../../concepts/local-inference.md)

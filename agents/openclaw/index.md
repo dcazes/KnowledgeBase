@@ -1,54 +1,51 @@
 ---
-type: Reference
+type: Software
 title: OpenClaw
-description: Open-source personal AI assistant and self-hosted gateway (v2026.7.1-2) connecting chat channels to models, coding agents, and skills via MCP.
-resource: https://openclaw.ai/
-tags: [openclaw, ai-assistant, gateway, agents, skills, automation, self-hosted]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+description: Open-source personal AI assistant that runs on your own devices and answers in your chat apps — WhatsApp, Telegram, Slack, Discord, iMessage, Signal and 20+ more — with a local Gateway, swappable model harnesses, skills (ClawHub), plugins, tools and device nodes. Governed by the OpenClaw Foundation.
+resource: https://openclaw.ai
+tags: [openclaw, personal-assistant, agents, agent-skills, typescript, messaging]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
-  - id: openclaw-official
-    resource: "https://openclaw.ai/"
-    title: "OpenClaw official"
-    author: "site:openclaw.ai"
-  - id: github
+  - id: openclaw-github
     resource: "https://github.com/openclaw/openclaw"
-    title: "GitHub"
+    title: "openclaw/openclaw on GitHub"
     author: "site:github.com"
-  - id: docs
-    resource: "https://docs.openclaw.ai/"
-    title: "Docs"
+  - id: openclaw-docs
+    resource: "https://docs.openclaw.ai"
+    title: "OpenClaw documentation"
     author: "site:docs.openclaw.ai"
+  - id: openclaw-site
+    resource: "https://openclaw.ai"
+    title: "OpenClaw website"
+    author: "site:openclaw.ai"
 ---
 
 # OpenClaw
 
-An **open-source personal AI assistant** and self-hosted gateway (stable v2026.7.1-2, 2026-08-04) that connects your chat apps (Discord, Telegram, WhatsApp, Slack, 30+) to AI models and coding agents, extended by a growing **skills** ecosystem. On this machine it can act as the multi-channel front-end that drives your agents (Hermes/OpenCode) and tools. History: Clawdbot → Moltbot → OpenClaw (Jan 2026). The CLI is `openclaw`, config at `~/.openclaw/openclaw.json`, npm package `openclaw`, Docker image `openclaw/openclaw`. Since v2026.1.29, `auth: none` is removed (CVE-2026-25253 RCE) — all gateways require auth.
+**OpenClaw** (the "lobster" assistant) is a self-hosted assistant you message like a person. State, memory and credentials stay on your hardware; models and agent harnesses — Claude, Codex, local models — are plugins you can swap. It became one of the fastest-growing open-source projects of 2026 and is now run by the independent, non-profit OpenClaw Foundation.
+
+| | |
+|---|---|
+| Category | Personal agents · [Agent frameworks](../../concepts/agent-frameworks.md) |
+| License | MIT |
+| Language | TypeScript (Node 24.16+ or 26.1+) |
+| Latest release | v2026.11.3 (2026-11-10) — calendar versioning |
+| Channels | WhatsApp, Telegram, Slack, Discord, Teams, Google Chat, Signal, iMessage and 20+ more |
 
 ## Contents
 
-* [Overview](overview.md) - what OpenClaw is
-* [Installation](installation.md) - `openclaw onboard`, Windows Hub
-* [Architecture](architecture.md) - gateway, channels, skills, agents
-* [AI Integration](ai-integration.md) - coding agents, MCP, your stack
-* [Alternatives](../alternatives.md) - n8n, LangChain, Hermes, Dify
-* [Snippets](snippets.md) - cheat sheet
+* [Overview](overview.md) — what it is, channels, models, skills, security model
+* [Architecture](architecture.md) — Gateway, Control UI, channels, nodes
+* [Installation](installation.md) — installer, npm, onboarding
+* [Snippets](snippets.md) — CLI cheat sheet
+* [AI Integration](ai-integration.md) — memory plugins, browsers, local models
 
-## Instance facts
+## Related
 
-* **Local source:** not in `programs/` (no launcher found); document from upstream.
-* **Role here (intended):** channel gateway to your agents/tools; skills for automation.
-* **Upstream:** openclaw.ai (open source, cross-platform).
-
-## Cross-references
-
-* **Hermes** — can be driven via OpenClaw skills — see [Hermes AI Integration](../hermes/ai-integration.md)
-* **OpenCode** — can be driven via OpenClaw skills — see [OpenCode AI Integration](../opencode/ai-integration.md)
-* **Graphify** — OpenClaw can feed results to Graphify — see [Graphify AI Integration](../../memory/graphify/ai-integration.md)
-* **Dify / n8n** — alternative automation backends — see [Dify Alternatives](../alternatives.md)
-
-## Last verified
-
-**2026-08-12** — Architecture, skills model, and integration docs verified against upstream openclaw.ai and docs.openclaw.ai. Stable v2026.7.1-2 (2026-08-04); auth:none removed (CVE-2026-25253).
+* Concepts: [Agent skills](../../concepts/agent-skills.md) · [Agent security](../../concepts/agent-security.md) · [Agent memory](../../concepts/agent-memory.md)
+* Peers: [Hermes](../hermes/index.md), [Letta](../../memory/letta/index.md), [Space Agent](../spaceagent/index.md)
+* Plugins: [Honcho](../../memory/honcho/ai-integration.md), [MemOS](../../memory/memos/ai-integration.md), [Cognee](../../memory/cognee/ai-integration.md), [Supermemory](../../memory/supermemory/ai-integration.md), [Camofox](../../browsers/camofox/index.md)
+* Comparison: [Agents alternatives](../alternatives.md)

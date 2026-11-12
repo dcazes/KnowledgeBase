@@ -1,50 +1,43 @@
 ---
-type: Concept
+type: Playbook
 title: Supermemory AI Integration
-description: Integrate Supermemory — browser extension capture, answering from personal memory, export/interop, vs the developer memory stack (Mem0/MemOS/Graphiti).
-resource: https://supermemory.ai
-tags: [supermemory, integration, extension, memory]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Supermemory's open-source memory plugins for Claude Code, Cursor, Codex, OpenCode, OpenClaw and Hermes, the hosted MCP server, and framework wrappers for app developers.
+resource: https://github.com/supermemoryai/supermemory
+tags: [supermemory, integration, mcp, claude-code, cursor, hermes]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: supermemory
-    resource: "https://supermemory.ai"
-    title: "Supermemory"
-    author: "site:supermemory.ai"
-  - id: supermemory-developers
-    resource: "https://supermemory.ai/developers"
-    title: "Supermemory developers"
-    author: "site:supermemory.ai"
+  - id: supermemory-github
+    resource: "https://github.com/supermemoryai/supermemory"
+    title: "supermemoryai/supermemory on GitHub"
+    author: "site:github.com"
 ---
 
 # Supermemory — AI Integration
 
-Supermemory is an **end-user product** rather than a developer library — integration surface is the app + extension, not an SDK.
+## Plugins (open source)
 
-## Capture paths
+| Assistant | Plugin |
+|---|---|
+| [Claude Code](../../agents/claude-code/index.md) | `supermemoryai/claude-supermemory` |
+| [Cursor](../../editors/cursor/index.md) | `supermemoryai/cursor-supermemory` |
+| [Codex](../../agents/codex/index.md) | `supermemoryai/codex-supermemory` |
+| [OpenCode](../../agents/opencode/index.md) | `supermemoryai/opencode-supermemory` |
+| [OpenClaw](../../agents/openclaw/index.md) | `supermemoryai/openclaw-supermemory` |
+| [Hermes](../../agents/hermes/index.md) | Built-in Supermemory memory provider |
 
-* **Browser extension** — the primary ingest: save the current page, selected text, or highlights into memory while browsing.
-* **In-app snippets** — paste notes/questions directly.
+Once installed, the assistant saves worthwhile facts automatically and recalls them in later sessions.
 
-## Query paths
+## MCP clients
 
-* **Chat with your memory** — ask the assistant; answers cite saved items.
-* **Semantic search** — find past content by meaning.
+Claude Desktop, Cursor, [Windsurf](../../editors/windsurf/index.md), [VS Code](../../editors/vscode/index.md), Claude Code, OpenCode, OpenClaw and Hermes can use the hosted [MCP](../../concepts/mcp.md) server.
 
-## Developer interop
+## For app developers
 
-* Public API keys and a developer API exist upstream (supermemory.ai/developers) for programmatic save/query — not exercised on this machine.
-* Local data (PGlite + local embeddings) is not directly queryable by other tools without the app's API.
+Framework wrappers cover the major [agent frameworks](../../concepts/agent-frameworks.md) and SDKs; the common pattern is one `profile()` call before generation and `add()` after. Because it combines documents and memory, Supermemory can replace a separate [RAG](../../concepts/rag.md) pipeline for small apps.
 
-## vs the developer memory stack
+## Related
 
-| Layer | Supermemory | [Mem0](../mem0/index.md) / [MemOS](../memos/index.md) / [Graphiti](../graphiti/index.md) |
-|---|---|---|
-| Audience | end user | developers/agents |
-| Ingest | browser/app | SDK/API |
-| Interface | chat UI | Python/JS, REST, MCP |
-| Use here | personal memory companion | agent stack memory |
-
-Both can coexist: Supermemory for personal browsing memory, the agent stack for app-level memory.
+[Supermemory index](index.md) · [Agent memory](../../concepts/agent-memory.md) · [Memory alternatives](../alternatives.md)

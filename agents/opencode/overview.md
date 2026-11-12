@@ -1,81 +1,51 @@
 ---
-type: Software
+type: Concept
 title: OpenCode Overview
-description: What OpenCode is — a terminal-native AI coding agent — its benefits, how it differs from Hermes, the @ context-file syntax, and supported models.
+description: How OpenCode works — built-in build and plan agents, the general subagent, tools for files, shell and web, LSP diagnostics, session management and sharing, and its client/server architecture that allows remote and programmatic control.
 resource: https://opencode.ai/docs
-tags: [opencode, ai-agent, terminal, coding]
-generated: { by: "human:daniel", at: "2026-07-09T03:25:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:25:00Z" } ]
+tags: [opencode, overview, agents, lsp, client-server]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: opencode-documentation
+  - id: opencode-docs
     resource: "https://opencode.ai/docs"
-    title: "OpenCode Documentation"
+    title: "OpenCode documentation"
     author: "site:opencode.ai"
-  - id: opencode-github-repository-anomalyco
+  - id: opencode-github
     resource: "https://github.com/anomalyco/opencode"
-    title: "OpenCode GitHub repository (anomalyco)"
+    title: "anomalyco/opencode on GitHub"
     author: "site:github.com"
-  - id: opencode-official-site
-    resource: "https://opencode.ai"
-    title: "OpenCode official site"
-    author: "site:opencode.ai"
 ---
 
-# OpenCode Overview
+# OpenCode — Overview
 
-OpenCode is a terminal-native, open-source AI coding agent created by SST. It runs an interactive TUI (terminal user interface) with **no background daemons**, keeps each project folder-isolated, and uses plaintext config files.
+## Built-in agents
 
-## Benefits
+| Agent | Behaviour |
+|---|---|
+| **build** (default) | Full access: edits files, runs commands |
+| **plan** | Read-only analysis; denies edits, asks before shell commands |
+| **general** (subagent) | Multi-step searches and tasks, invoked with `@general` |
 
-- **Terminal-native** — runs in your existing shell, no separate app or GUI required.
-- **No background daemons** — fully supervised; you see every step the agent takes.
-- **Per-project isolation** — each project gets its own config and context, avoiding cross-contamination.
-- **Plaintext config** — `.opencode.json` is human-readable and version-controllable.
-- **Open source** — upstream at https://github.com/anomalyco/opencode, MIT-friendly ecosystem.
+Switch between primary agents with **Tab**. Custom agents and subagents are Markdown or JSON definitions — see [Agents, commands & rules](hierarchical-structure.md).
 
-## How it differs from Hermes
+## Tools and context
 
-| Aspect | OpenCode | Hermes |
-| --- | --- | --- |
-| Runtime | Terminal TUI, interactive | Background daemon |
-| Scope | Per-project (project root) | Global profile (`~/.hermes/`) |
-| Autonomy | Supervised — see every step | Autonomous — delivers to chat |
-| Output | stdout / TUI | Chat delivery |
-| Invocation | Manual (`opencode`) | Scheduled cron / on-demand |
-| Best for | Hands-on coding sessions | Background tasks, scheduling |
+* File read/write/edit, glob and grep, shell, web fetch, todo lists, and [MCP](../../concepts/mcp.md) tools.
+* **LSP integration**: language servers feed diagnostics back to the model after edits, catching errors without running the build.
+* Project rules from `AGENTS.md`; `/init` generates one by exploring the repo.
+* Session history, undo/redo, compaction of long sessions, and shareable session links.
 
-Use both: OpenCode for hands-on interactive work, Hermes for background autonomous tasks. See [the Hermes bundle](/../../hermes/index.md).
+## Client/server
 
-## The `@` context-file syntax
+The TUI is a client of a local server. `opencode serve` runs the server headless, and the SDK drives it programmatically — useful for CI, bots and custom front ends.
 
-OpenCode can target context files directly with the `@` syntax. This injects the named file's content as context for the prompt:
+## Why people choose it
 
-```bash
-opencode "@AGENTS.md what are the build steps?"
-opencode "@USER.md @TOOLS.md how do I test this?"
-opencode "@kb/graphify/graph.json find orphaned nodes"
-```
+Open source, any model (including local), no vendor lock-in, and a strong plugin ecosystem — memory plugins from [Honcho](../../memory/honcho/ai-integration.md), [Supermemory](../../memory/supermemory/ai-integration.md) and [Hindsight](../../memory/hindsight/ai-integration.md) all target it.
 
-This is the bridge between OpenCode and the [hierarchical knowledge structure](hierarchical-structure.md).
+## Related
 
-## Supported models
-
-OpenCode supports a wide range of model providers:
-
-- **Anthropic** — Claude Sonnet 4 (`anthropic/claude-sonnet-4`)
-- **OpenAI** — GPT-4o (`openai/gpt-4o`)
-- **Google** — Gemini 2.5 Pro (`google/gemini-2.5-pro`, ~1M context)
-- **Ollama** — local models (`ollama/llama3.1`) for offline/private work
-- **NVIDIA** — Nemotron (`nvidia/nemotron`)
-- **OpenAI-compatible endpoints** — point the model at any `/v1` endpoint, e.g. the local `:4000` failover proxy (see [configuration](configuration.md)).
-
-## Verify
-
-```bash
-# Confirm the installed version (expect 1.17.18 on this instance)
-opencode --version
-# Launch the interactive TUI
-opencode
-```
+[OpenCode index](index.md) · [Configuration](configuration.md) · [Coding agents](../../concepts/coding-agents.md)

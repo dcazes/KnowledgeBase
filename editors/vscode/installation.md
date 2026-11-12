@@ -1,68 +1,29 @@
 ---
 type: Playbook
-title: VSCode — Installation & Launch
-description: Installing VS Code and launching it via the code command and the desktop launcher; useful CLI flags.
-resource: https://code.visualstudio.com/docs/setup/setup-overview
-tags: [vscode, install, launch, cli, code, desktop]
-generated: { by: "human:daniel", at: "2026-07-09T02:11:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T02:11:00Z" } ]
+title: VS Code Installation
+description: Install VS Code on Windows, macOS or Linux (deb/rpm repos, snap), enable the code CLI, and set up Copilot or alternative AI extensions.
+resource: https://code.visualstudio.com/download
+tags: [vscode, installation]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: setup-overview-docs
-    resource: "https://code.visualstudio.com/docs/setup/setup-overview"
-    title: "Setup overview (docs)"
+  - id: vscode-site
+    resource: "https://code.visualstudio.com"
+    title: "Visual Studio Code"
     author: "site:code.visualstudio.com"
-  - id: local-launcher
-    resource: "/../../programs/VSCode.desktop"
-    title: "Local launcher"
 ---
 
-# VSCode — This machine
+# VS Code — Installation
 
-VS Code is already installed:
-* Binary: `/usr/bin/code`
-* Launcher: `programs/VSCode.desktop` → `Exec=code`
-* `node` available at `~/.local/bin/node` (VSCode's built-in Node / extension runtime)
+* **Windows / macOS:** installer from code.visualstudio.com.
+* **Linux:** `.deb` / `.rpm` packages (which add Microsoft's repository for updates), snap, or tarball.
+* **CLI:** `code .` opens a folder; on macOS run *Shell Command: Install 'code' command in PATH*.
+* **VSCodium** offers Microsoft-telemetry-free builds of the same source, using Open VSX.
 
-# Launch
+Then sign in to GitHub for Copilot, or install other AI extensions ([Claude Code](../../agents/claude-code/index.md), [Codex](../../agents/codex/index.md)).
 
-```bash
-code                       # open the editor (no folder)
-code .                     # open current directory
-code programs/firecrawl/firecrawl   # open a specific repo
-```
-Or click the **VSCode** desktop launcher.
+## Related
 
-# Install (if rebuilding)
-
-- **Debian/Ubuntu:** download the `.deb` from code.visualstudio.com and `sudo apt install ./code_*.deb`, or add the MS apt repo.
-- **Flatpak:** `flatpak install com.visualstudio.code`
-- **VSCodium** (telemetry-free): `sudo apt install vscodium` via its repo.
-
-# Useful CLI flags
-
-| Flag | Purpose |
-|------|---------|
-| `code .` | open folder |
-| `code -r <path>` | reuse window |
-| `code --goto file:line:col` | open at location |
-| `code --diff a b` | diff two files |
-| `code --status` | print install/extension status |
-| `code --list-extensions` | list installed extensions |
-
-# Verify
-
-```bash
-code --version
-code --list-extensions
-which code
-```
-
-# Troubleshooting
-
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| `code: command not found` | not installed | install per above |
-| Launcher does nothing | `code` not on PATH | run `code` from terminal to see errors |
-| Extensions missing | profile/sync off | sign in to Settings Sync or reinstall |
+[VS Code index](index.md) · [Snippets](snippets.md)

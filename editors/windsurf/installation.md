@@ -1,54 +1,32 @@
 ---
 type: Playbook
-title: Windsurf — Installation
-description: Downloading Windsurf, signing in with Codeium, and verifying the install.
-resource: https://docs.windsurf.com/
-tags: [windsurf, install, codeium, login, setup]
-generated: { by: "human:daniel", at: "2026-07-09T03:31:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:31:00Z" } ]
+title: Windsurf Installation
+description: Install Devin Desktop (formerly Windsurf) on macOS, Windows or Linux, import VS Code or Cursor settings, and sign in.
+resource: https://docs.devin.ai
+tags: [windsurf, installation]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: download
-    resource: "https://windsurf.com/download"
-    title: "Download"
+  - id: devin-docs
+    resource: "https://docs.devin.ai"
+    title: "Devin documentation"
+    author: "site:docs.devin.ai"
+  - id: windsurf-site
+    resource: "https://windsurf.com"
+    title: "Windsurf website"
     author: "site:windsurf.com"
-  - id: docs
-    resource: "https://docs.windsurf.com/"
-    title: "Docs"
-    author: "site:docs.windsurf.com"
 ---
 
-# Windsurf (now Devin Desktop) — Install
+# Windsurf — Installation
 
-Download the Windsurf app from **windsurf.com** (or your package manager / package for your OS). Codeium provides builds for Linux, macOS, and Windows.
+1. Download Devin Desktop (Windsurf) for macOS, Windows or Linux from the official site.
+2. Import settings and extensions from VS Code or Cursor on first launch.
+3. Sign in with your Cognition/Windsurf account and choose models.
 
-```bash
-# Linux (example via package manager / .deb); exact command depends on distro
-# See https://windsurf.com/download
-windsurf            # launch after install
-```
+Extensions come from Open VSX rather than Microsoft's marketplace, as with other forks.
 
-# Sign in
+## Related
 
-On first launch, sign in with your **Codeium** account (or your org.s SSO). This enables Devin Local (formerly Cascade) and the SWE-1 models.
-
-# Verify
-
-```bash
-windsurf --version      # if a CLI is available
-# or: open the app, confirm Devin Local is reachable in the sidebar
-```
-
-# Notes
-
-* No launcher was found in `programs/` on this machine — install when you want it.
-* A Codeium account (free tier available) is required for AI features.
-
-# Troubleshooting
-
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| Won't launch | not installed | download from windsurf.com |
-| Devin Local offline | not signed in | sign in with Codeium |
-| Model errors | plan/quota | check Codeium account tier |
+[Windsurf index](index.md) · [Snippets](snippets.md)

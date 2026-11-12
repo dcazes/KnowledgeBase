@@ -1,89 +1,36 @@
 ---
-type: Playbook
-title: Antigravity 2.0 Snippets
-description: Copy-paste snippets for Antigravity 2.0 — downloading/signing in, Antigravity CLI basics, and migrating from Gemini CLI. Conservative, web-verified commands only.
-resource: Antigravity 2.0
-tags: [google, antigravity, cli, snippets, migration, gemini-cli]
-generated: { by: "human:daniel", at: "2026-07-09T03:28:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:28:00Z" } ]
+type: Reference
+title: Antigravity Snippets
+description: Antigravity CLI basics — starting agy, signing out, remote use over SSH, exporting sessions to the desktop app, and migrating from Gemini CLI.
+resource: https://github.com/google-antigravity/antigravity-cli
+tags: [antigravity, snippets, cli, cheat-sheet]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: antigravity-official-site
-    resource: "https://antigravity.google/"
-    title: "Antigravity — official site"
-    author: "site:antigravity.google"
-  - id: antigravity-2-0-product-page
-    resource: "https://antigravity.google/product/antigravity-2"
-    title: "Antigravity 2.0 product page"
-    author: "site:antigravity.google"
-  - id: transitioning-gemini-cli-to-antigravity-cli
-    resource: "https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/"
-    title: "Transitioning Gemini CLI to Antigravity CLI"
-    author: "site:developers.googleblog.com"
+  - id: agy-github
+    resource: "https://github.com/google-antigravity/antigravity-cli"
+    title: "google-antigravity/antigravity-cli"
+    author: "site:github.com"
 ---
 
-# Antigravity 2.0 Snippets
+# Antigravity — Snippets
 
-Conservative, verified-as-of-2026-07-09 snippets. Antigravity is a newer product — treat exact CLI binary names and flags as **verify-before-use** against official docs; this page avoids asserting unverified commands.
-
-## Download & sign in
-
-```
-# 1. Open the official site and confirm platform support (incl. Linux)
-#    https://antigravity.google/
-#    https://antigravity.google/product/antigravity-2
-#    https://antigravity.google/download   <-- verify a Linux build exists
-
-# 2. Download the Antigravity 2.0 desktop app for your platform
-
-# 3. Launch and sign in with your Google account
-#    (same identity as Google AI Pro/Ultra or Gemini Code Assist)
+```bash
+agy                 # start the terminal agent in the current project
 ```
 
-## Antigravity CLI basics
+| Action | How |
+|---|---|
+| Sign out | `/logout` |
+| Remote / SSH | Run `agy` on the server; it prints an authorisation URL to open locally |
+| Continue in the GUI | Export the session to Antigravity 2.0 |
 
-> The CLI surface is now **Antigravity CLI**, the successor to Gemini CLI. Exact binary name / subcommands should be confirmed from official docs; the shape below is illustrative.
+## Migrating from Gemini CLI
 
-```
-# Check the CLI is available (verify the real binary name first)
-antigravity --help
-antigravity --version
-
-# Authenticate with your Google account
-# (follow the official auth flow / sign-in prompt)
-
-# Create / run an agent in its sandbox (see agents.md for the model)
-# antigravity agents create <name>
-# antigravity agents run <name>
-```
-
-## Migrate from Gemini CLI
-
-Context: on **June 18, 2026**, Gemini CLI and Gemini Code Assist IDE extensions stopped serving requests for Google AI Pro/Ultra and free Gemini Code Assist for individuals.
-
-```
-# OLD (deprecated after 2026-06-18):
-#   gemini            # Gemini CLI
-#   Gemini Code Assist IDE extension
-
-# NEW (migration target):
-#   antigravity       # Antigravity CLI
-#   Antigravity 2.0 desktop app
-
-# Action: export any relevant config/scripts that called `gemini`,
-# then reinstall auth under Antigravity CLI with your Google account.
-```
-
-## Verify after setup
-
-- [ ] Desktop app launches and shows your signed-in Google account.
-- [ ] CLI binary responds to `--help` / `--version`.
-- [ ] A test agent runs inside its sandbox successfully.
-- [ ] Old `gemini`/Code Assist individual requests are confirmed deprecated.
+Replace `gemini` invocations with `agy` and sign in with the same Google account. Project instruction files and MCP server configs need to be re-created in Antigravity's settings; check the official docs for supported formats.
 
 ## Related
 
-- [Installation](installation.md)
-- [Agents](agents.md)
-- Migration source: [Transitioning Gemini CLI to Antigravity CLI](https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/)
+[Antigravity index](index.md) · [Installation](installation.md)

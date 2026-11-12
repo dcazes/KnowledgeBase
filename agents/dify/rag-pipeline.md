@@ -1,59 +1,32 @@
 ---
-type: Reference
-title: Dify — RAG Pipeline
-description: How Dify ingests documents, chunks and embeds them, stores vectors, and retrieves context for generation.
-resource: https://docs.dify.ai/guides/knowledge-base
-tags: [dify, rag, retrieval, embedding, knowledge-base, indexing]
-generated: { by: "human:daniel", at: "2026-07-09T00:53:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T00:53:00Z" } ]
+type: Concept
+title: Dify RAG Pipeline
+description: Dify knowledge bases — ingestion and parsing, chunking modes including parent-child, embedding and indexing, hybrid search with reranking, knowledge pipelines, external knowledge APIs, and the agent knowledge base.
+resource: https://docs.dify.ai
+tags: [dify, rag, knowledge-base, chunking, retrieval]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: knowledge-base-guide-docs
-    resource: "https://docs.dify.ai/guides/knowledge-base"
-    title: "Knowledge Base guide (docs)"
+  - id: dify-docs
+    resource: "https://docs.dify.ai"
+    title: "Dify documentation"
     author: "site:docs.dify.ai"
-  - id: architecture-vector-stores
-    resource: "architecture.md"
-    title: "Architecture — vector stores"
 ---
 
-# Dify — Pipeline stages
+# Dify — RAG Pipeline
 
-```
-Document (PDF / PPT / DOCX / text / web)
-   │
-   ▼  Upload + parse (text extraction; PDF/PPT supported OOTB)
-Cleaned text
-   │
-   ▼  Chunking (rules / recursive / semantic)
-Chunks
-   │
-   ▼  Embedding (via configured model provider)
-Vectors
-   │
-   ▼  Store in selected vector DB (weaviate/qdrant/pgvector/chroma/milvus)
-        │
-Query ──► embed ──► ANN search ──► top-k chunks ──► LLM context
-```
+1. **Ingest** files (PDF, Word, slides, spreadsheets, Markdown, HTML), web pages via crawlers such as [Firecrawl](../../browsers/firecrawl/index.md), or Notion.
+2. **Parse and chunk** — general or parent-child chunking (small chunks for matching, larger parents for context); custom delimiters and overlap. Parsing plugins such as [Docling](../../ingestion/docling/index.md) can replace the default extractor.
+3. **Embed and index** into the configured [vector database](../../concepts/vector-databases.md), or use economical keyword indexing.
+4. **Retrieve** with vector, full-text or hybrid search, plus a reranker and score threshold.
+5. **Use** in apps through Knowledge Retrieval nodes, with citations.
 
-# Key concepts
+**Knowledge pipelines** make step 1–3 a customisable workflow; **external knowledge APIs** connect existing retrieval systems (e.g. [LightRAG](../../memory/lightrag/index.md)); the **Agent Knowledge Base** (1.18+) lets agents read knowledge directly. Dataset-scoped API keys allow per-knowledge-base access.
 
-* **Knowledge Base** — a named collection of indexed documents.
-* **Indexing modes** — Dify supports both **semantic (vector)** retrieval and **full-text** (and hybrid) depending on the vector store.
-* **Chunking** — configurable strategy; affects recall. Smaller chunks = finer retrieval, more calls.
-* **Embedding model** — chosen in model settings; must match the store's dimension.
-* **Retrieval** — top-k chunks are injected into the prompt (or returned to a workflow).
+See [RAG](../../concepts/rag.md) for the underlying concepts and [Ragas](../../observability/ragas/index.md) for evaluation.
 
-# Using it
+## Related
 
-1. Create a Knowledge Base in the UI (or API).
-2. Upload documents; Dify extracts text (PDF/PPT built-in).
-3. Pick embedding model + chunk strategy; index.
-4. Attach the KB to an App (Chatbot / Workflow) — retrieval becomes a node.
-
-# Notes for this stack
-
-* Dify's RAG is **self-contained** — it does not require your SearXNG or Firecrawl, but you *could* feed scraped content (via Firecrawl) into a KB.
-* The vector store is selected at deploy time (see [Architecture](architecture.md)); switching later means re-indexing.
-* Embeddings can use your `:4000` proxy if it exposes an embeddings endpoint (set the embedding model provider accordingly).
+[Dify index](index.md) · [Workflows & agents](workflows-agents.md)

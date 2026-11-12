@@ -1,103 +1,49 @@
 ---
 type: Playbook
-title: Firecrawl — Self-Hosting
-description: How to run the Firecrawl stack from the local compose, configure .env, wire SearXNG as the search backend, and the known self-host limitations.
+title: Firecrawl Self-Hosting
+description: Run Firecrawl yourself with Docker Compose — services in the stack, first-run settings, SearXNG search, local LLMs for extraction, proxies, admin routes and security responsibilities.
 resource: https://github.com/firecrawl/firecrawl/blob/main/SELF_HOST.md
-tags: [firecrawl, self-hosting, docker, compose, searxng, deployment]
-generated: { by: "human:daniel", at: "2026-07-09T00:40:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T00:40:00Z" } ]
+tags: [firecrawl, self-hosting, docker, searxng, ollama]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: self-host-md
+  - id: firecrawl-selfhost
     resource: "https://github.com/firecrawl/firecrawl/blob/main/SELF_HOST.md"
-    title: "SELF_HOST.md"
+    title: "Self-hosting Firecrawl"
     author: "site:github.com"
-  - id: local-compose
-    resource: "/../../programs/firecrawl/firecrawl/docker-compose.yaml"
-    title: "Local compose"
 ---
 
-# Firecrawl — Prerequisites
-
-* Docker + Docker Compose.
-* (Optional) An AI backend for `/extract` and `/agent`: `OPENAI_API_KEY` or `OPENAI_BASE_URL` (e.g. your `:4000` proxy).
-
-# Deploy
-
-The stack lives at `programs/firecrawl/firecrawl/docker-compose.yaml` (includes our added `searxng` service):
+# Firecrawl — Self-Hosting
 
 ```bash
-cd programs/firecrawl/firecrawl
-docker compose up -d            # all services
-docker compose up -d searxng    # just SearXNG (if already have Firecrawl)
-docker compose ps
-docker compose logs -f api
+git clone https://github.com/firecrawl/firecrawl && cd firecrawl
+cp apps/api/.env.example .env          # edit
+docker compose up -d                   # API on http://localhost:3002
 ```
 
-The `api` waits for `rabbitmq` healthy, then starts.
+## What runs
 
-# Environment (`.env`)
+API and workers, a [Playwright service](subservices/playwright-service.md), [Redis](subservices/redis.md), [RabbitMQ](subservices/rabbitmq.md), [NuQ PostgreSQL](subservices/nuq-postgres.md) and optional [FoundationDB](subservices/foundationdb.md) for the queue. Only the API is published to the host by default.
 
-Key variables (from `SELF_HOST.md` + the compose `x-common-env`):
+## First-run settings
 
-```bash
-# Required
-PORT=3002
-HOST=0.0.0.0
-USE_DB_AUTHENTICATION=false      # no Supabase auth locally
+| Variable | Purpose |
+|---|---|
+| `USE_DB_AUTHENTICATION=false` | Skip API-key auth for a first local run; turn auth on before sharing |
+| `NUM_WORKERS_PER_QUEUE` | Worker concurrency |
+| `PLAYWRIGHT_MICROSERVICE_URL` | Browser rendering service |
+| `SEARXNG_ENDPOINT`, `SEARXNG_ENGINES`, `SEARXNG_CATEGORIES` | Use [SearXNG](../../runtime/searxng/index.md) for `/search` |
+| `OPENAI_API_KEY`, `OPENAI_BASE_URL`, `MODEL_NAME` | LLM for JSON extraction — any [OpenAI-compatible](../../concepts/openai-compatible-api.md) server |
+| `OLLAMA_BASE_URL` | Use [Ollama](../../runtime/ollama/index.md) for extraction |
+| `PROXY_SERVER`, `PROXY_USERNAME`, `PROXY_PASSWORD` | Outbound proxy |
+| `BULL_AUTH_KEY` | Enables key-protected admin routes and the queue UI |
 
-# AI features (optional)
-OPENAI_API_KEY=                 # or set OPENAI_BASE_URL to your :4000 proxy
-OPENAI_BASE_URL=http://localhost:4000/v1
-MODEL_NAME=...
-MODEL_EMBEDDING_NAME=...
+## Responsibilities
 
-# Proxy (optional)
-PROXY_SERVER=
-PROXY_USERNAME=
-PROXY_PASSWORD=
+Self-hosting gives you control and makes you responsible for security, capacity, upgrades, data retention and compliance — including respecting sites' terms and robots rules. Keep the API off the public internet unless authentication is on. See [Self-hosting](../../concepts/self-hosting.md).
 
-# Search backend — use your SearXNG
-SEARXNG_ENDPOINT=http://searxng:8080
-SEARXNG_ENGINES=
-SEARXNG_CATEGORIES=
+## Related
 
-# Queue backend (optional switch)
-NUQ_BACKEND=                    # leave empty for Postgres; set "fdb" for FoundationDB
-```
-
-> The compose already sets `SEARXNG_ENDPOINT` default to `http://searxng:8080` over the `backend` network, so Firecrawl's `/search` uses your SearXNG instance automatically.
-
-# Verify
-
-```bash
-# API info
-curl -s http://127.0.0.1:3002/ | head -c 200
-
-# Scrape test
-curl -X POST http://127.0.0.1:3002/v2/scrape \
-  -H 'Content-Type: application/json' \
-  -d '{"url":"https://example.com","formats":["markdown"]}'
-
-# Search via SearXNG
-curl -X POST http://127.0.0.1:3002/v2/search \
-  -H 'Content-Type: application/json' \
-  -d '{"query":"test","limit":3}'
-```
-
-# Limitations (self-hosted)
-
-Per `SELF_HOST.md`:
-1. **No Fire-engine** — advanced anti-bot / IP-block handling is a hosted-only feature. Basic fetch + Playwright work; tougher targets may need manual proxy config.
-2. **Manual configuration** — scraping methods beyond basic fetch/Playwright need manual `.env` setup.
-3. **Search default** — `/search` uses Google by default unless you set `SEARXNG_ENDPOINT` (which we do).
-
-# Troubleshooting
-
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| API won't start | RabbitMQ not healthy | `docker compose logs rabbitmq` |
-| Search fails | SearXNG down | ensure `searxng` service up; check `SEARXNG_ENDPOINT` |
-| Extract 403 | no AI key | set `OPENAI_API_KEY` / `OPENAI_BASE_URL` |
-| Build needed | using `build:` images | first `up` compiles api/playwright/nuq-postgres |
+[Firecrawl index](index.md) · [Subservices](subservices/index.md) · [Docker Compose](../../runtime/docker/compose.md)
