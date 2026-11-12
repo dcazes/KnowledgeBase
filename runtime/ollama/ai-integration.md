@@ -1,50 +1,55 @@
 ---
-type: Concept
+type: Playbook
 title: Ollama AI Integration
-description: Wire Ollama into the stack — OpenAI-compatible :11434 endpoint for LiteLLM/OpenWebUI/AnythingLLM, local embeddings for Mem0/LightRAG, python SDK.
-resource: https://docs.ollama.com
-tags: [ollama, integration, openai-compatible, embeddings]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Using Ollama as the local model backend for the AI stack — ollama launch for Claude Code, Codex, OpenCode and OpenClaw, connection settings for chat UIs, RAG and memory tools, and when to put LiteLLM in front.
+resource: https://docs.ollama.com/integrations
+tags: [ollama, integration, coding-agents, openai-compatible, litellm]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: ollama-docs-openai-compatibility
-    resource: "https://docs.ollama.com/api/openai-compatibility"
-    title: "Ollama docs — OpenAI compatibility"
+  - id: ollama-docs
+    resource: "https://docs.ollama.com"
+    title: "Ollama documentation"
     author: "site:docs.ollama.com"
-  - id: ollama-docs-embeddings
-    resource: "https://docs.ollama.com/api/embed"
-    title: "Ollama docs — embeddings"
-    author: "site:docs.ollama.com"
+  - id: ollama-github
+    resource: "https://github.com/ollama/ollama"
+    title: "ollama/ollama on GitHub"
+    author: "site:github.com"
 ---
 
 # Ollama — AI Integration
 
-Ollama is the **local inference hub** — anything that speaks OpenAI-compatible REST can use it via `/v1`.
+## Launch coding agents on local models
 
-## OpenAI-compatible endpoint
+Running `ollama` with no arguments offers to connect a model to existing agents. Direct launchers:
 
 ```bash
-curl http://localhost:11434/v1/chat/completions \
-  -H "Content-Type: application/json" \
-  -d '{"model": "llama3.1", "messages": [{"role": "user", "content": "hi"}]}'
+ollama launch claude      # Claude Code against an Ollama model (uses the Anthropic-compatible API)
+ollama launch codex
+ollama launch opencode
+ollama launch openclaw    # personal assistant across WhatsApp, Telegram, Slack, Discord
 ```
 
-Same surface as `/v1/embeddings` for `nomic-embed-text`.
+Supported targets include [Claude Code](../../agents/claude-code/index.md), [Codex](../../agents/codex/index.md), Copilot CLI, [OpenCode](../../agents/opencode/index.md) and [OpenClaw](../../agents/openclaw/index.md). Agentic coding needs models with strong [tool calling](../../concepts/tool-calling.md) and a large context — set `OLLAMA_CONTEXT_LENGTH` accordingly.
 
-## Stack wiring
+## As a backend for other tools
 
-* **LiteLLM** — model entry `ollama/llama3.1` in the proxy config → unified `/v1` for the agent stack.
-* **[AnythingLLM](../../apps/anythingllm/index.md)** — provider "Ollama", base URL `http://host.docker.internal:11434` (or `localhost` on host install).
-* **[OpenWebUI](../../apps/openwebui/index.md)** — Ollama connection on :11434 pulls/uses models natively.
-* **[Mem0](../../memory/mem0/index.md)** — `provider: "ollama"` for LLM + embedder.
-* **[LightRAG](../../memory/lightrag/index.md)** — `LLM_BINDING=ollama`, `EMBEDDING_BINDING=ollama`.
+| Tool | Setting |
+|---|---|
+| [Open WebUI](../../apps/openwebui/index.md) | `OLLAMA_BASE_URL=http://ollama:11434` |
+| [AnythingLLM](../../apps/anythingllm/index.md), [Dify](../../agents/dify/index.md), [n8n](../../apps/n8n/index.md) | Ollama provider with base URL |
+| [Mem0](../../memory/mem0/configuration.md), [Graphiti](../../memory/graphiti/snippets.md), [Cognee](../../memory/cognee/configuration.md), [LightRAG](../../memory/lightrag/configuration.md) | Ollama or OpenAI-compatible `http://localhost:11434/v1` |
+| [PydanticAI](../../agents/pydanticAI/index.md), [LangGraph](../../agents/langgraph/index.md), [CrewAI](../../agents/crewai/index.md) | Ollama / OpenAI-compatible provider |
+| [Continue](../../editors/continue/index.md), [Zed](../../editors/zed/index.md), [Aider](../../agents/aider/index.md) | Ollama provider for local completions and chat |
 
-## Python
+From inside Docker Compose, use the service name (`http://ollama:11434`); from a container to the host, `http://host.docker.internal:11434`.
 
-```python
-from openai import OpenAI
-client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
-r = client.chat.completions.create(model="llama3.1", messages=[{"role":"user","content":"hi"}])
-```
+## Put a gateway in front
+
+When several apps share models — some local, some hosted — run [LiteLLM](../litellm/index.md) in front of Ollama for one endpoint, virtual keys, fallbacks and spend tracking.
+
+## Related
+
+[Ollama index](index.md) · [Local inference](../../concepts/local-inference.md) · [Coding agents](../../concepts/coding-agents.md)

@@ -1,62 +1,43 @@
 ---
-type: Concept
+type: Playbook
 title: LightRAG AI Integration
-description: Use LightRAG as a document-grounded RAG engine — Python API, REST server, wiring into Hermes/OpenCode/MCP, vs GraphRAG and Graphify.
-resource: https://lightrag.readthedocs.io/en/latest/
-tags: [lightrag, integration, rag, api, server, agents]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Using LightRAG with chat UIs and agents — its Ollama-compatible endpoint for Open WebUI, REST and MCP access from agents, evaluation with Ragas and tracing with Langfuse.
+resource: https://github.com/HKUDS/LightRAG
+tags: [lightrag, integration, open-webui, mcp, ragas, langfuse]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: lightrag-docs-examples
-    resource: "https://lightrag.readthedocs.io/en/latest/"
-    title: "LightRAG docs — examples"
-    author: "site:lightrag.readthedocs.io"
   - id: lightrag-github
     resource: "https://github.com/HKUDS/LightRAG"
-    title: "LightRAG GitHub"
+    title: "HKUDS/LightRAG on GitHub"
     author: "site:github.com"
 ---
 
 # LightRAG — AI Integration
 
-## Python API (library mode)
+## Chat UIs
 
-```python
-import asyncio
-from lightrag import LightRAG, QueryParam
-from lightrag.llm.ollama import ollama_model_complete, ollama_embed
-from lightrag.utils import EmbeddingFunc
+`lightrag-server` emulates an Ollama chat model, so [Open WebUI](../../apps/openwebui/index.md) or any Ollama client can add it as a "model" and chat with your knowledge graph directly. Query-mode prefixes in the message (such as `/local` or `/mix`) choose the retrieval mode.
 
-rag = LightRAG(
-    working_dir="./rag_storage",
-    llm_model_func=ollama_model_complete,
-    llm_model_name="llama3.1",
-    embedding_func=EmbeddingFunc(
-        embedding_dim=768, max_token_size=8192,
-        func=lambda texts: ollama_embed(texts, embed_model="nomic-embed-text", host="http://localhost:11434"),
-    ),
-)
-await rag.ainsert(open("notes.md").read(), split_by_character=True)
-result = await rag.aquery("What themes recur across the notes?", param=QueryParam(mode="hybrid"))
-```
+## Agents
 
-## REST server
+* Call the REST `/query` endpoint as a tool from [LangGraph](../../agents/langgraph/index.md), [PydanticAI](../../agents/pydanticAI/index.md) or [CrewAI](../../agents/crewai/index.md).
+* Community [MCP](../../concepts/mcp.md) servers wrap LightRAG for coding agents and desktop assistants.
+* Use `local` for entity questions, `global` for thematic ones, `mix` as a general default.
 
-```bash
-docker compose up -d        # server on :9621
-```
+## Evaluation and tracing
 
-```bash
-curl -X POST http://localhost:9621/documents/text -H "Content-Type: application/json" \
-  -d '{"text": "The sky is blue on clear days."}'
-curl -X POST "http://localhost:9621/query" -H "Content-Type: application/json" \
-  -d '{"query": "What color is the sky?", "mode": "hybrid"}'
-```
+* LightRAG returns retrieved contexts with answers, which [Ragas](../../observability/ragas/index.md) uses for context precision and faithfulness metrics — see [Evals](../../concepts/evals.md).
+* [Langfuse](../../observability/langfuse/index.md) tracing records extraction and query calls — see [LLM observability](../../concepts/llm-observability.md).
 
-## Agent wiring
+## When to choose LightRAG
 
-* Point Hermes/OpenCode tools at the `/query` endpoint (server mode) or use the library in-process.
-* LightRAG's graph retrieval complements [Graphiti](../graphiti/index.md) (temporal agent memory) — LightRAG for corpus Q&A, Graphiti for fact provenance.
-* Distinct from [Graphify](../graphify/index.md): Graphify compiles a static folder graph once (offline); LightRAG builds incrementally and retrieves at query time.
+* Document collections that grow over time, where [Microsoft GraphRAG](../graphrag/index.md)'s re-indexing is too costly.
+* You want a ready WebUI with graph visualisation.
+* For conversational memory rather than documents, prefer [Graphiti](../graphiti/index.md) or [Mem0](../mem0/index.md).
+
+## Related
+
+[LightRAG index](index.md) · [RAG](../../concepts/rag.md) · [Memory alternatives](../alternatives.md)

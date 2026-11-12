@@ -1,73 +1,49 @@
 ---
-type: Reference
-title: AnythingLLM — RAG & Embeddings
-description: AnythingLLM's retrieval pipeline, vector database options, and embedding model choices (incl. local nomic-embed-text).
-resource: https://docs.anythingllm.com/embedder-configuration
-tags: [anythingllm, rag, embeddings, vector-db, lancedb, ingestion]
-generated: { by: "human:daniel", at: "2026-07-09T02:33:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T02:33:00Z" } ]
+type: Concept
+title: AnythingLLM RAG & Embeddings
+description: How AnythingLLM ingests documents and websites, which embedders and vector databases it supports (LanceDB default; pgvector, Qdrant, Chroma, Weaviate, Milvus, Pinecone and others), and tuning retrieval.
+resource: https://docs.anythingllm.com
+tags: [anythingllm, rag, embeddings, vector-databases]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: embedder-config
-    resource: "https://docs.anythingllm.com/embedder-configuration"
-    title: "Embedder config"
+  - id: anythingllm-docs
+    resource: "https://docs.anythingllm.com"
+    title: "AnythingLLM documentation"
     author: "site:docs.anythingllm.com"
-  - id: vector-db-options
-    resource: "https://docs.anythingllm.com/vector-databases"
-    title: "Vector DB options"
-    author: "site:docs.anythingllm.com"
-  - id: rag-notes-prior-grounding
-    resource: "/../../kb/anythingllm/embeddings.md"
-    title: "RAG notes (prior, grounding)"
+  - id: anythingllm-github
+    resource: "https://github.com/Mintplex-Labs/anything-llm"
+    title: "Mintplex-Labs/anything-llm on GitHub"
+    author: "site:github.com"
 ---
 
-# AnythingLLM — Ingestion pipeline
+# AnythingLLM — RAG & Embeddings
 
-```
-Document (pdf/docx/md/url/code)
-   │  parse + chunk
-   ▼
-Embedding model  →  vectors
-   │
-   ▼
-Vector store (LanceDB default)
-   │  query → top-k chunks
-   ▼
-LLM context
-```
+## Ingestion
 
-# Vector databases
+Upload PDFs, Office files, text and code, or use data connectors (websites, GitHub repos, YouTube transcripts, Confluence and others). Documents are parsed, chunked and embedded once, then attached to workspaces.
+
+## Embedders
+
+Built-in local embedder (default), Ollama, LM Studio, LocalAI, OpenAI, Azure, Cohere, Voyage and other providers. Choose before embedding large collections — changing it means re-embedding ([Embeddings](../../concepts/embeddings.md)).
+
+## Vector stores
 
 | Store | Notes |
-|-------|-------|
-| **LanceDB** | Default; embedded, serverless; hybrid (vector + keyword); great for <1M docs |
-| Chroma | Python-native, popular |
-| Pinecone | Managed cloud |
-| Weaviate | GraphQL, Kubernetes-native |
-| Qdrant | Rust, high performance |
+|---|---|
+| LanceDB | Default, embedded, zero setup |
+| [pgvector](../../databases/pgvector/index.md) | Postgres extension |
+| [Qdrant](../../databases/qdrant/index.md) | Dedicated vector DB |
+| Chroma, Weaviate, Milvus/Zilliz, Pinecone, Astra DB | Other options |
 
-LanceDB needs no separate service — ideal for local-first use.
+See [Vector databases](../../concepts/vector-databases.md).
 
-# Embedding models
+## Tuning
 
-**Local (recommended for privacy/no cost):**
-* `nomic-ai/nomic-embed-text` (8k context, high quality) — often via Ollama.
-* `sentence-transformers/all-MiniLM-L6-v2` (fast, small).
-* `BAAI/bge-large-en-v1.5` (best quality, larger).
+Adjust chunk size and overlap, similarity threshold and top-N per workspace; pin critical documents to include them in full context; use query mode for strict answers.
 
-**Cloud:**
-* OpenAI `text-embedding-3-large` / `-small`.
-* Google `text-embedding-004`.
+## Related
 
-> On this machine, if you run Ollama, `nomic-embed-text` is the natural local choice. Without Ollama, point embeddings at an OpenAI-compatible endpoint (e.g. your `:4000` proxy, if it exposes embeddings).
-
-# Configuration
-
-In UI: **Settings → Embedding** (pick model + provider) and **Settings → Vector Database** (pick store). Re-ingest a workspace after changing embedding models (dimensions differ).
-
-# Tips
-
-* Match embedding model to your vector store's expected dimensions.
-* Chunk size affects recall — smaller = finer, more calls.
-* Hybrid search (LanceDB) improves keyword-heavy queries.
+[AnythingLLM index](index.md) · [RAG](../../concepts/rag.md)

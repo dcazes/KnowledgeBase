@@ -1,48 +1,45 @@
 ---
-type: Reference
+type: Software
 title: Pydantic
-description: Data validation & settings management in Python — the foundation under PydanticAI and the whole agent stack; system 2.9.0 / venv 2.13.4 on this machine.
+description: Python's standard data-validation library — type-hint-driven models with a Rust core, JSON Schema generation, serialization and settings management — and the backbone of structured output and tool schemas across the AI ecosystem.
 resource: https://docs.pydantic.dev
-tags: [pydantic, python, validation, schemas, settings]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [pydantic, python, validation, json-schema, structured-output]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: pydantic-docs
-    resource: "https://docs.pydantic.dev"
-    title: "Pydantic docs"
-    author: "site:docs.pydantic.dev"
   - id: pydantic-github
     resource: "https://github.com/pydantic/pydantic"
-    title: "Pydantic GitHub"
+    title: "pydantic/pydantic on GitHub"
     author: "site:github.com"
-  - id: pydantic-on-pypi
-    resource: "https://pypi.org/project/pydantic/"
-    title: "Pydantic on PyPI"
-    author: "site:pypi.org"
+  - id: pydantic-docs
+    resource: "https://docs.pydantic.dev"
+    title: "Pydantic documentation"
+    author: "site:docs.pydantic.dev"
 ---
 
 # Pydantic
 
-**Data validation and settings management** in Python — schemas defined as typed classes, validated at instantiation, with serialization, JSON Schema export, and Pydantic Settings for env config. It is the foundation under [PydanticAI](../../agents/pydanticAI/index.md) and most of this stack's tooling.
+**Pydantic** validates data against Python type hints. Define a `BaseModel`, and input is parsed, coerced and checked; errors are precise; and the model can emit **JSON Schema**. That last feature is why Pydantic sits under so much AI tooling: tool definitions, [structured outputs](../../concepts/structured-output.md) and agent configs are all JSON Schema.
 
-On this machine: system python has **pydantic 2.9.0**; the `programs/pydantic/.venv` has **2.13.4**. The `programs/pydantic/` dir contains a `pydantic_ai_template.py` (schema-reuse + agent example) and `pydantic_init.ipynb` (intro notebook) — no source checkout.
+| | |
+|---|---|
+| Category | Python library · [Structured output](../../concepts/structured-output.md) |
+| License | MIT |
+| Language | Python with a Rust core (`pydantic-core`) |
+| Latest release | v2.14.3 (2026-11-05); `pydantic-settings` 2.16 |
 
 ## Contents
 
-* [Overview](overview.md) — BaseModel, validation, serialization, JSON Schema, Settings
-* [Installation](installation.md) — pip install, versions on this machine, verify
-* [Configuration](configuration.md) — model_config, Field constraints, validators, Settings
-* [AI Integration](ai-integration.md) — schemas as agent contracts with PydanticAI; template usage
-* [Snippets](snippets.md) — BaseModel, Field, validators, model_dump/validate, Settings cheat sheet
-* [Alternatives](../alternatives.md) — attrs/cattrs, dataclasses, marshmallow, TypedDict vs Pydantic
+* [Overview](overview.md) — models, validation, schema, performance
+* [Installation](installation.md)
+* [Configuration](configuration.md) — model config and pydantic-settings
+* [Snippets](snippets.md) — models, validators, JSON Schema, TypeAdapter
+* [AI Integration](ai-integration.md) — where Pydantic appears across AI tools
 
 ## Related
 
-* [PydanticAI](../../agents/pydanticAI/index.md) — the agent framework built on this (v2.28.0)
-* Template: `programs/pydantic/pydantic_ai_template.py`
-
-## Last verified
-
-**2026-08-13** — System pydantic 2.9.0, `programs/pydantic/.venv` 2.13.4 (2026-08-12 recon); template + notebook present, no source checkout.
+* Built on it: [Pydantic AI](../../agents/pydanticAI/index.md), [Graphiti](../../memory/graphiti/concepts.md) ontologies, [browser-use](../../browsers/browser-use/index.md), [CrewAI](../../agents/crewai/index.md), FastAPI
+* Concepts: [Structured output](../../concepts/structured-output.md) · [Tool calling](../../concepts/tool-calling.md)
+* Comparison: [Tools alternatives](../alternatives.md)

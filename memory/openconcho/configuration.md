@@ -1,40 +1,42 @@
 ---
-type: HowTo
+type: Reference
 title: OpenConcho Configuration
-description: Configure OpenConcho — Honcho instance URLs/keys, multiple-instance switching, browser-only storage, default port.
-resource: https://github.com/offendingcommit/openconcho
-tags: [openconcho, configuration, honcho]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Connecting OpenConcho to Honcho instances, optional auth tokens, and the Docker proxy's environment variables including the SSRF upstream allowlist.
+resource: https://github.com/offendingcommit/openconcho/blob/main/docs/docker.md
+tags: [openconcho, configuration, security, proxy]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: openconcho-github-readme
+  - id: openconcho-github
     resource: "https://github.com/offendingcommit/openconcho"
-    title: "OpenConcho GitHub — README"
+    title: "offendingcommit/openconcho on GitHub"
     author: "site:github.com"
 ---
 
 # OpenConcho — Configuration
 
-## Honcho connections
+## Connecting
 
-* **Instances** — add one or more Honcho URLs; each stores its connection details **in the browser** (localStorage), per the privacy model.
-* **Switching** — toggle between instances from the UI; the fleet dashboard shows all at once with per-instance badges.
+1. Enter the Honcho base URL, e.g. `http://localhost:8000`.
+2. Optionally add an API token.
+3. **Test connection** — the health check detects whether auth is required.
+4. **Save**. Add more instances any time and switch between them.
 
-## What you provide per instance
+## Docker proxy variables
 
-```text
-- Honcho server URL (e.g. http://localhost:8000)
-- Auth/keys if your Honcho deployment requires them
-```
+| Variable | Purpose |
+|---|---|
+| `OPENCONCHO_DEFAULT_HONCHO_URL` | Seeds the first instance (absolute URL) |
+| `OPENCONCHO_UPSTREAM_ALLOWLIST` | Comma-separated host globs the proxy may reach — set it whenever the proxy is exposed, to prevent server-side request forgery |
 
-## No server-side config
+The browser calls `/api` on the same origin and names the upstream in an `X-Honcho-Upstream` header.
 
-OpenConcho is a static UI — no backend database of its own; all state is the Honcho server's state plus browser-side connection info.
+## Security notes
 
-## Ports
+The UI can read every memory in the connected workspace. Keep it on a private network (for example behind [Tailscale](../../runtime/tailscale/index.md)) or behind authentication, and use demo mode when sharing screens. See [Agent security](../../concepts/agent-security.md).
 
-Web/dev server port follows the npm/dev config (checkout default per package scripts); Docker compose maps per the compose file.
+## Related
 
-> Not deployed on this machine (2026-08-13) — no running instance to point at Honcho.
+[OpenConcho index](index.md) · [Installation](installation.md)

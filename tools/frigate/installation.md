@@ -1,71 +1,50 @@
 ---
 type: Playbook
-title: Frigate — Installation
-description: Deploying Frigate via the local docker-compose.yml (stable image, ports, NVIDIA GPU, storage).
-resource: https://docs.frigate.video/installation/
-tags: [frigate, install, docker-compose, gpu, ports, storage]
-generated: { by: "human:daniel", at: "2026-07-09T04:16:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T04:16:00Z" } ]
+title: Frigate Installation
+description: Install Frigate with Docker Compose — choose the image for your accelerator, pass through devices, size shared memory, mount config and media, and back up before upgrading.
+resource: https://docs.frigate.video/frigate/installation
+tags: [frigate, installation, docker, gpu, coral]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: install-docs
-    resource: "https://docs.frigate.video/installation/"
-    title: "Install docs"
+  - id: frigate-docs
+    resource: "https://docs.frigate.video"
+    title: "Frigate documentation"
     author: "site:docs.frigate.video"
-  - id: local-compose
-    resource: "/../../programs/frigate/docker-compose.yml"
-    title: "Local compose"
-  - id: configuration
-    resource: "configuration.md"
-    title: "Configuration"
 ---
 
-# Frigate — Deploy (this machine)
+# Frigate — Installation
 
-From `programs/frigate/`:
-```bash
-docker compose -f docker-compose.yml up -d
+```yaml
+services:
+  frigate:
+    image: ghcr.io/blakeblackshear/frigate:stable        # or :stable-tensorrt, :stable-rocm, …
+    restart: unless-stopped
+    shm_size: "512mb"                                    # scale with camera count and resolution
+    devices:
+      - /dev/dri/renderD128                              # Intel/AMD hardware decoding
+      # - /dev/apex_0                                    # PCIe Coral
+    volumes:
+      - ./config:/config
+      - ./media:/media/frigate
+      - type: tmpfs
+        target: /tmp/cache
+        tmpfs: { size: 1000000000 }
+    ports:
+      - "127.0.0.1:8971:8971"                            # authenticated UI
+      - "8554:8554"                                      # RTSP restream
+    environment:
+      FRIGATE_RTSP_PASSWORD: "change-me"
 ```
 
-The active compose uses `ghcr.io/blakeblackshear/frigate:stable` with:
-* `privileged: true` (hardware/driver access)
-* `shm_size: "256mb"`
-* NVIDIA GPU device reservation (`deploy.resources`)
-* tmpfs `/tmp/cache` (1GB, reduces drive wear)
+For NVIDIA use the `-tensorrt` image with a GPU reservation (see [Docker GPU & AI](../../runtime/docker/gpu-ai.md)).
 
-# Ports
+## Upgrading
 
-| Port | Purpose |
-|------|---------|
-| `8971` | **Authenticated UI & API** (no TLS — reverse proxies terminate TLS here) |
-| `5000` | Internal unauthenticated UI & API (limit access; for in-network services) |
-| `8554` | RTSP re-stream |
-| `8555/tcp` + `8555/udp` | WebRTC |
+0.18 contains breaking config changes. Copy your config file and `frigate.db` before upgrading; Frigate migrates config automatically but some cases need manual edits.
 
-# Volumes
+## Related
 
-* `config.yml` → `/config/config.yml`
-* `/media/daniel/New Volume/frigate` → `/media/frigate` (recordings)
-* `/etc/localtime` (timezone)
-* tmpfs `/tmp/cache` (1GB)
-
-# Verify
-
-```bash
-docker ps | grep frigate
-curl -sk -o /dev/null -w "%{http_code}\n" https://localhost:8971
-```
-
-# ⚠️ Security
-
-The compose sets `FRIGATE_RTSP_PASSWORD` and `config.yml` holds the **camera password in plaintext**. Keep both out of the KB; rotate if exposed.
-
-# Troubleshooting
-
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| UI unreachable | container down | `docker start frigate` |
-| No detection | GPU/detector misconfig | check detector type + `preset-nvidia` |
-| Camera offline | go2rtc/creds | verify `go2rtc` streams + redacted creds |
-| Drive wear | recordings | tmpfs cache helps; point storage at fast disk |
+[Frigate index](index.md) · [Configuration](configuration.md) · [Docker](../../runtime/docker/index.md)

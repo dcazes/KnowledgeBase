@@ -1,61 +1,52 @@
 ---
-type: HowTo
+type: Playbook
 title: Ollama Installation
-description: Install Ollama — Docker compose (programs/ollama/docker-compose.yaml, :11434) or native binary; pull a model; verify with /api/tags.
-resource: https://docs.ollama.com
-tags: [ollama, installation, docker, binary]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Install Ollama on macOS, Windows or Linux with the official scripts or installers, run it in Docker with NVIDIA or AMD GPUs, and verify the server.
+resource: https://docs.ollama.com/quickstart
+tags: [ollama, installation, docker, gpu, linux]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: ollama-docs-install
-    resource: "https://docs.ollama.com"
-    title: "Ollama docs — install"
+  - id: ollama-github
+    resource: "https://github.com/ollama/ollama"
+    title: "ollama/ollama on GitHub"
+    author: "site:github.com"
+  - id: ollama-docker
+    resource: "https://docs.ollama.com/docker"
+    title: "Ollama Docker docs"
     author: "site:docs.ollama.com"
-  - id: docker-hub-ollama-ollama
-    resource: "https://hub.docker.com/r/ollama/ollama"
-    title: "Docker Hub — ollama/ollama"
-    author: "site:hub.docker.com"
 ---
 
 # Ollama — Installation
 
-## Option A — Docker (the local checkout's path)
-
-`programs/ollama/docker-compose.yaml` (present, verified 2026-08-12):
-
-```yaml
-services:
-  ollama:
-    image: ollama/ollama:latest
-    container_name: ollama
-    ports:
-      - "11434:11434"
-    restart: "no"
-    volumes:
-      - ollama:/root/.ollama   # (volumes section in the same file)
+```bash
+curl -fsSL https://ollama.com/install.sh | sh        # macOS and Linux
+irm https://ollama.com/install.ps1 | iex             # Windows PowerShell
 ```
+
+Installers (`Ollama.dmg`, `OllamaSetup.exe`) are also available. On Linux the script installs a `systemd` service.
+
+## Docker
 
 ```bash
-cd programs/ollama && docker compose up -d
-docker exec ollama ollama pull llama3.1
+docker run -d --name ollama -p 127.0.0.1:11434:11434 -v ollama:/root/.ollama ollama/ollama            # CPU
+docker run -d --gpus=all --name ollama -p 127.0.0.1:11434:11434 -v ollama:/root/.ollama ollama/ollama # NVIDIA
+docker run -d --device /dev/kfd --device /dev/dri -v ollama:/root/.ollama -p 11434:11434 ollama/ollama:rocm  # AMD
+docker exec -it ollama ollama run gemma4
 ```
 
-## Option B — Native binary
-
-```bash
-curl -fsSL https://ollama.com/install.sh | sh
-ollama serve &              # :11434
-```
+NVIDIA needs the Container Toolkit — see [Docker GPU & AI](../docker/gpu-ai.md).
 
 ## Verify
 
 ```bash
-curl -s http://localhost:11434/api/tags          # list pulled models
-ollama run llama3.1                               # interactive chat
+ollama --version
+ollama run gemma4 "hello"
+curl http://localhost:11434/api/tags
 ```
 
-## Status on this machine
+## Related
 
-* Only the compose file exists; **no container running, no binary** (recon 2026-08-12). Deploy on demand with option A.
+[Ollama index](index.md) · [Configuration](configuration.md) · [Docker](../docker/index.md)

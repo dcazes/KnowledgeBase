@@ -1,45 +1,31 @@
 ---
-type: Reference
-title: OpenWebUI — AI Integration
-description: Connecting OpenWebUI to your stack — Ollama/OpenAI-compatible :4000 endpoint, built-in RAG, SearXNG web search, and Firecrawl extraction.
+type: Playbook
+title: Open WebUI AI Integration
+description: Wiring Open WebUI into an AI stack — model backends, SearXNG and Firecrawl for web, MCP and OpenAPI tool servers, Pipelines for filters and agents, LightRAG and memory, and SSO over Tailscale.
 resource: https://docs.openwebui.com
-tags: [openwebui, integration, ollama, openai-compatible, rag, searxng, firecrawl]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+tags: [open-webui, integration, mcp, pipelines, searxng]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
   - id: openwebui-docs
     resource: "https://docs.openwebui.com"
-    title: "OpenWebUI docs"
+    title: "Open WebUI documentation"
     author: "site:docs.openwebui.com"
-  - id: openwebui-openai-api-ollama-connection
-    resource: "https://docs.openwebui.com/getting-started/env-configuration"
-    title: "OpenWebUI OpenAI API / Ollama connection"
-    author: "site:docs.openwebui.com"
-  - id: searxng-api
-    resource: "https://docs.searxng.org/dev/search_api.html"
-    title: "SearXNG API"
-    author: "site:docs.searxng.org"
-  - id: firecrawl-api
-    resource: "https://docs.firecrawl.dev/api-reference"
-    title: "Firecrawl API"
-    author: "site:docs.firecrawl.dev"
 ---
 
-# OpenWebUI — Models via Ollama / OpenAI-compatible endpoint
+# Open WebUI — AI Integration
 
-OpenWebUI connects to **Ollama** (`http://host.docker.internal:11434` or host bridge `172.17.0.1:11434`) and any **OpenAI-compatible** endpoint — e.g. your `:4000` proxy. The prebuilt image ships without bundled Ollama; both connection types are configured in the admin panel.
+| Layer | Options |
+|---|---|
+| Models | [Ollama](../../runtime/ollama/index.md), [vLLM](../../runtime/vllm/index.md), [llama.cpp](../../runtime/llamacpp/index.md), [LM Studio](../../runtime/lmstudio/index.md), [LiteLLM](../../runtime/litellm/index.md) |
+| Web | [SearXNG](../../runtime/searxng/ai-integration.md) search, [Firecrawl](../../browsers/firecrawl/ai-integration.md) loader |
+| Tools | [MCP](../../concepts/mcp.md) servers (via MCP support or the `mcpo` OpenAPI proxy), e.g. [Playwright MCP](../../browsers/playwright-mcp/index.md) |
+| Agents and filters | Pipelines server: rate limits, PII filters, Langfuse tracing, custom agent pipelines ([LangGraph](../../agents/langgraph/index.md)) |
+| Graph RAG | [LightRAG](../../memory/lightrag/ai-integration.md) as a model |
+| Access | SSO and private reach via [Tailscale](../../runtime/tailscale/ai-integration.md) |
 
-# RAG & web search
+## Related
 
-* **RAG** — built-in ingestion with configurable chunking/retrieval; see [RAG](rag.md).
-* **Web search** — point OpenWebUI at **SearXNG** (`http://host.docker.internal:8088`) or use **Firecrawl** (`:3002`) as an extraction provider for grounded answers.
-
-# Pipe functions & integrations
-
-OpenWebUI's **pipe functions** (Python) can wrap arbitrary stack endpoints — e.g. Graphify ingestion or Dify workflow calls — as chat models/tools.
-
-# Deployment status
-
-Compose present at `programs/openwebui/docker-compose.yaml` (image `ghcr.io/open-webui/open-webui:main`, host port `3001` → container `8080`, upstream v0.11.0); **not currently running** as of 2026-08-12. See [Installation](installation.md).
+[Open WebUI index](index.md) · [Apps alternatives](../alternatives.md)

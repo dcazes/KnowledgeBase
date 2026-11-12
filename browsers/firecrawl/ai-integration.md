@@ -1,83 +1,50 @@
 ---
-type: Reference
-title: Firecrawl — AI Integration
-description: How Firecrawl plugs into the agent stack — SearXNG as its search backend, and agents/MCP/Graphify consuming its API.
-resource: https://github.com/firecrawl/firecrawl
-tags: [firecrawl, integration, searxng, agents, mcp, graphify, ai]
-generated: { by: "human:daniel", at: "2026-07-09T00:41:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T00:41:00Z" } ]
+type: Playbook
+title: Firecrawl AI Integration
+description: Connecting Firecrawl to agents and RAG — the firecrawl-mcp server, framework loaders and tools, search-then-scrape loops with SearXNG, and ingestion into vector stores and memory.
+resource: https://docs.firecrawl.dev
+tags: [firecrawl, integration, mcp, rag, agents]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: searxng-ai-integration
-    resource: "../../runtime/searxng/ai-integration.md"
-    title: "SearXNG AI Integration"
-  - id: firecrawl-cli-skills
-    resource: "cli.md"
-    title: "Firecrawl CLI/skills"
-  - id: graphify-ai-integration
-    resource: "https://github.com/Graphify-Labs/graphify"
-    title: "Graphify AI Integration"
+  - id: firecrawl-github
+    resource: "https://github.com/firecrawl/firecrawl"
+    title: "firecrawl/firecrawl on GitHub"
+    author: "site:github.com"
+  - id: firecrawl-mcp
+    resource: "https://github.com/firecrawl/firecrawl-mcp-server"
+    title: "firecrawl-mcp-server"
     author: "site:github.com"
 ---
 
-# Firecrawl — The search backend: SearXNG
+# Firecrawl — AI Integration
 
-Firecrawl's `/search` endpoint needs a search source. By default it uses Google directly, but in your stack it's wired to **your SearXNG instance** via:
+## MCP
 
-```
-SEARXNG_ENDPOINT=http://searxng:8080     # on the shared backend network
-```
-
-This means Firecrawl search results flow through your private metasearch engine — no Google coupling, no shared-instance rate limits. (See [SearXNG AI Integration](../../runtime/searxng/ai-integration.md).)
-
-# Agents calling Firecrawl
-
-Any agent can call the local API at `http://127.0.0.1:3002/v2/...` (no key when `USE_DB_AUTHENTICATION=false`):
-
-```bash
-# From Hermes / a script:
-curl -X POST http://127.0.0.1:3002/v2/scrape \
-  -H 'Content-Type: application/json' \
-  -d '{"url":"https://docs.site.com","formats":["markdown"]}'
+```json
+{ "mcpServers": { "firecrawl-mcp": {
+    "command": "npx", "args": ["-y", "firecrawl-mcp"],
+    "env": { "FIRECRAWL_API_KEY": "fc-...", "FIRECRAWL_API_URL": "http://localhost:3002" } } } }
 ```
 
-The `firecrawl-skills` pack (see [CLI](cli.md)) gives coding agents native Firecrawl tooling.
+Gives [Claude Code](../../agents/claude-code/index.md), [Cursor](../../editors/cursor/index.md), [Hermes](../../agents/hermes/index.md) and any [MCP](../../concepts/mcp.md) client scrape, search, crawl, map and extract tools. `FIRECRAWL_API_URL` points it at a self-hosted instance.
 
-# MCP
+## Agent patterns
 
-Firecrawl publishes an MCP server (hosted cloud provides it; for self-host you can front the API with an MCP bridge or use the skills). The pattern: register a tool that POSTs to `/v2/scrape` or `/v2/search` and returns markdown. Your Graphify MCP server and Firecrawl can thus both be exposed to the same agent.
+* **Search, then read:** `/search` already returns page content, collapsing the [SearXNG](../../runtime/searxng/index.md) + fetch loop into one call.
+* **Research agents:** map a docs site, scrape the relevant pages, answer with citations.
+* **Interact** for pages behind search boxes or pagination instead of a full [browser agent](../../concepts/browser-automation.md).
 
-# Graphify ingestion loop
+## RAG ingestion
 
-A recurring pipeline: search → scrape → graph:
+Crawl a site to Markdown → chunk → embed → store in [Qdrant](../../databases/qdrant/index.md) or [pgvector](../../databases/pgvector/index.md), or hand the Markdown to [LightRAG](../../memory/lightrag/index.md), [Cognee](../../memory/cognee/index.md) or [Supermemory](../../memory/supermemory/index.md). Loaders exist for LangChain/[LangGraph](../../agents/langgraph/index.md), LlamaIndex, [CrewAI](../../agents/crewai/index.md) and [Dify](../../agents/dify/index.md); [n8n](../../apps/n8n/index.md) and [Open WebUI](../../apps/openwebui/index.md) can use it as their web loader.
 
-```bash
-# 1. Search via SearXNG (or Firecrawl /search)
-urls=$(curl -s "http://127.0.0.1:8080/search?q=TOPIC&format=json" \
-  | python3 -c "import sys,json;print('\n'.join(r['url'] for r in json.load(sys.stdin)['results'][:5]))")
-# 2. Scrape each via Firecrawl
-for u in $urls; do
-  curl -X POST http://127.0.0.1:3002/v2/scrape -H 'Content-Type: application/json' \
-    -d "{\"url\":\"$u\",\"formats\":[\"markdown\"]}" -o "raw/$(echo $u|md5sum).json"
-done
-# 3. Fold into Graphify
-graphify extract raw --backend openai
-```
+## Caveats
 
-# AI features (extract / agent)
+Scraped pages are untrusted input and may contain prompt injections — see [Agent security](../../concepts/agent-security.md). Respect site terms and robots rules.
 
-`/extract` and `/agent` need an LLM. Point Firecrawl at your `:4000` proxy:
-```bash
-OPENAI_BASE_URL=http://localhost:4000/v1
-OPENAI_API_KEY=sk-any-nonempty
-```
-This keeps extraction consistent with the rest of the stack (cloud inference, no local heavy models).
+## Related
 
-# Troubleshooting
-
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| Search returns nothing | SearXNG down | `docker compose up -d searxng` |
-| Extract fails | no AI backend | set `OPENAI_BASE_URL` + key |
-| Agent 403 | auth on | set `USE_DB_AUTHENTICATION=false` for local |
+[Firecrawl index](index.md) · [RAG](../../concepts/rag.md) · [Web scraping & search](../../concepts/web-scraping.md)

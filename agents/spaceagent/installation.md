@@ -1,43 +1,35 @@
 ---
-type: HowTo
+type: Playbook
 title: Space Agent Installation
-description: Install Space Agent — desktop app from GitHub Releases (no terminal), or server (clone, npm install, create user, node space serve); empty local dir on this machine.
+description: Run Space Agent as a desktop app, as a self-hosted Node.js server with an admin user, or in development mode.
 resource: https://github.com/agent0ai/space-agent
-tags: [space-agent, installation, server, desktop]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [space-agent, installation, node]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: space-agent-github-readme
+  - id: space-agent-github
     resource: "https://github.com/agent0ai/space-agent"
-    title: "Space Agent GitHub — README"
+    title: "agent0ai/space-agent on GitHub"
     author: "site:github.com"
 ---
 
 # Space Agent — Installation
 
-## Option A — Desktop app (no terminal)
+**Desktop:** download the latest build from GitHub Releases; it runs everything as one app.
 
-Download the latest build from **GitHub Releases** (`agent0ai/space-agent`) and run it — everything runs as one app.
-
-## Option B — Server (teams)
+**Server:**
 
 ```bash
-git clone https://github.com/agent0ai/space-agent.git
-cd space-agent
+git clone https://github.com/agent0ai/space-agent.git && cd space-agent
 npm install
 node space user create admin --password "change-me-now" --full-name "Admin" --groups _admin
 node space serve
 ```
 
-## Option C — Dev
+**Development:** `npm run dev` (auto-reload).
 
-```bash
-npm run dev
-```
+## Related
 
-## Status on this machine
-
-* `programs/spaceagent/` — **EMPTY dir**, no checkout, not deployed (verified 2026-08-12).
-* No upstream version tag to pin (no semver reported as of 2026-08-13).
+[Space Agent index](index.md) · [Configuration](configuration.md)

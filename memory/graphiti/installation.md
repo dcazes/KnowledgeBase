@@ -1,85 +1,56 @@
 ---
 type: Playbook
-title: Graphiti — Installation
-description: Installing graphiti-core (pip/uv), standing up a Neo4j backend, and setting required environment variables.
-resource: https://github.com/getzep/graphiti#installation
-tags: [graphiti, install, pip, uv, neo4j, env, openai-api-key]
-generated: { by: "human:daniel", at: "2026-07-09T05:01:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T05:01:00Z" } ]
+title: Graphiti Installation
+description: Install graphiti-core with the right backend and LLM-provider extras, set provider keys and concurrency, and start a graph database with Docker.
+resource: https://github.com/getzep/graphiti
+tags: [graphiti, installation, pip, uv, docker]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: installation-readme
-    resource: "https://github.com/getzep/graphiti#installation"
-    title: "Installation (README)"
+  - id: graphiti-github
+    resource: "https://github.com/getzep/graphiti"
+    title: "getzep/graphiti on GitHub"
     author: "site:github.com"
-  - id: backends
-    resource: "backends.md"
-    title: "Backends"
 ---
 
-# Install graphiti-core
+# Graphiti — Installation
+
+## Requirements
+
+* Python 3.10+
+* A graph database (see [Backends](backends.md))
+* An LLM and embedder. The default is OpenAI (`OPENAI_API_KEY`); Anthropic, Gemini and Groq are supported via extras; anything [OpenAI-compatible](../../concepts/openai-compatible-api.md), including [Ollama](../../runtime/ollama/index.md), [vLLM](../../runtime/vllm/index.md), [llama.cpp](../../runtime/llamacpp/index.md) and [LM Studio](../../runtime/lmstudio/index.md), works through `OpenAIGenericClient`.
+
+## Install
 
 ```bash
-pip install graphiti-core
-# or
-uv add graphiti-core
+pip install graphiti-core                        # or: uv add graphiti-core
+pip install "graphiti-core[falkordb]"            # FalkorDB driver
+pip install "graphiti-core[anthropic,google-genai,groq]"   # extra LLM providers
+pip install "graphiti-core[neptune]"             # Amazon Neptune
 ```
 
-Extras for other backends/providers:
-```bash
-pip install graphiti-core[falkordb]          # FalkorDB backend
-pip install graphiti-core[anthropic]         # Anthropic LLM
-pip install graphiti-core[groq]              # Groq LLM
-pip install graphiti-core[google-genai]      # Gemini LLM
-pip install graphiti-core[neptune]           # Amazon Neptune
-# combine:
-pip install graphiti-core[falkordb,anthropic,google-genai]
-```
-
-# Backend — Neo4j
-
-Graphiti needs a graph DB. Easiest: Neo4j Desktop, or Docker:
-```bash
-# Neo4j (example; pin to 5.26 per Graphiti requirements)
-docker run -d --name neo4j \
-  -p 7474:7474 -p 7687:7687 \
-  -e NEO4J_AUTH=neo4j/<STRONG_PASSWORD> \
-  neo4j:5.26
-```
-FalkorDB alternative:
-```bash
-docker run -p 6379:6379 -p 3000:3000 -it --rm falkordb/falkordb:latest
-```
-
-# Environment variables
+## Environment
 
 ```bash
-export OPENAI_API_KEY=<key>          # default LLM + embeddings
-export NEO4J_URI=bolt://localhost:7687
-export NEO4J_USERNAME=neo4j
-export NEO4J_PASSWORD=<STRONG_PASSWORD>
-export SEMAPHORE_LIMIT=10            # ingestion concurrency (default 10)
+export OPENAI_API_KEY=...
+export SEMAPHORE_LIMIT=10       # concurrent LLM operations during ingestion; lower on 429s
 ```
-> Graphiti defaults to OpenAI for LLM + embeddings. Use a provider that supports **Structured Output** (OpenAI, Anthropic, Gemini); smaller models may fail schema extraction.
 
-# Verify
+## Start a database
 
 ```bash
-python -c "import graphiti_core; print(graphiti_core.__version__)"
-# or check Neo4j at http://localhost:7474
+git clone https://github.com/getzep/graphiti && cd graphiti
+docker compose up                       # Neo4j
+docker compose --profile falkordb up    # FalkorDB
 ```
 
-# Notes
+## Verify
 
-* No launcher in `programs/` on this machine — install when you want temporal agent memory.
-* Python 3.10+ required.
+Run `examples/quickstart` from the repo: it connects, builds indices, adds text and JSON episodes, and runs hybrid edge and node searches.
 
-# Troubleshooting
+## Related
 
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| Import error | not installed | `pip install graphiti-core` |
-| Can't connect to DB | Neo4j down/creds | start Neo4j; check NEO4J_* env |
-| Ingestion schema fails | weak LLM | use Structured-Output-capable model |
-| Slow ingest | concurrency | raise `SEMAPHORE_LIMIT` |
+[Graphiti index](index.md) · [Backends](backends.md) · [Snippets](snippets.md) · [Docker](../../runtime/docker/index.md)

@@ -1,78 +1,51 @@
 ---
-type: HowTo
+type: Reference
 title: Pydantic Configuration
-description: Configure Pydantic models — model_config options, Field constraints, validators, aliases, BaseSettings env loading.
-resource: https://docs.pydantic.dev
-tags: [pydantic, configuration, settings, validators]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Model-level configuration with ConfigDict (strictness, extra fields, aliases, frozen models) and application settings with pydantic-settings — environment variables, .env files, nested settings and secrets.
+resource: https://docs.pydantic.dev/latest/concepts/pydantic_settings/
+tags: [pydantic, configuration, settings, env]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: pydantic-docs-model-config
+  - id: pydantic-docs
     resource: "https://docs.pydantic.dev"
-    title: "Pydantic docs — model_config"
-    author: "site:docs.pydantic.dev"
-  - id: pydantic-docs-settings
-    resource: "https://docs.pydantic.dev/concepts/settings/"
-    title: "Pydantic docs — settings"
+    title: "Pydantic documentation"
     author: "site:docs.pydantic.dev"
 ---
 
 # Pydantic — Configuration
 
-## model_config
+## Model config
 
 ```python
 from pydantic import BaseModel, ConfigDict
 
-class User(BaseModel):
-    model_config = ConfigDict(
-        extra="forbid",          # reject unknown fields ("ignore" | "allow")
-        frozen=True,             # immutable after creation
-        strict=True,             # no type coercion
-        validate_assignment=True,  # re-validate on attribute set
-        str_strip_whitespace=True,
-    )
+class Event(BaseModel):
+    model_config = ConfigDict(strict=True, extra="forbid", frozen=True, populate_by_name=True)
     name: str
 ```
 
-## Field constraints
+`extra="forbid"` is useful for LLM outputs: unexpected keys become errors instead of silent data.
+
+## Settings
 
 ```python
-from pydantic import BaseModel, Field
-
-class Item(BaseModel):
-    id: int = Field(..., gt=0, description="positive id")
-    code: str = Field(..., pattern=r"^[A-Z]{3}$")
-    tags: list[str] = Field(default_factory=list, max_length=10)
-    role: Literal["admin", "editor", "viewer"] = "viewer"
-```
-
-## Validators
-
-```python
-from pydantic import BaseModel, field_validator, model_validator
-
-class Order(BaseModel):
-    qty: int
-
-    @field_validator("qty")
-    @classmethod
-    def check_positive(cls, v):
-        if v <= 0:
-            raise ValueError("qty must be > 0")
-        return v
-```
-
-## Settings (pydantic-settings)
-
-```python
-from pydantic_settings import BaseSettings
+from pydantic import SecretStr
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
-    openai_api_key: str
-    ollama_host: str = "http://localhost:11434"
+    model_config = SettingsConfigDict(env_file=".env", env_prefix="APP_")
+    openai_api_key: SecretStr
+    ollama_url: str = "http://localhost:11434"
+    max_tokens: int = 2000
 
-    model_config = {"env_prefix": "AGENT_"}   # reads AGENT_OPENAI_API_KEY etc.
+settings = Settings()          # reads APP_OPENAI_API_KEY etc.
 ```
+
+`SecretStr` keeps keys out of logs and reprs.
+
+## Related
+
+[Pydantic index](index.md) · [Snippets](snippets.md)

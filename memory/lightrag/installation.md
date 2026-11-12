@@ -1,53 +1,69 @@
 ---
-type: HowTo
+type: Playbook
 title: LightRAG Installation
-description: Install LightRAG — pip install lightrag-hku (v1.5.6) or local v1.5.5; optional FastAPI server via Docker (compose-full); verify with a first insert+query.
-resource: https://lightrag.readthedocs.io/en/latest/
-tags: [lightrag, installation, pip, docker, server]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Install LightRAG Server from PyPI with uv, from source with the WebUI build, or with Docker Compose; use the interactive setup wizard and secure the server.
+resource: https://github.com/HKUDS/LightRAG
+tags: [lightrag, installation, uv, docker, webui]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: lightrag-docs-installation
-    resource: "https://lightrag.readthedocs.io/en/latest/"
-    title: "LightRAG docs — installation"
-    author: "site:lightrag.readthedocs.io"
-  - id: lightrag-on-pypi
-    resource: "https://pypi.org/project/lightrag-hku/"
-    title: "LightRAG on PyPI"
-    author: "site:pypi.org"
+  - id: lightrag-github
+    resource: "https://github.com/HKUDS/LightRAG"
+    title: "HKUDS/LightRAG on GitHub"
+    author: "site:github.com"
+  - id: lightrag-docker
+    resource: "https://github.com/HKUDS/LightRAG/blob/main/docs/DockerDeployment.md"
+    title: "LightRAG Docker deployment"
+    author: "site:github.com"
 ---
 
 # LightRAG — Installation
 
-## 1. Python library
+## PyPI (server + prebuilt WebUI)
 
 ```bash
-pip install lightrag-hku        # latest (1.5.6 as of 2026-08-13)
-# or the local checkout:
-cd programs/LightRAG && pip install -e .
+uv tool install "lightrag-hku[api]"          # or: pip install "lightrag-hku[api]" in a venv
+curl -O https://raw.githubusercontent.com/HKUDS/LightRAG/main/env.example
+cp env.example .env                          # set model keys first
+lightrag-server                              # http://localhost:9621/webui
 ```
 
-Verify:
+Library only: `pip install lightrag-hku`.
+
+## From source
 
 ```bash
-python -c "import lightrag; print(lightrag.__version__ if hasattr(lightrag,'__version__') else 'ok')"
+git clone https://github.com/HKUDS/LightRAG.git && cd LightRAG
+uv sync --extra api                          # API + WebUI runtime
+cd lightrag_webui && bun install --frozen-lockfile && bun run build && cd ..
+cp env.example .env && lightrag-server
 ```
 
-## 2. Server (Docker, optional)
-
-The checkout ships compose files (Redis + SQLite-based defaults):
+## Docker Compose
 
 ```bash
-cd programs/LightRAG
-docker compose up -d            # default: API on :9621 (lightrag-server)
-# full variant with milvus/neo4j wiring:
-docker compose -f docker-compose-full.yml up -d
+git clone https://github.com/HKUDS/LightRAG.git && cd LightRAG
+cp env.example .env
+docker compose up
 ```
 
-`docker-compose-full.yml` includes Milvus + Neo4j services for the production storage set (present in the local checkout, verified 2026-08-12).
+Official GHCR images are signed with Sigstore Cosign.
 
-## Status on this machine
+## Setup wizard
 
-* `programs/LightRAG` checkout present (v1.5.5) — **not deployed**, no running containers (recon 2026-08-12).
+```bash
+make env-base             # LLM, embedding, reranker (required first)
+make env-storage          # storage backends and their services
+make env-server           # port, auth, SSL
+make env-security-check   # audit .env for risky settings
+```
+
+## Secure it
+
+`lightrag-server` binds to all interfaces with authentication off. On any shared network set `LIGHTRAG_API_KEY` and/or account auth, or bind to localhost and reach it over a private network such as [Tailscale](../../runtime/tailscale/index.md).
+
+## Related
+
+[LightRAG index](index.md) · [Configuration](configuration.md) · [Docker](../../runtime/docker/index.md)

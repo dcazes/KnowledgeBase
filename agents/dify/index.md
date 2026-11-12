@@ -1,59 +1,54 @@
 ---
-type: Reference
+type: Software
 title: Dify
-description: Open-source LLM application development platform — visual AI workflows, RAG pipelines, autonomous agents — documented as reference.
+description: Open-source LLM application platform with a visual workflow canvas, RAG knowledge pipelines, sandboxed autonomous agents, a plugin marketplace for models and tools, MCP support, LLMOps observability and APIs for every app. Self-hosted with Docker Compose or Dify Cloud.
 resource: https://github.com/langgenius/dify
-tags: [dify, llmops, workflows, rag, agents]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+tags: [dify, low-code, workflows, rag, agents, llmops, python]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
   - id: dify-github
     resource: "https://github.com/langgenius/dify"
-    title: "Dify GitHub"
+    title: "langgenius/dify on GitHub"
     author: "site:github.com"
   - id: dify-docs
     resource: "https://docs.dify.ai"
-    title: "Dify docs"
+    title: "Dify documentation"
     author: "site:docs.dify.ai"
-  - id: local-source-programs-archive-dify
-    resource: "/../../programs/archive/dify/"
-    title: "Local source - programs/archive/dify/"
+  - id: dify-releases
+    resource: "https://github.com/langgenius/dify/releases"
+    title: "Dify release notes"
+    author: "site:github.com"
 ---
 
 # Dify
 
-Open-source **LLM application development platform** — visual AI workflows, RAG pipelines, autonomous agents, model management, and LLMOps in one self-hosted stack. Documented here as a **reference / available-to-deploy** app; the source is present at `programs/archive/dify/` but no container is currently running.
+**Dify** is the most widely used open-source platform for building LLM apps visually: chatbots, workflows, RAG assistants and agents are assembled on a canvas, tested in a prompt IDE, monitored in production, and exposed through APIs. It is the low-code counterpart to code-first frameworks like [LangGraph](../langgraph/index.md).
+
+| | |
+|---|---|
+| Category | [Workflow automation](../../concepts/workflow-automation.md) · [RAG](../../concepts/rag.md) · [Agent frameworks](../../concepts/agent-frameworks.md) |
+| License | Dify Open Source License (Apache-2.0 with additional conditions on multi-tenant SaaS use and branding) |
+| Language | Python (API, workers), TypeScript (web) |
+| Latest release | 1.19.0 (2026-11-04) |
+| Deployment | Docker Compose (min 2 CPU, 4 GB RAM) · Kubernetes (community Helm) · Dify Cloud |
 
 ## Contents
 
-* [Overview](overview.md) - what Dify is, key features, editions
-* [Installation](installation.md) - Docker deploy from `docker/`, env, dashboard at :80
-* [Architecture](architecture.md) - the container set: api, worker, web, db, redis, sandbox, plugin_daemon, ssrf_proxy, nginx, vector stores
-* [RAG Pipeline](rag-pipeline.md) - document ingestion → indexing → retrieval
-* [Workflows & Agents](workflows-agents.md) - visual canvas, agent types, 50+ tools
-* [Model Providers](model-providers.md) - connecting LLMs (incl. your :4000 OpenRouter proxy)
-* [API](api.md) - Backend-as-a-Service endpoints + API keys
-* [Alternatives](../alternatives.md) - Flowise, n8n, LangChain, AnythingLLM, OpenWebUI
-* [Snippets](snippets.md) - deploy + common tasks cheat sheet
+* [Overview](overview.md) — app types and key features
+* [Architecture](architecture.md) — services in the stack
+* [Installation](installation.md) — Docker Compose, upgrades
+* [Model providers](model-providers.md) — plugins for hosted and local models
+* [RAG pipeline](rag-pipeline.md) — knowledge bases and pipelines
+* [Workflows & agents](workflows-agents.md) — nodes, agent strategies, sandboxed agents
+* [API](api.md) — app and knowledge APIs
+* [Snippets](snippets.md) — curl examples
+* [AI Integration](ai-integration.md) — MCP, observability, memory, the wider stack
 
-## Instance facts (from local source)
+## Related
 
-* **Source:** `programs/archive/dify/` (LangGenius/Dify monorepo — archived out of active programs; no container currently running)
-* **Deploy path:** `programs/archive/dify/docker/` — `cp .env.example .env && docker compose up -d`
-* **Dashboard:** `http://localhost/install` (nginx on :80) after first launch
-* **Async:** Celery workers (`worker`, `worker_beat`) + Redis broker
-* **Vector store:** configurable — weaviate / qdrant / pgvector / chroma / milvus (pick one)
-* **Plugins:** `plugin_daemon` service serves tools/integrations
-
-## Cross-references
-
-* **AnythingLLM / OpenWebUI** — lighter turnkey RAG/chat — see [AnythingLLM Overview](../../apps/anythingllm/overview.md) & [OpenWebUI Overview](../../apps/openwebui/overview.md)
-* **Graphify** — can structure Dify RAG outputs into a knowledge graph — see [Graphify AI Integration](../../memory/graphify/ai-integration.md)
-* **SearXNG** — Dify can use SearXNG for web search — see [SearXNG AI Integration](../../runtime/searxng/ai-integration.md)
-* **Firecrawl** — Dify RAG can ingest Firecrawl-extracted content — see [Firecrawl AI Integration](../../browsers/firecrawl/ai-integration.md)
-
-## Last verified
-
-**2026-08-12** — **v1.16.1** (2026-07-28) upstream; local compose (archive) pins `langgenius/dify-api:1.15.0`. Source path corrected to `programs/archive/dify/`. Prior verification 2026-07-09 against local docker/ and upstream docs.dify.ai.
+* Concepts: [Workflow automation](../../concepts/workflow-automation.md) · [RAG](../../concepts/rag.md) · [LLM observability](../../concepts/llm-observability.md)
+* Peers: [n8n](../../apps/n8n/index.md), [AnythingLLM](../../apps/anythingllm/index.md), [Open WebUI](../../apps/openwebui/index.md), [LangGraph](../langgraph/index.md)
+* Comparison: [Agents alternatives](../alternatives.md)

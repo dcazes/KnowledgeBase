@@ -1,19 +1,27 @@
 ---
 type: Reference
 title: IDEA
-description: Goal of this knowledge base — build out a KB with adherence to standards, backed by extensive and accurate research.
-resource: 
-tags: [meta, kbv2, goal]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: The goal of this knowledge base — an accurate, standards-based, research-backed and richly interlinked map of the self-hostable AI stack.
+resource: https://github.com/topics/knowledge-base
+tags: [meta, goal]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: okf-conventions-local
-    resource: "AGENTS.md"
-    title: "OKF conventions (local)"
+  - id: conventions
+    resource: "https://github.com/topics/knowledge-base"
+    title: "Vault conventions (see AGENTS.md)"
+    author: "agent:claude-code"
 ---
 
 # IDEA
 
-Building out a knowledge base with adherance to standards, and backed by extensive and accurate research.
+Build a knowledge base about the AI tooling landscape that is:
+
+* **Accurate** — every fact traced to an official source and re-verified on a schedule.
+* **Standards-based** — consistent Open Knowledge Format frontmatter and a predictable doc set per tool.
+* **Interlinked** — tools connected to concepts and peers, so the [Obsidian](tools/obsidian/index.md) graph shows how the ecosystem fits together.
+* **General** — useful to anyone, not tied to one machine.
+
+Start at the [root index](index.md) or the [AI landscape](landscape.md).

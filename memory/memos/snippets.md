@@ -1,88 +1,53 @@
 ---
-type: Playbook
-title: MemOS — Snippets & Cheat Sheet
-description: Copy-paste commands for MemOS — install (pip install MemoryOS), serve (uvicorn :8000), Docker stack, REST API calls, and Python MOS usage.
-resource: https://memos-docs.openmem.net/home/overview/
-tags: [memos, snippets, cheat-sheet, api, deploy, python]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+type: Reference
+title: MemOS Snippets
+description: MemOS REST snippets — add and search memories on MemOS Cloud, and create a memory cube, add and search on a self-hosted server.
+resource: https://github.com/MemTensor/MemOS
+tags: [memos, snippets, rest, python, cheat-sheet]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
-  - id: memos-repo
+  - id: memos-github
     resource: "https://github.com/MemTensor/MemOS"
-    title: "MemOS repo"
+    title: "MemTensor/MemOS on GitHub"
     author: "site:github.com"
-  - id: pypi-memoryos
-    resource: "https://pypi.org/project/MemoryOS/"
-    title: "PyPI — MemoryOS"
-    author: "site:pypi.org"
 ---
 
-# MemOS — Install / serve
+# MemOS — Snippets
 
-> As of 2026-08-12 there is **no local checkout** at `programs/memos` — install from PyPI (`MemoryOS`, import `memos`). With a repo clone present, `make install`/`make serve` work identically from the checkout root.
-
-```bash
-pip install MemoryOS        # distribution name; import name is memos
-uvicorn memos.api.server_api:app --host 0.0.0.0 --port 8000 --workers 1
-```
-
-# Docker stack (API + Neo4j + Qdrant)
-
-```bash
-# requires a clone of the MemOS repo (not present locally as of 2026-08-12):
-git clone https://github.com/MemTensor/MemOS.git programs/memos
-cd programs/memos
-docker compose -f docker/docker-compose.yml up -d
-docker compose -f docker/docker-compose.yml ps
-docker compose -f docker/docker-compose.yml down
-```
-
-# Verify it is up
-
-```bash
-curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8000/health
-```
-
-# REST API (port 8000)
-
-```bash
-# base path is /product
-curl -X POST http://localhost:8000/product/add \
-  -H 'Content-Type: application/json' \
-  -d '{"user_id":"u1","messages":[{"role":"user","content":"I prefer concise answers."}]}'
-
-curl -X POST http://localhost:8000/product/search \
-  -H 'Content-Type: application/json' \
-  -d '{"user_id":"u1","query":"what are my preferences?"}'
-```
-
-# Python — MOS
+## Cloud API
 
 ```python
-from memos import MOS, GeneralMemCube, MOSConfig
+import requests
+base = "https://memos.memtensor.cn/api/openmem/v1"
+headers = {"Authorization": "Token mpg-...", "Content-Type": "application/json"}
 
-mos = MOS.simple()                       # auto-configure from env
-cube = GeneralMemCube(...)              # build a memory cube
-mos.register_mem_cube(cube)
-mos.add(user_id="u1", messages=[{"role":"user","content":"..."}])
-results = mos.search(user_id="u1", query="...")
-print(results)
+requests.post(f"{base}/add/message", headers=headers, json={
+    "user_id": "alice", "conversation_id": "conv_001",
+    "messages": [{"role": "user", "content": "I like strawberry"}],
+})
+print(requests.post(f"{base}/search/memory", headers=headers,
+                    json={"query": "What do I like?", "user_id": "alice"}).json())
 ```
 
-# MCP server (for Hermes / OpenCode / Cursor)
+## Self-hosted: cubes
 
-```text
-# Register the MemOS MCP server in your client's mcpServers config.
-# Entry: memos.api MCP server (src/memos/api/). Transport: stdio/SSE per client.
+```python
+import requests, json
+base = "http://localhost:8000/product"
+h = {"Content-Type": "application/json"}
+
+requests.post(f"{base}/create_cube", headers=h, data=json.dumps(
+    {"cube_name": "Alice's memory", "owner_id": "alice", "cube_id": "alice_cube"}))
+requests.post(f"{base}/add", headers=h, data=json.dumps(
+    {"user_id": "alice", "writable_cube_ids": ["alice_cube"],
+     "messages": [{"role": "user", "content": "I like strawberry"}]}))
 ```
 
-# Other commands
+Search the cube through the corresponding search endpoint (see the API docs served by your instance).
 
-```bash
-make openapi            # regenerate docs/openapi.json
-make test               # full test suite
-make format             # ruff lint + format
-poetry run pytest tests/<module>/ -q   # single module
-```
+## Related
+
+[MemOS index](index.md) · [Installation](installation.md)

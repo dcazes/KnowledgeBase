@@ -1,58 +1,49 @@
 ---
 type: Concept
 title: Hindsight Overview
-description: How Hindsight works — agents that learn (compiled memory/learning passes) vs RAG/knowledge-graph recall; LongMemEval SOTA; architecture.
+description: Hindsight's memory model — banks, world facts, experiences, observations and mental models; the retain, recall and reflect operations; and its four-strategy retrieval with rank fusion and reranking.
 resource: https://hindsight.vectorize.io
-tags: [hindsight, overview, memory, learning]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [hindsight, overview, memory-types, retrieval, reflect]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: hindsight-docs
-    resource: "https://hindsight.vectorize.io"
-    title: "Hindsight docs"
-    author: "site:hindsight.vectorize.io"
-  - id: paper-arxiv-2512-12818
-    resource: "https://arxiv.org/abs/2512.12818"
-    title: "Paper (arXiv 2512.12818)"
-    author: "site:arxiv.org"
   - id: hindsight-github
     resource: "https://github.com/vectorize-io/hindsight"
-    title: "Hindsight GitHub"
+    title: "vectorize-io/hindsight on GitHub"
     author: "site:github.com"
+  - id: hindsight-paper
+    resource: "https://arxiv.org/abs/2512.12818"
+    title: "Hindsight is 20/20: Building Agent Memory that Retains, Recalls, and Reflects"
+    author: "arXiv 2512.12818"
 ---
 
 # Hindsight — Overview
 
-Most agent memory systems **recall conversation history**; Hindsight makes agents that **learn** — distilling experience into lasting memory and improving behavior over time.
+## Memory types
 
-## Core idea
-
-* **Learn, not just remember** — memory passes compile what happened into reusable knowledge (facts, skills, preferences) rather than returning raw transcripts.
-* **Beyond RAG / knowledge graphs** — upstream argues RAG retrieves text and graphs capture static relations; Hindsight focuses on learning loops suited to long-term agent behavior.
-
-## Benchmark position
-
-SOTA on **LongMemEval** (long-term conversational memory benchmark), reported by upstream as of Jan 2026 — the headline claim in the README.
-
-## Repository layout (v0.8.4)
-
-| Package | Role |
+| Type | Example |
 |---|---|
-| `hindsight-cli` | command-line interface |
-| `hindsight-api` | API server (also `hindsight-api-slim`) |
-| `hindsight-control-plane` | orchestration/control plane |
-| `hindsight-clients` | language SDKs |
-| `hindsight-integrations` | framework/agent integrations |
-| `hindsight-embed` | embedding support |
-| `hindsight-tools` | agent tools |
-| `hindsight-all` / `hindsight-all-npm` / `hindsight-all-slim` | aggregated builds |
-| `docker/`, `helm/` | deployment manifests |
-| `skills/`, `cookbook/` | agent skills + examples |
+| World facts | "The stove gets hot" |
+| Experiences | "I touched the stove and it hurt" — the agent's own history |
+| Observations | Consolidated, evidence-backed beliefs formed from many memories |
+| Mental models | The agent's learned understanding of its world, synthesised from observations and facts |
 
-Deno-first (TypeScript) with Python parts under `uv.lock`/`pyproject.toml`.
+Memories are stored per **bank** (one per user, agent or project) as entities, relationships and time series with sparse and dense vector representations.
 
-## Deployment model
+## Operations
 
-CLI for local use; API + control plane for server deployments (Docker/Helm provided). **Not deployed** on this machine (2026-08-13).
+* **Retain** — an LLM extracts facts, time data, entities and relationships from the input and normalises them into canonical entities and indexes.
+* **Recall** — runs **semantic**, **BM25 keyword**, **graph** (entity / temporal / causal links) and **temporal** (time-range) retrieval in parallel, merges with reciprocal rank fusion, reranks with a cross-encoder and trims to a token budget.
+* **Reflect** — a deeper pass over existing memories to form new connections or answer questions that need reasoning across many memories, shaped by the bank's configured disposition.
+
+This blends [RAG](../../concepts/rag.md), [knowledge-graph](../../concepts/knowledge-graphs.md) links and temporal reasoning into one [agent memory](../../concepts/agent-memory.md) service.
+
+## Hindsight models (Nov 2026)
+
+Vectorize released open-weight decision, rerank and embedding models built specifically for agent memory, published on Hugging Face, for use with self-hosted deployments.
+
+## Related
+
+[Hindsight index](index.md) · [Snippets](snippets.md) · [Memory alternatives](../alternatives.md)

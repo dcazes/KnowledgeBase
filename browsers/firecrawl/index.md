@@ -1,58 +1,52 @@
 ---
-type: Reference
+type: Software
 title: Firecrawl
-description: Open-source web context API to search, scrape, crawl, and extract the web into clean Markdown/JSON for AI agents — self-hosted on this machine.
+description: Web context API for AI agents — search, scrape, crawl, map, interact and extract the web into clean Markdown or structured JSON, with document parsing, an MCP server, CLI and SDKs. Open source (AGPL-3.0) and hosted.
 resource: https://github.com/firecrawl/firecrawl
-tags: [firecrawl, web-scraping, crawling, self-hosted, search]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+tags: [firecrawl, web-scraping, crawling, markdown, mcp, typescript]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
   - id: firecrawl-github
     resource: "https://github.com/firecrawl/firecrawl"
-    title: "Firecrawl GitHub"
+    title: "firecrawl/firecrawl on GitHub"
     author: "site:github.com"
-  - id: self-hosting-docs-self-host-md
+  - id: firecrawl-docs
+    resource: "https://docs.firecrawl.dev"
+    title: "Firecrawl documentation"
+    author: "site:docs.firecrawl.dev"
+  - id: firecrawl-selfhost
     resource: "https://github.com/firecrawl/firecrawl/blob/main/SELF_HOST.md"
-    title: "Self-hosting docs (SELF_HOST.md)"
+    title: "Self-hosting Firecrawl"
     author: "site:github.com"
-  - id: local-stack-programs-firecrawl-firecrawl-docker-compose-yaml
-    resource: "/../../programs/firecrawl/firecrawl/docker-compose.yaml"
-    title: "Local stack - programs/firecrawl/firecrawl/docker-compose.yaml"
 ---
 
 # Firecrawl
 
-Open-source **web context API** to search, scrape, crawl, and extract the web into clean Markdown / structured JSON / screenshots for AI agents. On this machine it runs as a **self-hosted Docker stack** (6 services + SearXNG) and is the scraping/extraction engine behind the agent stack.
+**Firecrawl** turns websites into LLM-ready data. Give it a URL and it returns clean Markdown, HTML, screenshots or schema-shaped JSON, handling JavaScript rendering, rate limits and (in the cloud) proxies. It also searches the web, crawls whole sites, maps URLs and lets an agent click through pages. It is one of the most-starred projects in AI tooling.
+
+| | |
+|---|---|
+| Category | [Web scraping & search](../../concepts/web-scraping.md) |
+| License | AGPL-3.0 (cloud adds proprietary features) |
+| Language | TypeScript (API, workers); SDKs for Python (`firecrawl-py` 4.57), Node, others |
+| Self-host release | v2.11.0 (2026-06-19); the hosted API is updated continuously |
+| API | v2 — `/search`, `/scrape`, `/crawl`, `/map`, `/batch/scrape`, `/extract`, interact, parse, monitor |
 
 ## Contents
 
-* [Overview](overview.md) - what Firecrawl is, architecture, v2 endpoint map
-* [Subservices](subservices/index.md) - one topic per container: api, playwright-service, redis, rabbitmq, nuq-postgres, foundationdb
-  * [API](subservices/api.md) · [Playwright Service](subservices/playwright-service.md) · [Redis](subservices/redis.md) · [RabbitMQ](subservices/rabbitmq.md) · [NUQ Postgres](subservices/nuq-postgres.md) · [FoundationDB](subservices/foundationdb.md)
-* [API Reference](api-reference.md) - v2 endpoints with request/response examples
-* [CLI](cli.md) - firecrawl-cli + firecrawl-skills
-* [Self-Hosting](self-hosting.md) - compose, env vars, SearXNG wiring, limitations
-* [AI Integration](ai-integration.md) - SearXNG search backend, agents/MCP
-* [Alternatives](../alternatives.md) - ScraperAPI, Crawl4AI, Playwright, Apify, Jina AI
-* [Snippets](snippets.md) - copy-paste cheat sheet
+* [Overview](overview.md) — endpoints, formats, actions, open source vs cloud
+* [API reference](api-reference.md) — v2 endpoints and key parameters
+* [CLI](cli.md) — the `firecrawl` command
+* [Self-hosting](self-hosting.md) — Compose stack, configuration, security
+* [Subservices](subservices/index.md) — API/workers, Playwright, Redis, RabbitMQ, NuQ Postgres, FoundationDB
+* [Snippets](snippets.md) — Python, Node, curl
+* [AI Integration](ai-integration.md) — MCP server, agent frameworks, RAG pipelines
 
-## Instance facts (from local compose + SELF_HOST.md)
+## Related
 
-* **Stack:** `programs/firecrawl/firecrawl/docker-compose.yaml` — services `api`, `playwright-service`, `redis`, `rabbitmq`, `nuq-postgres`, `foundationdb`, plus our added `searxng`.
-* **API port:** `3002` (host), `INTERNAL_PORT=3002`. Exposed by the `firecrawl-api` service in the compose.
-* **Search backend:** `SEARXNG_ENDPOINT` defaults to `http://searxng:8080` (our SearXNG instance, host port 8088) — see [AI Integration](ai-integration.md).
-* **Self-host caveats:** no Fire-engine (advanced anti-bot); Google search by default unless SearXNG configured; proxies/extra engines need manual `.env`.
-
-## Cross-references
-
-* **SearXNG** provides the `/search` backend for Firecrawl — see [SearXNG AI Integration](../../runtime/searxng/ai-integration.md)
-* **AnythingLLM** can use Firecrawl via its web-search skill — see [AnythingLLM AI Integration](../../apps/anythingllm/ai-integration.md)
-* **Hermes** & **OpenCode** can call Firecrawl's `/v2/scrape` and `/v2/crawl` endpoints — see [Hermes AI Integration](../../agents/hermes/ai-integration.md) & [OpenCode AI Integration](../../agents/opencode/ai-integration.md)
-* **Graphify** can ingest Firecrawl-extracted URLs — see [Graphify AI Integration](../../memory/graphify/ai-integration.md)
-* **Dify** RAG pipelines can pull web content via Firecrawl — see [Dify AI Integration](../../agents/dify/ai-integration.md)
-
-## Last verified
-
-**2026-08-12** — **v2.11.192** (2026-08-07); stack and env verified against local `programs/firecrawl/firecrawl/docker-compose.yaml` and running containers (api :3002, agent_searxng :8088).
+* Concepts: [Web scraping & search](../../concepts/web-scraping.md) · [Browser automation](../../concepts/browser-automation.md) · [Document parsing](../../concepts/document-parsing.md) · [MCP](../../concepts/mcp.md)
+* Peers: [Crawl4AI](../crawl4ai/index.md), [browser-use](../browser-use/index.md), [Playwright MCP](../playwright-mcp/index.md); search backend [SearXNG](../../runtime/searxng/index.md)
+* Comparison: [Browser & web alternatives](../alternatives.md)

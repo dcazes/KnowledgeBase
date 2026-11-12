@@ -1,53 +1,59 @@
 ---
-type: HowTo
+type: Playbook
 title: Cognee Installation
-description: Install Cognee — pip install cognee (v1.4.2) or local v1.4.0; optional Docker compose (API + Postgres + vector) + cognee-frontend; verify with add+cognify.
-resource: https://docs.cognee.ai
-tags: [cognee, installation, pip, docker]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Install Cognee with pip or uv (with the GLiNER extra for no-LLM mode), try the bundled demo, run the API, UI and MCP server with Docker, and understand single-user vs multi-tenant mode.
+resource: https://docs.cognee.ai/getting-started/installation
+tags: [cognee, installation, docker, uv, pip]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: cognee-docs-quickstart
+  - id: cognee-github
+    resource: "https://github.com/topoteretes/cognee"
+    title: "topoteretes/cognee on GitHub"
+    author: "site:github.com"
+  - id: cognee-docs
     resource: "https://docs.cognee.ai"
-    title: "Cognee docs — quickstart"
+    title: "Cognee documentation"
     author: "site:docs.cognee.ai"
-  - id: cognee-on-pypi
-    resource: "https://pypi.org/project/cognee/"
-    title: "Cognee on PyPI"
-    author: "site:pypi.org"
 ---
 
 # Cognee — Installation
 
-## 1. Python library
+## Library
 
 ```bash
-pip install cognee              # latest (1.4.2 as of 2026-08-13)
-# or the local checkout:
-cd programs/cognee && pip install -e .
+uv pip install "cognee[gliner]"      # gliner = local extraction model for no-LLM mode
+pip install cognee                   # base package
+cognee-cli demo                      # explore a bundled prebuilt graph, no API key needed
+cognee-cli -ui                       # local UI (needs Node.js/npm; Docker for its MCP service)
 ```
 
-Verify:
+Python 3.10–3.14 is supported.
+
+## Docker (API only)
 
 ```bash
-python -c "import cognee; print(cognee.__version__ if hasattr(cognee,'__version__') else 'ok')"
+docker run --rm -it -p 8000:8000 \
+  -e LLM_API_KEY="..." \
+  -e ENABLE_BACKEND_ACCESS_CONTROL=false \
+  -v cognee_storage:/cognee-storage \
+  cognee/cognee:main
 ```
 
-## 2. Docker (API + backends, optional)
+`ENABLE_BACKEND_ACCESS_CONTROL=false` is the single-user posture. Without it the API runs multi-tenant and every `/api/v1` call needs an authenticated user.
 
-The checkout includes `docker-compose.yml`:
+## Docker Compose (API + UI + MCP)
 
 ```bash
-cd programs/cognee
-docker compose up -d            # API + Postgres + vector store
+git clone https://github.com/topoteretes/cognee && cd cognee
+cp .env.template .env        # configure providers
+docker compose --profile ui --profile mcp up
 ```
 
-## 3. Frontend (optional)
+Default ports: API **8000**, UI **3000**, MCP **8001**. For anything beyond a local demo, configure authentication, persistent storage and production backends.
 
-The checkout includes a `cognee-frontend` app (UI for browsing/searching the knowledge graph). Run per its README (Dev server / container).
+## Related
 
-## Status on this machine
-
-* `programs/cognee` checkout present (v1.4.0), compose + frontend present — **not deployed**, no running containers (recon 2026-08-12).
+[Cognee index](index.md) · [Configuration](configuration.md) · [Docker](../../runtime/docker/index.md)

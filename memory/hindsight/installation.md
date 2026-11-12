@@ -1,54 +1,63 @@
 ---
-type: HowTo
+type: Playbook
 title: Hindsight Installation
-description: Install Hindsight — Rust CLI (hindsight), Python API (uv), npm @vectorize-io/hindsight-all, or control-plane deploy (Docker/Helm) from the v0.8.4 checkout; verify with version/status.
-resource: https://hindsight.vectorize.io
-tags: [hindsight, installation, cli, docker, helm]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Run Hindsight with Docker (embedded Postgres), Docker Compose with external PostgreSQL, pip, Helm or embedded in Python, and install the client SDKs and CLI.
+resource: https://hindsight.vectorize.io/developer/installation
+tags: [hindsight, installation, docker, helm, pip]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: hindsight-docs-installation
-    resource: "https://hindsight.vectorize.io"
-    title: "Hindsight docs — installation"
-    author: "site:hindsight.vectorize.io"
   - id: hindsight-github
     resource: "https://github.com/vectorize-io/hindsight"
-    title: "Hindsight GitHub"
+    title: "vectorize-io/hindsight on GitHub"
     author: "site:github.com"
+  - id: hindsight-docs
+    resource: "https://hindsight.vectorize.io"
+    title: "Hindsight documentation"
+    author: "site:hindsight.vectorize.io"
 ---
 
 # Hindsight — Installation
 
-## 1. CLI (Rust)
+## Docker (recommended)
 
 ```bash
-# Build the CLI from the checkout (hindsight-cli/ Cargo.toml, bin name `hindsight`)
-cd programs/hindsight/hindsight-cli
-cargo build --release          # -> target/release/hindsight
-
-# npm-available builds: @vectorize-io/hindsight-all (hindsight-all-npm/)
+docker run -it --pull always --name hindsight --restart unless-stopped \
+  -p 8888:8888 -p 9999:9999 \
+  -e HINDSIGHT_API_LLM_API_KEY=$OPENAI_API_KEY \
+  -v hindsight-data:/home/hindsight/.pg0 \
+  ghcr.io/vectorize-io/hindsight:latest
 ```
 
-## 2. API + control plane (server deploy)
+API at `http://localhost:8888`, UI at `http://localhost:9999`. Data lives in an embedded PostgreSQL (`pg0`) on the volume.
 
-The repo ships `docker/` and `helm/` manifests; the control plane is a Next.js app (`@vectorize-io/hindsight-control-plane`, `hindsight-control-plane/`):
+## External PostgreSQL
 
 ```bash
-cd programs/hindsight/docker
-# build/run per README — API + control-plane services
-# or Helm chart for Kubernetes (helm/ dir)
+export HINDSIGHT_DB_PASSWORD=choose-a-password
+cd docker/docker-compose && docker compose up
 ```
 
-## Verify
+## Other options
 
 ```bash
-hindsight --version          # 0.8.4 (if CLI installed)
-# or API probe once deployed:
-curl -s http://localhost:PORT/health   # per service docs
+pip install hindsight-api && hindsight-api                         # bare metal
+helm install hindsight oci://ghcr.io/vectorize-io/charts/hindsight \
+  --set api.llm.provider=openai --set api.llm.apiKey=... --set postgresql.enabled=true
+pip install hindsight-all                                         # embedded in Python (Intel Macs: hindsight-all-slim)
 ```
 
-## Status on this machine
+## Clients
 
-* `programs/hindsight` checkout present (v0.8.4) — **not deployed**, no running services (recon 2026-08-12).
+```bash
+pip install hindsight-client
+npm install @vectorize-io/hindsight-client
+go get github.com/vectorize-io/hindsight/hindsight-clients/go
+curl -fsSL https://hindsight.vectorize.io/get-cli | bash
+```
+
+## Related
+
+[Hindsight index](index.md) · [Configuration](configuration.md) · [Docker](../../runtime/docker/index.md)

@@ -1,56 +1,49 @@
 ---
-type: Reference
-title: OpenWebUI
-description: Self-hosted AI chat platform with RAG + web search — documented as reference; compose present locally, not currently running.
+type: Software
+title: Open WebUI
+description: Self-hosted, extensible AI chat platform for Ollama and any OpenAI-compatible API — multi-user with RBAC, built-in RAG and web search, tools, functions and pipelines, MCP and OpenAPI tool servers, voice, image generation and an API.
 resource: https://github.com/open-webui/open-webui
-tags: [openwebui, chat, rag, self-hosted]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+tags: [open-webui, chat-ui, self-hosting, rag, ollama, multi-user]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
   - id: openwebui-github
     resource: "https://github.com/open-webui/open-webui"
-    title: "OpenWebUI GitHub"
+    title: "open-webui/open-webui on GitHub"
     author: "site:github.com"
   - id: openwebui-docs
-    resource: "https://docs.openwebui.com/"
-    title: "OpenWebUI docs"
+    resource: "https://docs.openwebui.com"
+    title: "Open WebUI documentation"
     author: "site:docs.openwebui.com"
 ---
 
-# OpenWebUI
+# Open WebUI
 
-Self-hosted AI chat platform (served on `:3001`); RAG + web search. Documented here as a **reference / available-to-deploy** app — no deployment directory is currently present on this machine, so it is not running.
+**Open WebUI** is the most popular self-hosted ChatGPT-style interface. Point it at [Ollama](../../runtime/ollama/index.md), [vLLM](../../runtime/vllm/index.md), a [LiteLLM](../../runtime/litellm/index.md) gateway or hosted APIs, and give a household or team a private chat app with document Q&A, web search, tools and per-user permissions.
+
+| | |
+|---|---|
+| Category | Chat UI · [RAG](../../concepts/rag.md) · [Self-hosting](../../concepts/self-hosting.md) |
+| License | Open WebUI License (BSD-3-Clause based, with a branding-preservation clause) |
+| Language | Python backend (FastAPI), Svelte front end |
+| Latest release | v0.13.3 (2026-11-08) |
+| Delivery | Docker (`:main`, `:slim`, `:cuda`, `:ollama`), pip/uvx, Kubernetes |
 
 ## Contents
 
-* [Overview](overview.md) - what OpenWebUI is, key features
-* [Installation](installation.md) - Docker deploy, env, admin setup
-* [Features](features.md) - pipelines, RAG, web search, model management
-* [RAG](rag.md) - document ingestion, chunking, retrieval
-* [Configuration](configuration.md) - env vars, auth, model config
-* [API](api.md) - REST endpoints, API keys
-* [Alternatives](../alternatives.md) - AnythingLLM, LibreChat, ChatGPT-Next-Web
-* [Snippets](snippets.md) - deploy + common tasks cheat sheet
+* [Overview](overview.md) — what it is and how it is built
+* [Features](features.md) — chat, RAG, search, tools, voice, images, admin
+* [Installation](installation.md) — Docker images, Python, updates
+* [Configuration](configuration.md) — connections, environment variables, auth
+* [RAG](rag.md) — knowledge bases, document extraction, vector stores, web search
+* [API](api.md) — OpenAI-compatible endpoints and API keys
+* [Snippets](snippets.md) — run commands and API calls
+* [AI Integration](ai-integration.md) — tools, MCP, pipelines, the wider stack
 
-## Instance facts (from local source)
+## Related
 
-* **Port:** 3001 (host) → 8080 (container)
-* **Backend:** Ollama / OpenAI-compatible (your :4000 proxy)
-* **RAG:** built-in document ingestion
-* **Web search:** configurable (can use SearXNG)
-* **Image:** `ghcr.io/open-webui/open-webui:main` (prebuilt, no bundled Ollama)
-* **Status:** documented for reference; compose present at `programs/openwebui/docker-compose.yaml`, **not currently running** (no container up as of 2026-08-12).
-
-## Cross-references
-
-* **SearXNG** — OpenWebUI can use SearXNG for web search — see [SearXNG AI Integration](../../runtime/searxng/ai-integration.md)
-* **AnythingLLM** — similar RAG chat app — see [AnythingLLM Overview](../anythingllm/overview.md)
-* **Dify** — more workflow-oriented LLM platform — see [Dify Overview](../../agents/dify/overview.md)
-* **Graphify** — can ingest OpenWebUI chats — see [Graphify AI Integration](../../memory/graphify/ai-integration.md)
-* **Firecrawl** — can extract web content for RAG — see [Firecrawl AI Integration](../../browsers/firecrawl/ai-integration.md)
-
-## Last verified
-
-**2026-08-12** — **v0.11.0** (2026-07-27). Port corrected to 3001→8080; compose at `programs/openwebui/docker-compose.yaml`. Prior verification 2026-07-09 against upstream docs.openwebui.com.
+* Concepts: [RAG](../../concepts/rag.md) · [Local inference](../../concepts/local-inference.md) · [MCP](../../concepts/mcp.md)
+* Peers: [AnythingLLM](../anythingllm/index.md), [SurfSense](../../browsers/surfsense/index.md), [LM Studio](../../runtime/lmstudio/index.md) (desktop)
+* Comparison: [Apps alternatives](../alternatives.md)

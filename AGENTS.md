@@ -1,47 +1,69 @@
----
-type: Playbook
-title: AGENTS
-description: Working conventions for the kbv2 markdown knowledge base — layout, OKF doc format, verification rules, link conventions, and what not to touch.
-resource:
-tags: [meta, kbv2, conventions, okf]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
-status: stable
-stale_after: 2027-02-09
----
-
 # AGENTS.md
+
+Guidance for humans and AI agents editing this repository.
 
 ## What this repo is
 
-`kbv2` is a **markdown knowledge base** (not a software project): it documents a self-hosted AI/agent software stack in plain `.md` files following "Open Knowledge Format v0.2 (trust-signals subset)". There is **no build system, package manifest, or test suite** — work here is editing/adding markdown. `IDEA.md` sets the goal: accurate, standards-adherent, research-backed docs.
+A **Markdown knowledge base** (not a software project) on the self-hostable AI stack, organised as an Obsidian vault. It is general knowledge: it documents what tools are and how to use them, not any particular machine or deployment. There is no build system; work here is editing Markdown.
 
 ## Layout
 
-- **One top-level folder per program** (`runtime/docker/`, `browsers/firecrawl/`, `browsers/camofox/`, `memory/memos/`, ...). Each has a standard doc set: `index.md`, `overview.md`, `installation.md`/`configuration.md`, `snippets.md`, `ai-integration.md`, plus topic docs. Cross-program comparison lives in one category-level `alternatives.md` per category (e.g. `memory/alternatives.md`), consolidating the former per-program `alternatives.md`.
-- **`index.md` at root** is the master index with a build-status table. Update it when adding a program or changing doc counts.
+```
+index.md                      root hub (categories, tools, concepts)
+landscape.md                  dated overview of the AI landscape
+concepts/                     cross-cutting concept hubs + concepts/index.md
+<category>/alternatives.md    comparison and decision guide per category
+<category>/<tool>/            one folder per tool
+    index.md                  tool hub: summary, facts table, contents, related links
+    overview.md               how it works
+    installation.md           install / deploy
+    configuration.md          (optional) settings
+    snippets.md               copy-paste examples
+    ai-integration.md         how it connects to the rest of the stack
+    <topic>.md                (optional) deeper topics
+scripts/check_vault.py        link / frontmatter / privacy checker (CI)
+```
 
-## Doc conventions (OKF v0.2, trust-signals subset)
+Categories: `runtime`, `memory`, `databases`, `agents`, `browsers`, `ingestion`, `apps`, `editors`, `observability`, `tools`.
 
-- Every concept doc carries YAML frontmatter: `type` (Software | Playbook | Reference | ...), `title`, `description`, `resource` (official URL), `tags`, `generated`/`verified`/`status`/`stale_after` (OKF v0.2 lifecycle fields).
-- Every doc lists official/trusted sources in a `sources:` frontmatter block (id, resource, title, author). Keep ids sequential and unique.
-- Author identity uses `human:daniel` (or `agent:<tool>` for agent-generated docs); `stale_after` defaults to 180 days after `generated.at`.
-- **Local source paths use `/../../programs/<name>/`** — these resolve to the actual checkouts at `/home/daniel/Desktop/programs/` (outside this repo). Read those checkouts to verify commands/versions before writing docs.
-- Facts must be **verified, not assumed**: docs distinguish live state ("currently running") from config-derived notes ("from config, not live state"). Use a `## Last verified` dated line in `index.md`; update it and the root build table when you change a program's docs.
+## Doc conventions (Open Knowledge Format, trust-signals subset)
+
+Every note except `README.md` and `AGENTS.md` starts with YAML frontmatter:
+
+```yaml
+---
+type: Software | Concept | Playbook | Reference | Comparison | Hub
+title: ...
+description: one or two sentences
+resource: official URL
+tags: [lowercase, hyphenated]
+generated: { by: "agent:<tool>" | "human:<name>", at: "YYYY-MM-DDT00:00:00Z" }
+verified: [ { by: ..., at: ... } ]
+status: stable | draft
+stale_after: YYYY-MM-DD          # 180 days after verification
+sources:
+  - id: unique-kebab-id
+    resource: "https://..."
+    title: "..."
+    author: "site:example.com" | "Author et al., arXiv XXXX.XXXXX"
+---
+```
+
+* **Verify, don't assume.** Check versions, commands and claims against the upstream repo, release notes, package registry or paper, and cite them in `sources:`. Mark vendor-reported benchmark numbers as such.
+* **General, not personal.** No home-directory paths, private IPs, hostnames, credentials, or "on this machine" statements. Use placeholders like `change-me` and `localhost`.
+* **Responsible framing** for dual-use tools (anti-detection browsers, scrapers): state permitted-use expectations.
+
+## Links
+
+* Use **relative Markdown links** resolved from the linking file's directory (e.g. `../../concepts/rag.md`). No wikilinks, no absolute or bare cross-folder paths.
+* Each tool `index.md` should link to relevant concept hubs and peer tools; each concept hub should link to the tools that implement it. Every note should have at least one inbound and one outbound link.
+
+## Checks
+
+```bash
+python3 scripts/check_vault.py     # must report 0 errors
+```
 
 ## Do not touch
 
-- **`*/secrets.md`** — real credentials, gitignored. Never read or commit them.
-- **`*/README_TOCONTINUE.md`** — tracker files, gitignored.
-
-## Environment
-
-- This is an Obsidian vault (`.obsidian/` present) — keep relative `foo.md` links valid; do not restructure folders casually.
-
-## Link conventions (resolution semantics)
-
-- **All internal links are relative `.md` links resolved from the linking file's directory.** A doc in `foo/` pointing at `bar/index.md` must use `../bar/index.md` (P3 standard, 2026-08-13).
-- **Do not use bare cross-folder names** (`bar/index.md` from inside `foo/`) or absolute `/../../bar/index.md` forms — the former breaks, the latter only passes a lenient resolver. Adopt the `../`-relative form everywhere.
-- **The audit script** (`/tmp/opencode/audit_kbv2.py`) resolves links relative to each file's dir; because it globs with Python `glob`, hidden directories (`.slim/`) are excluded from its total — `249` audited md = `250` find-total minus the `.slim/` tracker. Keep this in mind when reconciling counts.
-- **Doc-count convention:** the root build table counts every md in a program folder **including `secrets.md`** (SearXNG 10, Firecrawl 16, Dify 12, Frigate 9 each include their `secrets.md`). The stated total "239 program docs" is the sum of table rows; the vault holds 250 md total (239 + 7 category-level `alternatives.md` + root `index.md`, `IDEA.md`, `AGENTS.md`, and the `.slim/` refresh tracker).
-- The stack's real deployments/configs referenced in docs live in `programs/` on the same machine (`docker compose`, running services), not in this repo.
+* `*/secrets.md` and `*/README_TOCONTINUE.md` — local, gitignored files. Never read or commit them.

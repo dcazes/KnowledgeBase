@@ -1,52 +1,31 @@
 ---
-type: Software
-title: Windsurf — Overview
-description: AI-native code editor by Codeium/Cognition (now Devin Desktop) with an agentic assistant (Cascade, retired Jul 2026 → Devin Local), SWE-1 models, and flow-based multi-file edits.
-resource: https://windsurf.com/
-tags: [windsurf, codeium, ai-editor, cascade, swe-1, agentic-coding]
-generated: { by: "human:daniel", at: "2026-07-09T03:30:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:30:00Z" } ]
+type: Concept
+title: Windsurf Overview
+description: The Windsurf story — Codeium's agentic editor, the Cognition acquisition, the 2026 rebrand to Devin Desktop, Cascade's replacement by Devin Local, SWE-1 models, and how local and cloud Devin work together.
+resource: https://docs.devin.ai
+tags: [windsurf, overview, devin, cascade]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: windsurf
-    resource: "https://windsurf.com/"
-    title: "Windsurf"
-    author: "site:windsurf.com"
-  - id: docs
-    resource: "https://docs.windsurf.com/"
-    title: "Docs"
-    author: "site:docs.windsurf.com"
-  - id: codeium
-    resource: "https://codeium.com/"
-    title: "Codeium"
-    author: "site:codeium.com"
+  - id: devin-docs
+    resource: "https://docs.devin.ai"
+    title: "Devin documentation"
+    author: "site:docs.devin.ai"
 ---
 
-# What Windsurf is
+# Windsurf — Overview
 
-Windsurf is an **AI-native code editor** from Codeium. Rather than bolting AI onto an editor, it's designed around an **agentic coding assistant** ("Cascade", retired Jul 2026, replaced by **Devin Local**) that can plan and apply changes across multiple files, with awareness of your whole codebase.
+| Period | Milestone |
+|---|---|
+| 2024 | Codeium launches Windsurf with the Cascade agent and "flows" (agent and user editing together) |
+| 2025 | Cognition acquires Windsurf; SWE-1 in-house models |
+| Jun 2026 | Rebranded **Devin Desktop** |
+| Jul 2026 | Cascade retired in favour of **Devin Local** |
 
-# Why it matters
+**Devin Local** works in your editor with full codebase awareness; tasks can be handed to cloud **Devin** for long-running work in its own environment, returning PRs — a local/cloud split similar to [Codex](../../agents/codex/index.md) cloud tasks and [Cursor](../cursor/index.md) cloud agents.
 
-* **Cascade** — an agent that chats, plans, and edits; can run commands and reason over the repo.
-* **SWE-1 models** — Codeium's purpose-built software-engineering models tuned for coding flows.
-* **Flows** — combined "command + AI" actions you can save and reuse for repetitive tasks.
-* **Codebase awareness** — Cascade indexes your project so edits respect existing structure.
-* **Multi-file edits** — applies coordinated changes, not just single-file snippets.
+## Related
 
-# How it fits your stack
-
-| Editor/agent | Role |
-|--------------|------|
-| **VSCode** | general-purpose editor + MCP |
-| **OpenCode** | terminal-native interactive agent |
-| **Hermes** | background/autonomous agent |
-| **Windsurf** | AI-native editor with Cascade agent |
-
-Windsurf is the "chat-driven, agentic IDE" option — an alternative to Cursor with Codeium's models.
-
-# Notes
-
-* Built with a VS Code-derived heritage (familiar keybindings/extensions).
-* Web search for current specifics was inconclusive this session; verify Devin Local (ex-Cascade)/SWE-1 details against docs.devin.ai before relying on version-specific claims.
+[Windsurf index](index.md) · [Features](features.md)

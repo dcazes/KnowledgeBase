@@ -1,68 +1,59 @@
 ---
 type: Playbook
-title: Tailscale — Installation & Auth
-description: Installing the Tailscale client, bringing it up, and authenticating a device to your tailnet.
-resource: https://tailscale.com/download
-tags: [tailscale, install, up, auth, login, client]
-generated: { by: "human:daniel", at: "2026-07-09T02:21:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T02:21:00Z" } ]
+title: Tailscale Installation
+description: Install Tailscale on desktops, phones and Linux servers, authenticate with auth keys for headless machines, and run it as a Docker sidecar to give a container its own tailnet identity.
+resource: https://tailscale.com/kb/1031/install-linux
+tags: [tailscale, installation, linux, docker, auth-keys]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: download-install
-    resource: "https://tailscale.com/download"
-    title: "Download/install"
-    author: "site:tailscale.com"
-  - id: install-script
-    resource: "https://tailscale.com/kb/1031/install-linux/"
-    title: "Install script"
+  - id: tailscale-docs
+    resource: "https://tailscale.com/kb"
+    title: "Tailscale knowledge base"
     author: "site:tailscale.com"
 ---
 
-# Tailscale — Install (Linux — Debian/Ubuntu)
+# Tailscale — Installation
+
+## Desktops and phones
+
+Install the app from tailscale.com/download or your app store and sign in with your identity provider.
+
+## Linux servers
 
 ```bash
 curl -fsSL https://tailscale.com/install.sh | sh
-sudo tailscale up
-```
-
-The `tailscale up` step prints a login URL — open it, sign in (Google/Microsoft/GitHub/SSO), and the device joins your tailnet.
-
-# Other platforms
-
-* **macOS / Windows:** download from tailscale.com/download.
-* **Docker:** `tailscale/tailscale` image, or the `tailscaled` sidecar pattern.
-* **Mobile:** App Store / Play Store.
-
-# Common commands
-
-| Command | Purpose |
-|---------|---------|
-| `sudo tailscale up` | start + auth device |
-| `tailscale status` | list tailnet devices + IPs |
-| `tailscale ip` | print this device's tailnet IP(s) |
-| `tailscale ping <host>` | connectivity test |
-| `tailscale down` | disconnect |
-| `tailscale logout` | leave tailnet |
-
-# Verify
-
-```bash
+sudo tailscale up                              # interactive login
+sudo tailscale up --auth-key=tskey-auth-... --advertise-tags=tag:ai   # headless, tagged
 tailscale status
-# expect your other devices listed with 100.x.y.z addresses
-tailscale ping <other-host>
 ```
 
-# Notes for this machine
+Generate auth keys (reusable or one-off, optionally pre-tagged) in the admin console. Review install scripts before running them.
 
-* Once up, your local services become reachable at `<host>.tail<net>` (MagicDNS) or `100.x.y.z` from any tailnet device.
-* To expose a service publicly (not just to your tailnet), use **Funnel** (see [Concepts](concepts.md)).
+## Docker sidecar
 
-# Troubleshooting
+Give a containerised app its own tailnet node so it is reachable as `https://webui.<tailnet>.ts.net`:
 
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| `tailscale: command not found` | not installed | run install script |
-| Can't auth | browser/SSO issue | re-run `sudo tailscale up`, open URL |
-| Device offline | daemon stopped | `sudo systemctl restart tailscaled` |
-| Peers unreachable | ACL / network | check `tailscale status`; review ACL |
+```yaml
+services:
+  ts-webui:
+    image: tailscale/tailscale:latest
+    hostname: webui
+    environment:
+      TS_AUTHKEY: ${TS_AUTHKEY}
+      TS_STATE_DIR: /var/lib/tailscale
+      TS_SERVE_CONFIG: /config/serve.json     # Serve config mapping 443 → http://127.0.0.1:8080
+    volumes: [ts-state:/var/lib/tailscale, ./ts:/config]
+    cap_add: [NET_ADMIN]
+    devices: [/dev/net/tun]
+  webui:
+    image: ghcr.io/open-webui/open-webui:main
+    network_mode: service:ts-webui
+volumes: { ts-state: {} }
+```
+
+## Related
+
+[Tailscale index](index.md) · [Snippets](snippets.md) · [Docker Compose](../docker/compose.md)

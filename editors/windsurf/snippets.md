@@ -1,62 +1,45 @@
 ---
-type: Playbook
-title: Windsurf — Snippets & Cheat Sheet
-description: Copy-paste install, sign-in, agent (Devin Local, ex-Cascade) usage, and MCP registration for Windsurf (now Devin Desktop).
-resource: https://docs.windsurf.com/
-tags: [windsurf, snippets, cheat-sheet, cascade, mcp, flows]
-generated: { by: "human:daniel", at: "2026-07-09T03:35:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:35:00Z" } ]
+type: Reference
+title: Windsurf Snippets
+description: Windsurf / Devin Desktop snippets — a workspace rules file, a saved workflow, and MCP server configuration.
+resource: https://docs.devin.ai
+tags: [windsurf, snippets, rules, mcp, cheat-sheet]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: installation
-    resource: "installation.md"
-    title: "Installation"
-  - id: features
-    resource: "features.md"
-    title: "Features"
-  - id: ai-integration
-    resource: "ai-integration.md"
-    title: "AI Integration"
+  - id: devin-docs
+    resource: "https://docs.devin.ai"
+    title: "Devin documentation"
+    author: "site:docs.devin.ai"
 ---
 
-# Windsurf (now Devin Desktop) — Install + launch
+# Windsurf — Snippets
 
-```bash
-# download from windsurf.com/download, then:
-windsurf
+## Workspace rule (`.windsurf/rules/style.md`)
+
+```markdown
+Use TypeScript strict mode. Prefer small pure functions. Every new module needs a test.
 ```
-Sign in with Codeium on first launch.
 
-# Use Devin Local (ex-Cascade)
+## Workflow (`.windsurf/workflows/release.md`)
 
-* Open a repo, open the Devin Local panel.
-* Ask: "Refactor X to use the new endpoint" → review multi-file diff → accept.
-* Save repetitive steps as a **Flow**.
+```markdown
+# Release
+1. Run the test suite and stop on failure.
+2. Bump the version in package.json.
+3. Update CHANGELOG.md from merged PR titles.
+```
 
-# Register MCP servers (verify path in docs.windsurf.com)
+Invoke with `/release`.
+
+## MCP (`mcp_config.json`)
 
 ```json
-{
-  "mcpServers": {
-    "graphify": { "url": "http://localhost:8000" },
-    "firecrawl": { "url": "http://localhost:3002" },
-    "searxng": { "url": "http://localhost:8080" }
-  }
-}
+{ "mcpServers": { "playwright": { "command": "npx", "args": ["@playwright/mcp@latest"] } } }
 ```
 
-# Verify
+## Related
 
-```bash
-windsurf --version
-# confirm Devin Local reachable + Codeium signed in
-```
-
-# Troubleshooting
-
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| Devin Local offline | not signed in | sign in with Codeium |
-| MCP tools missing | not registered | add servers in settings; reload |
-| Model errors | plan/quota | check Codeium tier |
+[Windsurf index](index.md) · [Features](features.md)

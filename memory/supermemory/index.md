@@ -1,43 +1,46 @@
 ---
-type: Reference
+type: Software
 title: Supermemory
-description: AI memory & knowledge companion (supermemory.ai) — saves browsing/snippets into a personal semantic memory with local-first data; app data present on this machine.
-resource: https://supermemory.ai
-tags: [supermemory, memory, knowledge, local-first, pglite]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Memory and context layer for AI — automatic fact extraction with contradiction handling and forgetting, user profiles, hybrid RAG + memory search, connectors (Drive, Gmail, Notion, GitHub), multi-modal extractors, plugins and MCP. Hosted API or a single local binary.
+resource: https://github.com/supermemoryai/supermemory
+tags: [supermemory, agent-memory, rag, mcp, user-profiles, typescript]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: supermemory
-    resource: "https://supermemory.ai"
-    title: "Supermemory"
-    author: "site:supermemory.ai"
   - id: supermemory-github
     resource: "https://github.com/supermemoryai/supermemory"
-    title: "Supermemory GitHub"
+    title: "supermemoryai/supermemory on GitHub"
     author: "site:github.com"
+  - id: supermemory-docs
+    resource: "https://supermemory.ai/docs"
+    title: "Supermemory documentation"
+    author: "site:supermemory.ai"
 ---
 
 # Supermemory
 
-An **AI memory / knowledge companion** (supermemory.ai) — captures web pages, snippets, and notes into a personal searchable memory, then answers questions from that memory. Its desktop app stores data locally (`pglite` Postgres + local ONNX embedding via Xenova, plus an encrypted env blob), which is exactly the layout found on this machine.
+**Supermemory** bundles memory, [RAG](../../concepts/rag.md), user profiles and data connectors behind one API, so an app or assistant gets "what this user cares about" plus relevant documents in a single call. It also ships memory plugins for coding agents and a hosted [MCP](../../concepts/mcp.md) server, and in 2026 added **Supermemory Local** — one binary that runs the engine on your machine.
 
-Local state: `programs/supermemory/.supermemory/` — **app data only, no source checkout** (verified 2026-08-12). Contains `api-key`, `auth-secret`, `instance-id`, `env.enc` (encrypted env), `models/Xenova` (local embeddings), `runtime/pglite` (embedded Postgres), `runtime/ort-web` + `ort-native` (ONNX runtimes), and a ~4.3 MB `data` blob. Timestamps 2026-07-19/20 → the app **was installed and run**, then not updated.
+| | |
+|---|---|
+| Category | [Agent memory](../../concepts/agent-memory.md) · [RAG](../../concepts/rag.md) |
+| License | MIT (engine, plugins, MCP server) |
+| SDKs | `supermemory` on npm (5.1.2) and PyPI (5.0.1) |
+| Latest server release | server-v0.0.9 (2026-10-12) |
+| Deployment | Hosted API · Supermemory Local (single binary, Ollama for offline) |
 
 ## Contents
 
-* [Overview](overview.md) — what Supermemory is, memory capture (browser, snippets), semantic Q&A
-* [Installation](installation.md) — desktop app install; what `.supermemory/` shows; no source checkout here
-* [Configuration](configuration.md) — api-key / auth-secret / env.enc, local embedding models, pglite storage
-* [AI Integration](ai-integration.md) — answering from memory, browser extension capture, vs local memory stack
-* [Alternatives](../alternatives.md) — Rewind, Rewind.ai, Mem0/MemOS, Recall, vs Supermemory
+* [Overview](overview.md) — memory, profiles, hybrid search, connectors, extractors
+* [Installation](installation.md) — hosted, local binary, SDKs
+* [Configuration](configuration.md) — container tags, connectors, local models
+* [Snippets](snippets.md) — add, profile, search, MCP config
+* [AI Integration](ai-integration.md) — plugins for Claude Code, Cursor, Codex, OpenCode, OpenClaw, Hermes
 
 ## Related
 
-* [MemOS](../memos/index.md), [Mem0](../mem0/index.md) — developer-facing memory platforms; Supermemory is an end-user app
-* [Obsidian](../../tools/obsidian/index.md) — personal knowledge base; Supermemory = AI-memory companion
-
-## Last verified
-
-**2026-08-13** — Only `.supermemory/` data dir present (app ran 2026-07-19/20); no repo. Docs ground on local data layout + upstream.
+* Concepts: [Agent memory](../../concepts/agent-memory.md) · [RAG](../../concepts/rag.md) · [Document parsing](../../concepts/document-parsing.md) · [MCP](../../concepts/mcp.md)
+* Peers: [Mem0](../mem0/index.md), [Zep](../zep/index.md), [Honcho](../honcho/index.md), [Hindsight](../hindsight/index.md), [MemOS](../memos/index.md); local-first RAG apps [SurfSense](../../browsers/surfsense/index.md), [AnythingLLM](../../apps/anythingllm/index.md)
+* Comparison: [Memory alternatives](../alternatives.md)

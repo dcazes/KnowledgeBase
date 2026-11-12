@@ -1,55 +1,31 @@
 ---
-type: CheatSheet
+type: Reference
 title: OpenConcho Snippets
-description: OpenConcho cheat sheet — npx run, docker compose, add instance, fleet view, chat probe (v0.16.0).
+description: OpenConcho command cheat sheet — dev servers, production builds, Docker make targets and Helm install.
 resource: https://github.com/offendingcommit/openconcho
 tags: [openconcho, snippets, cheat-sheet]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
   - id: openconcho-github
     resource: "https://github.com/offendingcommit/openconcho"
-    title: "OpenConcho GitHub"
+    title: "offendingcommit/openconcho on GitHub"
     author: "site:github.com"
 ---
 
 # OpenConcho — Snippets
 
-## Run
-
 ```bash
-npx openconcho                     # latest (0.16.1)
-cd programs/openconcho && npm run dev   # checkout (0.16.0)
-docker compose up -d               # from checkout
+pnpm install && pnpm dev                                  # web dev server :5173
+pnpm --filter @openconcho/desktop dev                     # desktop dev
+pnpm build                                                # web → packages/web/dist/
+pnpm --filter @openconcho/desktop build                   # desktop bundles
+make prod | make up | make down | make clean              # Docker web app on :8080
+helm install openconcho oci://ghcr.io/offendingcommit/charts/openconcho --set honcho.defaultUrl=...
 ```
 
-## Connect to Honcho
+## Related
 
-```text
-1. Open the UI
-2. Instances → Add → http://localhost:8000 (+ keys if set)
-3. Dashboard shows workspace count / queue status (10 s auto-refresh)
-```
-
-## Browse
-
-```text
-Fleet dashboard → all instances side-by-side
-Workspaces → pick a workspace → peers / sessions / memories
-Peers → representations, context, peer cards
-```
-
-## Chat
-
-```text
-Open chat → converse against the instance with full memory context
-```
-
-## Verify connectivity
-
-```bash
-curl -s http://localhost:8000/health      # Honcho itself (if deployed)
-# UI dashboard rendering counts = connection OK
-```
+[OpenConcho index](index.md) · [Installation](installation.md)

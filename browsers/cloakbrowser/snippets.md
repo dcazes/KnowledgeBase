@@ -1,67 +1,45 @@
 ---
-type: Playbook
-title: CloakBrowser — Snippets & Cheat Sheet
-description: Copy-paste commands to launch CloakBrowser, connect over CDP, and run the Docker manager.
-resource: https://github.com/cloakhq/cloakbrowser
-tags: [cloakbrowser, snippets, cheat-sheet, cdp, cli, docker]
-generated: { by: "human:daniel", at: "2026-07-09T01:15:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T01:15:00Z" } ]
+type: Reference
+title: CloakBrowser Snippets
+description: CloakBrowser code snippets — Python and JavaScript Playwright launch, Puppeteer import, and a protected-site configuration.
+resource: https://github.com/CloakHQ/CloakBrowser
+tags: [cloakbrowser, snippets, python, javascript, cheat-sheet]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: installation
-    resource: "installation.md"
-    title: "Installation"
-  - id: usage-cdp
-    resource: "usage.md"
-    title: "Usage (CDP)"
+  - id: cloakbrowser-github
+    resource: "https://github.com/CloakHQ/CloakBrowser"
+    title: "CloakHQ/CloakBrowser on GitHub"
+    author: "site:github.com"
 ---
 
-# CloakBrowser — Launch (CLI)
-
-```bash
-npx cloakbrowser --remote-debugging-port=9222 --headless=false
-```
-
-# Verify CDP
-
-```bash
-curl -s http://localhost:9222/json/version
-```
-
-# Drive via Playwright (Python)
+# CloakBrowser — Snippets
 
 ```python
-from playwright.sync_api import sync_playwright
-with sync_playwright() as p:
-    b = p.chromium.connect_over_cdp("http://localhost:9222")
-    pg = b.new_page(); pg.goto("https://example.com")
-    print(pg.title()); b.close()
+from cloakbrowser import launch
+browser = launch()
+page = browser.new_page()
+page.goto("https://example.com")
+print(page.title())
+browser.close()
 ```
-
-# Drive via Puppeteer (Node)
 
 ```javascript
-const p = require('puppeteer-core');
-const b = await p.connect({ browserURL: 'http://localhost:9222' });
-const pg = await b.newPage(); await pg.goto('https://example.com');
-console.log(await pg.title());
+import { launch } from "cloakbrowser";                 // Playwright API
+// import { launch } from "cloakbrowser/puppeteer";    // Puppeteer API
+const browser = await launch({ geoip: true, humanize: true });
+const page = await browser.newPage();
+await page.goto("https://example.com");
+await browser.close();
 ```
 
-# Docker manager
-
-```bash
-cd programs/cloakbrowser
-docker compose up -d cloakbrowser-manager     # :8080, volume cloak_profiles
-curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080/
-docker volume ls | grep cloak_profiles
+```python
+browser = launch(proxy="http://user:pass@residential-proxy:port",
+                 geoip=True, headless=False, humanize=True)
 ```
 
-# Troubleshooting
+## Related
 
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| :9222 refused | not launched | run the `npx` command |
-| `npx` not found | Node missing | install Node |
-| Docker :8080 down | not started | `docker compose up -d cloakbrowser-manager` |
-| Profiles lost | volume missing | check `cloak_profiles` |
+[CloakBrowser index](index.md) · [Usage](usage.md)

@@ -1,84 +1,45 @@
 ---
-type: Reference
-title: Dify — Architecture
-description: The Dify container set — api, api_websocket, worker, worker_beat, web, databases, redis, sandbox, plugin_daemon, ssrf_proxy, nginx, and selectable vector stores.
+type: Concept
+title: Dify Architecture
+description: Services in a self-hosted Dify stack — API and worker, web front end, nginx, PostgreSQL, Redis, a vector database (Weaviate by default), the plugin daemon, the code sandbox, SSRF proxy, and agent backend and runtime.
 resource: https://github.com/langgenius/dify/tree/main/docker
-tags: [dify, architecture, containers, celery, redis, vector-db, subservices]
-generated: { by: "human:daniel", at: "2026-07-09T00:52:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T00:52:00Z" } ]
+tags: [dify, architecture, docker, services]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: docker-docker-compose-yaml-local
-    resource: "/../../programs/archive/dify/docker/docker-compose.yaml"
-    title: "docker/docker-compose.yaml (local)"
-  - id: docker-compose-middleware-yaml-local
-    resource: "/../../programs/archive/dify/docker/docker-compose.middleware.yaml"
-    title: "docker-compose.middleware.yaml (local)"
-  - id: agents-md-async-via-celery-redis
-    resource: "/../../programs/archive/dify/AGENTS.md"
-    title: "AGENTS.md — async via Celery/Redis"
+  - id: dify-github
+    resource: "https://github.com/langgenius/dify"
+    title: "langgenius/dify on GitHub"
+    author: "site:github.com"
 ---
 
-# Dify — Service topology
-
-From `docker/docker-compose.yaml`, Dify runs as a set of cooperating containers:
+# Dify — Architecture
 
 ```
-browser / API client
-        │  :80 (nginx)
-        ▼
-   ┌─────────────────────────────────────────────┐
-   │  nginx  (reverse proxy → web + api)           │
-   └───────┬───────────────────────┬───────────────┘
-           │                       │
-           ▼                       ▼
-      web (Next.js)          api  +  api_websocket
-                               │
-                  ┌────────────┼─────────────────┐
-                  ▼            ▼                 ▼
-              worker       worker_beat      plugin_daemon
-                  │            │                 │
-                  ▼            ▼                 ▼
-               redis (Celery broker)      external tool/plugin calls
-                  │
-                  ▼
-        db_postgres / db_mysql  (metadata, datasets)
-                  │
-                  ▼
-        vector store (weaviate / qdrant / pgvector / chroma / milvus / …)
-   sandbox        ── isolated code execution
-   ssrf_proxy     ── protects outbound requests from SSRF
-   certbot        ── optional TLS
+browser ──▶ nginx ──▶ web (Next.js)
+                 └──▶ api (Flask) ──▶ PostgreSQL · Redis · vector DB · object storage
+                         │
+                     worker (Celery: indexing, async tasks)
+                         │
+     plugin daemon (models, tools, strategies) · sandbox (code node) · ssrf_proxy
+     agent backend + agent runtime (sandboxed autonomous agents)
 ```
-
-# Core services
 
 | Service | Role |
-|---------|------|
-| `api` | Flask backend — app logic, RAG, model calls |
-| `api_websocket` | WebSocket endpoint for streaming |
-| `worker` | Celery worker — async jobs (indexing, dataset ops) |
-| `worker_beat` | Celery beat — schedules periodic tasks |
-| `web` | Next.js frontend UI |
-| `nginx` | Reverse proxy, serves :80 |
-| `db_postgres` / `db_mysql` | relational metadata/datasets store |
-| `redis` | Celery broker + cache |
-| `sandbox` | isolated code execution (for code nodes/tools) |
-| `plugin_daemon` | serves tools/integrations/plugins |
-| `ssrf_proxy` | mitigates SSRF on outbound fetches |
-| `certbot` | optional Let's Encrypt TLS |
+|---|---|
+| api / worker | Core logic; Celery workers run indexing and long tasks |
+| web | Front end |
+| db (PostgreSQL), redis | State, cache, queues |
+| Vector store | Weaviate by default; Qdrant, pgvector, Milvus, OpenSearch, Elasticsearch, Chroma and more selectable via `VECTOR_STORE` |
+| plugin_daemon | Runs installed plugins in isolation |
+| sandbox | Executes code nodes safely |
+| ssrf_proxy | Outbound proxy preventing server-side request forgery from workflows |
+| agent backend/runtime | Sandboxes for autonomous agents (token-protected since 1.18) |
 
-# Vector stores (pick one)
+Upgrade the API, workers and agent images together; read each release's upgrade guide.
 
-The compose defines many; you enable the one you want and set `VECTOR_STORE`:
+## Related
 
-`weaviate` (default), `qdrant`, `pgvector`, `chroma`, `milvus-standalone`, `oceanbase`, `opensearch`, `couchbase-server`, `iris`, `oracle`, `vastbase`, `pgvecto-rs`, `seekdb`.
-
-# Middleware compose
-
-`docker-compose.middleware.yaml` isolates the backbone: `db_postgres`, `db_mysql`, `redis`, `sandbox`, `plugin_daemon`, `ssrf_proxy`, `weaviate`.
-
-# Why this matters
-
-Celery + Redis means heavy jobs (document indexing, batch embedding) run off the request path — the API stays responsive. The sandbox + ssrf_proxy are security boundaries for user-supplied code and outbound fetches.
+[Dify index](index.md) · [Installation](installation.md) · [Vector databases](../../concepts/vector-databases.md)

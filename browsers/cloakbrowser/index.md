@@ -1,50 +1,48 @@
 ---
-type: Reference
+type: Software
 title: CloakBrowser
-description: A Chromium-based Playwright/Puppeteer drop-in wrapper (Python + JS) for agent browser automation — not a standalone CDP server.
-resource: https://github.com/cloakhq/cloakbrowser
-tags: [cloakbrowser, browser, automation, chromium, playwright, puppeteer, stealth, anti-detection]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+description: Stealth Chromium build with fingerprint patches in the C++ source, shipped as a drop-in replacement for Playwright and Puppeteer in Python, JavaScript and .NET — human-like input, proxy and GeoIP matching, WebRTC IP spoofing. Binary requires a (free) licence key.
+resource: https://github.com/CloakHQ/CloakBrowser
+tags: [cloakbrowser, chromium, browser-automation, anti-detection, playwright, puppeteer]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
-  - id: local-launcher-programs-cloakbrowser-desktop
-    resource: "/../../programs/CloakBrowser.desktop"
-    title: "Local launcher - programs/CloakBrowser.desktop"
-  - id: cloakbrowser-manager-service-historical-former-combined-searxng-compose-now-defunct
-    resource: "/../../programs/searxng/docker-compose.yml"
-    title: "CloakBrowser manager service (historical — former combined SearXNG compose, now defunct)"
+  - id: cloakbrowser-github
+    resource: "https://github.com/CloakHQ/CloakBrowser"
+    title: "CloakHQ/CloakBrowser on GitHub"
+    author: "site:github.com"
+  - id: cloakbrowser-site
+    resource: "https://cloakbrowser.dev"
+    title: "CloakBrowser website"
+    author: "site:cloakbrowser.dev"
 ---
 
 # CloakBrowser
 
-A **stealth / automation browser tool** built on **Chromium** (not Brave). It is a **Playwright/Puppeteer drop-in wrapper (Python + JS)** — not a standalone CDP server on `:9222`. Two forms on this machine: a Node CLI (`npx cloakbrowser`) and a Docker "manager" service (`cloakhq/cloakbrowser-manager`, :8080). It's the Chromium-based counterpart to Camofox for agent browsing/automation.
+**CloakBrowser** is a real Chromium binary with fingerprint surfaces modified at the source level (87 patches as of v0.7.2), wrapped so existing Playwright or Puppeteer code switches to it by changing one import. It is the Chromium counterpart to [Camofox](../camofox/index.md)'s Firefox approach.
+
+| | |
+|---|---|
+| Category | [Browser automation](../../concepts/browser-automation.md) |
+| License | Wrappers: MIT · Chromium build: distributed by CloakHQ, launch requires a licence key (free tier by email; Pro tier) |
+| Packages | `cloakbrowser` on PyPI (0.7.2) and npm; `CloakBrowser` on NuGet |
+| Latest | v0.7.2 — Chromium 156.0.8078.47.1 (2026-11) |
+| Platforms | Linux x64/ARM64, Windows x64, macOS (Apple Silicon and Intel) |
 
 ## Contents
 
-* [Overview](overview.md) - what CloakBrowser is, Chromium base, Playwright/Puppeteer wrapper, how it differs from Camofox
-* [Installation](installation.md) - the desktop launcher / `npx` CLI, the Docker manager, ports
-* [Usage](usage.md) - driving via Playwright/Puppeteer, profiles, agent automation
-* [AI Integration](ai-integration.md) - agent browser backend, relation to Camofox & Firecrawl
-* [Alternatives](../alternatives.md) - Camofox, Playwright, Puppeteer, Undetected-Chromedriver
-* [Snippets](snippets.md) - copy-paste cheat sheet
+* [Overview](overview.md) — patches, humanize, proxies, licensing
+* [Installation](installation.md) — pip, npm, .NET, Docker test
+* [Usage](usage.md) — launch options and site-specific tips
+* [Snippets](snippets.md) — Python, JavaScript, Puppeteer
+* [AI Integration](ai-integration.md) — using it under browser agents and scrapers
 
-## Instance facts (from local launcher + compose)
+> Use anti-detection browsers only where you are allowed to automate: your own sites, sites whose terms permit it, or authorised testing. Bypassing access controls can breach terms of service or law.
 
-* **Version:** v0.5.7 (2026-08-11), Chromium 150. Free tier ships an older Chromium v146 build; the latest build requires a free GitHub-sign-in key (1 session) or paid Pro.
-* **CLI launcher:** `npx cloakbrowser --remote-debugging-port=9222 --headless=false`
-* **Docker service:** `cloakhq/cloakbrowser-manager:latest`, port `8080`, volume `cloak_profiles`
-* **Base:** Chromium (not Firefox — distinct from Camofox)
+## Related
 
-## Cross-references
-
-* **Camofox** — Firefox-based alternative with anti-detection — see [Camofox Overview](../camofox/overview.md)
-* **Firecrawl** — Firecrawl's playwright-service provides similar rendering — see [Firecrawl Subservices](../firecrawl/subservices/playwright-service.md)
-* **Hermes** — can use CloakBrowser via CDP — see [Hermes Browser](../../agents/hermes/browser.md)
-* **Graphify** — can ingest CloakBrowser-crawled pages — see [Graphify AI Integration](../../memory/graphify/ai-integration.md)
-* **SearXNG** — SearXNG compose includes cloakbrowser-manager — see [SearXNG Installation](../../runtime/searxng/installation.md)
-
-## Last verified
-
-**2026-08-12** — CLI command, Docker service, ports, and Chromium base verified against local launcher. v0.5.7 (Chromium 150); Playwright/Puppeteer drop-in wrapper (not a standalone CDP server).
+* Concepts: [Browser automation](../../concepts/browser-automation.md) · [Agent security](../../concepts/agent-security.md)
+* Peers: [Camofox](../camofox/index.md), [browser-use](../browser-use/index.md), [Crawl4AI](../crawl4ai/index.md), [Playwright MCP](../playwright-mcp/index.md)
+* Comparison: [Browser & web alternatives](../alternatives.md)

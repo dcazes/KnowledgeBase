@@ -1,48 +1,45 @@
 ---
-type: Software
-title: Camofox — Overview
-description: A local browser server built on Camoufox (anti-detection Firefox fork) that gives AI agents a headed, stealthy browser with a watchable UI and VNC.
-resource: https://github.com/daijro/camoufox
-tags: [camofox, camoufox, browser, anti-detection, automation, hermes]
-generated: { by: "human:daniel", at: "2026-07-09T01:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T01:00:00Z" } ]
+type: Concept
+title: Camofox Overview
+description: What Camofox provides on top of Camoufox — token-efficient accessibility snapshots, element refs, search macros, sessions, cookie import, uploads and downloads, proxy with GeoIP, VNC login, structured extraction, tracing and low idle memory.
+resource: https://github.com/jo-inc/camofox-browser
+tags: [camofox, overview, snapshots, element-refs]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: camoufox-github
-    resource: "https://github.com/daijro/camoufox"
-    title: "Camoufox GitHub"
+  - id: camofox-github
+    resource: "https://github.com/jo-inc/camofox-browser"
+    title: "jo-inc/camofox-browser on GitHub"
     author: "site:github.com"
-  - id: local-launcher
-    resource: "/../../programs/Camofox%20Launcher.desktop"
-    title: "Local launcher"
-  - id: local-launcher-programs-camofox-launcher-desktop
-    resource: "/../../programs/Camofox%20Launcher.desktop"
-    title: "Local launcher - programs/Camofox Launcher.desktop"
 ---
 
-# What Camofox is
+# Camofox — Overview
 
-Camofox is a **local browser server** that wraps [Camoufox](https://github.com/daijro/camoufox) — a Firefox fork modified for **anti-detection fingerprint spoofing**. Where a normal automated browser announces "I'm a bot" through consistent, forged-looking fingerprints, Camoufox randomizes/spoofs them to look like a real user's browser.
+## Two layers
 
-It is the browser layer for agents: instead of a headless scrape that gets CAPTCHAd, the agent drives a real (Firefox-based) browser that resists fingerprinting — and you can watch it through a live window or a VNC viewer.
+* **Camoufox** (by daijro) — a Firefox fork whose fingerprint surfaces are patched in C++ (see [Anti-detection](anti-detection.md)).
+* **camofox-browser** (by the Jo team) — a Node server that launches Camoufox through Playwright and exposes an agent-friendly REST API.
 
-# Why it exists here
+## Features
 
-* **Anti-bot resilience** — spoofs fingerprints so sites (incl. Google CAPTCHA flows) are less likely to block it.
-* **Watchable** — a headed browser you (and Hermes) can see; **VNC is opt-in** (`ENABLE_VNC=1`) and lets you do visual logins (e.g. OAuth screens Firecrawl can't solve).
-* **Local & private** — runs on your machine via Docker; no third-party browser farm.
+| Feature | Why it helps agents |
+|---|---|
+| Accessibility snapshots | ~90% smaller than HTML — fewer tokens per page |
+| Stable element refs | `click e12` instead of brittle CSS selectors |
+| Search macros | `@google_search`, `@youtube_search`, `@amazon_search`, `@reddit_subreddit` and more |
+| Session isolation | Separate cookies and storage per user or task |
+| Cookie / storage import | Reuse authenticated sessions (Netscape cookie files, storage state) |
+| VNC interactive login | Log in by hand via noVNC once, export state for the agent |
+| Proxy + GeoIP | Route through proxies with matching locale and timezone |
+| Structured extract | JSON Schema whose properties map to snapshot refs (`x-ref`) |
+| Uploads, downloads, screenshots, YouTube transcripts | Common agent chores without extra tools |
+| Session tracing | Opt-in Playwright traces for debugging |
+| Lazy launch, idle shutdown | ~40 MB idle — fits on a Raspberry Pi or small VPS |
 
-# How it relates to Camoufox vs Firefox
+Large pages are truncated with offset-based pagination. Note that it sends anonymised crash and hang telemetry by default; review the settings.
 
-```
-Firefox  ──(fork, anti-detection patches)──►  Camoufox  ──(server wrapper + API + VNC)──►  Camofox
-```
+## Related
 
-Camoufox is the engine (Firefox fork, anti-detection patches at the C++ level); Camofox is the packaged, agent-facing server (Docker image `camofox-browser`). Engine dev has moved to CloverLabsAI (daijro/camoufox is the master copy); the server wrapper is jo-inc/camofox-browser v1.6.0 (active community fork redf0x1 v2.4.6).
-
-# Where it fits in your stack
-
-* **Hermes** uses Camofox as its **headed/anti-bot browser backend** (see [AI Integration](ai-integration.md)).
-* Complements **Firecrawl** (which uses Playwright for rendering) — Camofox is the stealthy, human-watchable option for flows that need it.
-* Distinct from **CloakBrowser** (separate stealth browser server — see its own KB page).
+[Camofox index](index.md) · [Usage](usage.md) · [Browser automation](../../concepts/browser-automation.md)

@@ -1,54 +1,51 @@
 ---
-type: Concept
+type: Playbook
 title: Hindsight AI Integration
-description: Integrate Hindsight as agent memory — clients/SDKs, skills, integrations, learning-loop pattern, vs Graphiti/Mem0/MemOS for this stack.
-resource: https://hindsight.vectorize.io
-tags: [hindsight, integration, agents, sdk, skills]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Adding Hindsight to agents — the coding-agents installer for Claude Code, Codex, Cursor, OpenCode and others, 60+ framework and no-code integrations, MCP, and the LLM wrapper.
+resource: https://hindsight.vectorize.io/integrations
+tags: [hindsight, integration, coding-agents, mcp, n8n, dify]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
   - id: hindsight-docs
     resource: "https://hindsight.vectorize.io"
-    title: "Hindsight docs"
+    title: "Hindsight documentation"
     author: "site:hindsight.vectorize.io"
   - id: hindsight-github
     resource: "https://github.com/vectorize-io/hindsight"
-    title: "Hindsight GitHub"
+    title: "vectorize-io/hindsight on GitHub"
     author: "site:github.com"
 ---
 
 # Hindsight — AI Integration
 
-Hindsight is designed for agent-embedding: **memory passes** that make agents learn between tasks.
+## Coding agents
 
-## Client SDKs
-
-`hindsight-clients` provides language SDKs (JS/TS primary; Python parts in the repo):
-
-```js
-// pattern: submit experience, run a memory pass, recall learned knowledge
-const client = new HindsightClient({ baseUrl: "http://localhost:PORT" });
-await client.remember({ session: "...", events: [...] });
-const learned = await client.recall({ query: "what did we learn about X?" });
+```bash
+npx @vectorize-io/hindsight-coding-agents install all          # every detected agent
+npx @vectorize-io/hindsight-coding-agents install claude-code  # just one
 ```
 
-## Skills
+Builds a per-repository bank automatically from git history and past sessions, injects it as the agent starts, and maintains curated pages on architecture and conventions. Supported: [Claude Code](../../agents/claude-code/index.md), [Codex](../../agents/codex/index.md) CLI, Cursor CLI, GitHub Copilot CLI, [OpenCode](../../agents/opencode/index.md), Kilo, Cline, [Antigravity](../../agents/antigravity/index.md) CLI, Devin CLI and more.
 
-The repo ships `skills/` — ready-made agent skills that wrap Hindsight memory for Hermes/OpenCode-style agents (drop into the agent's skill directory).
+A documentation [skill](../../concepts/agent-skills.md) is also available: `npx skills add https://github.com/vectorize-io/hindsight --skill hindsight-docs`.
 
-## Integrations
+## Frameworks and apps (60+ integrations)
 
-`hindsight-integrations` covers supported agent frameworks; `hindsight-tools` exposes memory operations as agent tools (tool-calling pattern, MCP-compatible via standard tool protocols).
+* **Agent frameworks:** [LangGraph](../../agents/langgraph/index.md) / LangChain, LlamaIndex, [CrewAI](../../agents/crewai/index.md) and others.
+* **No-code:** [n8n](../../apps/n8n/index.md), Zapier, [Dify](../../agents/dify/index.md), Flowise.
+* **Apps:** ChatGPT, Perplexity, [Obsidian](../../tools/obsidian/index.md).
 
-## Learning loop
+## Choosing an integration style
 
-1. Run task; send the experience (events/conversation) to Hindsight.
-2. Hindsight runs a memory pass → learns facts/skills/preferences.
-3. Before the next task, `recall` to apply what was learned.
+| Style | Control | Effort |
+|---|---|---|
+| LLM wrapper | Automatic recall before and retain after every call | Two lines |
+| [MCP](../../concepts/mcp.md) | The agent decides when to call retain / recall / reflect | Config only |
+| SDK / REST | You decide exactly what to store and when | Most code |
 
-## In this stack
+## Related
 
-* Not deployed here (2026-08-13). Complements [Mem0](../mem0/index.md) (facts) and [Graphiti](../graphiti/index.md) (temporal provenance) — Hindsight's differentiator is the **learning pass** (behavior improvement) rather than storage/recall.
-* See the [memory comparison](../alternatives.md) for the full landscape.
+[Hindsight index](index.md) · [Agent memory](../../concepts/agent-memory.md) · [Memory alternatives](../alternatives.md)

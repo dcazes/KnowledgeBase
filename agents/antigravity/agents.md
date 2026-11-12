@@ -1,62 +1,38 @@
 ---
-type: Reference
-title: Antigravity 2.0 Agents
-description: Reference for Antigravity 2.0's agent orchestration model — parallel autonomous agents across independent projects, the Managed Agents API, the persistent isolated Linux sandbox, and the user-trust/verification model.
-resource: Antigravity 2.0
-tags: [google, antigravity, agents, orchestration, sandbox, managed-agents]
-generated: { by: "human:daniel", at: "2026-07-09T03:28:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:28:00Z" } ]
+type: Concept
+title: Antigravity Agents
+description: How Antigravity runs agents — parallel autonomous agents per project, Managed Agents in the Gemini API with persistent isolated Linux sandboxes, and the review/verification model.
+resource: https://antigravity.google/product/antigravity-2
+tags: [antigravity, agents, managed-agents, sandbox]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: antigravity-2-0-product-page
+  - id: antigravity-2
     resource: "https://antigravity.google/product/antigravity-2"
     title: "Antigravity 2.0 product page"
     author: "site:antigravity.google"
-  - id: google-i-o-2026-developer-highlights
+  - id: io-2026
     resource: "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/"
     title: "Google I/O 2026 developer highlights"
     author: "site:blog.google"
-  - id: antigravity-official-site
-    resource: "https://antigravity.google/"
-    title: "Antigravity — official site"
-    author: "site:antigravity.google"
 ---
 
-# Antigravity 2.0 Agents
+# Antigravity — Agents
 
-Antigravity 2.0 is built around **agents**, not files or editor panes. This page is the reference for how agents work in the platform.
+## Orchestration
 
-## Orchestration model
+Several agents run at once, each scoped to its own project so parallel work does not collide. You start, monitor and steer them from the desktop app — the [multi-agent orchestration](../../concepts/multi-agent-orchestration.md) pattern applied to software work.
 
-- **Multiple autonomous agents in parallel.** Antigravity is designed to run several autonomous agents at once, each working across *independent projects*. You orchestrate them from the platform rather than driving one task at a time.
-- **Independent projects.** Agents are scoped to separate projects, so parallel work does not collide in a single working tree.
-- **Autonomous execution.** Agents act on their own within their sandbox; the platform's job is to let you spin up, monitor, and coordinate them.
+## Managed Agents and sandboxes
 
-## Managed Agents (Gemini API)
+**Managed Agents** in the Gemini API provide agents with a **persistent, isolated Linux sandbox**: they run commands, install software and keep state across a session without touching your machine. Sandboxing is central to its trust model — compare [Codex](../codex/index.md)'s OS-level sandbox and [Claude Code](../claude-code/index.md)'s permission rules.
 
-- **Managed Agents** are part of the **Gemini API** surface. They are the server-side agent primitive that Antigravity orchestrates.
-- They run on Google's cloud Gemini models (default **Gemini 3.5 Flash**), so the user's local hardware (e.g. a GTX 1060) does not affect agent inference.
+## Verification
 
-## Persistent isolated Linux sandbox
-
-- Each agent works inside a **persistent, isolated Linux sandbox** provided by the Managed Agents API.
-- *Isolated*: agent activity is contained away from the user's host machine.
-- *Persistent*: state survives across the agent's session, enabling longer-running, multi-step work.
-- The sandbox is a core part of the **trust model** — agents execute in a controlled environment you can reason about, rather than arbitrarily on your local filesystem.
-
-## User-trust / verification model
-
-Because Antigravity targets professional developers *and* hobbyist vibe-coders, it emphasizes a model where you can **trust** the agents you run:
-
-- Agents run in sandboxes you can inspect rather than directly on your machine.
-- Orchestration keeps agent work separated per project.
-- Verification steps (see [installation.md](installation.md) and [snippets.md](snippets.md)) let you confirm an agent actually executed as expected.
-
-> Antigravity is a newer product. The exact sandbox boundaries, permissions, and verification UI should be re-checked against official docs before asserting precise runtime behavior.
+Because agents act autonomously, Antigravity emphasises reviewing artefacts — plans, diffs, test results, screenshots — before accepting work. Google's own warning lists autonomous code execution, data exfiltration, prompt injection and supply-chain risks; see [Agent security](../../concepts/agent-security.md).
 
 ## Related
 
-- [Overview](overview.md)
-- [AI Integration](ai-integration.md)
-- Cross-program: compare with the user's local-first agent stack — [OpenCode](/../../opencode/index.md), [Hermes](/../../hermes/index.md)
+[Antigravity index](index.md) · [Overview](overview.md)

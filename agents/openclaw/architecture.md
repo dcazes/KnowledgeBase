@@ -1,50 +1,43 @@
 ---
-type: Reference
-title: OpenClaw — Architecture
-description: OpenClaw's building blocks — gateway, workspace, channel plugins, skills, and connected coding agents.
-resource: https://docs.openclaw.ai/
-tags: [openclaw, architecture, gateway, channels, skills, agents, mcp]
-generated: { by: "human:daniel", at: "2026-07-09T03:12:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:12:00Z" } ]
+type: Concept
+title: OpenClaw Architecture
+description: OpenClaw's components — the Gateway control plane for sessions, tools, events and channels; the Control UI, CLI and TUI clients; channel adapters; and companion apps and device nodes for voice, Canvas, camera and screen.
+resource: https://docs.openclaw.ai/concepts/architecture
+tags: [openclaw, architecture, gateway, nodes]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: docs-architecture-what-is-openclaw
-    resource: "https://docs.openclaw.ai/"
-    title: "Docs — architecture/what is OpenClaw"
+  - id: openclaw-docs
+    resource: "https://docs.openclaw.ai"
+    title: "OpenClaw documentation"
     author: "site:docs.openclaw.ai"
-  - id: overview
-    resource: "overview.md"
-    title: "Overview"
 ---
 
-# OpenClaw — Building blocks
-
-* **Gateway** — the core server that runs OpenClaw and bridges everything.
-* **Workspace** — the assistant's working directory (state, config, skills).
-* **Channels** — plugins that connect chat platforms. Each channel carries messages in/out:
-  Discord, Google Chat, iMessage, Matrix, MS Teams, Signal, Slack, Telegram, WhatsApp, Zalo, and 30+ more.
-* **Skills** — reusable automation packages the community builds (the assistant's capabilities).
-* **Coding agents** — OpenClaw can hand tasks to connected AI coding agents.
-
-# Data flow
+# OpenClaw — Architecture
 
 ```
-chat app (Discord/Telegram/…)
-   │  channel plugin
-   ▼
-Gateway ── workspace + skills
-   │
-   ├─ LLM (Claude / GPT / local)
-   └─ coding agents (Hermes / OpenCode)
-          │
-          └─ your tools via MCP (Graphify, Firecrawl, SearXNG)
+WhatsApp / Telegram / Slack / Discord / iMessage / …
+                 │  channel adapters
+                 ▼
+            ┌──────────┐      Control UI · CLI · TUI
+            │ Gateway  │◀──── (clients)
+            └──────────┘
+   sessions · tools · events · skills · plugins · memory
+                 │
+     model providers / harnesses (Claude, Codex, local)
+                 │
+     companion apps & nodes (voice, Canvas, camera, screen)
 ```
 
-# Why a gateway model
+* **Gateway** — the local control plane, run as a daemon. Everything connects to it.
+* **Clients** — the browser Control UI (`openclaw dashboard`), CLI and terminal UI.
+* **Channels** — adapters that bring the assistant to messaging services.
+* **Nodes and companion apps** — add device-local actions on supported platforms.
 
-A single assistant fronts many chat surfaces; you configure channels + skills once, and every connected app gets the same capabilities. This is the "command center for agents" pattern.
+Keep the Gateway bound to localhost or a private network such as [Tailscale](../../runtime/tailscale/index.md); the docs include an exposure runbook.
 
-# MCP
+## Related
 
-OpenClaw supports **local MCP mode** (notably in the Windows Hub) so it can expose/consume MCP tools — letting it call your stack's services (Firecrawl, Graphify, SearXNG) as tools.
+[OpenClaw index](index.md) · [Overview](overview.md)

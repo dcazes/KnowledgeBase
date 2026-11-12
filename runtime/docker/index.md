@@ -1,62 +1,53 @@
 ---
-type: Reference
+type: Software
 title: Docker
-description: Containerization platform — the runtime foundation for most other programs in this knowledge base.
+description: Container platform — Docker Engine, Compose and Desktop — that packages applications with their dependencies; the default way to self-host the AI tools in this vault, now with built-in local model serving (Model Runner), an MCP gateway and catalog, and Docker Agent.
 resource: https://www.docker.com
-tags: [docker, containers, runtime]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+tags: [docker, containers, compose, self-hosting, model-runner, mcp, runtime]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
-  - id: docker-documentation
-    resource: "https://docs.docker.com/"
+  - id: docker-docs
+    resource: "https://docs.docker.com"
     title: "Docker documentation"
     author: "site:docs.docker.com"
-  - id: docker-desktop-for-linux
-    resource: "https://docs.docker.com/desktop/setup/install/linux/"
-    title: "Docker Desktop for Linux"
-    author: "site:docs.docker.com"
-  - id: local-install-notes-programs-docker
-    resource: "/../../programs/docker/"
-    title: "Local install notes - programs/docker/"
+  - id: moby-github
+    resource: "https://github.com/moby/moby"
+    title: "moby/moby (Docker Engine)"
+    author: "site:github.com"
+  - id: compose-github
+    resource: "https://github.com/docker/compose"
+    title: "docker/compose on GitHub"
+    author: "site:github.com"
 ---
 
 # Docker
 
-Containerization platform — the runtime foundation for most other programs in this knowledge base (SearXNG, Frigate, Firecrawl, AnythingLLM, Dify all run as containers).
+**Docker** runs software in containers: isolated processes built from layered images that bundle an application with everything it needs. Almost every self-hostable tool in this vault ships a `docker run` line or a `docker-compose.yml`, which makes Docker the foundation of [self-hosting](../../concepts/self-hosting.md) an AI stack. Since 2025 Docker has also added AI-specific features: **Model Runner** for local LLMs, an **MCP Toolkit / Gateway** for tool servers, and **Docker Agent** for YAML-defined agents.
+
+| | |
+|---|---|
+| Category | Runtime · [Self-hosting](../../concepts/self-hosting.md) |
+| License | Engine (Moby) and Compose: Apache-2.0; Docker Desktop: commercial licence for larger companies |
+| Latest | Engine 29.9.3 (2026-11-03) · Compose v5.7.1 (2026-11-11) · Model Runner v1.2.9 |
+| Platforms | Linux (Engine), macOS / Windows / Linux (Desktop) |
 
 ## Contents
 
-* [Overview](overview.md) - what Docker is, architecture (client / daemon / containerd / runc), OCI, when to use it
-* [Installation & Setup](installation.md) - install on Linux (your Docker Desktop `.deb`), `systemctl --user`, post-install group/socket, verification
-* [Images & Containers](images-containers.md) - the core build/pull/run/exec lifecycle, Dockerfile essentials, layer caching
-* [Compose](compose.md) - `docker-compose.yml` anatomy, common services, `up`/`down`/`ps`/`logs`, real examples from this machine
-* [Volumes & Networks](volumes-networks.md) - named volumes vs bind mounts, bridge/host/overlay networks, port publishing
-* [Registry & Images](registry.md) - Docker Hub, private registries, tagging, push/pull, pruning
-* [GPU & AI in Containers](gpu-ai.md) - NVIDIA runtime, device reservation, running Frigate / LLM inference on the GTX 1060
-* [Snippets](snippets.md) - copy-paste cheat sheet covering the majority of daily use cases
+* [Overview](overview.md) — architecture and key concepts
+* [Installation](installation.md) — Engine vs Desktop, post-install
+* [Images & containers](images-containers.md) — lifecycle, Dockerfiles, caching, multi-stage builds
+* [Compose](compose.md) — multi-container apps, profiles, `models`, health checks
+* [Volumes & networks](volumes-networks.md) — persistence, service discovery, ports
+* [Registries](registry.md) — tagging, pushing, pruning, OCI artifacts
+* [GPU & AI](gpu-ai.md) — NVIDIA GPUs, Model Runner, MCP Gateway, Docker Agent
+* [Snippets](snippets.md) — command cheat sheet
 
-## Quick start
+## Related
 
-```bash
-# Your machine starts Docker Desktop as a user service (see programs/docker/run)
-systemctl --user start docker-desktop
-
-# Verify
-docker version
-docker run hello-world
-```
-
-## Cross-references
-
-* **SearXNG** — runs in Docker on the `backend` network — see [SearXNG Installation](../searxng/installation.md)
-* **Frigate** — GPU-accelerated container with NVIDIA device reservation — see [Docker GPU & AI](gpu-ai.md) & [Frigate Installation](../../tools/frigate/installation.md)
-* **Firecrawl** — 6-service Docker stack + SearXNG — see [Firecrawl Self-Hosting](../../browsers/firecrawl/self-hosting.md)
-* **Dify** — full-stack Docker deployment — see [Dify Installation](../../agents/dify/installation.md)
-* **AnythingLLM** — containerized deployment — see [AnythingLLM Installation](../../apps/anythingllm/installation.md)
-* **OpenWebUI** — Docker-based — see [OpenWebUI Installation](../../apps/openwebui/installation.md)
-
-## Last verified
-
-**2026-08-12** — All configs, compose examples, and GPU settings verified against local `programs/docker/` and running containers. Engine 29.7.2, Compose v5.4.0.
+* Concepts: [Self-hosting](../../concepts/self-hosting.md) · [Local inference](../../concepts/local-inference.md) · [MCP](../../concepts/mcp.md)
+* Runs: [Ollama](../ollama/index.md), [vLLM](../vllm/index.md), [SearXNG](../searxng/index.md), [Open WebUI](../../apps/openwebui/index.md), [Dify](../../agents/dify/index.md), [Firecrawl](../../browsers/firecrawl/index.md), [Qdrant](../../databases/qdrant/index.md), [Neo4j](../../databases/neo4j/index.md), [Langfuse](../../observability/langfuse/index.md), [n8n](../../apps/n8n/index.md), [Frigate](../../tools/frigate/index.md)
+* Networking: [Tailscale](../tailscale/index.md)
+* Comparison: [Runtime alternatives](../alternatives.md)

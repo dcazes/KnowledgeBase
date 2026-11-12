@@ -1,73 +1,58 @@
 ---
 type: Playbook
-title: MemOS — Installation & Deployment
-description: Run MemOS via pip install MemoryOS (uvicorn :8000) or Docker (API + Neo4j + Qdrant); verify with /health.
-resource: https://memos-docs.openmem.net/home/overview/
-tags: [memos, install, deploy, uvicorn, docker, memory]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+title: MemOS Installation
+description: Four ways to run MemOS — the hosted Cloud API, self-hosted with Docker Compose (API, Neo4j, Qdrant), uvicorn without Docker, or the cloud and local agent plugins.
+resource: https://memos-docs.openmem.net
+tags: [memos, installation, docker, neo4j, qdrant]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
-  - id: memos-repo
+  - id: memos-github
     resource: "https://github.com/MemTensor/MemOS"
-    title: "MemOS repo"
+    title: "MemTensor/MemOS on GitHub"
     author: "site:github.com"
-  - id: pypi-memoryos
-    resource: "https://pypi.org/project/MemoryOS/"
-    title: "PyPI — MemoryOS"
-    author: "site:pypi.org"
+  - id: memos-docs
+    resource: "https://memos-docs.openmem.net"
+    title: "MemOS documentation"
+    author: "site:memos-docs.openmem.net"
 ---
 
-# MemOS — Deployment model
+# MemOS — Installation
 
-MemOS runs two ways on this machine (as of 2026-08-12 there is **no local checkout** at `programs/memos` — install from PyPI `MemoryOS`, import name `memos`):
+| | Cloud API | Self-host | Cloud plugin | Local plugin |
+|---|---|---|---|---|
+| Best for | Apps, fully managed | Teams on own infra | OpenClaw, zero ops | Hermes, OpenClaw, DeepSeek Harness on-device |
+| Infra | None | Neo4j + Qdrant | None | None (SQLite) |
+| Data lives | MemOS Cloud | Your servers | MemOS Cloud | Your machine |
 
-1. **Python / uvicorn (primary)** — `pip install MemoryOS` then `uvicorn memos.api.server_api:app` on port **8000**. Not containerized. (The repo's own `make serve` = `poetry run uvicorn memos.api.server_api:app`, same entrypoint.)
-2. **Docker** — the repo's `docker/docker-compose.yml` brings up `memos-api` + **Neo4j** (graph) + **Qdrant** (vector), all on `memos_network`, API published `8000:8000`.
+## Cloud API
 
-> **Status:** **not installed / not running** — no `programs/memos` checkout (verified 2026-08-12). These are the run instructions, not a live-state report.
+Sign up on the MemOS dashboard and create an API key (prefix `mpg-`); keep it server-side.
 
-# Option A — uvicorn (pip)
+## Self-host with Docker
 
 ```bash
-pip install MemoryOS            # distribution name; import name is memos
+git clone https://github.com/MemTensor/MemOS.git && cd MemOS
+cp docker/.env.example .env          # fill in model keys
+cd docker && docker compose up       # MemOS API + Neo4j + Qdrant, API on :8000
+```
+
+## Without Docker
+
+Run [Neo4j](../../databases/neo4j/index.md) and [Qdrant](../../databases/qdrant/index.md) yourself, then:
+
+```bash
+cd MemOS/src
 uvicorn memos.api.server_api:app --host 0.0.0.0 --port 8000 --workers 1
-# (or, with a repo clone present: make install && make serve)
 ```
 
-Stop: Ctrl-C / kill the uvicorn process. Status: `docker ps` is **n/a** (not a container).
+## Plugins
 
-# Option B — Docker
+* **OpenClaw cloud plugin:** `openclaw plugins install` the MemOS cloud plugin.
+* **Local plugin:** `npm install` the local plugin and follow the agent-specific setup for Hermes, OpenClaw or DeepSeek Harness.
 
-```bash
-# requires a clone of the MemOS repo (not present locally as of 2026-08-12):
-git clone https://github.com/MemTensor/MemOS.git programs/memos
-cd programs/memos
-docker compose -f docker/docker-compose.yml up -d     # memos-api + neo4j + qdrant
-docker compose -f docker/docker-compose.yml ps
-docker compose -f docker/docker-compose.yml down
-```
-* Neo4j: `7474` (HTTP) / `7687` (Bolt), auth `neo4j/12345678` (compose default).
-* Qdrant: `6333` (REST) / `6334` (gRPC).
+## Related
 
-# Verify it is up
-
-```bash
-curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8000/health
-```
-
-# First-run / config
-
-* Backends (vector DB, graph DB, LLM, embedder) are selected via config — see `docker/.env.example` and `docker/.env` for the env shape.
-* For the uvicorn path, ensure a vector DB + LLM/embedder are reachable (Ollama works locally for embeddings).
-* Export the OpenAPI contract after API changes: `make openapi` (writes `docs/openapi.json`).
-
-# Troubleshooting
-
-| Symptom | Likely cause | Fix |
-|---------|--------------|-----|
-| Import error on `make serve` | deps not installed | `make install` (with extras) |
-| API 500 / can't connect to DB | Neo4j/Qdrant down or creds wrong | start the Docker stack or fix `QDRANT_*`/`NEO4J_*` env |
-| `/health` unreachable | wrong port / not started | confirm `:8000`; `make serve` logs |
-| Slow ingest | concurrency | raise scheduler concurrency in config |
+[MemOS index](index.md) · [Configuration](configuration.md) · [Docker](../../runtime/docker/index.md)

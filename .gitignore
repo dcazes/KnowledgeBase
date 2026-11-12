@@ -1,23 +1,19 @@
-# KBv2 gitignore
-# Ignore secrets files
+# Local-only files (never commit)
 **/secrets.md
-
-# Ignore tracker files
 **/README_TOCONTINUE.md
 
-# Ignore Obsidian client-local state
-.obsidian/
+# Obsidian: keep only the shared graph settings; everything else is per-user
+.obsidian/*
+!.obsidian/graph.json
 
-# Ignore IDE files
+# Agent working state
+.slim/
+
+# Editors / OS
 .idea/
 .vscode/
 *.swp
 *.swo
 *~
-
-# OS files
 .DS_Store
 Thumbs.db
-
-# Deepwork state
-.slim/deepwork/

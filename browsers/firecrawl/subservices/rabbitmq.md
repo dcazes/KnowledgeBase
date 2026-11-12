@@ -1,41 +1,24 @@
 ---
 type: Reference
-title: Firecrawl Subservice — RabbitMQ
-description: The rabbitmq container — AMQP message broker that carries Firecrawl's job queue (NUQ_RABBITMQ_URL).
+title: Firecrawl RabbitMQ
+description: RabbitMQ in a self-hosted Firecrawl stack — message broker for job events between components.
 resource: https://github.com/firecrawl/firecrawl
-tags: [firecrawl, rabbitmq, subservice, amqp, queue]
-generated: { by: "human:daniel", at: "2026-07-09T00:35:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T00:35:00Z" } ]
+tags: [firecrawl, rabbitmq, subservice]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: local-compose-rabbitmq-service
-    resource: "/../../programs/firecrawl/firecrawl/docker-compose.yaml"
-    title: "Local compose (rabbitmq service)"
+  - id: firecrawl-selfhost
+    resource: "https://github.com/firecrawl/firecrawl/blob/main/SELF_HOST.md"
+    title: "Self-hosting Firecrawl"
+    author: "site:github.com"
 ---
 
-# Firecrawl — Role
+# Firecrawl — RabbitMQ
 
-RabbitMQ is the **job queue** transport. The api publishes scrape/crawl/extract jobs; worker processes consume them. Wired via `NUQ_RABBITMQ_URL=amqp://rabbitmq:5672`.
+RabbitMQ carries messages between Firecrawl components (job events and notifications) so the API and workers stay decoupled. It needs no tuning for small deployments; monitor queue depth if jobs back up. Keep its management UI private.
 
-# Image & runtime
+## Related
 
-* `rabbitmq:3-management` (includes the management UI on port 15672).
-* Healthcheck: `rabbitmq-diagnostics -q check_running`.
-* The `api` service `depends_on: rabbitmq: condition: service_healthy` — so the api waits for RabbitMQ to be ready.
-
-# Ports (internal / published)
-
-From your running stack: `4369`, `5671-5672`, `15671-15672`, `25672` (AMQP 5672 is what the api uses; 15672 is the management UI).
-
-# Notes
-
-* Critically gating: if RabbitMQ isn't healthy, the api won't start.
-* Management UI is handy for inspecting queues (`http://localhost:15672`, guest/guest by default — change for any exposed deploy).
-
-# Troubleshooting
-
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| API won't start | RabbitMQ unhealthy | `docker compose logs rabbitmq`; ensure it passes healthcheck |
-| Jobs stuck | queue full / worker dead | inspect management UI; restart workers |
+[Subservices](index.md) · [NuQ PostgreSQL](nuq-postgres.md)

@@ -1,45 +1,42 @@
 ---
-type: HowTo
+type: Reference
 title: Supermemory Configuration
-description: Configure Supermemory — local credentials (api-key/auth-secret/instance-id), encrypted env, local embedding model, pglite persistence.
-resource: https://supermemory.ai
-tags: [supermemory, configuration, local-first]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Organising Supermemory data with container tags, enabling connectors, choosing models for Supermemory Local, and data-handling considerations.
+resource: https://supermemory.ai/docs
+tags: [supermemory, configuration, connectors, privacy]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: supermemory
-    resource: "https://supermemory.ai"
-    title: "Supermemory"
+  - id: supermemory-docs
+    resource: "https://supermemory.ai/docs"
+    title: "Supermemory documentation"
     author: "site:supermemory.ai"
   - id: supermemory-github
     resource: "https://github.com/supermemoryai/supermemory"
-    title: "Supermemory GitHub"
+    title: "supermemoryai/supermemory on GitHub"
     author: "site:github.com"
 ---
 
 # Supermemory — Configuration
 
-Supermemory is **local-first by design** — configuration lives under `.supermemory/` and is largely opaque (encrypted/env-managed). What the layout tells us:
+## Container tags
 
-## Credentials
+Every write and query takes a `containerTag` (TS) / `container_tag` (Python). Use one per user for personalisation, or per project or client to keep contexts apart. Plugins call these **projects** so you can separate work and personal memory.
 
-* `api-key` + `auth-secret` — local authentication material (mode 0600); generated at first launch.
-* `instance-id` — unique per-install identifier (36 chars).
-* `env.enc` — encrypted environment (210 bytes); contains API/service config the app needs (e.g. any cloud sync keys), encrypted at rest.
+## Connectors
 
-## Local inference
+Connect Google Drive, Gmail, Notion, OneDrive or GitHub in the console; documents sync via webhooks and become searchable alongside memories.
 
-* `models/Xenova/` — local embedding model via **transformers.js (Xenova)**; embeddings are computed locally (no cloud embedding round-trip).
-* `runtime/ort-web` + `ort-native` — **ONNX Runtime** variants: native binary for local execution, web build for embedded/in-browser fallback. These power the local model inference.
+## Models (Local)
 
-## Persistence
+Supermemory Local accepts any model provider key, or an Ollama endpoint for offline operation. Pick an embedding model that suits your languages and content — see [Embeddings](../../concepts/embeddings.md).
 
-* `runtime/pglite/` — **PGlite**: Postgres compiled to WASM, run in-process; the app's relational store (pages, snippets, vectors, metadata) lives here.
-* `data` — the memory store payload (~4.3 MB).
+## Data handling
 
-## Behavior notes
+Connectors and plugins capture a lot of personal context. Decide per container what should be stored, and prefer Local for sensitive data. See [Agent security](../../concepts/agent-security.md).
 
-* Because env is encrypted and credentials are app-generated, there is **no hand-editable config file** — settings are managed in-app.
-* `retry-params/` indicates the app persists failed-sync/queue state across restarts.
+## Related
+
+[Supermemory index](index.md) · [Installation](installation.md)

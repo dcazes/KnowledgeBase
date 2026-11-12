@@ -1,73 +1,35 @@
 ---
 type: Reference
-title: Dify — API (Backend-as-a-Service)
-description: Dify's HTTP API for apps, conversations, completions, knowledge bases, and datasets — with key auth and example calls.
-resource: https://docs.dify.ai/api-reference
-tags: [dify, api, bas, rest, integration, authentication]
-generated: { by: "human:daniel", at: "2026-07-09T00:56:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T00:56:00Z" } ]
+title: Dify API
+description: Dify's backend-as-a-service APIs — per-app keys, chat-messages, completion-messages and workflows/run endpoints with blocking or streaming responses, file uploads, conversations, and the knowledge (datasets) API.
+resource: https://docs.dify.ai
+tags: [dify, api, rest, sse]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: api-reference-docs
-    resource: "https://docs.dify.ai/api-reference"
-    title: "API reference (docs)"
+  - id: dify-docs
+    resource: "https://docs.dify.ai"
+    title: "Dify documentation"
     author: "site:docs.dify.ai"
-  - id: architecture-api-service
-    resource: "architecture.md"
-    title: "Architecture — api service"
 ---
 
-# Dify — Overview
+# Dify — API
 
-Every Dify capability is exposed as an API ("Backend-as-a-Service"), so you can embed apps into your own logic. The API base is the `api` service (behind nginx on :80), typically `http://localhost/v1`.
+Every app has its own API key (*App → API Access*). Base URL: `http://<host>/v1` (self-hosted) or `https://api.dify.ai/v1`.
 
-# Authentication
+| Endpoint | App type |
+|---|---|
+| `POST /chat-messages` | Chatbot, agent, chatflow — `conversation_id` keeps context |
+| `POST /completion-messages` | Text generator |
+| `POST /workflows/run` | Workflow |
+| `POST /files/upload` | Attach files to requests |
+| `GET /conversations`, `GET /messages` | History |
+| `/datasets/...` | Knowledge API — create datasets, upload documents, retrieve (dataset-scoped keys available) |
 
-Each app has an **API key** generated in the UI (App → API Access). Send it as:
-```
-Authorization: Bearer <APP_API_KEY>
-```
+`response_mode`: `blocking` or `streaming` (server-sent events). An OpenAPI description and the `difyctl` CLI (1.18+) cover app management.
 
-# Common endpoints (v1)
+## Related
 
-| Endpoint | Purpose |
-|----------|---------|
-| `POST /v1/chat-messages` | send a chat message to a Chat app |
-| `POST /v1/completion-messages` | send to a Completion app |
-| `POST /v1/workflows/run` | run a published Workflow |
-| `GET /v1/messages` | fetch conversation history |
-| `POST /v1/audio-to-text` | transcription |
-| `POST /v1/text-to-audio` | TTS |
-| Knowledge Base: `POST /v1/datasets` (create), `POST /v1/datasets/<id>/documents` (upload), `POST /v1/datasets/<id>/documents/<doc>/segments` (index) | RAG ingestion |
-
-# Example: chat message
-
-```bash
-curl -X POST http://localhost/v1/chat-messages \
-  -H 'Authorization: Bearer <APP_API_KEY>' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "inputs": {},
-    "query": "What is RAG?",
-    "user": "local-user",
-    "response_mode": "blocking"
-  }'
-```
-
-`response_mode` can be `blocking` (full reply) or `streaming` (SSE).
-
-# Example: run a workflow
-
-```bash
-curl -X POST http://localhost/v1/workflows/run \
-  -H 'Authorization: Bearer <APP_API_KEY>' \
-  -H 'Content-Type: application/json' \
-  -d '{"inputs":{"topic":"knowledge graphs"},"response_mode":"streaming"}'
-```
-
-# Notes
-
-* The console (UI) and the API share the same backend.
-* API keys are per-app; rotate in the UI.
-* For server-to-server, point at `http://localhost/v1` (or the api container internally).
+[Dify index](index.md) · [Snippets](snippets.md)

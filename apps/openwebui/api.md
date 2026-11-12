@@ -1,72 +1,34 @@
 ---
 type: Reference
-title: OpenWebUI — API
-description: OpenWebUI's OpenAI-compatible API plus admin endpoints, with examples against the :3001 service.
-resource: https://docs.openwebui.com/openapi/
-tags: [openwebui, api, openai-compatible, chat, admin, integration]
-generated: { by: "human:daniel", at: "2026-07-09T02:05:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T02:05:00Z" } ]
+title: Open WebUI API
+description: Using Open WebUI programmatically — per-user API keys, the OpenAI-compatible chat completions endpoint across all connected models, file upload and knowledge endpoints, and the Ollama passthrough.
+resource: https://docs.openwebui.com/getting-started/api-endpoints
+tags: [open-webui, api, openai-compatible]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: openwebui-openapi-docs
-    resource: "https://docs.openwebui.com/openapi/"
-    title: "OpenWebUI OpenAPI/docs"
+  - id: openwebui-docs
+    resource: "https://docs.openwebui.com"
+    title: "Open WebUI documentation"
     author: "site:docs.openwebui.com"
-  - id: configuration-model-connection
-    resource: "configuration.md"
-    title: "Configuration (model connection)"
 ---
 
-# OpenWebUI — OpenAI-compatible API
+# Open WebUI — API
 
-OpenWebUI exposes an **OpenAI-compatible** REST API (under `/api` and `/ollama` for Ollama-style calls), so existing OpenAI SDKs work by pointing the base URL at it.
+Create an API key under *Settings → Account* (admins can restrict this).
 
-Base URL: `http://localhost:3001` (or `http://localhost:8088` in host-network mode).
+| Endpoint | Purpose |
+|---|---|
+| `GET /api/models` | List all models from every connection |
+| `POST /api/chat/completions` | OpenAI-compatible chat across any connected model, with optional `files` / knowledge collections for RAG |
+| `POST /api/v1/files/` | Upload a file |
+| `POST /api/v1/knowledge/{id}/file/add` | Add a file to a knowledge base |
+| `/ollama/...` | Proxied Ollama API |
 
-# Authentication
+This makes Open WebUI a lightweight gateway with users and RAG in front of your models — though [LiteLLM](../../runtime/litellm/index.md) is the better fit for pure API routing.
 
-Generate a key in **Admin Settings → Tokens / API Keys**, then:
-```
-Authorization: Bearer <OPENWEBUI_TOKEN>
-```
+## Related
 
-# Chat completion (OpenAI-compatible)
-
-```bash
-curl -X POST http://localhost:3001/v1/chat/completions \
-  -H 'Authorization: Bearer <TOKEN>' -H 'Content-Type: application/json' \
-  -d '{
-    "model": "<model-id>",
-    "messages": [{"role":"user","content":"Hello"}],
-    "stream": false
-  }'
-```
-
-# Ollama-style endpoint
-
-For Ollama-compatible clients:
-```
-POST /ollama/api/chat
-POST /ollama/api/generate
-```
-(Not used here since no Ollama is configured, but the routes exist.)
-
-# Admin / management
-
-OpenWebUI also has its own admin API (users, models, documents) under `/api/v1/...` — documented in the OpenAPI spec at `/docs` (FastAPI Swagger UI) when running.
-
-```bash
-curl -s http://localhost:3001/docs       # Swagger UI
-curl -s http://localhost:3001/openapi.json | head
-```
-
-# SDK usage
-
-```python
-from openai import OpenAI
-c = OpenAI(base_url="http://localhost:3001/v1", api_key="<TOKEN>")
-r = c.chat.completions.create(model="<model-id>",
-    messages=[{"role":"user","content":"Hi"}])
-print(r.choices[0].message.content)
-```
+[Open WebUI index](index.md) · [Snippets](snippets.md)

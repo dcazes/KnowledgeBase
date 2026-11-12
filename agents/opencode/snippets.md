@@ -1,121 +1,40 @@
 ---
-type: Playbook
+type: Reference
 title: OpenCode Snippets
-description: Copy-paste playbook for OpenCode — install, init, @ syntax, .opencode.json examples, MCP config, SearXNG tool, and a cheat sheet.
-resource: https://opencode.ai/docs
-tags: [opencode, snippets, cheat-sheet, config, mcp, examples]
-generated: { by: "human:daniel", at: "2026-07-09T03:25:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:25:00Z" } ]
+description: OpenCode cheat sheet — launching, non-interactive runs, headless server, model listing, and in-session commands and shortcuts.
+resource: https://opencode.ai/docs/cli
+tags: [opencode, snippets, cli, cheat-sheet]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: opencode-documentation
+  - id: opencode-docs
     resource: "https://opencode.ai/docs"
-    title: "OpenCode Documentation"
+    title: "OpenCode documentation"
     author: "site:opencode.ai"
-  - id: opencode-github-repository-anomalyco
-    resource: "https://github.com/anomalyco/opencode"
-    title: "OpenCode GitHub repository (anomalyco)"
-    author: "site:github.com"
 ---
 
-# OpenCode Snippets
-
-A copy-paste playbook for common OpenCode operations on this instance (v1.17.18 at `~/.opencode/bin/opencode`).
-
-## Install
+# OpenCode — Snippets
 
 ```bash
-curl -fsSL https://opencode.ai/install | sh
-# or
-npm install -g opencode-ai
-export PATH="$HOME/.opencode/bin:$PATH"
+opencode                                   # TUI in the current directory
+opencode run "add input validation to the signup handler"   # non-interactive
+opencode serve --port 4096                 # headless server for the SDK / remote clients
+opencode models                            # list available models
+opencode upgrade
 ```
 
-## Initialize a project
+| In session | Effect |
+|---|---|
+| `Tab` | Switch build ↔ plan |
+| `@general …`, `@<agent>` | Call a subagent |
+| `/init` | Create or update AGENTS.md |
+| `/connect`, `/models` | Add provider, switch model |
+| `/undo`, `/redo` | Revert or reapply changes |
+| `/compact` | Summarise long sessions |
+| `/share` | Share a session link |
 
-```bash
-cd /path/to/project
-opencode /init
-```
+## Related
 
-## Verify
-
-```bash
-opencode --version      # expect 1.17.18
-which opencode          # ~/.opencode/bin/opencode
-```
-
-## `@` context-file syntax
-
-```bash
-opencode "@AGENTS.md what are the build steps?"
-opencode "@USER.md @TOOLS.md how do I test this?"
-opencode "@kb/graphify/graph.json find orphaned nodes"
-```
-
-## `.opencode.json` — minimal
-
-```json
-{
-  "model": "anthropic/claude-sonnet-4",
-  "allow": ["file_read", "file_write", "terminal", "network"],
-  "deny": ["file_delete_recursive", "terminal:sudo"]
-}
-```
-
-## `.opencode.json` — MCP + custom tool
-
-```json
-{
-  "model": "anthropic/claude-sonnet-4",
-  "mcpServers": {
-    "graphify": { "url": "http://127.0.0.1:8000" },
-    "searxng": { "url": "http://127.0.0.1:8080/search" }
-  },
-  "tools": {
-    "web-search": {
-      "command": "curl -s 'http://localhost:8080/search?q=$QUERY&format=json'",
-      "description": "Search the web via local SearXNG",
-      "env": {}
-    }
-  }
-}
-```
-
-## `.opencode.json` — `:4000` proxy
-
-```json
-{
-  "model": "openai/gpt-4o",
-  "provider": {
-    "openai": { "baseURL": "http://localhost:4000/v1", "apiKey": "sk-local" }
-  }
-}
-```
-
-## SearXNG custom tool
-
-```json
-{
-  "tools": {
-    "web-search": {
-      "command": "curl -s 'http://localhost:8080/search?q=$QUERY&format=json'",
-      "description": "Search the web via local SearXNG instance",
-      "env": {}
-    }
-  }
-}
-```
-
-## Cheat sheet
-
-| Task | Command |
-| --- | --- |
-| Launch TUI | `opencode` |
-| Init project | `opencode /init` |
-| Version | `opencode --version` |
-| Target context | `opencode "@FILE.md prompt"` |
-| Graphify MCP | `http://127.0.0.1:8000` |
-| SearXNG | `http://localhost:8080` |
-| Failover proxy | `http://localhost:4000/v1` |
+[OpenCode index](index.md) · [Configuration](configuration.md)

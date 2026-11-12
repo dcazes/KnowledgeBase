@@ -1,54 +1,44 @@
 ---
-type: Concept
+type: Playbook
 title: Cognee AI Integration
-description: Use Cognee as AI memory — Python API (add/cognify/search), REST API + frontend, agent wiring, semantic vs graph-completion search, vs LightRAG/Graphiti.
-resource: https://docs.cognee.ai
-tags: [cognee, integration, api, agents, memory]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Connecting Cognee to agents — memory plugins for Claude Code, Codex and OpenClaw, the Cognee MCP server for Cursor and other clients, SDKs, and importing memory from Mem0, Letta, Zep or Graphiti.
+resource: https://github.com/topoteretes/cognee-integrations
+tags: [cognee, integration, mcp, claude-code, codex, openclaw]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: cognee-docs-quickstart
-    resource: "https://docs.cognee.ai"
-    title: "Cognee docs — quickstart"
-    author: "site:docs.cognee.ai"
-  - id: cognee-github
-    resource: "https://github.com/topoteretes/cognee"
-    title: "Cognee GitHub"
+  - id: cognee-integrations
+    resource: "https://github.com/topoteretes/cognee-integrations"
+    title: "topoteretes/cognee-integrations"
     author: "site:github.com"
+  - id: cognee-docs
+    resource: "https://docs.cognee.ai"
+    title: "Cognee documentation"
+    author: "site:docs.cognee.ai"
 ---
 
 # Cognee — AI Integration
 
-## Python API
+| Interface | Use |
+|---|---|
+| Claude Code plugin | Session memory for [Claude Code](../../agents/claude-code/index.md), captured via hooks |
+| Codex plugin | Same for [Codex](../../agents/codex/index.md) (requires hooks) |
+| `@cognee/cognee-openclaw` | Memory plugin for [OpenClaw](../../agents/openclaw/index.md) |
+| Cognee MCP server | [MCP](../../concepts/mcp.md) tools for [Cursor](../../editors/cursor/index.md), Cline and any MCP client |
+| Python / TypeScript / Rust SDKs, REST API | Your own applications |
 
-```python
-import asyncio
-import cognee
-from cognee.shared.data_models import KnowledgeGraph
-from cognee.infrastructure.databases.vector.embeddings import SEARCH_TYPE
+## Patterns
 
-async def main():
-    await cognee.add("notes.md", dataset_name="kb")
-    await cognee.cognify(dataset_name="kb")                    # run ECL pipeline
+* **Coding agent memory.** Plugins capture decisions, fixes and learned rules during a session; `improve` turns accepted lessons into knowledge future sessions recall.
+* **Company brain.** Ingest docs, tickets, code and database exports into shared memory, browse it in the UI, query it from coding agents.
+* **Framework memory.** Integrations exist for common [agent frameworks](../../concepts/agent-frameworks.md); see the integrations repository.
 
-    # semantic (embedding) search
-    r1 = await cognee.search("What themes are in the notes?", dataset_name="kb",
-                             query_type=SEARCH_TYPE.SEMANTIC)
-    # graph-completion search (traverses relations)
-    r2 = await cognee.search("How do concepts relate?", dataset_name="kb",
-                             query_type=SEARCH_TYPE.GRAPH_COMPLETION)
-    print(r1, r2)
+## Migrating from other memory systems
 
-asyncio.run(main())
-```
+Cognee can import memory from [Mem0](../mem0/index.md), [Letta](../letta/index.md), [Zep](../zep/index.md) and [Graphiti](../graphiti/index.md) using its COGX exchange format.
 
-## REST API + frontend
+## Related
 
-The Docker deployment exposes a cognee API; the bundled `cognee-frontend` provides a web UI to upload data, run the pipeline, and search the graph.
-
-## Agent wiring
-
-* Use Cognee as a **grounded memory tool** for Hermes/OpenCode: an agent calls `add` + `cognify` on ingested documents, then `search` with graph completion for fact-aware answers.
-* Division of labor: Cognee = corpus knowledge engineering; [Graphiti](../graphiti/index.md) = temporal agent memory; [Mem0](../mem0/index.md)/[MemOS](../memos/index.md) = per-user memory. LightRAG = lighter-weight graph RAG alternative.
+[Cognee index](index.md) · [Agent memory](../../concepts/agent-memory.md) · [Memory alternatives](../alternatives.md)

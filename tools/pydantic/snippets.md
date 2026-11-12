@@ -1,81 +1,47 @@
 ---
-type: CheatSheet
+type: Reference
 title: Pydantic Snippets
-description: Pydantic cheat sheet — BaseModel, Field, validators, dump/validate, Settings, JSON Schema export (v2).
+description: Pydantic snippets — a model with constraints, validators, parsing LLM JSON output with retries in mind, generating a JSON Schema for a tool, and TypeAdapter.
 resource: https://docs.pydantic.dev
-tags: [pydantic, snippets, cheat-sheet]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [pydantic, snippets, python, cheat-sheet]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
   - id: pydantic-docs
     resource: "https://docs.pydantic.dev"
-    title: "Pydantic docs"
+    title: "Pydantic documentation"
     author: "site:docs.pydantic.dev"
 ---
 
 # Pydantic — Snippets
 
-## Basic model
-
 ```python
-from pydantic import BaseModel
+from typing import Literal
+from pydantic import BaseModel, Field, field_validator, ValidationError, TypeAdapter
 
-class User(BaseModel):
-    id: int
-    name: str
+class Ticket(BaseModel):
+    title: str = Field(description="Short summary of the issue", max_length=80)
+    priority: Literal["low", "normal", "high"]
     tags: list[str] = []
 
-u = User(id=1, name="alice")
-u.model_dump()               # {'id': 1, 'name': 'alice', 'tags': []}
-u.model_dump_json()          # JSON string
-```
+    @field_validator("tags")
+    @classmethod
+    def lower(cls, v): return [t.lower() for t in v]
 
-## Validate from dict/JSON
-
-```python
-u2 = User.model_validate({"id": 2, "name": "bob"})
-u3 = User.model_validate_json('{"id": 3, "name": "carol"}')
-```
-
-## Errors
-
-```python
+raw = '{"title": "Login fails on Safari", "priority": "high", "tags": ["Auth"]}'
 try:
-    User(id="nope", name="x")
+    ticket = Ticket.model_validate_json(raw)      # e.g. an LLM response
 except ValidationError as e:
-    print(e.errors())        # structured error list
+    print(e.errors())                             # feed back to the model and retry
+
+print(Ticket.model_json_schema())                 # use as a tool / response schema
+
+Tickets = TypeAdapter(list[Ticket])
+Tickets.validate_python([{"title": "x", "priority": "low"}])
 ```
 
-## Field + constraints
+## Related
 
-```python
-class Item(BaseModel):
-    price: float = Field(..., gt=0, le=1000)
-    sku: str = Field(..., pattern=r"^[A-Z]{2}\d{4}$")
-```
-
-## Copy / mutate
-
-```python
-u2 = u.model_copy(update={"name": "alicia"})
-```
-
-## JSON Schema (for LLM structured output)
-
-```python
-schema = User.model_json_schema()
-```
-
-## Settings
-
-```python
-from pydantic_settings import BaseSettings
-
-class S(BaseSettings):
-    api_key: str
-    model_config = {"env_prefix": "MY_"}
-
-s = S()          # reads MY_API_KEY from env
-```
+[Pydantic index](index.md) · [Structured output](../../concepts/structured-output.md)

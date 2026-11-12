@@ -1,47 +1,57 @@
 ---
-type: Software
-title: Hermes — Overview
-description: Agent runtime (desktop GUI/TUI) for autonomous and background tasks using terminal, file, browser, code, skills, cron, and more.
-resource: https://hermes-agent.nousresearch.com
-tags: [hermes, agent, runtime, automation, gui, tui, toolsets]
-generated: { by: "human:daniel", at: "2026-07-09T03:20:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:20:00Z" } ]
+type: Concept
+title: Hermes Agent Overview
+description: How Hermes Agent works — the self-improvement loop that turns experience into skills, persistent memory and user profiles, 40+ tools in toolsets, terminal and messaging entry points, cron scheduling, context files and the Nous Portal tool gateway.
+resource: https://hermes-agent.nousresearch.com/docs/
+tags: [hermes, overview, learning-loop, skills, memory]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: hermes-nous-research
-    resource: "https://hermes-agent.nousresearch.com"
-    title: "Hermes (Nous Research)"
+  - id: hermes-docs
+    resource: "https://hermes-agent.nousresearch.com/docs/"
+    title: "Hermes Agent documentation"
     author: "site:hermes-agent.nousresearch.com"
-  - id: setup-note-toolsets
-    resource: "/../../vault/03%20-%20Reference/Hermes%20Setup.md"
-    title: "Setup note (toolsets)"
+  - id: hermes-github
+    resource: "https://github.com/NousResearch/hermes-agent"
+    title: "NousResearch/hermes-agent on GitHub"
+    author: "site:github.com"
 ---
 
-# What Hermes is
+# Hermes Agent — Overview
 
-Hermes is an **agent runtime** with a desktop GUI and TUI. It executes tasks autonomously and in the background, drawing on a broad toolset: terminal, file, browser, code execution, computer use, context engine, skills, cron, delegation, and web. It is the agent behind this conversation.
+## Entry points
 
-# Runtime model
+* `hermes` — interactive terminal UI.
+* `hermes gateway` — the same agent on Telegram, Discord, Slack, WhatsApp, Signal, email or Home Assistant, with slash commands that mirror the CLI.
 
-* **Desktop GUI** — graphical chat surface (this app).
-* **TUI / CLI** — terminal interface (`hermes`); some commands are CLI-only (e.g. `/browser connect`).
-* **Background daemon** — unlike interactive-only agents, Hermes can run scheduled/background tasks (via `cronjob`).
+## The learning loop
 
-# Toolsets
+1. Hermes completes a task using its tools.
+2. It reflects and writes (or improves) a **skill** — a reusable procedure in the shared `SKILL.md` format.
+3. Next time a similar task appears it loads the skill instead of rediscovering the steps.
 
-Enabled on this machine (from the setup note): `browser`, `clarify`, `code_execution`, `computer_use`, `context_engine`, `cronjob`, `delegation`, `file`, `image_gen`, `memory`, `session_search`, `skills`, `terminal`, `todo`, `web`.
+Skills are [procedural memory](../../concepts/agent-memory.md); they are portable to [OpenClaw](../openclaw/index.md), [Letta](../../memory/letta/index.md) and [Claude Code](../claude-code/index.md)-style harnesses. See [Skills & plugins](skills-plugins.md).
 
-Disabled: `coding`, `discord`, `discord_admin`, `feishu_*`, `homeassistant`, `kanban`, `project`, `search`, `spotify`, `tts`, `video`, `video_gen`, `vision`, `x_search`, `yuanbao`.
+## Memory
 
-# How it fits your stack
+Persistent memory and user profiles carry facts across sessions. External memory providers — [Honcho](../../memory/honcho/index.md), [Supermemory](../../memory/supermemory/index.md), [MemOS](../../memory/memos/index.md), [Hindsight](../../memory/hindsight/index.md) — can replace or extend it (`hermes memory setup`).
 
-| Role | Tool |
-|------|------|
-| Autonomous/background agent | **Hermes** |
-| Interactive coding agent | OpenCode |
-| Multi-channel front-end | OpenClaw |
-| App builder | Dify |
-| Chat UIs | OpenWebUI / AnythingLLM |
+## Tools
 
-Hermes can drive **Camofox** (browser), and call **SearXNG / Firecrawl / Graphify** (tools/skills).
+40+ tools grouped into toolsets: terminal and file operations, web search and extraction, [browser](browser.md), image generation, text-to-speech, delegation to sub-agents, and any [MCP](../../concepts/mcp.md) server. Terminal commands can run locally or in isolated backends such as Docker.
+
+## Scheduling and context
+
+* **Cron:** scheduled tasks whose results are delivered to a chat platform.
+* **Context files:** project instructions (e.g. `AGENTS.md`) shape every conversation in a working directory.
+* `/compress`, `/usage`, `/insights` manage context and cost — see [Context engineering](../../concepts/context-engineering.md).
+
+## Nous Portal
+
+Optional subscription giving 300+ models and a Tool Gateway (web search, image generation, TTS, cloud browser) without collecting separate API keys. Bring-your-own keys remain supported per tool.
+
+## Related
+
+[Hermes index](index.md) · [Configuration](configuration.md) · [Agent skills](../../concepts/agent-skills.md)

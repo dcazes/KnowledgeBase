@@ -1,19 +1,23 @@
 ---
-type: Reference
+type: Software
 title: Graphify
-description: AI coding-assistant skill that turns folders of code/docs/papers into a queryable knowledge graph with confidence tags.
+description: Coding-assistant skill and CLI that maps a project's code, docs, PDFs, images and video into a queryable knowledge graph — tree-sitter AST parsing locally with no LLM, confidence-tagged edges, Leiden communities, and query/path/explain commands.
 resource: https://github.com/Graphify-Labs/graphify
-tags: [graphify, knowledge-graph, skill, hermes, opencode]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+tags: [graphify, knowledge-graph, code-intelligence, tree-sitter, agent-skills, mcp, python]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
-  - id: graphify-github-graphify-labs-graphify
+  - id: graphify-github
     resource: "https://github.com/Graphify-Labs/graphify"
-    title: "Graphify GitHub (Graphify-Labs/graphify)"
+    title: "Graphify-Labs/graphify on GitHub"
     author: "site:github.com"
-  - id: graphifyy-on-pypi
+  - id: graphify-docs
+    resource: "https://docs.graphify.com"
+    title: "Graphify documentation"
+    author: "site:docs.graphify.com"
+  - id: graphify-pypi
     resource: "https://pypi.org/project/graphifyy/"
     title: "graphifyy on PyPI"
     author: "site:pypi.org"
@@ -21,36 +25,29 @@ sources:
 
 # Graphify
 
-An AI coding-assistant **skill** that turns any folder of code, docs, papers, images, or videos into a queryable **knowledge graph** — with confidence tags telling you what was read directly vs. inferred. Listed as a supported client for **Hermes**.
+**Graphify** answers "how does this codebase fit together?" by building a [knowledge graph](../../concepts/knowledge-graphs.md) of a folder and letting you — or your coding agent — query the graph instead of grepping files. Type `/graphify .` in an AI coding assistant and it produces an interactive HTML graph, a highlights report and a `graph.json` to query later.
+
+| | |
+|---|---|
+| Category | [Knowledge graphs](../../concepts/knowledge-graphs.md) · [Coding agents](../../concepts/coding-agents.md) tooling |
+| License | Apache-2.0 |
+| Language | Python 3.10+ (PyPI package **`graphifyy`**, double y; CLI `graphify`) |
+| Latest release | v0.9.107 (2026-11-11) |
+| Works with | Claude Code, Cursor, Codex, Gemini CLI, GitHub Copilot and 20+ other assistants |
 
 ## Contents
 
-* [Overview](overview.md) - what Graphify is, the Karpathy `/raw` inspiration, 71.5x token claim, supported agents, confidence model
-* [Installation](installation.md) - `pip install graphifyy`, `graphify install`, platform flags (`--platform hermes`), Python 3.10+, PATH notes
-* [Usage](usage.md) - core commands: `add`, `extract`, `query`, `update`, `cluster-only`, `export`, `obsidian`, `wiki`, backends & env vars
-* [MCP Server](mcp-server.md) - `python -m graphify.serve` stdio/http transport, host/port/api-key, agent wiring
-* [Confidence Tags](confidence-tags.md) - `EXTRACTED` / `INFERRED` / `AMBIGUOUS` edge semantics
-* [AI Integration](ai-integration.md) - Hermes, OpenCode, Claude Code, Obsidian vault, the `:4000` OpenRouter proxy tie-in
-* [Alternatives](../alternatives.md) - Obsidian (vanilla), Mem0, LangChain graphs, code2flow — and why Graphify is different
-* [Snippets](snippets.md) - copy-paste cheat sheet
+* [Overview](overview.md) — what it builds, how it differs from vector RAG, benchmarks
+* [Installation](installation.md) — uv/pipx, `graphify install`, extras
+* [Usage](usage.md) — outputs, queries, git hooks, PR review
+* [Confidence tags](confidence-tags.md) — `EXTRACTED` vs `INFERRED` edges
+* [MCP server](mcp-server.md) — serving a graph to MCP clients
+* [Snippets](snippets.md) — command cheat sheet
+* [AI Integration](ai-integration.md) — making coding agents query the graph
 
-## Instance facts (from docs, not live state)
+## Related
 
-* **Package:** `graphifyy` on PyPI (**v0.9.32**); the command it provides is `graphify`. The `graphify` name on PyPI is being reclaimed.
-* **Python:** 3.10+.
-* **Your stack fit:** Graphify can use your OpenRouter/NIM failover proxy on `:4000` by setting `OPENAI_BASE_URL=http://localhost:4000/v1` and `--backend openai` (per the KB plan — local heavy models avoided).
-* **Output lives in:** `graphify-out/` (per project) — `GRAPH_REPORT.md`, `graph.json`, and an `obsidian/` vault.
-
-## Cross-references
-
-* **Hermes** — first-class client; `graphify install --platform hermes` — see [Hermes AI Integration](../../agents/hermes/ai-integration.md)
-* **OpenCode** — `graphify install --platform opencode` — see [OpenCode AI Integration](../../agents/opencode/ai-integration.md)
-* **Obsidian** — Graphify can emit an Obsidian vault via `--obsidian` — see [Obsidian AI Integration](../../tools/obsidian/ai-integration.md)
-* **SearXNG** — search results can be piped into `graphify add <url>` — see [SearXNG AI Integration](../../runtime/searxng/ai-integration.md)
-* **Firecrawl** — extracted web content can be fed to Graphify — see [Firecrawl AI Integration](../../browsers/firecrawl/ai-integration.md)
-* **Dify** — RAG pipeline outputs can be structured via Graphify — see [Dify AI Integration](../../agents/dify/ai-integration.md)
-* **AnythingLLM** — workspace docs can be graphed — see [AnythingLLM AI Integration](../../apps/anythingllm/ai-integration.md)
-
-## Last verified
-
-**2026-08-12** — Version bumped to v0.9.32 (2026-07-30). All platform flags, backend env vars, and integration docs originally verified 2026-07-09 against upstream Graphify-Labs/graphify GitHub and PyPI `graphifyy`.
+* Concepts: [Knowledge graphs](../../concepts/knowledge-graphs.md) · [GraphRAG](../../concepts/graphrag.md) · [Agent skills](../../concepts/agent-skills.md) · [Context engineering](../../concepts/context-engineering.md)
+* Compare: [Graphiti vs Graphify](../graphiti/vs-graphify.md), [Cognee](../cognee/index.md) (also graphs code), [Microsoft GraphRAG](../graphrag/index.md)
+* Clients: [Claude Code](../../agents/claude-code/index.md), [Codex](../../agents/codex/index.md), [Cursor](../../editors/cursor/index.md), [OpenCode](../../agents/opencode/index.md), [Hermes](../../agents/hermes/index.md)
+* Comparison: [Memory alternatives](../alternatives.md)

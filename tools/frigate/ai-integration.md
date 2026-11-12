@@ -1,51 +1,28 @@
 ---
-type: Reference
-title: Frigate — AI Integration
-description: Frigate's role as a computer-vision object detector vs the LLM/agent stack; optional pathways to feed detections into agents.
-resource: https://docs.frigate.video/
-tags: [frigate, ai, object-detection, computer-vision, integration, mqtt]
-generated: { by: "human:daniel", at: "2026-07-09T04:19:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T04:19:00Z" } ]
+type: Playbook
+title: Frigate AI Integration
+description: Frigate's generative-AI and automation integrations — local vision-language models via Ollama or OpenAI-compatible servers, Gemini and OpenAI providers, semantic search, Home Assistant and MQTT automations, and n8n workflows.
+resource: https://docs.frigate.video/configuration/genai
+tags: [frigate, integration, genai, ollama, home-assistant]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: frigate
-    resource: "https://frigate.video/"
-    title: "Frigate"
-    author: "site:frigate.video"
-  - id: api-docs
-    resource: "https://docs.frigate.video/"
-    title: "API/docs"
+  - id: frigate-docs
+    resource: "https://docs.frigate.video"
+    title: "Frigate documentation"
     author: "site:docs.frigate.video"
-  - id: overview
-    resource: "overview.md"
-    title: "Overview"
 ---
 
-# Frigate — What "AI" means here
+# Frigate — AI Integration
 
-Frigate's AI is **computer-vision object detection** (people, cars, pets…) — not an LLM. It runs an ONNX model on your GPU (the TensorRT detector was removed in 0.16.0; NVIDIA GPUs use the ONNX detector with CUDA Graphs since 0.17). This is a different AI family than the LLM/agent tools in the rest of the stack.
+* **GenAI providers:** [Ollama](../../runtime/ollama/index.md) (fully local, e.g. a Qwen-VL or Gemma vision model), Gemini, OpenAI, Azure, or any [OpenAI-compatible](../../concepts/openai-compatible-api.md) server such as [vLLM](../../runtime/vllm/index.md). Assign roles per provider — a small local model for descriptions, a stronger one for chat.
+* **Semantic search** uses local embedding models (or remote embeddings in 0.18) — see [Embeddings](../../concepts/embeddings.md).
+* **Home Assistant:** the Frigate integration exposes cameras, sensors and events for automations and notifications.
+* **MQTT / webhooks → [n8n](../../apps/n8n/index.md):** trigger workflows that summarise a day's events with an LLM or open tickets.
+* **Privacy:** keep inference local and the UI on a private network ([Tailscale](../../runtime/tailscale/index.md)); cloud providers receive frames you send them.
 
-# Outputs
+## Related
 
-* **Events** — detection clips/snapshots.
-* **MQTT** — can publish detection state (disabled in this config: `mqtt.enabled: false`).
-* **API/UI** — live view, recordings, REST API.
-
-# Connecting to the agent stack (optional, not wired)
-
-| Path | How |
-|------|-----|
-| MQTT → agent | enable `mqtt`, subscribe from an agent (Hermes/OpenCode) |
-| API → agent | poll Frigate REST API from a skill |
-| Detections → RAG | store events as notes in the Obsidian vault / Graphify |
-
-None of these are configured here yet — Frigate runs standalone as surveillance.
-
-# Distinction
-
-| Tool | AI type |
-|------|---------|
-| **Frigate** | CV object detection (GPU) |
-| OpenWebUI / Dify / Hermes | LLM reasoning/agents |
-| Graphify | knowledge graph |
+[Frigate index](index.md) · [Local inference](../../concepts/local-inference.md)

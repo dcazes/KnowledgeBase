@@ -1,49 +1,52 @@
 ---
-type: Reference
+type: Software
 title: Ollama
-description: Local LLM runtime — pull/run open models on :11434 with an OpenAI-compatible API; compose file present but not running on this machine as of 2026-08-13.
+description: The most popular way to run open-weight LLMs locally — one-command install, a model library, a REST API with OpenAI- and Anthropic-compatible endpoints, tool calling, structured output, vision, embeddings, and launchers for coding agents; plus optional Ollama Cloud models.
 resource: https://ollama.com
-tags: [ollama, llm, local, inference, docker]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [ollama, local-inference, llm, gguf, openai-compatible, go]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: ollama-docs
-    resource: "https://docs.ollama.com"
-    title: "Ollama docs"
-    author: "site:docs.ollama.com"
   - id: ollama-github
     resource: "https://github.com/ollama/ollama"
-    title: "Ollama GitHub"
+    title: "ollama/ollama on GitHub"
     author: "site:github.com"
-  - id: docker-hub-ollama-ollama
-    resource: "https://hub.docker.com/r/ollama/ollama"
-    title: "Docker Hub — ollama/ollama"
-    author: "site:hub.docker.com"
+  - id: ollama-docs
+    resource: "https://docs.ollama.com"
+    title: "Ollama documentation"
+    author: "site:docs.ollama.com"
+  - id: ollama-library
+    resource: "https://ollama.com/library"
+    title: "Ollama model library"
+    author: "site:ollama.com"
 ---
 
 # Ollama
 
-**Local LLM runtime** — downloads and runs open-weight models (Llama, Qwen, Mistral, Gemma, Phi, …) with a simple CLI and an **OpenAI-compatible REST API** on `:11434`. The natural local inference backend for the rest of this stack (Mem0, LightRAG, AnythingLLM, LiteLLM, OpenWebUI).
+**Ollama** makes running open models feel like using Docker: `ollama run gemma4` downloads a quantised model and starts a chat; a background server on port **11434** exposes it to apps. Nearly every tool in this vault that supports local models supports Ollama, which makes it the default entry point to [local inference](../../concepts/local-inference.md).
 
-On this machine: only `programs/ollama/docker-compose.yaml` exists (image `ollama/ollama:latest`, host port `11434:11434`, `restart: "no"`). **No binary, no running container** as of 2026-08-13.
+| | |
+|---|---|
+| Category | [Local inference](../../concepts/local-inference.md) |
+| License | MIT |
+| Language | Go (engine built on [llama.cpp](../llamacpp/index.md) / GGML) |
+| Latest release | v0.40.16 (2026-11-09) |
+| Platforms | macOS, Windows, Linux, Docker (`ollama/ollama`) |
+| APIs | Native `/api/*`, [OpenAI-compatible](../../concepts/openai-compatible-api.md) `/v1/*`, Anthropic-compatible messages API |
 
 ## Contents
 
-* [Overview](overview.md) — what Ollama is, model pull/run model, OpenAI-compatible API, GPU/CPU
-* [Installation](installation.md) — Docker compose or native binary; pull + run; verify
-* [Configuration](configuration.md) — model defaults, OLLAMA_HOST/OLLAMA_MODELS, keep_alive, embeddings
-* [AI Integration](ai-integration.md) — OpenAI-compatible endpoint for LiteLLM/OpenWebUI/Mem0/LightRAG/AnythingLLM; Ollama embeddings
-* [Snippets](snippets.md) — pull / run / list / ps / curl / python cheat sheet
-* [Alternatives](../alternatives.md) — llama.cpp, LM Studio, vLLM, GPT4All, LocalAI vs Ollama
+* [Overview](overview.md) — architecture, model library, capabilities, Ollama Cloud
+* [Installation](installation.md) — install scripts, Docker, GPUs
+* [Configuration](configuration.md) — environment variables, context length, Modelfiles
+* [Snippets](snippets.md) — CLI, REST, Python/JS, OpenAI client
+* [AI Integration](ai-integration.md) — `ollama launch` for coding agents, using Ollama behind other tools
 
 ## Related
 
-* LiteLLM — proxy in front of Ollama for unified API
-* [AnythingLLM](../../apps/anythingllm/index.md), [OpenWebUI](../../apps/openwebui/index.md) — chat UIs that use Ollama as provider
-* [Mem0](../../memory/mem0/index.md), [LightRAG](../../memory/lightrag/index.md) — can use Ollama as their local LLM/embedder
-
-## Last verified
-
-**2026-08-13** — Only `programs/ollama/docker-compose.yaml` present (compose, image `ollama/ollama:latest`); no binary, not running. Grounded on local compose file + upstream docs.
+* Concepts: [Local inference](../../concepts/local-inference.md) · [OpenAI-compatible API](../../concepts/openai-compatible-api.md) · [Tool calling](../../concepts/tool-calling.md) · [Embeddings](../../concepts/embeddings.md)
+* Peers: [llama.cpp](../llamacpp/index.md), [LM Studio](../lmstudio/index.md), [vLLM](../vllm/index.md), Docker [Model Runner](../docker/gpu-ai.md#docker-model-runner); gateway [LiteLLM](../litellm/index.md)
+* Front ends: [Open WebUI](../../apps/openwebui/index.md), [AnythingLLM](../../apps/anythingllm/index.md)
+* Comparison: [Runtime alternatives](../alternatives.md)

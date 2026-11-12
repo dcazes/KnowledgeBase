@@ -1,83 +1,58 @@
 ---
 type: Playbook
-title: Docker — Installation & Setup
-description: Install Docker on this Linux machine, start it as a user service, fix permissions, and verify the install.
-resource: https://docs.docker.com/desktop/setup/install/linux/
-tags: [docker, install, setup, linux]
-generated: { by: "human:daniel", at: "2026-07-08T22:35:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-08T22:35:00Z" } ]
+title: Docker Installation
+description: Install Docker Engine on Linux from Docker's apt repository or Docker Desktop on macOS, Windows and Linux; post-install steps for non-root use, rootless mode, and verification.
+resource: https://docs.docker.com/engine/install/
+tags: [docker, installation, linux, desktop]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-04
+stale_after: 2027-05-11
 sources:
-  - id: install-docker-desktop-on-linux
-    resource: "https://docs.docker.com/desktop/setup/install/linux/"
-    title: "Install Docker Desktop on Linux"
+  - id: docker-docs
+    resource: "https://docs.docker.com"
+    title: "Docker documentation"
     author: "site:docs.docker.com"
-  - id: docker-desktop-post-install
-    resource: "https://docs.docker.com/desktop/setup/install/linux/"
-    title: "Docker Desktop post-install"
-    author: "site:docs.docker.com"
-  - id: local-install-notes-programs-docker
-    resource: "/../../programs/docker/"
-    title: "Local install notes - programs/docker/"
 ---
 
-# Docker — Your setup
+# Docker — Installation
 
-This machine runs **Docker Desktop for Linux** (installed from `programs/docker/docker-desktop-amd64.deb`). Docker Desktop is launched as a **user-level systemd service**, not the system-wide engine:
-
-```bash
-# From programs/docker/run
-systemctl --user start docker-desktop
-```
-
-Verify it worked:
+## Docker Engine on Linux (Ubuntu/Debian)
 
 ```bash
-docker version          # client + server details (expect Docker 29.7.2)
-docker info             # daemon config, drivers, resource usage
-docker run hello-world  # pulls a tiny image and prints a confirmation
-```
-
-# Installing Docker Desktop from the .deb (reference)
-
-If you ever need to reinstall:
-
-```bash
-# Install the package (requires apt dependencies first)
+sudo apt-get update && sudo apt-get install -y ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] \
+  https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" \
+  | sudo tee /etc/apt/sources.list.d/docker.list
 sudo apt-get update
-sudo apt-get install -y ./programs/docker/docker-desktop-amd64.deb
-
-# Start as a user service (no sudo needed at runtime)
-systemctl --user start docker-desktop
-systemctl --user enable docker-desktop   # auto-start on login
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-> Note: the folder also contains `docker-desktop-amd64.deb.1` — a duplicate of the same file. You only need one.
+Optional: `docker-model-plugin` adds `docker model` on Engine.
 
-# Post-install: permissions & socket
+## Docker Desktop
 
-With Docker Desktop, the CLI talks to the daemon over the user socket — you normally do **not** need the `sudo usermod -aG docker` step that the classic engine requires. If you ever run the standalone engine instead:
+Download the installer for macOS, Windows or Linux from docker.com. Desktop bundles Engine, Compose, BuildKit, Model Runner, the MCP Toolkit and Docker Agent. Larger companies need a paid subscription.
+
+## Post-install (Linux)
 
 ```bash
-sudo usermod -aG docker $USER   # add user to docker group
-newgrp docker                   # re-load group in current shell (or re-login)
-docker ps                       # should now work without sudo
+sudo usermod -aG docker $USER      # run docker without sudo (log out and back in)
+sudo systemctl enable --now docker
 ```
 
-# Useful install checks
+Membership of the `docker` group is effectively root access. **Rootless mode** (`dockerd-rootless-setuptool.sh install`) avoids that at the cost of some features.
+
+## Verify
 
 ```bash
-docker compose version   # Compose v5.4.0 (Mont Blanc)
-docker system df         # disk used by images/containers/volumes
-systemctl --user status docker-desktop
+docker version
+docker compose version
+docker run --rm hello-world
 ```
 
-# Troubleshooting
+## Related
 
-| Symptom | Fix |
-|---------|-----|
-| `Cannot connect to the Docker daemon` | `systemctl --user start docker-desktop` |
-| Daemon doesn't start after reboot | `systemctl --user enable docker-desktop` |
-| Permission denied on socket | Use Docker Desktop (user socket) or join the `docker` group (engine) |
-| Port already in use | Change the host port mapping, e.g. `"8082:8080"` (see [Compose](compose.md)) |
+[Docker index](index.md) · [Snippets](snippets.md) · [GPU & AI](gpu-ai.md)

@@ -1,46 +1,47 @@
 ---
-type: Reference
+type: Software
 title: OpenCode
-description: Terminal-native open-source AI coding agent (anomalyco/opencode, v1.18.18) — no daemons, per-project isolation, MCP + custom tools.
-resource: https://opencode.ai/docs
-tags: [opencode, ai-agent, terminal, coding, anomalyco, opencode-ai]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+description: Open-source terminal coding agent (also desktop app) that works with 75+ model providers including local models — build and plan agents, subagents, LSP integration, MCP, custom agents and commands, plugins, and a client/server architecture with an SDK.
+resource: https://opencode.ai
+tags: [opencode, coding-agents, terminal, open-source, mcp, typescript]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
   - id: opencode-github
     resource: "https://github.com/anomalyco/opencode"
-    title: "OpenCode GitHub"
+    title: "anomalyco/opencode on GitHub"
     author: "site:github.com"
+  - id: opencode-docs
+    resource: "https://opencode.ai/docs"
+    title: "OpenCode documentation"
+    author: "site:opencode.ai"
 ---
 
 # OpenCode
 
-OpenCode terminal AI agent (v1.18.18); skills, tools, delegation. A lightweight alternative for code-focused tasks. The repo moved from sst/opencode to anomalyco/opencode (Jan 2026); the npm package is `opencode-ai`.
+**OpenCode** is the leading open-source, provider-agnostic alternative to [Claude Code](../claude-code/index.md) and [Codex](../codex/index.md): a terminal UI (plus a beta desktop app) where an agent reads, edits and runs your code with any model — Anthropic, OpenAI, Google, open models via OpenRouter, or local [Ollama](../../runtime/ollama/index.md) / [LM Studio](../../runtime/lmstudio/index.md).
+
+| | |
+|---|---|
+| Category | [Coding agents](../../concepts/coding-agents.md) |
+| License | MIT |
+| Language | TypeScript (Bun) |
+| Latest release | v1.19.5 (2026-10-28); v2 installers rolling out (`opencode.ai/v2/install`) |
+| Interfaces | TUI · desktop app (beta) · headless server + SDK · IDE integration |
 
 ## Contents
 
-* [Overview](overview.md) - what OpenCode is, architecture
-* [Installation](installation.md) - setup, config
-* [Configuration](configuration.md) - config.yaml, providers
-* [Hierarchical Structure](hierarchical-structure.md) - project/workspace organization
-* [AI Integration](ai-integration.md) - SearXNG, Graphify, Firecrawl
-* [Alternatives](../alternatives.md) - Hermes, OpenClaw, Cursor, Windsurf
-* [Snippets](snippets.md) - common tasks cheat sheet
+* [Overview](overview.md) — agents, tools, LSP, sessions, client/server design
+* [Installation](installation.md) — installers and package managers
+* [Configuration](configuration.md) — `opencode.json`, providers, permissions, MCP
+* [Agents, commands & rules](hierarchical-structure.md) — how config, agents and AGENTS.md layer
+* [Snippets](snippets.md) — CLI and in-session commands
+* [AI Integration](ai-integration.md) — local models, memory plugins, MCP servers
 
-## Instance facts
+## Related
 
-* **Config:** `~/.opencode/config.yaml` (or project-level)
-* **Providers:** OpenAI-compatible (incl. :4000 proxy), Anthropic, local
-
-## Cross-references
-
-* **Graphify** — `graphify install --platform opencode` — see [Graphify AI Integration](../../memory/graphify/ai-integration.md)
-* **SearXNG** — web search via SearXNG — see [SearXNG AI Integration](../../runtime/searxng/ai-integration.md)
-* **Firecrawl** — web extraction — see [Firecrawl AI Integration](../../browsers/firecrawl/ai-integration.md)
-* **Hermes** — fellow terminal agent — see [Hermes AI Integration](../hermes/ai-integration.md)
-
-## Last verified
-
-**2026-08-12** — Config and integration docs verified. OpenCode v1.18.18; repo at github.com/anomalyco/opencode; npm package opencode-ai.
+* Concepts: [Coding agents](../../concepts/coding-agents.md) · [MCP](../../concepts/mcp.md) · [Agent skills](../../concepts/agent-skills.md) · [Context engineering](../../concepts/context-engineering.md)
+* Peers: [Claude Code](../claude-code/index.md), [Codex](../codex/index.md), [Aider](../aider/index.md), [Hermes](../hermes/index.md); editors [Cursor](../../editors/cursor/index.md), [Zed](../../editors/zed/index.md)
+* Comparison: [Agents alternatives](../alternatives.md)

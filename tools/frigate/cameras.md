@@ -1,66 +1,52 @@
 ---
 type: Reference
-title: Frigate — Cameras
-description: The Reolink camera setup — go2rtc HTTP-FLV ingest, RTSP restream, detect vs record input roles, detection settings.
-resource: https://docs.frigate.video/configuration/cameras/
-tags: [frigate, camera, reolink, go2rtc, detect, record, rtsp]
-generated: { by: "human:daniel", at: "2026-07-09T04:18:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T04:18:00Z" } ]
+title: Frigate Cameras
+description: Adding cameras to Frigate — separate detect and record streams, go2rtc restreaming and WebRTC live view, hardware decoding presets, zones, masks and object filters.
+resource: https://docs.frigate.video/configuration/cameras
+tags: [frigate, cameras, go2rtc, zones, rtsp]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: camera-config
-    resource: "https://docs.frigate.video/configuration/cameras/"
-    title: "Camera config"
+  - id: frigate-docs
+    resource: "https://docs.frigate.video"
+    title: "Frigate documentation"
     author: "site:docs.frigate.video"
-  - id: go2rtc
-    resource: "https://docs.frigate.video/configuration/go2rtc/"
-    title: "go2rtc"
-    author: "site:docs.frigate.video"
-  - id: configuration
-    resource: "configuration.md"
-    title: "Configuration"
 ---
 
-# Frigate — Reolink camera (`reolink_camera`)
-
-The camera at `192.168.68.61` is pulled via **go2rtc** using Reolink's HTTP-FLV stream (more stable than raw RTSP), then Frigate consumes it as a local RTSP restream.
+# Frigate — Cameras
 
 ```yaml
+go2rtc:
+  streams:
+    driveway: [rtsp://user:pass@camera-ip:554/main]
+    driveway_sub: [rtsp://user:pass@camera-ip:554/sub]
 cameras:
-  reolink_camera:
+  driveway:
     ffmpeg:
+      hwaccel_args: preset-vaapi
       inputs:
-        - path: rtsp://127.0.0.1:8554/reolink_sub   # sub-stream
-          input_args: preset-rtsp-restream
+        - path: rtsp://127.0.0.1:8554/driveway_sub
           roles: [detect]
-        - path: rtsp://127.0.0.1:8554/reolink_main  # main stream
-          input_args: preset-rtsp-restream
+        - path: rtsp://127.0.0.1:8554/driveway
           roles: [record]
-    detect:
-      enabled: true
-      width: 640
-      height: 480
-      fps: 5
-    record:
-      enabled: true
+    detect: { width: 1280, height: 720, fps: 5 }
+    zones:
+      driveway_zone:
+        coordinates: 0.1,0.9,0.9,0.9,0.9,0.4,0.1,0.4
+        friendly_name: Driveway
+    objects:
+      filters:
+        person: { min_score: 0.6 }
 ```
 
-# Roles
+* Detect on the low-resolution substream, record the main stream.
+* **go2rtc** restreams each camera once, providing low-latency WebRTC/MSE live view.
+* Zones scope alerts; motion masks hide timestamps and swaying trees.
 
-* **detect** — uses the lower-res sub-stream (640×480 @ 5fps) for efficient object detection.
-* **record** — uses the higher-res main stream for storage/playback.
+FFmpeg 8 (0.18) needs a small go2rtc tweak for hardware-transcoded streams — see the release notes.
 
-# Why go2rtc first
+## Related
 
-Reolink cameras are notorious for dropping raw RTSP. go2rtc's HTTP-FLV pull + RTSP republish stabilizes the feed before Frigate touches it.
-
-# Tips
-
-* Match `detect.width/height` to the sub-stream's actual resolution.
-* Enable `record` per camera (events or continuous, per your policy).
-* Set motion/mask zones in the UI to reduce false positives.
-
-# ⚠️ Secrets
-
-The go2rtc URLs embed the camera password. Keep it `<REDACTED>` outside the real config.
+[Frigate index](index.md) · [Configuration](configuration.md)

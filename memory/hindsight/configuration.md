@@ -1,49 +1,42 @@
 ---
-type: HowTo
+type: Reference
 title: Hindsight Configuration
-description: Configure Hindsight — control plane + API settings, model/LLM config, persistence, agent SDK options; what's in the v0.8.4 checkout.
-resource: https://hindsight.vectorize.io
-tags: [hindsight, configuration, control-plane, api]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: Configure Hindsight's LLM provider (25+ hosted and local options), storage backend, and per-bank settings through HINDSIGHT_API_* environment variables.
+resource: https://hindsight.vectorize.io/developer/configuration
+tags: [hindsight, configuration, ollama, postgres, env]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: hindsight-docs-configuration
+  - id: hindsight-docs
     resource: "https://hindsight.vectorize.io"
-    title: "Hindsight docs — configuration"
+    title: "Hindsight documentation"
     author: "site:hindsight.vectorize.io"
   - id: hindsight-github
     resource: "https://github.com/vectorize-io/hindsight"
-    title: "Hindsight GitHub"
+    title: "vectorize-io/hindsight on GitHub"
     author: "site:github.com"
 ---
 
 # Hindsight — Configuration
 
-Configuration is split between the **control plane** (orchestration) and the **API** (service layer), per the repo layout.
+## LLM provider
 
-## LLM / model config
+Set `HINDSIGHT_API_LLM_PROVIDER`, `HINDSIGHT_API_LLM_MODEL` and `HINDSIGHT_API_LLM_API_KEY`. Providers include hosted (`openai`, `anthropic`, `gemini`, `groq`, `bedrock`, `vertexai`, `deepseek`, …) and local options such as `ollama` and other [OpenAI-compatible](../../concepts/openai-compatible-api.md) servers like [vLLM](../../runtime/vllm/index.md) and [LM Studio](../../runtime/lmstudio/index.md).
 
-```env
-# typical service env (see hindsight-api / control-plane env templates in repo)
-LLM_API_KEY=sk-...
-LLM_MODEL=gpt-4o            # or anthropic/ollama per support
-EMBEDDING_MODEL=...
-```
+Retain makes LLM calls for extraction; reflect makes more. Use a capable model for reflect and a cheaper one for retain if your provider setup allows.
 
-## Persistence
+## Storage
 
-Server deployments use the `docker/` compose (Postgres or similar backing store — see the compose files in the checkout) and `helm/` for Kubernetes; volumes/state configured there.
+* Embedded `pg0` PostgreSQL (default in the single container) — simplest.
+* External PostgreSQL via Docker Compose or Helm — for production and backups ([pgvector](../../databases/pgvector/index.md)-style vector search inside Postgres).
+* Oracle AI Database — enterprise option with feature parity.
 
-## Agent integration config
+## Banks
 
-* `hindsight-clients` — SDKs configure base URL + auth for API/control-plane.
-* `hindsight-integrations` — drop-in config for supported agent frameworks.
-* `skills/` — agent skills ship in the repo and are wired via your agent's skill/MCP config.
+Each bank holds its own memories and settings, including a **disposition** that shapes how `reflect` answers. Create one bank per user, agent or repository.
 
-## CLI config
+## Related
 
-CLI reads env or a local config for API endpoint + keys (per `hindsight-cli` docs in checkout).
-
-> The checkout is **not deployed** here (2026-08-13) — config files are templates in the repo, not live env on this machine.
+[Hindsight index](index.md) · [Installation](installation.md) · [Local inference](../../concepts/local-inference.md)

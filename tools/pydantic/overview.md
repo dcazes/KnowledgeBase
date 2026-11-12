@@ -1,45 +1,34 @@
 ---
 type: Concept
 title: Pydantic Overview
-description: What Pydantic is — typed data validation, model_dump/model_validate serialization, JSON Schema export, Settings; v2 API surface.
+description: Pydantic v2 concepts — BaseModel and fields, strict versus lax validation, field and model validators, serialization, JSON Schema generation, TypeAdapter for arbitrary types, and the Rust core.
 resource: https://docs.pydantic.dev
-tags: [pydantic, overview, validation, v2]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [pydantic, overview, validation]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
   - id: pydantic-docs
     resource: "https://docs.pydantic.dev"
-    title: "Pydantic docs"
+    title: "Pydantic documentation"
     author: "site:docs.pydantic.dev"
-  - id: pydantic-github
-    resource: "https://github.com/pydantic/pydantic"
-    title: "Pydantic GitHub"
-    author: "site:github.com"
 ---
 
 # Pydantic — Overview
 
-Pydantic v2 (Rust core) validates your data at the edge: define a schema as a class, hand it untrusted input, and get a typed, validated object or a structured error.
+| Concept | Meaning |
+|---|---|
+| `BaseModel` | Class whose annotated attributes are validated on construction |
+| `Field(...)` | Constraints, defaults, aliases and descriptions (descriptions flow into JSON Schema — and into LLM tool descriptions) |
+| Lax vs strict | Lax coerces `"3"` → `3`; strict mode refuses |
+| Validators | `@field_validator`, `@model_validator` for custom rules |
+| Serialization | `model_dump()`, `model_dump_json()` with include/exclude and aliases |
+| JSON Schema | `Model.model_json_schema()` |
+| `TypeAdapter` | Validate any type (lists, unions, TypedDicts) without a model |
 
-## Core concepts
+The v2 core is written in Rust, making validation fast enough to sit on hot paths such as parsing every LLM response.
 
-* **`BaseModel`** — schema classes. Field types annotate the schema; instantiation validates.
-* **Validation** — type coercion + constraint checks (ranges, patterns, literals, nested models, `EmailStr`, …).
-* **Serialization** — `model_dump()` (dict) / `model_dump_json()` / `model_copy()`.
-* **De-serialization** — `model_validate()` / `model_validate_json()`.
-* **JSON Schema** — `model_json_schema()` exports the schema (used to constrain LLM output).
-* **`pydantic-settings`** — `BaseSettings` reads env/.env into typed config.
+## Related
 
-## Why it's everywhere
-
-- **LLM contracts** — validated output schemas for agents ([PydanticAI](../../agents/pydanticAI/index.md) is built on it).
-- **API layers** — FastAPI request/response models.
-- **Config** — typed env loading via Settings.
-- **Tooling** — most of this stack's Python tools validate configs with it.
-
-## Version notes
-
-- v2 is current (this machine: 2.9.0 system / 2.13.4 venv); v1 API differs (`parse_obj`, `.dict()`).
-- **Security**: see [PydanticAI → CVEs](../../agents/pydanticAI/index.md) — pydantic >= 2.12 required for the 2026-07 fixes.
+[Pydantic index](index.md) · [Snippets](snippets.md)

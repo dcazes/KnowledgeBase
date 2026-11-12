@@ -1,48 +1,33 @@
 ---
-type: Concept
+type: Playbook
 title: OpenConcho AI Integration
-description: OpenConcho + Honcho — chat with full memory context, browse peer models, human-in-the-loop UX vs raw SDK; role in the agent stack.
+description: Using OpenConcho to inspect and debug what Honcho-backed agents remember — checking conclusions, comparing reasoning levels, and triggering consolidation.
 resource: https://github.com/offendingcommit/openconcho
-tags: [openconcho, integration, honcho, chat]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [openconcho, integration, debugging, agent-memory]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: openconcho-github-readme
+  - id: openconcho-github
     resource: "https://github.com/offendingcommit/openconcho"
-    title: "OpenConcho GitHub — README"
+    title: "offendingcommit/openconcho on GitHub"
     author: "site:github.com"
-  - id: honcho-docs
-    resource: "https://docs.honcho.dev"
-    title: "Honcho docs"
-    author: "site:docs.honcho.dev"
 ---
 
 # OpenConcho — AI Integration
 
-OpenConcho is the **human interface to Honcho memory** — it complements (not replaces) the [Honcho SDK](../honcho/ai-integration.md).
+OpenConcho does not call models itself beyond Honcho's chat endpoint; its value is **visibility** into memory used by agents such as [Hermes](../../agents/hermes/index.md), [OpenClaw](../../agents/openclaw/index.md), [Claude Code](../../agents/claude-code/index.md) or your own app through [Honcho](../honcho/index.md).
 
-## Chat with memory context
+## Debugging workflows
 
-The chat feature sends your messages to the configured Honcho instance with full memory context — useful for:
+* **"Why did the agent assume that?"** — search conclusions for the claim and follow it to the source session.
+* **Tuning reasoning depth** — run the same question in the dialectic playground at every level and compare cost and quality.
+* **After bulk imports** — trigger a dream pass and watch consolidation in the dream viewer.
+* **Shared memory across agents** — confirm two agents pointed at one workspace see the same peer representation.
 
-* debugging what Honcho knows about a user,
-* manually conversing against a persona,
-* inspecting conclusions/state.
+This complements trace-level tools like [Langfuse](../../observability/langfuse/index.md): Langfuse shows the calls, OpenConcho shows the resulting memory. See [LLM observability](../../concepts/llm-observability.md).
 
-## Browse derived models
+## Related
 
-* **Peers** — see each user's representations, context, peer cards.
-* **Sessions / conclusions** — audit what the LLM-derived memory looks like.
-* **Workspaces** — per-workspace navigation across the tenant tree.
-
-## Role in the agent stack
-
-* Agents use the **Honcho SDK** programmatically (memory in/out).
-* Humans use **OpenConcho** to watch and steer that memory.
-* Nothing here runs yet (2026-08-13) — both Honcho and OpenConcho are checkout-only.
-
-## Analog
-
-[OpenMemory](../mem0/installation.md) plays the same role for [Mem0](../mem0/index.md): the UI companion to the memory backend.
+[OpenConcho index](index.md) · [Honcho AI integration](../honcho/ai-integration.md)

@@ -1,51 +1,50 @@
 ---
-type: Reference
+type: Software
 title: Tailscale
-description: Zero Trust, identity-based mesh networking over WireGuard that connects devices, servers, clouds, and AI workloads without port forwarding.
-resource: https://tailscale.com/
-tags: [tailscale, vpn, mesh, wireguard, zero-trust, networking, tailnet]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+description: WireGuard-based mesh VPN with identity-based access control — the simplest way to reach self-hosted AI services privately from any device, plus Serve/Funnel, SSH, an OIDC provider for apps, and Aperture, an LLM gateway for teams.
+resource: https://tailscale.com
+tags: [tailscale, vpn, wireguard, zero-trust, networking, self-hosting, go]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
-  - id: tailscale-official
-    resource: "https://tailscale.com/"
-    title: "Tailscale official"
+  - id: tailscale-docs
+    resource: "https://tailscale.com/kb"
+    title: "Tailscale knowledge base"
     author: "site:tailscale.com"
-  - id: local-dir-programs-tailscale-tailscale
-    resource: "/../../programs/tailscale/tailscale"
-    title: "Local dir - programs/tailscale/tailscale"
+  - id: tailscale-github
+    resource: "https://github.com/tailscale/tailscale"
+    title: "tailscale/tailscale on GitHub"
+    author: "site:github.com"
+  - id: aperture
+    resource: "https://tailscale.com/aperture"
+    title: "Tailscale Aperture"
+    author: "site:tailscale.com"
 ---
 
 # Tailscale
 
-A **Zero Trust, identity-based connectivity platform** that builds a private mesh overlay network (a *tailnet*) across your devices, servers, clouds, and AI workloads — replacing legacy VPNs. On this machine it can securely expose your local services (`:4000` LiteLLM proxy, `:3001` OpenWebUI, `:8088` SearXNG) to your other devices without opening ports.
+**Tailscale** connects your devices into a private network (a *tailnet*) using WireGuard, with logins from an identity provider instead of keys and firewall rules. For a self-hosted AI stack it solves "how do I reach Open WebUI, Ollama or my agents from my phone without exposing them to the internet?" — and in 2026 it also added **Aperture**, a gateway for LLM traffic.
+
+| | |
+|---|---|
+| Category | Networking · [Self-hosting](../../concepts/self-hosting.md) |
+| License | Client: BSD-3-Clause; coordination service: commercial (free personal tier); Headscale is an open-source alternative server |
+| Language | Go |
+| Latest release | v1.104.6 (2026-11-11) |
+| Platforms | Linux, macOS, Windows, iOS, Android, containers, Kubernetes operator |
 
 ## Contents
 
-* [Overview](overview.md) - what Tailscale is, how it fits
-* [Installation](installation.md) - install the client, `tailscale up`, auth
-* [Concepts](concepts.md) - tailnet, WireGuard, MagicDNS, DERP, ACLs, exit nodes, funnel
-* [AI Integration](ai-integration.md) - secure access to your AI stack + Aperture
-* [Alternatives](../alternatives.md) - WireGuard, Headscale, ZeroTier, OpenVPN, Cloudflare Tunnel
-* [Snippets](snippets.md) - cheat sheet
+* [Overview](overview.md) — how a tailnet works
+* [Concepts](concepts.md) — MagicDNS, ACLs/grants, tags, Serve, Funnel, SSH, exit nodes, subnet routers
+* [Installation](installation.md) — clients, servers, Docker sidecars
+* [Snippets](snippets.md) — CLI cheat sheet
+* [AI Integration](ai-integration.md) — private access to AI services, tsidp, Aperture
 
-## Instance facts
+## Related
 
-* **Local dir:** `programs/tailscale/tailscale` (Tailscale client/scripts)
-* **Version:** stable **v1.102.2** (2026-08-04)
-* **Role here:** private mesh to reach local services from other devices; zero-trust access to AI agents
-* **Upstream:** Zero Trust connectivity platform (WireGuard-based)
-
-## Cross-references
-
-* **SearXNG** — expose on tailnet via funnel/serve — see [SearXNG Installation](../searxng/installation.md)
-* **OpenWebUI** — access from phone/laptop via Tailscale IP — see [OpenWebUI Installation](../../apps/openwebui/installation.md)
-* **Firecrawl / Dify / AnythingLLM** — expose internal ports securely — see respective installation docs
-* **:4000 OpenRouter proxy** — expose to tailnet for remote agent access — see [Graphify AI Integration](../../memory/graphify/ai-integration.md)
-* **Hermes** — can run on any tailnet device — see [Hermes Overview](../../agents/hermes/overview.md)
-
-## Last verified
-
-**2026-08-12** — Client config, funnel/serve concepts, and AI stack exposure patterns verified against upstream tailscale.com/kb. Stable v1.102.2 (2026-08-04).
+* Concepts: [Self-hosting](../../concepts/self-hosting.md) · [Agent security](../../concepts/agent-security.md)
+* Fronts: [Ollama](../ollama/index.md), [Open WebUI](../../apps/openwebui/index.md), [LiteLLM](../litellm/index.md), [n8n](../../apps/n8n/index.md), [Langfuse](../../observability/langfuse/index.md)
+* Comparison: [Runtime alternatives](../alternatives.md)

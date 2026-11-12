@@ -1,54 +1,37 @@
 ---
-type: Reference
-title: Dify — AI Integration
-description: Connecting Dify to your stack — model providers via the :4000 proxy, SearXNG web search, Firecrawl web ingestion, and Graphify structuring of RAG outputs.
+type: Playbook
+title: Dify AI Integration
+description: Dify in a wider AI stack — local models via Ollama or LiteLLM, web data from Firecrawl and SearXNG, MCP in both directions, memory via Hindsight, tracing to Langfuse, and when to choose Dify over n8n or code frameworks.
 resource: https://docs.dify.ai
-tags: [dify, integration, searxng, firecrawl, graphify, openai-compatible, rag]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+tags: [dify, integration, mcp, langfuse, n8n]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
   - id: dify-docs
     resource: "https://docs.dify.ai"
-    title: "Dify docs"
+    title: "Dify documentation"
     author: "site:docs.dify.ai"
-  - id: dify-model-providers
-    resource: "https://docs.dify.ai/guides/model-configuration"
-    title: "Dify model providers"
-    author: "site:docs.dify.ai"
-  - id: firecrawl-api
-    resource: "https://docs.firecrawl.dev/api-reference"
-    title: "Firecrawl API"
-    author: "site:docs.firecrawl.dev"
-  - id: searxng-api
-    resource: "https://docs.searxng.org/dev/search_api.html"
-    title: "SearXNG API"
-    author: "site:docs.searxng.org"
 ---
 
-# Dify — Models via the :4000 proxy
+# Dify — AI Integration
 
-Dify's **model providers** panel accepts any **OpenAI-compatible** endpoint. Point Dify at your `:4000` LiteLLM/OpenRouter proxy for chat, completion, and embedding models — see [Model Providers](model-providers.md).
+| Need | Integration |
+|---|---|
+| Models | [Ollama](../../runtime/ollama/index.md), [vLLM](../../runtime/vllm/index.md), [LiteLLM](../../runtime/litellm/index.md) via provider plugins |
+| Web data | [Firecrawl](../../browsers/firecrawl/ai-integration.md) and [SearXNG](../../runtime/searxng/ai-integration.md) tools |
+| Tools | [MCP](../../concepts/mcp.md) servers as tools; publish Dify apps as MCP servers for [Claude Code](../claude-code/index.md) and others |
+| Memory | Conversation variables; [Hindsight](../../memory/hindsight/ai-integration.md) integration for long-term memory |
+| Observability | Langfuse, LangSmith, Opik and others — [Langfuse](../../observability/langfuse/index.md), [LLM observability](../../concepts/llm-observability.md) |
+| Automation | Trigger Dify workflows from [n8n](../../apps/n8n/index.md) via the API |
 
-# Web search via SearXNG
+## Choosing
 
-Dify apps can use **SearXNG** as a search tool for agent steps and knowledge fetching:
+* **Dify** — LLM-centric apps and RAG built by mixed technical/non-technical teams.
+* [n8n](../../apps/n8n/index.md) — integration-heavy automations across hundreds of SaaS apps.
+* [LangGraph](../langgraph/index.md) / [Pydantic AI](../pydanticAI/index.md) — when you need code-level control and testing.
 
-* Configure a custom tool or HTTP request node pointing at `http://localhost:8088/search?q={{query}}&format=json` (host port `8088` → container `8080`; in-network, use `http://searxng:8080` on the `backend` network — verified 2026-08-12).
-* The JSON API returns results that Dify's workflow nodes can parse directly.
+## Related
 
-# Web content via Firecrawl
-
-Dify RAG pipelines and workflows can ingest web content through **Firecrawl** (self-hosted on `:3002`):
-
-* Use Firecrawl's `/v2/scrape` or `/v2/crawl` endpoints from a workflow **HTTP request** node or a custom tool.
-* Feed extracted Markdown into Dify's knowledge-base ingestion step.
-
-# Knowledge graph via Graphify
-
-Graphify can structure the outputs of Dify RAG pipelines into a knowledge graph — see [Graphify AI Integration](../../memory/graphify/ai-integration.md).
-
-# Deployment status
-
-Source is at `programs/archive/dify/` (archived; upstream v1.16.1, local compose pins `langgenius/dify-api:1.15.0`). No container is currently running. See [Installation](installation.md) to bring it up.
+[Dify index](index.md) · [Agents alternatives](../alternatives.md)

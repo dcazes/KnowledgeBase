@@ -1,124 +1,57 @@
 ---
-type: Playbook
-title: Docker — Snippets & Cheat Sheet
-description: Copy-paste commands and compose fragments covering the majority of daily Docker use cases on this machine.
+type: Reference
+title: Docker Snippets
+description: Docker command cheat sheet — containers, images, Compose, volumes, networks, cleanup, debugging, GPUs and Model Runner.
 resource: https://docs.docker.com/reference/cli/docker/
-tags: [docker, snippets, cheat-sheet, reference]
-generated: { by: "human:daniel", at: "2026-07-08T22:35:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-08T22:35:00Z" } ]
+tags: [docker, snippets, cli, cheat-sheet]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-04
+stale_after: 2027-05-11
 sources:
-  - id: docker-cli-reference
-    resource: "https://docs.docker.com/reference/cli/docker/"
-    title: "Docker CLI reference"
+  - id: docker-docs
+    resource: "https://docs.docker.com"
+    title: "Docker documentation"
     author: "site:docs.docker.com"
-  - id: compose-cli-reference
-    resource: "https://docs.docker.com/reference/cli/docker/compose/"
-    title: "Compose CLI reference"
-    author: "site:docs.docker.com"
-  - id: local-install-run-script-programs-docker
-    resource: "/../../programs/docker/"
-    title: "Local install / run script - programs/docker/"
 ---
 
-# Docker — Start / verify (your machine)
+# Docker — Snippets
 
 ```bash
-systemctl --user start docker-desktop     # from programs/docker/run
-docker version
-docker run hello-world
+# containers
+docker run -d --name app -p 127.0.0.1:8080:80 nginx
+docker ps -a ; docker logs -f app ; docker exec -it app sh
+docker stop app && docker rm app
+docker restart app ; docker stats
+
+# images
+docker pull image:tag ; docker images ; docker rmi image:tag
+docker build -t me/app:dev . ; docker image prune -a
+
+# compose
+docker compose up -d ; docker compose logs -f svc ; docker compose down
+docker compose pull && docker compose up -d     # update
+docker compose exec svc sh
+
+# volumes & networks
+docker volume ls ; docker volume inspect v
+docker network ls ; docker network inspect bridge
+
+# disk
+docker system df ; docker system prune
+
+# debug
+docker inspect app --format '{{.State.Health.Status}}'
+docker events --since 10m
+
+# GPU
+docker run --rm --gpus all nvidia/cuda:12.6.0-base-ubuntu24.04 nvidia-smi
+
+# models & agents
+docker model pull ai/gemma3 ; docker model run ai/gemma3 "hi"
+docker agent run agent.yaml
 ```
 
-# Run a container
+## Related
 
-```bash
-docker run -d --name web -p 8080:80 nginx:alpine     # detached, named, port map
-docker run -it --rm ubuntu:22.04 /bin/bash           # interactive, auto-remove on exit
-docker run --rm --gpus all nvidia/cuda:12.4.0-base-ubuntu22.04 nvidia-smi
-```
-
-# Lifecycle
-
-```bash
-docker ps -a                      # all containers
-docker start web / docker stop web / docker restart web
-docker exec -it web /bin/sh      # shell inside running container
-docker logs -f web               # follow logs
-docker rm -f web                 # force remove
-```
-
-# Images
-
-```bash
-docker pull nginx:alpine
-docker build -t myapp:1.0 .      # build from Dockerfile in cwd
-docker image ls
-docker tag myapp:1.0 myreg.io/daniel/myapp:1.0
-docker push myreg.io/daniel/myapp:1.0
-docker image prune -a            # remove unused images
-```
-
-# Compose (multi-container)
-
-```bash
-docker compose up -d             # start stack in background
-docker compose ps                # status
-docker compose logs -f <svc>     # follow one service
-docker compose down              # stop + remove
-docker compose down -v           # + remove volumes (DESTRUCTIVE)
-docker compose restart <svc>
-```
-
-Minimal compose:
-
-```yaml
-services:
-  app:
-    image: nginx:alpine
-    ports: ["8080:80"]
-    restart: unless-stopped
-```
-
-# Volumes
-
-```bash
-docker volume create data
-docker volume ls
-docker volume inspect data
-docker run -v data:/app/data -v $PWD/config.yml:/etc/app/config.yml:ro myapp
-docker volume prune
-```
-
-# Networks
-
-```bash
-docker network create net
-docker network ls
-docker run --network net --name db postgres:16     # reachable as "db" by peers
-docker network prune
-```
-
-# Cleanup / disk
-
-```bash
-docker system df                 # disk usage
-docker system prune -a           # containers + images + networks + cache
-docker container prune           # stopped containers only
-```
-
-# Inspect / debug
-
-```bash
-docker inspect web               # full JSON config
-docker stats                     # live resource use
-docker top web                   # processes in container
-docker diff web                  # filesystem changes vs image
-```
-
-# GPU check (GTX 1060)
-
-```bash
-nvidia-smi                                          # host
-docker exec -it frigate nvidia-smi                  # inside Frigate container
-```
+[Docker index](index.md) · [Compose](compose.md)

@@ -1,58 +1,31 @@
 ---
-type: Reference
-title: OpenClaw — AI Integration
-description: Using OpenClaw to front your agents (Hermes/OpenCode) and tools (Firecrawl, Graphify, SearXNG) via channels and MCP.
-resource: https://docs.openclaw.ai/
-tags: [openclaw, integration, agents, hermes, opencode, mcp, skills]
-generated: { by: "human:daniel", at: "2026-07-09T03:13:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:13:00Z" } ]
+type: Playbook
+title: OpenClaw AI Integration
+description: Extending OpenClaw — memory plugins (Honcho, MemOS, Cognee, Supermemory, Hindsight), browser plugins (Camofox), local models via Ollama, and skills shared with Hermes and Letta.
+resource: https://docs.openclaw.ai/plugins
+tags: [openclaw, integration, plugins, memory, browser]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: architecture
-    resource: "architecture.md"
-    title: "Architecture"
-  - id: hermes
-    resource: "/../../hermes/index.md"
-    title: "Hermes"
-  - id: opencode
-    resource: "/../../opencode/index.md"
-    title: "OpenCode"
-  - id: graphify-mcp
-    resource: "/../../graphify/mcp-server.md"
-    title: "Graphify MCP"
+  - id: openclaw-docs
+    resource: "https://docs.openclaw.ai"
+    title: "OpenClaw documentation"
+    author: "site:docs.openclaw.ai"
 ---
 
-# OpenClaw — Fronting your agents
+# OpenClaw — AI Integration
 
-OpenClaw can receive a chat message from any channel and delegate the work to a **coding agent**:
-* **Hermes** — background/autonomous agent runtime (`~/.hermes/`).
-* **OpenCode** — terminal-native interactive coding agent (`.opencode.json`).
+| Need | Plugin / route |
+|---|---|
+| Long-term memory | [Honcho](../../memory/honcho/ai-integration.md), [MemOS](../../memory/memos/ai-integration.md), [Cognee](../../memory/cognee/ai-integration.md), [Supermemory](../../memory/supermemory/ai-integration.md), [Hindsight](../../memory/hindsight/ai-integration.md) |
+| Stealth browsing | [Camofox](../../browsers/camofox/ai-integration.md) plugin |
+| Local models | [Ollama](../../runtime/ollama/ai-integration.md) (`ollama launch openclaw`), [LM Studio](../../runtime/lmstudio/index.md), [vLLM](../../runtime/vllm/index.md) |
+| Tools from elsewhere | [MCP](../../concepts/mcp.md) servers and ClawHub skills |
 
-Pattern:
-```
-Telegram → OpenClaw gateway → Hermes/OpenCode → result → Telegram
-```
+Skills from ClawHub install into [Letta](../../memory/letta/snippets.md) and [Hermes](../hermes/skills-plugins.md) too, and Hermes can import an OpenClaw setup wholesale.
 
-# Tools via MCP
+## Related
 
-Enable local MCP mode and point OpenClaw at your stack's MCP servers:
-* **Graphify** — `python -m graphify.serve` (knowledge graph queries).
-* **Firecrawl** — web context API (`:3002`).
-* **SearXNG** — metasearch (`:8080`).
-
-The assistant then gains web search / scrape / graph-retrieval skills.
-
-# Skills
-
-Build custom skills for repetitive tasks (e.g. "summarize my vault", "scrape this URL via Firecrawl"). Skills keep automation reusable across all channels.
-
-# Relationship to other stack pieces
-
-| Layer | Tool |
-|-------|------|
-| Channel front-end | **OpenClaw** |
-| Agent runtime | Hermes / OpenCode |
-| App builder | Dify |
-| Chat UI | OpenWebUI / AnythingLLM |
-| Tools | Firecrawl, Graphify, SearXNG |
+[OpenClaw index](index.md) · [Agents alternatives](../alternatives.md)

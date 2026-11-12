@@ -1,48 +1,51 @@
 ---
-type: Reference
+type: Software
 title: Honcho
-description: AI memory + user modeling (Plastic Labs) — personas, state machine for user state, insights and goals; server + Python/TS SDKs; semantic memory layer for agents.
+description: Reasoning-first memory infrastructure from Plastic Labs — stores messages from peers (users and agents) in sessions, reasons over them in the background, and serves peer representations, conclusions, session context and natural-language answers.
 resource: https://github.com/plastic-labs/honcho
-tags: [honcho, memory, user-modeling, personas, insights]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+tags: [honcho, agent-memory, peers, theory-of-mind, mcp, python, typescript]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
   - id: honcho-github
     resource: "https://github.com/plastic-labs/honcho"
-    title: "Honcho GitHub"
+    title: "plastic-labs/honcho on GitHub"
     author: "site:github.com"
   - id: honcho-docs
-    resource: "https://docs.honcho.dev"
-    title: "Honcho docs"
-    author: "site:docs.honcho.dev"
-  - id: honcho-ai-on-pypi
-    resource: "https://pypi.org/project/honcho-ai/"
-    title: "honcho-ai on PyPI"
-    author: "site:pypi.org"
+    resource: "https://honcho.dev/docs/v3"
+    title: "Honcho documentation (v3)"
+    author: "site:honcho.dev"
+  - id: honcho-evals
+    resource: "https://honcho.dev/evals/"
+    title: "Honcho evals"
+    author: "site:honcho.dev"
 ---
 
 # Honcho
 
-A **user-modeling and memory platform** (Plastic Labs) — derives and maintains a model of each user: **personas**, a **state machine** over user states, and **insights/goals** extracted from conversation. Runs as a server with Python and TypeScript SDKs; designed to give agents persistent, semantically-grounded understanding of who they're talking to.
+**Honcho** models the *people and agents* an application talks to. You store messages on sessions; a background "deriver" reasons over them and builds a **representation** of each peer — what they know, prefer and believe. You then ask Honcho questions in natural language ("what learning style works for this student?") or pull prompt-ready context. Where most [agent memory](../../concepts/agent-memory.md) retrieves chunks, Honcho retrieves *conclusions*.
 
-Local checkout: `programs/honcho` (git, plastic-labs, main, commit 2026-07-21) at **v3.0.11**; Python SDK `honcho-ai` is **v2.3.0** on PyPI (checkout SDK pyproject shows **v2.2.0**). **Not deployed** as of 2026-08-13 (no running containers).
+| | |
+|---|---|
+| Category | [Agent memory](../../concepts/agent-memory.md) |
+| License | AGPL-3.0 |
+| Server | Python 3.13+ FastAPI service; PostgreSQL + [pgvector](../../databases/pgvector/index.md); Redis optional |
+| SDKs | Python `honcho-ai` 2.9.0 · TypeScript `@honcho-ai/sdk` |
+| Latest release | v3.6.1 (2026-11-11) |
+| Deployment | Managed (api.honcho.dev) · local via `honcho start` · self-hosted Docker or from source |
+| UI | [OpenConcho](../openconcho/index.md) (community) |
 
 ## Contents
 
-* [Overview](overview.md) — personas, user state machine, insights/goals, workspace/agent scoping
-* [Installation](installation.md) — `pip install honcho-ai` (SDK) or local checkout; server via Docker; verify
-* [Configuration](configuration.md) — API keys (Anthropic/OpenAI), workspace setup, session metadata
-* [AI Integration](ai-integration.md) — Python/TS SDK patterns, session init/message flow, agent wiring, vs Mem0/MemOS
-* [Snippets](snippets.md) — init session / send messages / get persona / state transitions cheat sheet
-* [Alternatives](../alternatives.md) — Mem0, MemOS, Graphiti, Zep vs Honcho
+* [Overview](overview.md) — peers, sessions, scopes, conclusions, representations, dreaming
+* [Installation](installation.md) — managed, CLI local stack, Docker, from source
+* [Snippets](snippets.md) — Python and TypeScript store / reason / query / inject loop
+* [AI Integration](ai-integration.md) — plugins for Claude Code, Codex, Cursor, OpenCode, OpenClaw, Hermes; MCP
 
 ## Related
 
-* [Mem0](../mem0/index.md), [MemOS](../memos/index.md) — memory stores; Honcho = user modeling on top
-* [Graphiti](../graphiti/index.md) — temporal facts; Honcho = user state + personas
-
-## Last verified
-
-**2026-08-13** — Local checkout `programs/honcho` v3.0.11 (SDK honcho-ai v2.3.0 on PyPI; checkout SDK 2.2.0); not deployed. Grounded on local checkout (recon 2026-08-12) + upstream docs.
+* Concepts: [Agent memory](../../concepts/agent-memory.md) · [Context engineering](../../concepts/context-engineering.md) · [MCP](../../concepts/mcp.md)
+* Peers: [Mem0](../mem0/index.md), [Zep](../zep/index.md), [Letta](../letta/index.md), [Hindsight](../hindsight/index.md), [Supermemory](../supermemory/index.md)
+* Comparison: [Memory alternatives](../alternatives.md)

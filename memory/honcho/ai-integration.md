@@ -1,71 +1,55 @@
 ---
-type: Concept
+type: Playbook
 title: Honcho AI Integration
-description: Wire Honcho into agents — peers/sessions/messages, query context via peer.chat, conclusions, Python/TS SDKs, vs Mem0/MemOS/Graphiti for user memory.
-resource: https://docs.honcho.dev
-tags: [honcho, integration, sdk, peers, agents]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: First-party Honcho memory plugins for coding agents — Claude Code, Codex, Cursor, OpenCode, Kilo Code, OpenClaw, Hermes — plus remote MCP, a shared config file, and the integration skill for your own apps.
+resource: https://github.com/plastic-labs/honcho
+tags: [honcho, integration, mcp, claude-code, codex, openclaw, hermes]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: honcho-docs-quickstart
-    resource: "https://docs.honcho.dev"
-    title: "Honcho docs — quickstart"
-    author: "site:docs.honcho.dev"
   - id: honcho-github
     resource: "https://github.com/plastic-labs/honcho"
-    title: "Honcho GitHub"
+    title: "plastic-labs/honcho on GitHub"
     author: "site:github.com"
+  - id: honcho-docs
+    resource: "https://honcho.dev/docs/v3"
+    title: "Honcho documentation (v3)"
+    author: "site:honcho.dev"
 ---
 
 # Honcho — AI Integration
 
-## Python SDK flow (v3 API)
+All plugins read `~/.honcho/config.json`, so one `honcho init` configures every agent — and pointing two agents at the same workspace gives them **one shared memory**.
 
-```python
-from honcho import Honcho
+| Agent | Install |
+|---|---|
+| [Claude Code](../../agents/claude-code/index.md) | `/plugin marketplace add plastic-labs/claude-honcho` then `/plugin install honcho@honcho` |
+| [Codex](../../agents/codex/index.md) | `npm install -g @honcho-ai/codex-honcho && codex-honcho install` (hooks + MCP + skill) |
+| [Cursor](../../editors/cursor/index.md) | Install **Honcho** from the Cursor Marketplace, then `/honcho-setup` |
+| [OpenCode](../../agents/opencode/index.md) | `opencode plugin "@honcho-ai/opencode-honcho" --global` |
+| Kilo Code | `kilo plugin @honcho-ai/kilo-honcho --global` (CLI, VS Code and JetBrains) |
+| [OpenClaw](../../agents/openclaw/index.md) | `openclaw plugins install @honcho-ai/openclaw-honcho && openclaw honcho setup` — can migrate `MEMORY.md` / `USER.md` / `IDENTITY.md` |
+| [Hermes](../../agents/hermes/index.md) | `hermes memory setup` and choose `honcho` (built in) |
 
-client = Honcho(base_url="http://localhost:8000")
+## Any MCP client
 
-# per conversation
-alice = client.peer("alice")
-bot = client.peer("support-bot")
-session = client.session("support-ticket-42")
-session.add_peers([alice, bot])
-
-# stream turns through Honcho
-session.add_messages([
-    alice.message("I'm shopping for a laptop under $800"),
-    bot.message("Great — gaming or everyday use?"),
-])
-
-# query the model's memory of this peer
-response = alice.chat("What did the bot ask me?", session=session)
-print(response.message)
+```bash
+claude mcp add honcho --transport http --url "https://mcp.honcho.dev" \
+  --header "Authorization: Bearer hch-..." --header "X-Honcho-User-Name: YourName"
 ```
 
-## TypeScript SDK
+The same form works in Cline, Windsurf and other [MCP](../../concepts/mcp.md) clients.
 
-```ts
-import { Honcho } from "@honcho-ai/sdk";
-const client = new Honcho({ baseURL: "http://localhost:8000" });
-const alice = client.peer("alice");
-const session = client.session("support-ticket-42");
-session.addPeers([alice]);
-session.addMessages([alice.message("…")]);
-const resp = await alice.chat("What did they ask?", { session });
-```
+## Your own application
 
-## Agent pattern
+`npx skills add plastic-labs/honcho` installs an integration [skill](../../concepts/agent-skills.md): run `/honcho-integration` in a coding agent and it wires the SDK into your codebase and verifies it.
 
-1. Create/reuse peers per user; reuse the session per conversation.
-2. After each exchange, batch both turns via `session.add_messages(...)`.
-3. Before responding, query `peer.chat("…", session=session)` to ground the reply in Honcho's derived context (conclusions).
-4. Inspect derived state via `honcho conclusion list` / `queue-status` (CLI).
+## Inspecting memory
 
-## In this stack
+Use [OpenConcho](../openconcho/index.md) to browse peers, conclusions, sessions and dream passes.
 
-* Not deployed here (2026-08-13); fits alongside [Mem0](../mem0/index.md) (facts) and [MemOS](../memos/index.md) (memory OS) — Honcho adds **user modeling** (peers + derived conclusions) none of the others provide.
-* [Graphiti](../graphiti/index.md) covers temporal fact provenance; Honcho covers *who the user is*.
-* UI companion: [OpenConcho](../openconcho/index.md) (Honcho UI).
+## Related
+
+[Honcho index](index.md) · [Agent memory](../../concepts/agent-memory.md) · [Memory alternatives](../alternatives.md)

@@ -1,66 +1,35 @@
 ---
-type: Reference
-title: AnythingLLM — AI Integration
-description: Connecting AnythingLLM to your stack — SearXNG web search, Firecrawl extract, Graphify MCP, and the :4000 inference proxy.
+type: Playbook
+title: AnythingLLM AI Integration
+description: AnythingLLM in a wider stack — local and gateway model providers, model routing, web search via SearXNG, MCP tools, shared vector databases, memory, and when to choose it over Open WebUI or SurfSense.
 resource: https://docs.anythingllm.com
-tags: [anythingllm, integration, searxng, firecrawl, graphify, mcp, openai-compatible]
-generated: { by: "human:daniel", at: "2026-07-09T02:35:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T02:35:00Z" } ]
+tags: [anythingllm, integration, models, mcp]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: overview
-    resource: "overview.md"
-    title: "Overview"
-  - id: searxng
-    resource: "/../../searxng/index.md"
-    title: "SearXNG"
-  - id: firecrawl
-    resource: "/../../firecrawl/index.md"
-    title: "Firecrawl"
-  - id: graphify
-    resource: "/../../graphify/index.md"
-    title: "Graphify"
+  - id: anythingllm-docs
+    resource: "https://docs.anythingllm.com"
+    title: "AnythingLLM documentation"
+    author: "site:docs.anythingllm.com"
 ---
 
-# AnythingLLM — Models via the :4000 proxy
+# AnythingLLM — AI Integration
 
-Like OpenWebUI, AnythingLLM can use any **OpenAI-compatible** endpoint. Since no Ollama runs locally here, point it at your `:4000` proxy:
-```
-Settings → AI Providers → OpenAI-compatible
-Base URL:  http://localhost:4000/v1
-API Key:   <proxy-accepted value>
-```
-The agent then reasons through cloud models via the proxy.
+| Layer | Options |
+|---|---|
+| Models | Built-in engine, [Ollama](../../runtime/ollama/index.md), [LM Studio](../../runtime/lmstudio/index.md), [llama.cpp](../../runtime/llamacpp/index.md) models, generic OpenAI for [LiteLLM](../../runtime/litellm/index.md) or [vLLM](../../runtime/vllm/index.md), hosted providers |
+| Web | [SearXNG](../../runtime/searxng/ai-integration.md) or search APIs |
+| Tools | [MCP](../../concepts/mcp.md) servers |
+| Vectors | Shared [Qdrant](../../databases/qdrant/index.md) or [pgvector](../../databases/pgvector/index.md) with other apps |
 
-# Web search via SearXNG
+## Choosing
 
-Configure the Web Search skill (see [Agent Skills](agent-skills.md)):
-```
-Provider: SearXNG
-URL:      http://searxng:8080   (or http://localhost:8080)
-```
-Private metasearch results feed RAG/chat — no third-party search API needed.
+* **AnythingLLM** — least setup, desktop-friendly, workspaces, agents and embeddable widgets.
+* [Open WebUI](../openwebui/index.md) — best multi-model chat for teams and extensibility.
+* [SurfSense](../../browsers/surfsense/index.md) — editing and transforming your own documents privately.
 
-# Extraction via Firecrawl
+## Related
 
-Firecrawl isn't a built-in AnythingLLM skill, but you can:
-* Add a **custom API skill** that calls `http://localhost:3002/v1/scrape` (or `/v1/search`) — Firecrawl returns clean Markdown/JSON.
-* Or pre-scrape with Firecrawl and drop the Markdown into a workspace for RAG.
-
-# Knowledge graph via Graphify (MCP)
-
-Register Graphify's MCP server so the agent queries your graph:
-```
-MCP: graphify  (stdio: python -m graphify.serve)
-```
-(See [Graphify MCP](/../../graphify/mcp-server.md).)
-
-# Summary of wiring
-
-| Need | Tool | Endpoint |
-|------|------|----------|
-| Inference | `:4000` proxy | `http://localhost:4000/v1` |
-| Web search | SearXNG | `http://localhost:8080` |
-| Deep extract | Firecrawl | `http://localhost:3002` |
-| Graph RAG | Graphify MCP | `python -m graphify.serve` |
+[AnythingLLM index](index.md) · [Apps alternatives](../alternatives.md)

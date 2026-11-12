@@ -1,48 +1,43 @@
 ---
-type: Reference
+type: Comparison
 title: Graphiti vs Graphify
-description: Explicit distinction between Graphiti (temporal context-graph agent memory, Neo4j) and Graphify (static confidence-tagged compiled graph) — both in this KB.
+description: Graphiti and Graphify both build knowledge graphs but solve different problems — temporal agent memory over evolving data versus a one-shot structural map of a codebase or document folder.
 resource: https://github.com/getzep/graphiti
-tags: [graphiti, graphify, comparison, temporal, static, knowledge-graph, distinction]
-generated: { by: "human:daniel", at: "2026-07-09T05:05:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T05:05:00Z" } ]
+tags: [graphiti, graphify, comparison, knowledge-graph]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: graphiti
+  - id: graphiti-github
     resource: "https://github.com/getzep/graphiti"
-    title: "Graphiti"
+    title: "getzep/graphiti on GitHub"
     author: "site:github.com"
-  - id: graphify
-    resource: "/../../graphify/index.md"
-    title: "Graphify"
-  - id: graphiti-concepts
-    resource: "concepts.md"
-    title: "Graphiti concepts"
+  - id: graphify-github
+    resource: "https://github.com/Graphify-Labs/graphify"
+    title: "Graphify-Labs/graphify on GitHub"
+    author: "site:github.com"
 ---
 
-# Graphiti — Two different "graph from data" tools
+# Graphiti vs Graphify
 
-This KB covers **both** Graphiti and Graphify. They sound alike but solve different problems.
+Both produce [knowledge graphs](../../concepts/knowledge-graphs.md), which makes them easy to confuse.
 
-| Aspect | **Graphiti** | **Graphify** |
-|--------|--------------|--------------|
-| Purpose | **Temporal agent memory** | Static, compiled knowledge graph |
-| Source | Live streams / interactions / docs | A folder of files |
-| Temporal | ✅ validity windows, point-in-time queries | ❌ snapshot in time |
-| Provenance | ✅ **Episodes** (raw source preserved) | partial (source files) |
-| Confidence tags | ❌ | ✅ EXTRACTED / INFERRED / AMBIGUOUS |
-| Backend | Neo4j / FalkorDB / Neptune / Kuzu | file/GraphML (MCP serve) |
-| Client | Python `graphiti_core` | Hermes client (`graphify install --platform hermes`) |
-| MCP | ✅ MCP server (Docker) | ✅ `python -m graphify.serve` |
-| Update model | Incremental / real-time | Recompile the graph |
-| Author | Zep / Neo4j | Graphify-Labs |
+| | Graphiti | [Graphify](../graphify/index.md) |
+|---|---|---|
+| Input | A continuous stream of episodes (messages, records, text) | A folder: code, docs, SQL schemas, configs, PDFs |
+| Output | A live temporal graph in Neo4j / FalkorDB / Neptune | A graph file plus a report you can query |
+| Time | Bi-temporal facts; old facts invalidated, not deleted | A snapshot of the folder; rebuild to refresh |
+| Typical user | An application giving agents long-term memory | A developer or coding agent trying to understand a codebase |
+| Interface | Python library, reference MCP/REST servers | Coding-assistant skill, CLI, MCP server |
 
-# When to use which
+## When to use which
 
-* **Graphiti** — you need memory that *changes over time* and you can query "what was true then." Best for agents operating on evolving data. Needs a graph DB (Neo4j).
-* **Graphify** — you want a one-shot, confidence-tagged graph of a codebase/folder you can query or serve over MCP. Lighter; no DB required.
+* "Remember what the user told me last month, and notice when it changed" → **Graphiti**.
+* "Map this repository so my coding agent stops re-reading every file" → **Graphify**.
 
-# They can coexist
+They can coexist: Graphify for codebase structure, Graphiti for what happens over time.
 
-Use **Graphify** to compile a static map of `programs/*` for quick lookup, and **Graphiti** to hold the *evolving* memory of agent interactions. Different layers, same "graph" idea.
+## Related
+
+[Graphiti index](index.md) · [Graphify index](../graphify/index.md) · [GraphRAG](../../concepts/graphrag.md) · [Memory alternatives](../alternatives.md)

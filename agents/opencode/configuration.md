@@ -1,117 +1,53 @@
 ---
 type: Reference
 title: OpenCode Configuration
-description: The .opencode.json structure — model selection, allow/deny permissions, MCP servers, custom tools, and the :4000 OpenAI-compatible proxy.
+description: OpenCode's opencode.json — model and provider selection including local OpenAI-compatible servers, permissions for edits and shell commands, MCP servers, formatters and LSP, with global and per-project scopes.
 resource: https://opencode.ai/docs/config
-tags: [opencode, config, json, permissions, mcp, proxy]
-generated: { by: "human:daniel", at: "2026-07-09T03:25:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T03:25:00Z" } ]
+tags: [opencode, configuration, opencode-json, permissions, mcp]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: opencode-config-docs
-    resource: "https://opencode.ai/docs/config"
-    title: "OpenCode Config Docs"
+  - id: opencode-docs
+    resource: "https://opencode.ai/docs"
+    title: "OpenCode documentation"
     author: "site:opencode.ai"
-  - id: opencode-github-repository-anomalyco
-    resource: "https://github.com/anomalyco/opencode"
-    title: "OpenCode GitHub repository (anomalyco)"
-    author: "site:github.com"
 ---
 
-# OpenCode Configuration
+# OpenCode — Configuration
 
-OpenCode is configured with a plaintext `.opencode.json` file in the project root. This reference documents its key sections.
-
-## Basic structure
+Config merges from a global file (`~/.config/opencode/opencode.json`) and the project's `opencode.json`.
 
 ```json
 {
-  "model": "anthropic/claude-sonnet-4",
-  "allow": ["file_read", "file_write", "terminal", "network"],
-  "deny": ["file_delete_recursive", "terminal:sudo"],
-  "mcpServers": {
-    "graphify": { "url": "http://127.0.0.1:8000" },
-    "searxng": { "url": "http://127.0.0.1:8080/search" }
-  },
-  "tools": {
-    "web-search": {
-      "command": "curl -s ...",
-      "description": "...",
-      "env": {}
-    }
-  }
-}
-```
-
-## Model selection
-
-The `model` key selects the default provider/model. Use provider-prefixed names:
-
-- `anthropic/claude-sonnet-4`
-- `openai/gpt-4o`
-- `google/gemini-2.5-pro`
-- `ollama/llama3.1`
-- `nvidia/nemotron`
-
-### Pointing at the `:4000` proxy
-
-The instance runs an OpenAI-compatible failover proxy at `http://localhost:4000/v1` (OpenRouter/NIM). Point a model at it by configuring the OpenAI-compatible endpoint:
-
-```json
-{
-  "model": "openai/gpt-4o",
+  "$schema": "https://opencode.ai/config.json",
+  "model": "anthropic/claude-sonnet-4-5",
   "provider": {
-    "openai": {
-      "baseURL": "http://localhost:4000/v1",
-      "apiKey": "sk-local"
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "options": { "baseURL": "http://localhost:11434/v1" },
+      "models": { "qwen3-coder:30b": {} }
     }
+  },
+  "permission": {
+    "edit": "ask",
+    "bash": { "git push*": "ask", "rm *": "deny", "*": "allow" }
+  },
+  "mcp": {
+    "playwright": { "type": "local", "command": ["npx", "@playwright/mcp@latest"] },
+    "graphiti":   { "type": "remote", "url": "http://localhost:8000/mcp/" }
   }
 }
 ```
 
-## Permissions: allow / deny
+* **Models:** `provider/model` ids; providers come from the models.dev catalogue, plus any [OpenAI-compatible](../../concepts/openai-compatible-api.md) endpoint ([Ollama](../../runtime/ollama/index.md), [vLLM](../../runtime/vllm/index.md), [LiteLLM](../../runtime/litellm/index.md)).
+* **Permissions:** `allow` / `ask` / `deny` for edits, shell (with glob patterns) and web fetch — your main safety lever ([Agent security](../../concepts/agent-security.md)).
+* **MCP:** local (stdio) or remote (HTTP) [MCP](../../concepts/mcp.md) servers.
+* **Formatters and LSP** are auto-detected and configurable.
 
-- `allow` — capabilities the agent may use (e.g. `file_read`, `file_write`, `terminal`, `network`).
-- `deny` — explicit blocks (e.g. `file_delete_recursive`, `terminal:sudo`).
+Model ids above are examples; use whatever your providers currently offer.
 
-The `deny` list always wins over `allow`.
+## Related
 
-## MCP servers
-
-`"mcpServers"` registers Model Context Protocol servers by URL. Example from this instance:
-
-```json
-{
-  "mcpServers": {
-    "graphify": { "url": "http://127.0.0.1:8000" },
-    "searxng": { "url": "http://127.0.0.1:8080/search" }
-  }
-}
-```
-
-## Custom tools
-
-`"tools"` defines custom commands the agent can invoke:
-
-```json
-{
-  "tools": {
-    "web-search": {
-      "command": "curl -s 'https://api.example.com/search?q=$QUERY'",
-      "description": "Search the web via a custom endpoint",
-      "env": { "API_KEY": "..." }
-    }
-  }
-}
-```
-
-## Verify
-
-```bash
-cd /path/to/project
-cat .opencode.json          # inspect config
-opencode --version          # confirm binary is active
-# Launch and confirm the model + tools load without errors
-opencode
-```
+[OpenCode index](index.md) · [Agents, commands & rules](hierarchical-structure.md)

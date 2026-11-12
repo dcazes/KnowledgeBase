@@ -1,61 +1,43 @@
 ---
-type: Reference
-title: Graphify — Confidence Tags
-description: What EXTRACTED / INFERRED / AMBIGUOUS mean on every graph edge, and how to read them when trusting the graph.
+type: Concept
+title: Graphify Confidence Tags
+description: Why every Graphify edge carries an EXTRACTED or INFERRED tag, how to read them, and how this provenance helps agents avoid acting on guessed relationships.
 resource: https://github.com/Graphify-Labs/graphify
-tags: [graphify, confidence, edges, extracted, inferred, ambiguous, trust]
-generated: { by: "human:daniel", at: "2026-07-09T00:18:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T00:18:00Z" } ]
+tags: [graphify, provenance, confidence, knowledge-graph]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: graphify-github-confidence-tags-in-readme
+  - id: graphify-github
     resource: "https://github.com/Graphify-Labs/graphify"
-    title: "Graphify GitHub (confidence tags in README)"
+    title: "Graphify-Labs/graphify on GitHub"
     author: "site:github.com"
-  - id: graphifyy-pypi-extracted-inferred-ambiguous-description
-    resource: "https://pypi.org/project/graphifyy/"
-    title: "graphifyy PyPI (EXTracted/INFERRED/AMBIGUOUS description)"
-    author: "site:pypi.org"
 ---
 
-# Graphify — Why confidence tags exist
+# Graphify — Confidence Tags
 
-A knowledge graph built by an LLM mixes two very different kinds of fact:
+Every edge is tagged:
 
-1. Something **explicitly stated** in your source (a function calls another; a doc says X depends on Y).
-2. Something the model **derived** by resolving references, or **guessed** when resolution was uncertain.
+* **`EXTRACTED`** — explicit in the source (an import statement, a direct call, a method defined on a class).
+* **`INFERRED`** — derived by Graphify's resolution (a call resolved through a re-export, a type relationship worked out across files).
 
-Graphify labels every edge so you always know **what was found vs. guessed**. This is the core honesty feature — it's why the project claims to be "honest about what it found vs guessed."
-
-# The three tags
-
-| Tag | Meaning | Trust |
-|-----|---------|-------|
-| `EXTRACTED` | Relationship is **explicit in the source** (e.g. an `import`, a direct call, a sentence stating the link). | High — read directly. |
-| `INFERRED` | Derived by **resolution** (e.g. matching a call site to its definition, following a type). Plausible but not literally stated. | Medium — usually right, verify for critical claims. |
-| `AMBIGUOUS` | The model could not confidently resolve the link (name collision, missing context, weak signal). | Low — treat as a hypothesis. |
-
-Example from upstream docs (Python extraction):
-
-```
-FastAPI --uses--> DefaultPlaceholder <--references-- get_request_handler() --references--> ModelField
-RequestValidationError [uses] [INFERRED]
-Dependant [uses] [INFERRED]
-.get() [method] [EXTRACTED]
-<-- __init__.py [imports] [EXTRACTED]
+```text
+Connections (47):
+  --> RequestValidationError [uses] [INFERRED]
+  --> .get() [method] [EXTRACTED]
 ```
 
-Here the `imports`/`method` edges are `EXTRACTED` (literally in code); the `uses` edges are `INFERRED` (resolved across files).
+## Why it matters
 
-# How to use the tags
+Graphs built by LLMs often mix facts with guesses invisibly. Tagging each edge lets a human or agent:
 
-* **Trust EXTRACTED edges** as ground truth from your inputs.
-* **Spot-check INFERRED edges** when a decision hinges on them.
-* **Ignore or verify AMBIGUOUS edges** before relying on them.
-* When querying, ask for provenance: a good answer cites which nodes/edges supported it, and their tags.
+* trust `EXTRACTED` edges for refactors and impact analysis;
+* double-check `INFERRED` edges against the source before acting;
+* weigh answers by provenance — the same principle behind [Graphiti](../graphiti/index.md)'s episodes and this vault's own `sources:` frontmatter.
 
-# Related controls
+Provenance is a recurring theme across [knowledge graphs](../../concepts/knowledge-graphs.md) and [agent memory](../../concepts/agent-memory.md): know what was observed versus concluded.
 
-* `graphify extract ./docs --dedup-llm` — adds an LLM tiebreaker for ambiguous entity pairs (uses the same API key) to reduce `AMBIGUOUS` noise.
-* `graphify extract ./docs --force` — rebuild cleanly after refactors (clears ghost duplicates that can produce false edges).
+## Related
+
+[Graphify index](index.md) · [Overview](overview.md)

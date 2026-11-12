@@ -1,54 +1,53 @@
 ---
-type: Reference
+type: Software
 title: Graphiti
-description: Temporal context graphs for AI agents (Zep/Neo4j) — tracks how facts change over time with provenance, episodes, and ontology; agent memory, not a static compiled graph.
+description: Open-source Python framework from Zep for building and querying temporal context graphs — bi-temporal facts with validity windows, episode provenance, custom ontologies and hybrid retrieval.
 resource: https://github.com/getzep/graphiti
-tags: [graphiti, memory, graph, agents, neo4j]
-generated: { by: "human:daniel", at: "2026-08-12T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-12T00:00:00Z" } ]
+tags: [graphiti, zep, knowledge-graph, temporal, agent-memory, graphrag, python]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-08
+stale_after: 2027-05-11
 sources:
   - id: graphiti-github
     resource: "https://github.com/getzep/graphiti"
-    title: "Graphiti GitHub"
+    title: "getzep/graphiti on GitHub"
     author: "site:github.com"
-  - id: neo4j-blog-graphiti
-    resource: "https://neo4j.com/blog/developer/graphiti-knowledge-graph-memory/"
-    title: "Neo4j blog — Graphiti"
-    author: "site:neo4j.com"
-  - id: zep-graphiti
-    resource: "https://www.getzep.com/platform/graphiti/"
-    title: "Zep — Graphiti"
-    author: "site:www.getzep.com"
-  - id: paper-arxiv-2501-13956
+  - id: graphiti-docs
+    resource: "https://help.getzep.com/graphiti"
+    title: "Graphiti documentation"
+    author: "site:help.getzep.com"
+  - id: zep-paper
     resource: "https://arxiv.org/abs/2501.13956"
-    title: "Paper (arXiv 2501.13956)"
-    author: "site:arxiv.org"
+    title: "Zep: A Temporal Knowledge Graph Architecture for Agent Memory"
+    author: "Rasmussen et al., arXiv 2501.13956"
 ---
 
 # Graphiti
 
-A framework for building and querying **temporal context graphs** for AI agents — by Zep/Neo4j. Unlike static knowledge graphs, Graphiti tracks **how facts change over time**, keeps **provenance** (every fact traces to a raw *episode*), and supports both prescribed and learned ontologies. It's agent **memory**, not a one-shot compiled graph. Distinct from **Graphify** (a static, confidence-tagged graph compiled from a folder) — see [Graphiti vs Graphify](vs-graphify.md).
+**Graphiti** builds a *temporal context graph* from a stream of data: entities become nodes, facts become edges with a validity window (when they became true, when they were superseded), and every fact traces back to the raw **episode** it came from. Agents query it with hybrid search over meaning, keywords and graph structure. It is the open-source graph engine inside [Zep](../zep/index.md).
+
+| | |
+|---|---|
+| Category | [Knowledge graphs](../../concepts/knowledge-graphs.md) · [Agent memory](../../concepts/agent-memory.md) |
+| License | Apache-2.0 |
+| Language | Python 3.10+ (`graphiti-core`) |
+| Latest release | v0.31.2 (2026-10-20) |
+| Graph backends | [Neo4j](../../databases/neo4j/index.md) 5.26, [FalkorDB](../../databases/falkordb/index.md), Amazon Neptune; Kuzu (deprecated) |
 
 ## Contents
 
-* [Overview](overview.md) - what Graphiti is, why temporal
-* [Installation](installation.md) - `pip install graphiti-core` (v0.29.3), Neo4j, env
-* [Concepts](concepts.md) - context graph: entities, edges, episodes, ontology, validity windows
-* [Backends](backends.md) - Neo4j, FalkorDB, Neptune, Kuzu
-* [MCP Server](mcp-server.md) - MCP server (Docker) for Claude/Cursor
-* [Graphiti vs Graphify](vs-graphify.md) - explicit distinction
-* [AI Integration](ai-integration.md) - agent memory, your stack, :4000 proxy
-* [Alternatives](../alternatives.md) - GraphRAG, Zep, Graphify, Mem0
-* [Snippets](snippets.md) - cheat sheet
+* [Overview](overview.md) — what a context graph is, why temporal, Graphiti vs GraphRAG
+* [Concepts](concepts.md) — episodes, entities, facts, sagas, communities, ontology
+* [Backends](backends.md) — Neo4j, FalkorDB, Neptune, Kuzu deprecation
+* [Installation](installation.md) — `graphiti-core` and extras, Docker Compose
+* [MCP server](mcp-server.md) — reference MCP server and its tools
+* [Snippets](snippets.md) — add episodes, search facts and nodes, local LLMs
+* [AI Integration](ai-integration.md) — using Graphiti as agent memory
+* [Graphiti vs Graphify](vs-graphify.md) — two different "graph from data" tools
 
-## Instance facts (this machine)
+## Related
 
-* **Not installed** — no `programs/graphiti` launcher found; document from upstream. PyPI `graphiti-core` **v0.29.3** (2026-07).
-* **Role here (intended):** temporal agent memory backend; could back Hermes/OpenCode memory; MCP server for agents.
-* **Backends available:** Neo4j (would need a container); Graphiti itself is Python (`graphiti-core`).
-
-## Last verified
-
-**2026-08-12** — Version pinned to **v0.29.3** (PyPI `graphiti-core`, 2026-07); not installed locally (no `programs/graphiti`). Prior content verified 2026-07-15 against upstream repo/docs.
+* Concepts: [Knowledge graphs](../../concepts/knowledge-graphs.md) · [GraphRAG](../../concepts/graphrag.md) · [Agent memory](../../concepts/agent-memory.md) · [MCP](../../concepts/mcp.md)
+* Peers: [Zep](../zep/index.md) (managed product built on Graphiti), [Microsoft GraphRAG](../graphrag/index.md), [LightRAG](../lightrag/index.md), [Cognee](../cognee/index.md), [Mem0](../mem0/index.md)
+* Comparison: [Memory alternatives](../alternatives.md)

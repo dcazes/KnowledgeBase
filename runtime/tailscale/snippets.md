@@ -1,74 +1,46 @@
 ---
-type: Playbook
-title: Tailscale — Snippets & Cheat Sheet
-description: Copy-paste commands to install, auth, check status, and reach your local AI services over the tailnet.
-resource: https://tailscale.com/kb
-tags: [tailscale, snippets, cheat-sheet, cli, funmel, acl, magicdns]
-generated: { by: "human:daniel", at: "2026-07-09T02:25:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-09T02:25:00Z" } ]
+type: Reference
+title: Tailscale Snippets
+description: Tailscale CLI cheat sheet — status and IPs, Serve and Funnel, SSH, exit nodes, subnet routes, file transfer, and an example ACL for AI services.
+resource: https://tailscale.com/kb/1080/cli
+tags: [tailscale, snippets, cli, acl, cheat-sheet]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-05
+stale_after: 2027-05-11
 sources:
-  - id: installation
-    resource: "installation.md"
-    title: "Installation"
-  - id: concepts
-    resource: "concepts.md"
-    title: "Concepts"
-  - id: ai-integration
-    resource: "ai-integration.md"
-    title: "AI Integration"
+  - id: tailscale-docs
+    resource: "https://tailscale.com/kb"
+    title: "Tailscale knowledge base"
+    author: "site:tailscale.com"
 ---
 
-# Tailscale — Install + auth
+# Tailscale — Snippets
 
 ```bash
-curl -fsSL https://tailscale.com/install.sh | sh
-sudo tailscale up          # open the printed URL, sign in
+tailscale status                    # peers and connection type (direct / relay)
+tailscale ip -4                     # this device's tailnet IP
+tailscale ping gpu-box              # path check
+tailscale serve --bg 3000           # HTTPS on the tailnet → localhost:3000
+tailscale serve status ; tailscale serve reset
+tailscale funnel --bg 3000          # public internet — think twice
+tailscale ssh user@gpu-box
+tailscale set --exit-node=home-router
+sudo tailscale up --advertise-routes=192.0.2.0/24     # subnet router (example range)
+tailscale file cp notes.md phone:
 ```
 
-# Status / connectivity
+## Example policy: AI box reachable only by you
 
-```bash
-tailscale status
-tailscale ip
-tailscale ping <host>
+```json
+{
+  "tagOwners": { "tag:ai": ["autogroup:admin"] },
+  "grants": [
+    { "src": ["autogroup:member"], "dst": ["tag:ai"], "ip": ["443", "11434", "4000"] }
+  ]
+}
 ```
 
-# Reach local services from another device
+## Related
 
-Use MagicDNS names (or 100.x.y.z):
-```
-http://<host>.ts.net:4000/v1     # inference proxy
-http://<host>.ts.net:3000        # OpenWebUI
-http://<host>.ts.net:8080        # SearXNG
-http://<host>.ts.net:3002        # Firecrawl
-```
-
-# Exit node (route internet through this machine)
-
-```bash
-sudo tailscale up --advertise-exit-node          # on the gateway
-tailscale up --exit-node=<host>.ts.net           # on the client
-```
-
-# Funnel (public exposure — use sparingly)
-
-```bash
-tailscale funnel 3000 on      # expose OpenWebUI publicly
-tailscale funnel list
-```
-Keep `:4000` and `:3002` private — never funnel them.
-
-# ACL (admin console / policy)
-
-Grant least privilege by identity; default-deny. Edit in the Tailscale admin console (Policy / ACL).
-
-# Troubleshooting
-
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| Not connecting | daemon down | `sudo systemctl restart tailscaled` |
-| Peer unreachable | ACL / NAT | `tailscale status`; check ACL; DERP fallback auto |
-| Funnel blocked | not enabled | `tailscale funnel <port> on` |
-| DNS not resolving | MagicDNS off | ensure MagicDNS enabled in admin |
+[Tailscale index](index.md) · [Concepts](concepts.md)

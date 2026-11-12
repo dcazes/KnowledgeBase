@@ -1,43 +1,40 @@
 ---
 type: Concept
 title: Supermemory Overview
-description: "What Supermemory is — personal AI memory: capture browsing/snippets, local semantic storage, question answering from memory; local-first desktop app."
-resource: https://supermemory.ai
-tags: [supermemory, overview, memory, semantic-search]
-generated: { by: "human:daniel", at: "2026-08-13T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-08-13T00:00:00Z" } ]
+description: What Supermemory does — fact extraction with temporal updates, contradictions and forgetting; static and dynamic user profiles; hybrid search across knowledge-base documents and memories; connectors and multi-modal extractors.
+resource: https://supermemory.ai/docs
+tags: [supermemory, overview, user-profiles, hybrid-search]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-02-09
+stale_after: 2027-05-11
 sources:
-  - id: supermemory
-    resource: "https://supermemory.ai"
-    title: "Supermemory"
-    author: "site:supermemory.ai"
   - id: supermemory-github
     resource: "https://github.com/supermemoryai/supermemory"
-    title: "Supermemory GitHub"
+    title: "supermemoryai/supermemory on GitHub"
     author: "site:github.com"
+  - id: supermemory-docs
+    resource: "https://supermemory.ai/docs"
+    title: "Supermemory documentation"
+    author: "site:supermemory.ai"
 ---
 
 # Supermemory — Overview
 
-Supermemory positions itself as "your AI second brain": everything you read/save becomes searchable memory, and the assistant answers questions grounded in that memory.
+| Feature | What it does |
+|---|---|
+| Memory | Extracts facts from conversations; handles temporal changes, contradictions and automatic forgetting of expired information |
+| User profiles | Auto-maintained context in two parts: **static** (stable facts) and **dynamic** (recent activity) — one call, ~50 ms |
+| Hybrid search | RAG over uploaded documents and personal memory in one query |
+| Connectors | Google Drive, Gmail, Notion, OneDrive, GitHub with webhook sync |
+| Extractors | PDFs, images (OCR), video (transcription), code (AST-aware chunking) |
 
-## Capture
+Everything lives in one memory structure and ontology, and data is partitioned by **container tags** (per user, project or client).
 
-* **Browser extension** — save pages, snippets, and highlights while browsing.
-* **Manual notes / snippets** — paste text directly into the app.
+## Design stance
 
-## Storage & retrieval
+Supermemory hides the plumbing — no vector database to configure, no chunking strategy, no embedding pipeline — in exchange for less control than assembling your own stack from [Docling](../../ingestion/docling/index.md), [Qdrant](../../databases/qdrant/index.md) and [Mem0](../mem0/index.md). The team describes itself as a research lab and claims top results on LongMemEval, LoCoMo and ConvoMem; see [MemOS benchmarks](../memos/benchmarks.md) for how to read such claims.
 
-* Saved content is embedded (the local app uses a local embedding model — `models/Xenova` on this machine) and stored in an embedded Postgres (`runtime/pglite`).
-* **Semantic search** — natural-language queries retrieve relevant memory.
-* **Q&A** — the assistant answers from your memory with citations to saved items.
+## Related
 
-## Local-first desktop app
-
-The desktop app keeps data locally (encrypted env, local model + DB). The local `.supermemory/` directory on this machine matches this exactly (instance-id, api-key, auth-secret, pglite, ONNX runtimes) — evidence the app ran here in July 2026.
-
-## Position
-
-End-user memory product (like a personal Rewind) rather than a developer library — it competes with consumer memory apps, while [Mem0](../mem0/index.md)/[MemOS](../memos/index.md) target agent/developer memory.
+[Supermemory index](index.md) · [Snippets](snippets.md) · [Agent memory](../../concepts/agent-memory.md)

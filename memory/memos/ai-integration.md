@@ -1,64 +1,38 @@
 ---
-type: Reference
-title: MemOS — AI Integration
-description: How MemOS integrates as agent memory — MCP server for Hermes/OpenCode/Cursor, official Hermes & OpenClaw local plugins, and how it complements Graphiti.
-resource: https://memos-docs.openmem.net/home/overview/
-tags: [memos, integration, mcp, hermes, openclaw, opencode, memory, agents]
-generated: { by: "human:daniel", at: "2026-07-16T00:00:00Z" }
-verified: [ { by: "human:daniel", at: "2026-07-16T00:00:00Z" } ]
+type: Playbook
+title: MemOS AI Integration
+description: MemOS integrations for agent harnesses — OpenClaw cloud and local plugins, the Hermes local plugin, DeepSeek Harness, and multi-agent memory sharing through cubes.
+resource: https://github.com/MemTensor/MemOS
+tags: [memos, integration, openclaw, hermes, multi-agent]
+generated: { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" }
+verified: [ { by: "agent:claude-code", at: "2026-11-12T00:00:00Z" } ]
 status: stable
-stale_after: 2027-01-12
+stale_after: 2027-05-11
 sources:
-  - id: memos-repo
+  - id: memos-github
     resource: "https://github.com/MemTensor/MemOS"
-    title: "MemOS repo"
+    title: "MemTensor/MemOS on GitHub"
     author: "site:github.com"
-  - id: memos-hermes-plugin-news
-    resource: "https://github.com/MemTensor/MemOS"
-    title: "MemOS Hermes plugin news"
-    author: "site:github.com"
-  - id: graphiti
-    resource: "../graphiti/index.md"
-    title: "Graphiti"
 ---
 
-# MemOS as agent memory
+# MemOS — AI Integration
 
-MemOS exposes its memory over an **MCP server** (under `src/memos/api/`) and a REST API (`:8000`). Any MCP client can register it as a memory backend.
+## Agent harness plugins
 
-## Integration map
+| Harness | Plugin | Notes |
+|---|---|---|
+| [OpenClaw](../../agents/openclaw/index.md) | Cloud plugin | Hosted memory, multi-agent sharing; MemTensor reports 72% lower token use |
+| OpenClaw, [Hermes](../../agents/hermes/index.md) | `memos-local-plugin` 2.0 | 100% local, hybrid FTS5 + vector retrieval, skill evolution |
+| DeepSeek Harness | Local and cloud plugins | Auto-recall before a task, retain after a successful turn, local Memory Viewer |
 
-```text
-Hermes / OpenCode / Cursor / Windsurf / OpenClaw
-        │  MCP (or REST :8000)
-        ▼
-   MemOS  ── stores ──► textual / tree / preference / skill / KV / LoRA memory
-        │
-        ├─ vector DB (Qdrant / Milvus)
-        └─ graph DB  (Neo4j / Postgres / Nebula)
-```
+## Multi-agent memory
 
-## Hermes
+Give each agent a private cube and a shared team cube: agents write their own experience privately and promote useful facts to the shared cube. This maps onto [multi-agent orchestration](../../concepts/multi-agent-orchestration.md) patterns in [LangGraph](../../agents/langgraph/index.md) or [CrewAI](../../agents/crewai/index.md).
 
-* **Official Hermes Agent local plugin** (memos-local-plugin 2.0): hybrid retrieval (FTS5 + vector), smart dedup, tiered skill evolution, multi-agent collaboration, 100% local, zero cloud dependency.
-* Register MemOS as an MCP server in Hermes skills/MCP config, or use the plugin for local-first memory.
+## Apps
 
-## OpenClaw
+Use the REST API with the store → retrieve → inject loop common to all [agent memory](../../concepts/agent-memory.md) systems.
 
-* **Official OpenClaw plugin** — Cloud (hosted, ~72% lower token usage, multi-agent memory sharing) and **Local** (`v1.0.0`: on-device SQLite, hybrid search, task summarization, skill evolution, Memory Viewer dashboard).
-* Upstream reports OpenClaw task completion rose **36.63% → 50.87%** with MemOS.
+## Related
 
-## OpenCode / Cursor / Windsurf
-
-* Any MCP client can consume MemOS memory — add it as an `mcpServers` entry (OpenCode `.opencode.json`, Cursor/Windsurf MCP settings).
-
-## How it relates to Graphiti
-
-* **MemOS** = general / structured memory (textual, tree, preference, skill, parametric) — the "operating system" for memory.
-* **Graphiti** = temporal context graph (time-aware episodes, provenance).
-* They are complementary: MemOS for durable structured memory, Graphiti for evolving relational/episodic memory. Both can be wired into the same agent via MCP (see Agent Stack).
-
-## Notes
-
-* LLM/embedder for MemOS can be local (Ollama) — keep it off the public internet; put behind **Tailscale** like the rest of the stack ([Tailscale](../../runtime/tailscale/index.md)).
-* Memory feedback loop: correct/supplement memories via natural-language feedback over the API.
+[MemOS index](index.md) · [Memory alternatives](../alternatives.md)
